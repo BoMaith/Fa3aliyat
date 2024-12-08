@@ -2,9 +2,10 @@ import UIKit
 
 class InterestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-//    @IBOutlet weak var skipBarBtn: UIBarButtonItem!
-//    @IBOutlet weak var switchInterest: UISwitch!
-    
+    // Outlets
+    @IBOutlet weak var skipBarBtn: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
+
     // Data for the table view
     let interests = [
         ("Arts & Entertainment", "Arts"),
@@ -21,8 +22,8 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
         ("Shopping & Markets", "Shopping")
     ]
 
-    // Table view
-    @IBOutlet weak var tableView: UITableView!
+    // Track the state of switches
+    var switchStates = [Bool](repeating: false, count: 12)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,14 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
         // Set up table view
         tableView.delegate = self
         tableView.dataSource = self
+        
+        updateSkipButtonTitle()
+    }
+
+    // MARK: - Update Skip Button Title
+    private func updateSkipButtonTitle() {
+        let isAnySwitchOn = switchStates.contains(true)
+        skipBarBtn.title = isAnySwitchOn ? "Done" : "Skip"
     }
 
     // MARK: - TableView DataSource Methods
@@ -42,6 +51,13 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
 
         let (name, icon) = interests[indexPath.row]
         cell.setupCell(photoName: icon, name: name)
+        
+        // Configure the switch state
+        cell.switchInterest.isOn = switchStates[indexPath.row]
+        
+        // Add target action for the switch
+        cell.switchInterest.tag = indexPath.row
+        cell.switchInterest.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
 
         return cell
     }
@@ -50,13 +66,13 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-//    @objc func switchChanged() {
-//            // Check if any switch is turned on
-//            if switchInterest.isOn {
-//                skipBarBtn.title = "Done"
-//            } else {
-//                skipBarBtn.title = "Skip"
-//            }
-//        }
+
+    // MARK: - Switch Value Changed
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        // Update the state of the corresponding switch
+        switchStates[sender.tag] = sender.isOn
+        
+        // Update the skip button title
+        updateSkipButtonTitle()
+    }
 }
