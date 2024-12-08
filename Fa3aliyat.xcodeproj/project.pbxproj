@@ -32,6 +32,7 @@
 		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
 		D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */; };
+		D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D584CB1C2D05CD6000C01431 /* EventPage.storyboard */; };
 		F272ED542D05B3C00042F50B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F272ED532D05B3C00042F50B /* Users.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
 		D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsTableViewCell.swift; sourceTree = "<group>"; };
+		D584CB1C2D05CD6000C01431 /* EventPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
 		F272ED532D05B3C00042F50B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 			children = (
 				D0ABBD122CFF476500C9A706 /* Favorite.storyboard */,
 				D0ABBD142CFF477B00C9A706 /* History.storyboard */,
+				D584CB1C2D05CD6000C01431 /* EventPage.storyboard */,
 			);
 			path = Yousif;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				F272ED542D05B3C00042F50B /* Users.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
+				D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
 				D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */,
