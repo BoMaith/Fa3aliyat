@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		8362CE082D0211BC00E5B221 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362CE042D0211BC00E5B221 /* CreateOrganizerViewController.swift */; };
+		8362CE092D0211BC00E5B221 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362CE052D0211BC00E5B221 /* UserTableViewCell.swift */; };
+		8362CE0A2D0211BC00E5B221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8362CE062D0211BC00E5B221 /* Main.storyboard */; };
+		8362CE0B2D0211BC00E5B221 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362CE072D0211BC00E5B221 /* UsersPageViewController.swift */; };
+
 		D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */; };
 		D01F31D72D05AD0400CDB58F /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */; };
+
 		D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030896D2CFF3AFF0025BF69 /* Login.storyboard */; };
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
@@ -25,7 +32,6 @@
 		D086502F2CF5F22600C9981D /* Fa3aliyatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086502E2CF5F22600C9981D /* Fa3aliyatTests.swift */; };
 		D08650392CF5F22600C9981D /* Fa3aliyatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650382CF5F22600C9981D /* Fa3aliyatUITests.swift */; };
 		D086503B2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086503A2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift */; };
-		D0ABBD112CFF472000C9A706 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD102CFF472000C9A706 /* Users.storyboard */; };
 		D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD122CFF476500C9A706 /* Favorite.storyboard */; };
 		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
@@ -50,8 +56,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+
+		8362CE042D0211BC00E5B221 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
+		8362CE052D0211BC00E5B221 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		8362CE062D0211BC00E5B221 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8362CE072D0211BC00E5B221 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
+
 		D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
+
 		D030896D2CFF3AFF0025BF69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -72,7 +85,6 @@
 		D08650342CF5F22600C9981D /* Fa3aliyatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fa3aliyatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650382CF5F22600C9981D /* Fa3aliyatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fa3aliyatUITests.swift; sourceTree = "<group>"; };
 		D086503A2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fa3aliyatUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D0ABBD102CFF472000C9A706 /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		D0ABBD122CFF476500C9A706 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
@@ -119,7 +131,10 @@
 		D03089672CFF39BB0025BF69 /* Ridha */ = {
 			isa = PBXGroup;
 			children = (
-				D0ABBD102CFF472000C9A706 /* Users.storyboard */,
+				8362CE042D0211BC00E5B221 /* CreateOrganizerViewController.swift */,
+				8362CE062D0211BC00E5B221 /* Main.storyboard */,
+				8362CE072D0211BC00E5B221 /* UsersPageViewController.swift */,
+				8362CE052D0211BC00E5B221 /* UserTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -360,6 +375,7 @@
 				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
 				D030897B2CFF44C70025BF69 /* Home.storyboard in Resources */,
 				D030897D2CFF44DA0025BF69 /* Search.storyboard in Resources */,
+				8362CE0A2D0211BC00E5B221 /* Main.storyboard in Resources */,
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
@@ -394,6 +410,10 @@
 			files = (
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
+				8362CE0B2D0211BC00E5B221 /* UsersPageViewController.swift in Sources */,
+				8362CE082D0211BC00E5B221 /* CreateOrganizerViewController.swift in Sources */,
+				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
+				8362CE092D0211BC00E5B221 /* UserTableViewCell.swift in Sources */,
 				D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 				D01F31D72D05AD0400CDB58F /* InterestsViewController.swift in Sources */,
