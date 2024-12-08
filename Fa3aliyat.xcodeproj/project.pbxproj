@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */; };
 		D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030896D2CFF3AFF0025BF69 /* Login.storyboard */; };
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
@@ -27,6 +28,8 @@
 		D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD122CFF476500C9A706 /* Favorite.storyboard */; };
 		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
+		D0DCB45A2D0214610051A292 /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCB4582D0214610051A292 /* InterestsViewController.swift */; };
+		D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		D030896D2CFF3AFF0025BF69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		D0ABBD122CFF476500C9A706 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
+		D0DCB4582D0214610051A292 /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterestsViewController.swift; path = ../../../BoMaith/Testing/Testing/InterestsViewController.swift; sourceTree = "<group>"; };
+		D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 			children = (
 				D030897A2CFF44C70025BF69 /* Home.storyboard */,
 				D030897C2CFF44DA0025BF69 /* Search.storyboard */,
+				D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */,
+				D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */,
+				D0DCB4582D0214610051A292 /* InterestsViewController.swift */,
 			);
 			path = Elyas;
 			sourceTree = "<group>";
@@ -355,6 +364,7 @@
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
+				D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */,
 				D0ABBD112CFF472000C9A706 /* Users.storyboard in Resources */,
 				D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
@@ -384,7 +394,9 @@
 			files = (
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
+				D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
+				D0DCB45A2D0214610051A292 /* InterestsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
