@@ -4,15 +4,13 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
 
-
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     struct Organizer {
         var name: String
         var email: String
-        var image: UIImage?  // Add the image property
+       
     }
 
     
@@ -26,17 +24,18 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set the delegate and dataSource for the tableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Register the default cell
+        // Register the default UITableViewCell class if not done in the storyboard
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "OrganizerCellIdentifier")
         
         // Update UI based on the initial selected segment
         updateAddButtonVisibility()
     }
+
     
     // Update Add Button visibility based on selected segment
     // This function updates the visibility of the add button based on the selected segment
@@ -95,27 +94,32 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Dequeue the reusable cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCellIdentifier", for: indexPath) as! UserTableViewCell
+        // Dequeue a reusable cell of default type
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCellIdentifier", for: indexPath)
         
         // Check if we're showing "Organizers" or "Users"
         if isOrganizersSelected {
             let organizer = organizers[indexPath.row]
             
-            // Set the text for the name and email
-            cell.textLabel?.text = organizer.name
-            cell.detailTextLabel?.text = organizer.email
+            // Set the text for the name (and email if needed)
+            cell.textLabel?.text = organizer.name  // Name label
             
-            // Set the image for the organizer
-            cell.imageView?.image = organizer.image // Set the image in the cell
+            
+            
         } else {
             let user = users[indexPath.row]
+            
+            // Set the text for the name
             cell.textLabel?.text = user
-            cell.detailTextLabel?.text = "User"
+            
+            // Optionally, set a default image for users, if needed
+            // cell.imageView?.image = UIImage(named: "defaultUserImage")  // Optional image for users
         }
         
         return cell
     }
+
+
 
     
     // Step 3: Segmented Control Action

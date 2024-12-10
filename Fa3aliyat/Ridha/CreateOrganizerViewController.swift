@@ -7,12 +7,11 @@ protocol CreateOrganizerDelegate: AnyObject {
 class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     weak var delegate: CreateOrganizerDelegate?
-    var selectedImage: UIImage?
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var createButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,11 +27,6 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
         nameTextField.addTarget(self, action: #selector(updateCreateButtonState), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(updateCreateButtonState), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(updateCreateButtonState), for: .editingChanged)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        imageView.addGestureRecognizer(tapGesture)
-        imageView.isUserInteractionEnabled = true
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
-            imageView.clipsToBounds = true
         
     }
 
@@ -68,10 +62,7 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
             }
             
             // Step 2: Check if an image is selected
-            guard let selectedImage = imageView.image else {
-                showAlert(message: "Please select an image.")
-                return
-            }
+            
 
             // Step 3: Show a confirmation alert
             let alertController = UIAlertController(
@@ -85,8 +76,7 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
                 // Create a new organizer object with image
                 let newOrganizer = UsersPageViewController.Organizer(
                     name: name,
-                    email: email,
-                    image: selectedImage // Pass the image here
+                    email: email
                 )
                 
                 // Step 5: Send the new organizer back to the delegate (UsersPageViewController)
@@ -138,30 +128,8 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
         updateCreateButtonState()
         return true
     }
-    @objc func imageTapped() {
-        presentImagePicker()
-    }
-    func presentImagePicker() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary  // Open the photo library
-        imagePickerController.mediaTypes = ["public.image"]  // Only allow image selection
-        
-        // Present the image picker
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            selectedImage = image  // Save the selected image
-            imageView.image = image  // Display the image in the image view
-        }
-        dismiss(animated: true, completion: nil)  // Dismiss the picker
-    }
-
-    // This delegate method is called when the user cancels the image picker
-    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)  // Dismiss the picker without selecting an image
-    }
+    
+    
     // Show an alert with the given message
     
 
