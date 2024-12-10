@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		837048192D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		8370481A2D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
@@ -21,6 +22,7 @@
 		9FEAEF102D086197008DD966 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0C2D086197008DD966 /* Users.storyboard */; };
 		9FEAEF112D086197008DD966 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */; };
 		9FEAEF122D086197008DD966 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */; };
+
 		D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */; };
 		D01F31D72D05AD0400CDB58F /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */; };
 		D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030896D2CFF3AFF0025BF69 /* Login.storyboard */; };
@@ -43,6 +45,7 @@
 		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
 		D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */; };
+		F272ED542D05B3C00042F50B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F272ED532D05B3C00042F50B /* Users.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,11 +66,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
 		9FEAEF0C2D086197008DD966 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
+
 		D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
 		D030896D2CFF3AFF0025BF69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
 		D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsTableViewCell.swift; sourceTree = "<group>"; };
+		F272ED532D05B3C00042F50B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,10 +149,12 @@
 		D03089672CFF39BB0025BF69 /* Ridha */ = {
 			isa = PBXGroup;
 			children = (
+
 				9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */,
 				9FEAEF0C2D086197008DD966 /* Users.storyboard */,
 				9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */,
 				9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */,
+
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -404,7 +412,11 @@
 				9FEAEF102D086197008DD966 /* Users.storyboard in Resources */,
 				D030897D2CFF44DA0025BF69 /* Search.storyboard in Resources */,
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
+
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
+
+				F272ED542D05B3C00042F50B /* Users.storyboard in Resources */,
+
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
