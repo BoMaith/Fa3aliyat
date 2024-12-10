@@ -9,6 +9,7 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var customImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
