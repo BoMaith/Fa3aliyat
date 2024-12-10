@@ -47,6 +47,7 @@
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
 		D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D584CB1C2D05CD6000C01431 /* EventPage.storyboard */; };
 		F272ED542D05B3C00042F50B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F272ED532D05B3C00042F50B /* Users.storyboard */; };
+		FA2F4E402D0900A100AC8DC6 /* AddEvent-TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2F4E3F2D0900A100AC8DC6 /* AddEvent-TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
 		D584CB1C2D05CD6000C01431 /* EventPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
 		F272ED532D05B3C00042F50B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		FA2F4E3F2D0900A100AC8DC6 /* AddEvent-TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEvent-TableViewCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				D0ABBD162CFF479700C9A706 /* Add Event.storyboard */,
+				FA2F4E3F2D0900A100AC8DC6 /* AddEvent-TableViewCell.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 				9FEAEF112D086197008DD966 /* UserTableViewCell.swift in Sources */,
 				D04A48462D08965700F99379 /* HomeViewController.swift in Sources */,
+				FA2F4E402D0900A100AC8DC6 /* AddEvent-TableViewCell.swift in Sources */,
 				D04A48482D08965700F99379 /* InterestsTableViewCell.swift in Sources */,
 				D04A48472D08965700F99379 /* HomeTableViewCell.swift in Sources */,
 				9FEAEF122D086197008DD966 /* UsersPageViewController.swift in Sources */,
