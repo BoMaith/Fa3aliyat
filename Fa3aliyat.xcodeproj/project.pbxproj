@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-		8362CE082D0211BC00E5B221 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362CE042D0211BC00E5B221 /* CreateOrganizerViewController.swift */; };
-		8362CE092D0211BC00E5B221 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362CE052D0211BC00E5B221 /* UserTableViewCell.swift */; };
-		8362CE0A2D0211BC00E5B221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8362CE062D0211BC00E5B221 /* Main.storyboard */; };
-		8362CE0B2D0211BC00E5B221 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362CE072D0211BC00E5B221 /* UsersPageViewController.swift */; };
-
+		9F6FCF432D081904000A52F4 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6FCF3F2D081904000A52F4 /* UsersPageViewController.swift */; };
+		9F6FCF442D081904000A52F4 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6FCF402D081904000A52F4 /* UserTableViewCell.swift */; };
+		9F6FCF452D081904000A52F4 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6FCF412D081904000A52F4 /* Users.storyboard */; };
+		9F6FCF462D081904000A52F4 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6FCF422D081904000A52F4 /* CreateOrganizerViewController.swift */; };
 		D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */; };
 		D01F31D72D05AD0400CDB58F /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */; };
-
 		D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030896D2CFF3AFF0025BF69 /* Login.storyboard */; };
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
@@ -56,15 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-
-		8362CE042D0211BC00E5B221 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
-		8362CE052D0211BC00E5B221 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		8362CE062D0211BC00E5B221 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8362CE072D0211BC00E5B221 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
-
+		9F6FCF3F2D081904000A52F4 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersPageViewController.swift; path = ../../../../Desktop/Working/Working/UsersPageViewController.swift; sourceTree = "<group>"; };
+		9F6FCF402D081904000A52F4 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTableViewCell.swift; path = ../../../../Desktop/Working/Working/UserTableViewCell.swift; sourceTree = "<group>"; };
+		9F6FCF412D081904000A52F4 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Users.storyboard; path = ../../../../Desktop/Working/Working/Users.storyboard; sourceTree = "<group>"; };
+		9F6FCF422D081904000A52F4 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrganizerViewController.swift; path = ../../../../Desktop/Working/Working/CreateOrganizerViewController.swift; sourceTree = "<group>"; };
 		D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
-
 		D030896D2CFF3AFF0025BF69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -131,10 +125,10 @@
 		D03089672CFF39BB0025BF69 /* Ridha */ = {
 			isa = PBXGroup;
 			children = (
-				8362CE042D0211BC00E5B221 /* CreateOrganizerViewController.swift */,
-				8362CE062D0211BC00E5B221 /* Main.storyboard */,
-				8362CE072D0211BC00E5B221 /* UsersPageViewController.swift */,
-				8362CE052D0211BC00E5B221 /* UserTableViewCell.swift */,
+				9F6FCF422D081904000A52F4 /* CreateOrganizerViewController.swift */,
+				9F6FCF412D081904000A52F4 /* Users.storyboard */,
+				9F6FCF3F2D081904000A52F4 /* UsersPageViewController.swift */,
+				9F6FCF402D081904000A52F4 /* UserTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -374,14 +368,13 @@
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
 				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
 				D030897B2CFF44C70025BF69 /* Home.storyboard in Resources */,
+				9F6FCF452D081904000A52F4 /* Users.storyboard in Resources */,
 				D030897D2CFF44DA0025BF69 /* Search.storyboard in Resources */,
-				8362CE0A2D0211BC00E5B221 /* Main.storyboard in Resources */,
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
 				D01C6DDE2D00AB2D008DD552 /* Interests.storyboard in Resources */,
-				D0ABBD112CFF472000C9A706 /* Users.storyboard in Resources */,
 				D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
 			);
@@ -410,13 +403,13 @@
 			files = (
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
-				8362CE0B2D0211BC00E5B221 /* UsersPageViewController.swift in Sources */,
-				8362CE082D0211BC00E5B221 /* CreateOrganizerViewController.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
-				8362CE092D0211BC00E5B221 /* UserTableViewCell.swift in Sources */,
 				D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */,
+				9F6FCF442D081904000A52F4 /* UserTableViewCell.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 				D01F31D72D05AD0400CDB58F /* InterestsViewController.swift in Sources */,
+				9F6FCF462D081904000A52F4 /* CreateOrganizerViewController.swift in Sources */,
+				9F6FCF432D081904000A52F4 /* UsersPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
