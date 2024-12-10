@@ -16,10 +16,12 @@
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
 		D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089782CFF44330025BF69 /* Organizer.storyboard */; };
-		D030897B2CFF44C70025BF69 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030897A2CFF44C70025BF69 /* Home.storyboard */; };
 		D030897D2CFF44DA0025BF69 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030897C2CFF44DA0025BF69 /* Search.storyboard */; };
 		D030897F2CFF458D0025BF69 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030897E2CFF458D0025BF69 /* Profile.storyboard */; };
 		D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D034BCAD2CFC69D500B09578 /* Main.storyboard */; };
+		D04A48312D088D2200F99379 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04A482F2D088D2200F99379 /* HomeTableViewCell.swift */; };
+		D04A48322D088D2200F99379 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04A48302D088D2200F99379 /* HomeViewController.swift */; };
+		D04A48342D088DDE00F99379 /* Home .storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04A48332D088DDE00F99379 /* Home .storyboard */; };
 		D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650172CF5F22400C9981D /* AppDelegate.swift */; };
 		D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650192CF5F22400C9981D /* SceneDelegate.swift */; };
 		D086501C2CF5F22400C9981D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086501B2CF5F22400C9981D /* ViewController.swift */; };
@@ -62,10 +64,12 @@
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		D03089782CFF44330025BF69 /* Organizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Organizer.storyboard; sourceTree = "<group>"; };
-		D030897A2CFF44C70025BF69 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		D030897C2CFF44DA0025BF69 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D030897E2CFF458D0025BF69 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D034BCAE2CFC69D500B09578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D04A482F2D088D2200F99379 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		D04A48302D088D2200F99379 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D04A48332D088DDE00F99379 /* Home .storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Home .storyboard"; sourceTree = "<group>"; };
 		D08650142CF5F22400C9981D /* Fa3aliyat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fa3aliyat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650172CF5F22400C9981D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08650192CF5F22400C9981D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,9 +117,11 @@
 		D03089662CFF39A70025BF69 /* Elyas */ = {
 			isa = PBXGroup;
 			children = (
-				D030897A2CFF44C70025BF69 /* Home.storyboard */,
+				D04A48332D088DDE00F99379 /* Home .storyboard */,
 				D030897C2CFF44DA0025BF69 /* Search.storyboard */,
 				D01C6DDD2D00AB2D008DD552 /* Interests.storyboard */,
+				D04A482F2D088D2200F99379 /* HomeTableViewCell.swift */,
+				D04A48302D088D2200F99379 /* HomeViewController.swift */,
 				D0DCB4592D0214610051A292 /* InterestsTableViewCell.swift */,
 				D01F31D62D05AD0400CDB58F /* InterestsViewController.swift */,
 			);
@@ -362,12 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04A48342D088DDE00F99379 /* Home .storyboard in Resources */,
 				D08650242CF5F22500C9981D /* LaunchScreen.storyboard in Resources */,
 				D030897F2CFF458D0025BF69 /* Profile.storyboard in Resources */,
 				D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */,
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
 				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
-				D030897B2CFF44C70025BF69 /* Home.storyboard in Resources */,
 				D030897D2CFF44DA0025BF69 /* Search.storyboard in Resources */,
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				F272ED542D05B3C00042F50B /* Users.storyboard in Resources */,
@@ -407,6 +413,8 @@
 				8362CE082D0211BC00E5B221 /* CreateOrganizerViewController.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 				8362CE092D0211BC00E5B221 /* UserTableViewCell.swift in Sources */,
+				D04A48312D088D2200F99379 /* HomeTableViewCell.swift in Sources */,
+				D04A48322D088D2200F99379 /* HomeViewController.swift in Sources */,
 				D0DCB45B2D0214610051A292 /* InterestsTableViewCell.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 				D01F31D72D05AD0400CDB58F /* InterestsViewController.swift in Sources */,
