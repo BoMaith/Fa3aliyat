@@ -4,7 +4,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tableView: UITableView!
 
-    let events: [(String, String, String)] = [
+    var events: [(String, String, String)] = [
             ("Car Show", "Nov 11 - Nov 13", "Cars"),
             ("Quran Tajweed", "Nov 10 - Nov 11", "Cars"),
             ("Football Tournament", "Dec 1 - Dec 2", "Cars"),
@@ -20,6 +20,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         override func viewDidLoad() {
             super.viewDidLoad()
+
+            
+            favoriteStates = [Bool](repeating: false, count: events.count)
 
             // Set up table view
             tableView.delegate = self
@@ -37,13 +40,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             // Event details
             let (eventName, eventDate, eventIcon) = events[indexPath.row]
-            cell.setupCell(photoName: eventIcon, name: eventName, date: eventDate)
+            cell.setupCell(photoName: eventIcon, name: eventName, date: eventDate, isFavorite: favoriteStates[indexPath.row])
+
             
             // Configure the favorite button
-//            cell.favoriteButton.isSelected = favoriteStates[indexPath.row]
-//            cell.favoriteButton.tag = indexPath.row
-//            cell.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
-
+            cell.starBtn.isSelected = favoriteStates[indexPath.row]
+            cell.starBtn.tag = indexPath.row
+            cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
+            
             return cell
         }
 
@@ -56,14 +60,33 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         // MARK: - Favorite Button Tapped
-        @objc func favoriteButtonTapped(_ sender: UIButton) {
-            let row = sender.tag
-            favoriteStates[row].toggle()
-            sender.isSelected = favoriteStates[row]
-
-            // You can save the favorite state in UserDefaults or a database if needed
-            print("Favorite state for row \(row): \(favoriteStates[row])")
-        }
+//        @objc func favoriteButtonTapped(_ sender: UIButton) {
+//            let row = sender.tag
+//            favoriteStates[row].toggle()
+//            sender.isSelected = favoriteStates[row]
+//
+//            // You can save the favorite state in UserDefaults or a database if needed
+//            print("Favorite state for row \(row): \(favoriteStates[row])")
+//        }
+//
     
+    @objc func favoriteButtonTapped(_ sender: UIButton) {
+        let row = sender.tag
+        favoriteStates[row].toggle() // Update favorite state
+        sender.isSelected = favoriteStates[row] // Update button state
+
+        // Reorder rows: move starred events to the top
+        reorderRows()
+    }
+
+    private func reorderRows() {
+        // Sort events based on favoriteStates
+        let combined = zip(events, favoriteStates).sorted { $0.1 && !$1.1 }
+        events = combined.map { $0.0 }
+        favoriteStates = combined.map { $0.1 }
+
+        // Reload the table view to reflect the new order
+        tableView.reloadData()
+    }
     }
 

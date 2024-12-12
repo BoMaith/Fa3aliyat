@@ -14,10 +14,14 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var starBtn: UIButton!
     @IBOutlet weak var imgEvent: UIImageView!
     
-    func setupCell(photoName: String, name: String, date: String) {
+    func setupCell(photoName: String, name: String, date: String, isFavorite: Bool) {
         imgEvent.image = UIImage(named: photoName)
         eventNameLbl.text = name
         eventDateLbl.text = date
+        
+        // Update star button appearance
+        starBtn.setImage(UIImage(systemName: isFavorite ? "star.fill" : "star"), for: .normal)
+        starBtn.tintColor = isFavorite ? UIColor.systemBlue : UIColor.systemGray
     }
 
     override func awakeFromNib() {
