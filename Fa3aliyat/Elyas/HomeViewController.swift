@@ -5,9 +5,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
 
     let events: [(String, String, String)] = [
-        ("Car Show", "Nov 11 - Nov 13", "Cars"),
+            ("Car Show", "Nov 11 - Nov 13", "Cars"),
             ("Quran Tajweed", "Nov 10 - Nov 11", "Cars"),
             ("Football Tournament", "Dec 1 - Dec 2", "Cars"),
+            ("Food Truck Event", "Nov 3", "Cars"),
+            ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
+            ("Tennis Tournament", "Nov 14 - Nov 19", "Cars"),
             ("Food Truck Event", "Nov 3", "Cars"),
             ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
             ("Tennis Tournament", "Nov 14 - Nov 19", "Cars")
@@ -61,5 +64,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // You can save the favorite state in UserDefaults or a database if needed
             print("Favorite state for row \(row): \(favoriteStates[row])")
         }
+    
     }
 
