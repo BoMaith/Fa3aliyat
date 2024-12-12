@@ -17,10 +17,13 @@
 		837048282D0875C400F28AF8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 837048272D0875C400F28AF8 /* FirebaseFirestore */; };
 		8370482A2D0875C400F28AF8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 837048292D0875C400F28AF8 /* FirebaseStorage */; };
 		8370482C2D08764A00F28AF8 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8370482B2D08764A00F28AF8 /* FirebaseCore */; };
-		9FEAEF0F2D086197008DD966 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */; };
-		9FEAEF102D086197008DD966 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0C2D086197008DD966 /* Users.storyboard */; };
-		9FEAEF112D086197008DD966 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */; };
-		9FEAEF122D086197008DD966 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */; };
+		838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650192CF5F22400C9981D /* SceneDelegate.swift */; };
+		838D12F02D0B50810022C382 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */; };
+		838D12F12D0B50810022C382 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838D12EB2D0B50810022C382 /* Users.storyboard */; };
+		838D12F22D0B50810022C382 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EC2D0B50810022C382 /* UsersPageViewController.swift */; };
+		838D12F32D0B50810022C382 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12ED2D0B50810022C382 /* UserProfileViewController.swift */; };
+		838D12F42D0B50810022C382 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EE2D0B50810022C382 /* OrganizerProfileViewController.swift */; };
+		838D12F52D0B50810022C382 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EF2D0B50810022C382 /* UserTableViewCell.swift */; };
 		D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D030896D2CFF3AFF0025BF69 /* Login.storyboard */; };
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
@@ -35,7 +38,6 @@
 		D04A484D2D08969800F99379 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04A484A2D08969700F99379 /* Interests.storyboard */; };
 		D04A484E2D08969800F99379 /* Home .storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04A484B2D08969700F99379 /* Home .storyboard */; };
 		D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650172CF5F22400C9981D /* AppDelegate.swift */; };
-		D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650192CF5F22400C9981D /* SceneDelegate.swift */; };
 		D086501C2CF5F22400C9981D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086501B2CF5F22400C9981D /* ViewController.swift */; };
 		D08650212CF5F22500C9981D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08650202CF5F22500C9981D /* Assets.xcassets */; };
 		D08650242CF5F22500C9981D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08650222CF5F22500C9981D /* LaunchScreen.storyboard */; };
@@ -46,7 +48,6 @@
 		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
 		D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D584CB1C2D05CD6000C01431 /* EventPage.storyboard */; };
-		F272ED542D05B3C00042F50B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F272ED532D05B3C00042F50B /* Users.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +69,12 @@
 
 /* Begin PBXFileReference section */
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
-		9FEAEF0C2D086197008DD966 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
-		9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
+		838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
+		838D12EB2D0B50810022C382 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		838D12EC2D0B50810022C382 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
+		838D12ED2D0B50810022C382 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		838D12EE2D0B50810022C382 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
+		838D12EF2D0B50810022C382 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		D030896D2CFF3AFF0025BF69 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -101,7 +104,6 @@
 		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
 		D584CB1C2D05CD6000C01431 /* EventPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
-		F272ED532D05B3C00042F50B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,10 +155,12 @@
 		D03089672CFF39BB0025BF69 /* Ridha */ = {
 			isa = PBXGroup;
 			children = (
-				9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */,
-				9FEAEF0C2D086197008DD966 /* Users.storyboard */,
-				9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */,
-				9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */,
+				838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */,
+				838D12EE2D0B50810022C382 /* OrganizerProfileViewController.swift */,
+				838D12ED2D0B50810022C382 /* UserProfileViewController.swift */,
+				838D12EB2D0B50810022C382 /* Users.storyboard */,
+				838D12EC2D0B50810022C382 /* UsersPageViewController.swift */,
+				838D12EF2D0B50810022C382 /* UserTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -233,7 +237,6 @@
 		D04A48402D08963800F99379 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				F272ED532D05B3C00042F50B /* Users.storyboard */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -421,10 +424,9 @@
 				D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */,
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
 				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
-				9FEAEF102D086197008DD966 /* Users.storyboard in Resources */,
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
-				F272ED542D05B3C00042F50B /* Users.storyboard in Resources */,
+				838D12F12D0B50810022C382 /* Users.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
@@ -459,17 +461,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
+				838D12F32D0B50810022C382 /* UserProfileViewController.swift in Sources */,
 				D04A48452D08965700F99379 /* InterestsViewController.swift in Sources */,
+				838D12F02D0B50810022C382 /* CreateOrganizerViewController.swift in Sources */,
+				838D12F52D0B50810022C382 /* UserTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
-				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
-				9FEAEF112D086197008DD966 /* UserTableViewCell.swift in Sources */,
+				838D12F22D0B50810022C382 /* UsersPageViewController.swift in Sources */,
+				838D12F42D0B50810022C382 /* OrganizerProfileViewController.swift in Sources */,
 				D04A48462D08965700F99379 /* HomeViewController.swift in Sources */,
 				D04A48482D08965700F99379 /* InterestsTableViewCell.swift in Sources */,
 				D04A48472D08965700F99379 /* HomeTableViewCell.swift in Sources */,
-				9FEAEF122D086197008DD966 /* UsersPageViewController.swift in Sources */,
-				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
-				9FEAEF0F2D086197008DD966 /* CreateOrganizerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
