@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F03F2652D0B54060069EA2D /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F03F25F2D0B54060069EA2D /* History.storyboard */; };
+		3F03F2662D0B54060069EA2D /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F03F2602D0B54060069EA2D /* EventPage.storyboard */; };
+		3F03F2672D0B54060069EA2D /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03F2612D0B54060069EA2D /* PaymentTableViewCell.swift */; };
+		3F03F2682D0B54060069EA2D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03F2622D0B54060069EA2D /* EventViewController.swift */; };
+		3F03F2692D0B54060069EA2D /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03F2632D0B54060069EA2D /* PaymentViewController.swift */; };
+		3F03F26A2D0B54060069EA2D /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F03F2642D0B54060069EA2D /* Favorite.storyboard */; };
+		3F03F26C2D0B56840069EA2D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F03F26B2D0B56840069EA2D /* Home.storyboard */; };
 		837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		837048192D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		8370481A2D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
@@ -36,7 +43,6 @@
 		D04A48482D08965700F99379 /* InterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04A48442D08965700F99379 /* InterestsTableViewCell.swift */; };
 		D04A484C2D08969800F99379 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04A48492D08969700F99379 /* Search.storyboard */; };
 		D04A484D2D08969800F99379 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04A484A2D08969700F99379 /* Interests.storyboard */; };
-		D04A484E2D08969800F99379 /* Home .storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04A484B2D08969700F99379 /* Home .storyboard */; };
 		D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650172CF5F22400C9981D /* AppDelegate.swift */; };
 		D086501C2CF5F22400C9981D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086501B2CF5F22400C9981D /* ViewController.swift */; };
 		D08650212CF5F22500C9981D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08650202CF5F22500C9981D /* Assets.xcassets */; };
@@ -44,10 +50,7 @@
 		D086502F2CF5F22600C9981D /* Fa3aliyatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086502E2CF5F22600C9981D /* Fa3aliyatTests.swift */; };
 		D08650392CF5F22600C9981D /* Fa3aliyatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650382CF5F22600C9981D /* Fa3aliyatUITests.swift */; };
 		D086503B2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086503A2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift */; };
-		D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD122CFF476500C9A706 /* Favorite.storyboard */; };
-		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
-		D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D584CB1C2D05CD6000C01431 /* EventPage.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F03F25F2D0B54060069EA2D /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		3F03F2602D0B54060069EA2D /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
+		3F03F2612D0B54060069EA2D /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
+		3F03F2622D0B54060069EA2D /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		3F03F2632D0B54060069EA2D /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		3F03F2642D0B54060069EA2D /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		3F03F26B2D0B56840069EA2D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
 		838D12EB2D0B50810022C382 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
@@ -87,7 +97,6 @@
 		D04A48442D08965700F99379 /* InterestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsTableViewCell.swift; sourceTree = "<group>"; };
 		D04A48492D08969700F99379 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D04A484A2D08969700F99379 /* Interests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
-		D04A484B2D08969700F99379 /* Home .storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Home .storyboard"; sourceTree = "<group>"; };
 		D08650142CF5F22400C9981D /* Fa3aliyat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fa3aliyat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650172CF5F22400C9981D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08650192CF5F22400C9981D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,10 +109,7 @@
 		D08650342CF5F22600C9981D /* Fa3aliyatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fa3aliyatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650382CF5F22600C9981D /* Fa3aliyatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fa3aliyatUITests.swift; sourceTree = "<group>"; };
 		D086503A2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fa3aliyatUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D0ABBD122CFF476500C9A706 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
-		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
-		D584CB1C2D05CD6000C01431 /* EventPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +147,7 @@
 		D03089662CFF39A70025BF69 /* Elyas */ = {
 			isa = PBXGroup;
 			children = (
-				D04A484B2D08969700F99379 /* Home .storyboard */,
+				3F03F26B2D0B56840069EA2D /* Home.storyboard */,
 				D04A484A2D08969700F99379 /* Interests.storyboard */,
 				D04A48492D08969700F99379 /* Search.storyboard */,
 				D04A48432D08965600F99379 /* HomeTableViewCell.swift */,
@@ -176,9 +182,12 @@
 		D030896A2CFF39F40025BF69 /* Yousif */ = {
 			isa = PBXGroup;
 			children = (
-				D0ABBD122CFF476500C9A706 /* Favorite.storyboard */,
-				D0ABBD142CFF477B00C9A706 /* History.storyboard */,
-				D584CB1C2D05CD6000C01431 /* EventPage.storyboard */,
+				3F03F2602D0B54060069EA2D /* EventPage.storyboard */,
+				3F03F2622D0B54060069EA2D /* EventViewController.swift */,
+				3F03F2642D0B54060069EA2D /* Favorite.storyboard */,
+				3F03F25F2D0B54060069EA2D /* History.storyboard */,
+				3F03F2612D0B54060069EA2D /* PaymentTableViewCell.swift */,
+				3F03F2632D0B54060069EA2D /* PaymentViewController.swift */,
 			);
 			path = Yousif;
 			sourceTree = "<group>";
@@ -421,19 +430,19 @@
 				D08650242CF5F22500C9981D /* LaunchScreen.storyboard in Resources */,
 				D04A484D2D08969800F99379 /* Interests.storyboard in Resources */,
 				D030897F2CFF458D0025BF69 /* Profile.storyboard in Resources */,
+				3F03F26C2D0B56840069EA2D /* Home.storyboard in Resources */,
 				D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */,
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
 				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
-				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
 				838D12F12D0B50810022C382 /* Users.storyboard in Resources */,
+				3F03F2652D0B54060069EA2D /* History.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
-				D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */,
-				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
+				3F03F2662D0B54060069EA2D /* EventPage.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
-				D04A484E2D08969800F99379 /* Home .storyboard in Resources */,
 				D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */,
 				D04A484C2D08969800F99379 /* Search.storyboard in Resources */,
+				3F03F26A2D0B54060069EA2D /* Favorite.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,8 +476,11 @@
 				838D12F02D0B50810022C382 /* CreateOrganizerViewController.swift in Sources */,
 				838D12F52D0B50810022C382 /* UserTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
+				3F03F2672D0B54060069EA2D /* PaymentTableViewCell.swift in Sources */,
+				3F03F2692D0B54060069EA2D /* PaymentViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				838D12F22D0B50810022C382 /* UsersPageViewController.swift in Sources */,
+				3F03F2682D0B54060069EA2D /* EventViewController.swift in Sources */,
 				838D12F42D0B50810022C382 /* OrganizerProfileViewController.swift in Sources */,
 				D04A48462D08965700F99379 /* HomeViewController.swift in Sources */,
 				D04A48482D08965700F99379 /* InterestsTableViewCell.swift in Sources */,
