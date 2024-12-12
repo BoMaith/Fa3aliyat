@@ -17,6 +17,7 @@
 		837048282D0875C400F28AF8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 837048272D0875C400F28AF8 /* FirebaseFirestore */; };
 		8370482A2D0875C400F28AF8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 837048292D0875C400F28AF8 /* FirebaseStorage */; };
 		8370482C2D08764A00F28AF8 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8370482B2D08764A00F28AF8 /* FirebaseCore */; };
+		9FD308B12D09735600E23DCB /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD308B02D09735600E23DCB /* OrganizerProfileViewController.swift */; };
 		9FEAEF0F2D086197008DD966 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */; };
 		9FEAEF102D086197008DD966 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0C2D086197008DD966 /* Users.storyboard */; };
 		9FEAEF112D086197008DD966 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FD308B02D09735600E23DCB /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
 		9FEAEF0B2D086197008DD966 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
 		9FEAEF0C2D086197008DD966 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				9FEAEF0C2D086197008DD966 /* Users.storyboard */,
 				9FEAEF0E2D086197008DD966 /* UsersPageViewController.swift */,
 				9FEAEF0D2D086197008DD966 /* UserTableViewCell.swift */,
+				9FD308B02D09735600E23DCB /* OrganizerProfileViewController.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
+				9FD308B12D09735600E23DCB /* OrganizerProfileViewController.swift in Sources */,
 				9FEAEF112D086197008DD966 /* UserTableViewCell.swift in Sources */,
 				D04A48462D08965700F99379 /* HomeViewController.swift in Sources */,
 				D04A48482D08965700F99379 /* InterestsTableViewCell.swift in Sources */,
