@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VIy-vM-BXv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="7bG-fs-1PA">
+            <objects>
+                <viewController id="w8D-Pa-ATA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JbI-m4-OGg">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="JWI-6c-8yx"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Home"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AgD-XJ-GQb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pil-df-FPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="770"/>
+        </scene>
+        <!--Login View Controller-->
         <scene sceneID="gDa-XQ-fZ0">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="jIr-Kx-SVR" customClass="ViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="jIr-Kx-SVR" customClass="LoginViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vNg-lv-yyx" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +67,10 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="capsule"/>
+                                <connections>
+                                    <action selector="LoginButtonTapped:" destination="jIr-Kx-SVR" eventType="touchUpInside" id="E2Z-il-AGl"/>
+                                    <segue destination="w8D-Pa-ATA" kind="show" identifier="Home" id="Gv7-tz-WJC"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-iU-N80">
                                 <rect key="frame" x="75" y="590" width="280" height="34.333333333333371"/>
@@ -96,39 +118,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="7S4-YL-nxG"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="yf9-2Z-Tob" id="rUk-xh-FFZ"/>
+                        <outlet property="passwordTextField" destination="euC-Vd-ToS" id="dcq-Re-g26"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPP-Q7-QPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1841.9847328244275" y="3.5211267605633805"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="OD1-FD-Pzo">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIy-vM-BXv" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SBL-3H-j5w">
-                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="jIr-Kx-SVR" kind="relationship" relationship="rootViewController" id="Csv-CS-UZU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V8t-1z-vDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="915.26717557251902" y="3.5211267605633805"/>
-        </scene>
-        <!--View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="C0G-xT-Fn6">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="k51-Ji-dJj" customClass="ViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="k51-Ji-dJj" customClass="SignupViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N1R-v2-U6i" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fa3aliyat-logo 2" translatesAutoresizingMaskIntoConstraints="NO" id="EQ4-YJ-OhT">
-                                <rect key="frame" x="-30.666666666666629" y="168" width="389.33333333333326" height="128"/>
+                                <rect key="frame" x="-30.666666666666657" y="168" width="389.33333333333326" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="N6Y-L3-69H"/>
                                 </constraints>
@@ -174,6 +182,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Register" cornerStyle="capsule"/>
+                                <connections>
+                                    <action selector="registerButtonClicked:" destination="k51-Ji-dJj" eventType="touchUpInside" id="q7S-GQ-AQ5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pwd-OT-5Rd"/>
@@ -195,6 +206,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="1vm-ha-lbI"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="C7z-TB-GOI" id="cT0-Gm-z2K"/>
+                        <outlet property="fullNameTextField" destination="8UW-MB-Xee" id="TJ1-MI-Dib"/>
+                        <outlet property="passwordTextField" destination="oq0-r3-8sT" id="IhJ-fX-QXb"/>
+                        <outlet property="userNameTextField" destination="PSE-FH-xh6" id="EPj-J6-loi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2B8-i1-d5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,5 +220,8 @@
     </scenes>
     <resources>
         <image name="fa3aliyat-logo 2" width="389" height="329"/>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
