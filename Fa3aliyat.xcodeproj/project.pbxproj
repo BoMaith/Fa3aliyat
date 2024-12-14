@@ -11,7 +11,6 @@
 		3F03F2662D0B54060069EA2D /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F03F2602D0B54060069EA2D /* EventPage.storyboard */; };
 		3F03F2672D0B54060069EA2D /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03F2612D0B54060069EA2D /* PaymentTableViewCell.swift */; };
 		3F03F2682D0B54060069EA2D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03F2622D0B54060069EA2D /* EventViewController.swift */; };
-		3F03F2692D0B54060069EA2D /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03F2632D0B54060069EA2D /* PaymentViewController.swift */; };
 		3F03F26A2D0B54060069EA2D /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F03F2642D0B54060069EA2D /* Favorite.storyboard */; };
 		837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		837048192D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
@@ -78,7 +77,6 @@
 		3F03F2602D0B54060069EA2D /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
 		3F03F2612D0B54060069EA2D /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		3F03F2622D0B54060069EA2D /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
-		3F03F2632D0B54060069EA2D /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		3F03F2642D0B54060069EA2D /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				3F03F2642D0B54060069EA2D /* Favorite.storyboard */,
 				3F03F25F2D0B54060069EA2D /* History.storyboard */,
 				3F03F2612D0B54060069EA2D /* PaymentTableViewCell.swift */,
-				3F03F2632D0B54060069EA2D /* PaymentViewController.swift */,
 			);
 			path = Yousif;
 			sourceTree = "<group>";
@@ -488,7 +485,6 @@
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				D0F2E52A2D0B5A5800F3D5C2 /* HomeTableViewCell.swift in Sources */,
 				3F03F2672D0B54060069EA2D /* PaymentTableViewCell.swift in Sources */,
-				3F03F2692D0B54060069EA2D /* PaymentViewController.swift in Sources */,
 				D0F2E5282D0B5A5800F3D5C2 /* SearchViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				D590B11A2D0B5E6F00825983 /* SignupViewController.swift in Sources */,
