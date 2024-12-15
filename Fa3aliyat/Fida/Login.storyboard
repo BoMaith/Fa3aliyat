@@ -4,27 +4,9 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="7bG-fs-1PA">
-            <objects>
-                <viewController id="w8D-Pa-ATA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JbI-m4-OGg">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="JWI-6c-8yx"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
-                        <accessibility key="accessibilityConfiguration" identifier="Home"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="AgD-XJ-GQb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pil-df-FPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1842" y="770"/>
-        </scene>
         <!--Login View Controller-->
         <scene sceneID="gDa-XQ-fZ0">
             <objects>
@@ -69,7 +51,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="capsule"/>
                                 <connections>
                                     <action selector="LoginButtonTapped:" destination="jIr-Kx-SVR" eventType="touchUpInside" id="E2Z-il-AGl"/>
-                                    <segue destination="w8D-Pa-ATA" kind="show" identifier="Home" id="Gv7-tz-WJC"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-iU-N80">
@@ -220,8 +201,5 @@
     </scenes>
     <resources>
         <image name="fa3aliyat-logo 2" width="389" height="329"/>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

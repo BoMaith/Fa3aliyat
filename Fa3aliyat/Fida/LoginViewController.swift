@@ -44,7 +44,16 @@ class LoginViewController: UIViewController {
                 return
                 
             }
-            self.performSegue(withIdentifier: "Home", sender: sender)
+            
+            //using if else statement to check the user type and then taking them to their respective pages
+            if email.contains("admin"){
+                self.performSegue(withIdentifier: "goToAdminHome", sender: sender)
+            } else if email.contains("organizer"){
+                self.performSegue(withIdentifier: "goToOrgHome", sender: sender)
+            }else {
+                self.performSegue(withIdentifier: "goToUserHome", sender: sender)
+            }
+            
 
         }
         
