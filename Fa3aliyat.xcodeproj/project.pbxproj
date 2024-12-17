@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */; };
-		66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E3A2D1190A200EE230A /* PaymentViewController.swift */; };
+		669C35752D11C60000D2683F /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669C35742D11C60000D2683F /* CardViewController.swift */; };
 		66E90E412D1190A200EE230A /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3B2D1190A200EE230A /* EventPage.storyboard */; };
 		66E90E422D1190A200EE230A /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E3C2D1190A200EE230A /* EventViewController.swift */; };
 		66E90E432D1190A200EE230A /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3D2D1190A200EE230A /* History.storyboard */; };
@@ -77,8 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
-		66E90E3A2D1190A200EE230A /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		669C35742D11C60000D2683F /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		66E90E3B2D1190A200EE230A /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
 		66E90E3C2D1190A200EE230A /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		66E90E3D2D1190A200EE230A /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
@@ -199,11 +197,10 @@
 			isa = PBXGroup;
 			children = (
 				66E90E3B2D1190A200EE230A /* EventPage.storyboard */,
+				669C35742D11C60000D2683F /* CardViewController.swift */,
 				66E90E3C2D1190A200EE230A /* EventViewController.swift */,
 				66E90E3E2D1190A200EE230A /* Favorite.storyboard */,
 				66E90E3D2D1190A200EE230A /* History.storyboard */,
-				66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */,
-				66E90E3A2D1190A200EE230A /* PaymentViewController.swift */,
 			);
 			path = Yousif;
 			sourceTree = "<group>";
@@ -496,13 +493,12 @@
 				E67AE4102D118D4E00FE6288 /* UserTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE40C2D118D4E00FE6288 /* CreateOrganizerViewController.swift in Sources */,
-				66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */,
+				669C35752D11C60000D2683F /* CardViewController.swift in Sources */,
 				D18AFB642D0E09E1006BAE92 /* InterestsViewController.swift in Sources */,
 				D18AFB692D0E09E1006BAE92 /* SearchTableViewCell.swift in Sources */,
 				D18AFB602D0E09E1006BAE92 /* SearchViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				D590B11A2D0B5E6F00825983 /* SignupViewController.swift in Sources */,
-				66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */,
 				E67AE40D2D118D4E00FE6288 /* UsersPageViewController.swift in Sources */,
 				E67AE4112D118D4E00FE6288 /* UserProfileViewController.swift in Sources */,
 				D18AFB682D0E09E1006BAE92 /* InterestsTableViewCell.swift in Sources */,
