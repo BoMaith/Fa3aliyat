@@ -1,13 +1,13 @@
 //
-//  AddEvent-TableViewCell.swift
+//  AETableViewCell.swift
 //  Fa3aliyat
 //
-//  Created by MacBook on 11/12/2024.
+//  Created by BP-36-224-09 on 17/12/2024.
 //
 
 import UIKit
 
-class AddEvent_TableViewCell: UITableViewCell {
+class AETableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
