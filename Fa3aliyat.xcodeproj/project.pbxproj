@@ -56,6 +56,7 @@
 		D590B11B2D0B5E6F00825983 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590B1172D0B5E6F00825983 /* LoginViewController.swift */; };
 		D590B11C2D0B5E6F00825983 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1182D0B5E6F00825983 /* Profile.storyboard */; };
 		D590B11D2D0B5E6F00825983 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1192D0B5E6F00825983 /* Login.storyboard */; };
+		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		D590B1172D0B5E6F00825983 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D590B1182D0B5E6F00825983 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D590B1192D0B5E6F00825983 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			children = (
 				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
 				D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */,
+				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D590B11B2D0B5E6F00825983 /* LoginViewController.swift in Sources */,
+				E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
 				838D12F32D0B50810022C382 /* UserProfileViewController.swift in Sources */,
 				838D12F02D0B50810022C382 /* CreateOrganizerViewController.swift in Sources */,
