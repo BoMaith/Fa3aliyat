@@ -34,6 +34,8 @@
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
 		D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089782CFF44330025BF69 /* Organizer.storyboard */; };
 		D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D034BCAD2CFC69D500B09578 /* Main.storyboard */; };
+		D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03EECFB2D116438001CC5BB /* Add Event.storyboard */; };
+		D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */; };
 		D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650172CF5F22400C9981D /* AppDelegate.swift */; };
 		D086501C2CF5F22400C9981D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086501B2CF5F22400C9981D /* ViewController.swift */; };
 		D08650212CF5F22500C9981D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08650202CF5F22500C9981D /* Assets.xcassets */; };
@@ -41,7 +43,6 @@
 		D086502F2CF5F22600C9981D /* Fa3aliyatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086502E2CF5F22600C9981D /* Fa3aliyatTests.swift */; };
 		D08650392CF5F22600C9981D /* Fa3aliyatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650382CF5F22600C9981D /* Fa3aliyatUITests.swift */; };
 		D086503B2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086503A2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift */; };
-		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
 		D18AFB602D0E09E1006BAE92 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AFB562D0E09E1006BAE92 /* SearchViewController.swift */; };
 		D18AFB612D0E09E1006BAE92 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AFB572D0E09E1006BAE92 /* HomeViewController.swift */; };
 		D18AFB622D0E09E1006BAE92 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18AFB582D0E09E1006BAE92 /* Search.storyboard */; };
@@ -92,6 +93,8 @@
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		D03089782CFF44330025BF69 /* Organizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Organizer.storyboard; sourceTree = "<group>"; };
 		D034BCAE2CFC69D500B09578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D03EECFB2D116438001CC5BB /* Add Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
+		D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddEvent-TableViewCell.swift"; sourceTree = "<group>"; };
 		D08650142CF5F22400C9981D /* Fa3aliyat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fa3aliyat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650172CF5F22400C9981D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08650192CF5F22400C9981D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +107,6 @@
 		D08650342CF5F22600C9981D /* Fa3aliyatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fa3aliyatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650382CF5F22600C9981D /* Fa3aliyatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fa3aliyatUITests.swift; sourceTree = "<group>"; };
 		D086503A2CF5F22600C9981D /* Fa3aliyatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fa3aliyatUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
 		D18AFB562D0E09E1006BAE92 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D18AFB572D0E09E1006BAE92 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D18AFB582D0E09E1006BAE92 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -184,7 +186,8 @@
 		D03089692CFF39E40025BF69 /* Mujtaba */ = {
 			isa = PBXGroup;
 			children = (
-				D0ABBD162CFF479700C9A706 /* Add Event.storyboard */,
+				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
+				D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -442,7 +445,6 @@
 				D08650242CF5F22500C9981D /* LaunchScreen.storyboard in Resources */,
 				D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */,
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
-				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
 				D18AFB652D0E09E1006BAE92 /* Home.storyboard in Resources */,
 				D18AFB622D0E09E1006BAE92 /* Search.storyboard in Resources */,
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
@@ -452,6 +454,7 @@
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D590B11C2D0B5E6F00825983 /* Profile.storyboard in Resources */,
 				3F03F2662D0B54060069EA2D /* EventPage.storyboard in Resources */,
+				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
 				D18AFB632D0E09E1006BAE92 /* Interests.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
 				3F03F26A2D0B54060069EA2D /* Favorite.storyboard in Resources */,
@@ -500,6 +503,7 @@
 				3F03F2682D0B54060069EA2D /* EventViewController.swift in Sources */,
 				D18AFB682D0E09E1006BAE92 /* InterestsTableViewCell.swift in Sources */,
 				D18AFB662D0E09E1006BAE92 /* HomeTableViewCell.swift in Sources */,
+				D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */,
 				838D12F42D0B50810022C382 /* OrganizerProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
