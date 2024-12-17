@@ -6,25 +6,62 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
-class AEViewController: UIViewController {
-    
+class AEViewController:  UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+    var ref: DatabaseReference!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            tableView.reloadData()
 
-        // Do any additional setup after loading the view.
-    }
-    
+            // Setting up table view delegate and data source
+            tableView.delegate = self
+            tableView.dataSource = self
 
-    /*
-    // MARK: - Navigation
+            // Registering the custom table view cell class (if not using a prototype cell in storyboard)
+           tableView.register(AETableViewCell.self, forCellReuseIdentifier: "AETableViewCell")
+            // Or, if you're using a nib file, register it like this:
+            //let nib = UINib(nibName: "AETableViewCell", bundle: nil)
+            //tableView.register(nib, forCellReuseIdentifier: "AETableViewCell")
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+            // Firebase reference setup
+            ref = Database.database().reference()
+        }
 
+        // MARK: - TableView Delegate and DataSource Methods
+
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 1
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            // Dequeuing the cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AETableViewCell", for: indexPath) as! AETableViewCell
+            return cell
+        }
+
+        // MARK: - Saving Event Data to Firebase
+
+        @IBAction func saveEventData(_ sender: Any) {
+            // Accessing the cell to get the data and save to Firebase
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AETableViewCell {
+                let eventData = cell.getEventData()
+
+                // Saving event data to Firebase Realtime Database
+                ref.child("events").childByAutoId().setValue(eventData) { error, ref in
+                    if let error = error {
+                        print("Error saving event data: \(error.localizedDescription)")
+                    } else {
+                        print("Event data saved successfully!")
+                    }
+                }
+            }
+        }
 }
