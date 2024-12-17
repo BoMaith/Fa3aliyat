@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
 
@@ -21,9 +23,8 @@ class SignupViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-    //making a function to validate inputs using if else and guard statements
-    func validateInput(){
+    //function for when the register button is clicked
+    @IBAction func registerButtonClicked(_ sender: Any) {
         //using guard let to validate input
         guard let fullName = fullNameTextField.text,
                 let userName = userNameTextField.text,
@@ -38,12 +39,65 @@ class SignupViewController: UIViewController {
             self.present(alert, animated: true)
             return
         }//else ended
-    }//function ended
-    
-    //function for when the register button is clicked
-    @IBAction func registerButtonClicked(_ sender: Any) {
-        validateInput()
+        
+        // Firebase Authentication
+                FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] Result, error in
+                    guard let self = self else { return }
+                    
+                    if let error = error {
+                        self.showAlert(title: "Error", message: "SignUp Failed: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    // Save user details to Firebase Realtime Database
+                    guard let user = Result?.user else {
+                        self.showAlert(title: "Error", message: "User creation failed.")
+                        return
+                    }
+                    
+                    let uid = user.uid
+                    let ref = Database.database().reference()
+                    
+                    let userInfo: [String: Any] = [
+                        "FullName": fullName,
+                        "UserName": userName,
+                        "Email": email,
+                        "Password" : password
+                    ]
+                    
+                    ref.child("users").child(uid).setValue(userInfo) { error, _ in
+                        if let error = error {
+                            self.showAlert(title: "Error", message: "Failed to save user data: \(error.localizedDescription)")
+                            return
+                        }
+                        
+                        self.showAlert(title: "Success", message: "Account created successfully!")
+                    }
+                })
+            }
+
+            // Helper Functions for Validation
+            private func isValidEmail(_ email: String) -> Bool {
+                let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
+                return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+            }
+            
+            private func isValidPassword(_ password: String) -> Bool {
+                return password.count >= 6
+            }
+            
+            private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+                let phoneRegex = "^[0-9]{8}$"
+                return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phoneNumber)
+            }
+            
+            private func showAlert(title: String, message: String) {
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
+            }
     }
+    
     
 
     /*
@@ -56,4 +110,4 @@ class SignupViewController: UIViewController {
     }
     */
 
-}
+
