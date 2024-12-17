@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RBN-Xy-Cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RBN-Xy-Cyx">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -77,11 +77,11 @@
             </objects>
             <point key="canvasLocation" x="-758" y="644"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="TDj-mp-k0N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aOV-Pa-EhH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="4Bj-86-8FM"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="4Bj-86-8FM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HD7-XA-JzJ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -96,11 +96,11 @@
             </objects>
             <point key="canvasLocation" x="-2785" y="218"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="kdH-jH-aki">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bOO-aI-Fw2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Jdi-u0-Xob"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="Jdi-u0-Xob"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="krT-az-7SP">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -115,11 +115,11 @@
             </objects>
             <point key="canvasLocation" x="1331" y="218"/>
         </scene>
-        <!--Item-->
+        <!--Add Event-->
         <scene sceneID="ixr-on-caD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IxH-NB-55t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aMo-oq-vWT"/>
+                    <tabBarItem key="tabBarItem" title="Add Event" image="plus.app" catalog="system" id="aMo-oq-vWT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QbR-Ih-bJx">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -134,11 +134,11 @@
             </objects>
             <point key="canvasLocation" x="321" y="218"/>
         </scene>
-        <!--Item-->
+        <!--Favorite-->
         <scene sceneID="DqN-FE-6Bt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="esL-Dy-ms1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="MHE-rp-gPg"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="MHE-rp-gPg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NuP-Oz-cDj">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -153,11 +153,11 @@
             </objects>
             <point key="canvasLocation" x="-758" y="218"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="tpy-Zr-dRk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Us-FO-WJ0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XzH-FM-r1I"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="XzH-FM-r1I"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kpG-GG-BjK">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -173,4 +173,11 @@
             <point key="canvasLocation" x="-1738" y="218"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+    </resources>
 </document>
