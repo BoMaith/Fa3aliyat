@@ -24,12 +24,6 @@
 		8370482A2D0875C400F28AF8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 837048292D0875C400F28AF8 /* FirebaseStorage */; };
 		8370482C2D08764A00F28AF8 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8370482B2D08764A00F28AF8 /* FirebaseCore */; };
 		838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650192CF5F22400C9981D /* SceneDelegate.swift */; };
-		838D12F02D0B50810022C382 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */; };
-		838D12F12D0B50810022C382 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838D12EB2D0B50810022C382 /* Users.storyboard */; };
-		838D12F22D0B50810022C382 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EC2D0B50810022C382 /* UsersPageViewController.swift */; };
-		838D12F32D0B50810022C382 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12ED2D0B50810022C382 /* UserProfileViewController.swift */; };
-		838D12F42D0B50810022C382 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EE2D0B50810022C382 /* OrganizerProfileViewController.swift */; };
-		838D12F52D0B50810022C382 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838D12EF2D0B50810022C382 /* UserTableViewCell.swift */; };
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
 		D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089782CFF44330025BF69 /* Organizer.storyboard */; };
@@ -57,6 +51,12 @@
 		D590B11C2D0B5E6F00825983 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1182D0B5E6F00825983 /* Profile.storyboard */; };
 		D590B11D2D0B5E6F00825983 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1192D0B5E6F00825983 /* Login.storyboard */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
+		E67AE40C2D118D4E00FE6288 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */; };
+		E67AE40D2D118D4E00FE6288 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */; };
+		E67AE40E2D118D4E00FE6288 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */; };
+		E67AE40F2D118D4E00FE6288 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67AE4092D118D4E00FE6288 /* Users.storyboard */; };
+		E67AE4102D118D4E00FE6288 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE40A2D118D4E00FE6288 /* UserTableViewCell.swift */; };
+		E67AE4112D118D4E00FE6288 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE40B2D118D4E00FE6288 /* UserProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,12 +84,6 @@
 		3F03F2632D0B54060069EA2D /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		3F03F2642D0B54060069EA2D /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
-		838D12EB2D0B50810022C382 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
-		838D12EC2D0B50810022C382 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
-		838D12ED2D0B50810022C382 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		838D12EE2D0B50810022C382 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
-		838D12EF2D0B50810022C382 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		D03089782CFF44330025BF69 /* Organizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Organizer.storyboard; sourceTree = "<group>"; };
@@ -122,6 +116,12 @@
 		D590B1182D0B5E6F00825983 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D590B1192D0B5E6F00825983 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
+		E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
+		E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
+		E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
+		E67AE4092D118D4E00FE6288 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		E67AE40A2D118D4E00FE6288 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		E67AE40B2D118D4E00FE6288 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,12 +175,12 @@
 		D03089672CFF39BB0025BF69 /* Ridha */ = {
 			isa = PBXGroup;
 			children = (
-				838D12EA2D0B50810022C382 /* CreateOrganizerViewController.swift */,
-				838D12EE2D0B50810022C382 /* OrganizerProfileViewController.swift */,
-				838D12ED2D0B50810022C382 /* UserProfileViewController.swift */,
-				838D12EB2D0B50810022C382 /* Users.storyboard */,
-				838D12EC2D0B50810022C382 /* UsersPageViewController.swift */,
-				838D12EF2D0B50810022C382 /* UserTableViewCell.swift */,
+				E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */,
+				E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */,
+				E67AE40B2D118D4E00FE6288 /* UserProfileViewController.swift */,
+				E67AE4092D118D4E00FE6288 /* Users.storyboard */,
+				E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */,
+				E67AE40A2D118D4E00FE6288 /* UserTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -451,9 +451,9 @@
 				D18AFB652D0E09E1006BAE92 /* Home.storyboard in Resources */,
 				D18AFB622D0E09E1006BAE92 /* Search.storyboard in Resources */,
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
-				838D12F12D0B50810022C382 /* Users.storyboard in Resources */,
 				D590B11D2D0B5E6F00825983 /* Login.storyboard in Resources */,
 				3F03F2652D0B54060069EA2D /* History.storyboard in Resources */,
+				E67AE40F2D118D4E00FE6288 /* Users.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D590B11C2D0B5E6F00825983 /* Profile.storyboard in Resources */,
 				3F03F2662D0B54060069EA2D /* EventPage.storyboard in Resources */,
@@ -491,11 +491,10 @@
 				D590B11B2D0B5E6F00825983 /* LoginViewController.swift in Sources */,
 				E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
-				838D12F32D0B50810022C382 /* UserProfileViewController.swift in Sources */,
-				838D12F02D0B50810022C382 /* CreateOrganizerViewController.swift in Sources */,
-				838D12F52D0B50810022C382 /* UserTableViewCell.swift in Sources */,
 				D18AFB612D0E09E1006BAE92 /* HomeViewController.swift in Sources */,
+				E67AE4102D118D4E00FE6288 /* UserTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
+				E67AE40C2D118D4E00FE6288 /* CreateOrganizerViewController.swift in Sources */,
 				3F03F2672D0B54060069EA2D /* PaymentTableViewCell.swift in Sources */,
 				D18AFB642D0E09E1006BAE92 /* InterestsViewController.swift in Sources */,
 				3F03F2692D0B54060069EA2D /* PaymentViewController.swift in Sources */,
@@ -503,12 +502,13 @@
 				D18AFB602D0E09E1006BAE92 /* SearchViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				D590B11A2D0B5E6F00825983 /* SignupViewController.swift in Sources */,
-				838D12F22D0B50810022C382 /* UsersPageViewController.swift in Sources */,
 				3F03F2682D0B54060069EA2D /* EventViewController.swift in Sources */,
+				E67AE40D2D118D4E00FE6288 /* UsersPageViewController.swift in Sources */,
+				E67AE4112D118D4E00FE6288 /* UserProfileViewController.swift in Sources */,
 				D18AFB682D0E09E1006BAE92 /* InterestsTableViewCell.swift in Sources */,
 				D18AFB662D0E09E1006BAE92 /* HomeTableViewCell.swift in Sources */,
+				E67AE40E2D118D4E00FE6288 /* OrganizerProfileViewController.swift in Sources */,
 				D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */,
-				838D12F42D0B50810022C382 /* OrganizerProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

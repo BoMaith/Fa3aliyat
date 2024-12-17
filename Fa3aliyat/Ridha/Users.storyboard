@@ -11,7 +11,7 @@
         <!--User's Details-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="UsersPageViewController" customModule="Working_Ridha" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="UsersPageViewController" customModule="working" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrganizerCellIdentifier" id="zUE-a8-tfH" customClass="UserTableViewCell" customModule="Working_Ridha" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrganizerCellIdentifier" id="zUE-a8-tfH" customClass="UserTableViewCell" customModule="working" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zUE-a8-tfH" id="U9W-qv-dXC">
@@ -84,7 +84,7 @@
         <!--Create Organizer Account-->
         <scene sceneID="rre-la-c6x">
             <objects>
-                <viewController id="2Kb-MI-RO4" customClass="CreateOrganizerViewController" customModule="Working_Ridha" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2Kb-MI-RO4" customClass="CreateOrganizerViewController" customModule="working" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YwG-52-FuB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,7 +153,7 @@
         <!--Organizer Profile View Controller-->
         <scene sceneID="lyB-eW-9ou">
             <objects>
-                <viewController storyboardIdentifier="OrganizerProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tLc-zy-09v" customClass="OrganizerProfileViewController" customModule="Working_Ridha" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrganizerProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tLc-zy-09v" customClass="OrganizerProfileViewController" customModule="working" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jrT-8D-6Cx">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +202,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="RNd-mM-yQR">
-                        <barButtonItem key="backBarButtonItem" title="jj" id="4Pr-vv-twM"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="uba-C3-lLq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="nameLabel" destination="G0g-Xh-k35" id="vAR-Jx-vH4"/>
