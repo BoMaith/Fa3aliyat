@@ -88,7 +88,7 @@
                                                         <constraint firstAttribute="width" constant="219" id="g7c-Lf-2TJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-oq-UR8">
@@ -122,7 +122,7 @@
                                                 <constraint firstItem="7E9-Bn-rig" firstAttribute="centerY" secondItem="J4b-pe-Vjq" secondAttribute="centerY" constant="-10" id="zNH-ZX-3lr"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
                                         <connections>
                                             <outlet property="eventDateLbl" destination="62f-zn-Mdo" id="Z0x-r0-Im7"/>
                                             <outlet property="eventNameLbl" destination="7E9-Bn-rig" id="jdg-qZ-6pF"/>

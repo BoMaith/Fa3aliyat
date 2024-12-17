@@ -133,8 +133,8 @@
                         <outlet property="emailTextField" destination="yf9-2Z-Tob" id="rUk-xh-FFZ"/>
                         <outlet property="passwordTextField" destination="euC-Vd-ToS" id="dcq-Re-g26"/>
                         <segue destination="G7W-fH-Afc" kind="presentation" identifier="goToUserHome" modalPresentationStyle="fullScreen" id="iWw-TS-Ck5"/>
-                        <segue destination="qGY-Lp-4Q0" kind="show" identifier="goToAdminHome" id="ciZ-Nq-QMs"/>
-                        <segue destination="IAw-EC-Afs" kind="show" identifier="goToOrgHome" id="Qcg-36-vXn"/>
+                        <segue destination="qGY-Lp-4Q0" kind="presentation" identifier="goToAdminHome" modalPresentationStyle="fullScreen" id="ciZ-Nq-QMs"/>
+                        <segue destination="IAw-EC-Afs" kind="presentation" identifier="goToOrgHome" modalPresentationStyle="fullScreen" id="Qcg-36-vXn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPP-Q7-QPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
