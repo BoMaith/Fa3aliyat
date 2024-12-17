@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vQy-RQ-7m9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vQy-RQ-7m9">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,7 +81,7 @@
                     <navigationItem key="navigationItem" title="Choose Your Interests" largeTitleDisplayMode="always" id="RcV-e0-3qq">
                         <barButtonItem key="rightBarButtonItem" title="Skip" id="upQ-QW-0V5">
                             <connections>
-                                <segue destination="sOG-xs-5Ps" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="J1w-7V-Kfk"/>
+                                <segue destination="sOG-xs-5Ps" kind="presentation" modalPresentationStyle="fullScreen" id="J1w-7V-Kfk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
