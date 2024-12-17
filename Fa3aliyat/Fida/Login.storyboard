@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--User-->
+        <scene sceneID="KjO-6o-3Xu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="User" id="G7W-fH-Afc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vPI-w7-NUp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agr-R8-jY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="420"/>
+        </scene>
+        <!--Admin-->
+        <scene sceneID="F23-sA-vqm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Admin" id="qGY-Lp-4Q0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nie-fk-RRO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNl-B8-egW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1766" y="432"/>
+        </scene>
+        <!--Organizer-->
+        <scene sceneID="jTe-JI-vGl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Organizer" id="IAw-EC-Afs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8DQ-iF-vML"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXI-5p-gHE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="420"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="gDa-XQ-fZ0">
             <objects>
@@ -54,16 +84,16 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-iU-N80">
-                                <rect key="frame" x="75" y="590" width="280" height="34.333333333333371"/>
+                                <rect key="frame" x="75" y="588" width="280" height="38.333333333333371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZy-IQ-InC">
-                                        <rect key="frame" x="0.0" y="0.0" width="193" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="193" height="38.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTD-0O-6wc">
-                                        <rect key="frame" x="193" y="0.0" width="87" height="34.333333333333336"/>
+                                        <rect key="frame" x="193" y="0.0" width="87" height="38.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Register"/>
                                         <connections>
@@ -102,6 +132,9 @@
                     <connections>
                         <outlet property="emailTextField" destination="yf9-2Z-Tob" id="rUk-xh-FFZ"/>
                         <outlet property="passwordTextField" destination="euC-Vd-ToS" id="dcq-Re-g26"/>
+                        <segue destination="G7W-fH-Afc" kind="presentation" identifier="goToUserHome" modalPresentationStyle="fullScreen" id="iWw-TS-Ck5"/>
+                        <segue destination="qGY-Lp-4Q0" kind="show" identifier="goToAdminHome" id="ciZ-Nq-QMs"/>
+                        <segue destination="IAw-EC-Afs" kind="show" identifier="goToOrgHome" id="Qcg-36-vXn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPP-Q7-QPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
