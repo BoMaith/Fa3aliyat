@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +26,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNl-B8-egW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1843" y="439"/>
+        </scene>
+        <!--Interests-->
+        <scene sceneID="EON-lK-Lvp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Interests" id="wyS-Ts-ahh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cbD-cE-zo7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mAK-ZL-GDs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2530" y="425"/>
         </scene>
         <!--Organizer-->
         <scene sceneID="jTe-JI-vGl">
@@ -135,6 +145,7 @@
                         <segue destination="G7W-fH-Afc" kind="presentation" identifier="goToUserHome" modalPresentationStyle="fullScreen" id="iWw-TS-Ck5"/>
                         <segue destination="qGY-Lp-4Q0" kind="presentation" identifier="goToAdminHome" modalPresentationStyle="fullScreen" id="ciZ-Nq-QMs"/>
                         <segue destination="IAw-EC-Afs" kind="presentation" identifier="goToOrgHome" modalPresentationStyle="fullScreen" id="Qcg-36-vXn"/>
+                        <segue destination="wyS-Ts-ahh" kind="show" identifier="goToInterests" id="EmA-cK-GuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPP-Q7-QPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,6 +236,7 @@
                         <outlet property="fullNameTextField" destination="8UW-MB-Xee" id="TJ1-MI-Dib"/>
                         <outlet property="passwordTextField" destination="oq0-r3-8sT" id="IhJ-fX-QXb"/>
                         <outlet property="userNameTextField" destination="PSE-FH-xh6" id="EPj-J6-loi"/>
+                        <segue destination="wyS-Ts-ahh" kind="show" identifier="goToInterests" id="jhq-aE-LOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2B8-i1-d5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,6 +244,9 @@
             <point key="canvasLocation" x="2597.709923664122" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jhq-aE-LOn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="fa3aliyat-logo 2" width="389" height="329"/>
     </resources>

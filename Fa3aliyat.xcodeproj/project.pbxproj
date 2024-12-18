@@ -24,6 +24,7 @@
 		8370482A2D0875C400F28AF8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 837048292D0875C400F28AF8 /* FirebaseStorage */; };
 		8370482C2D08764A00F28AF8 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8370482B2D08764A00F28AF8 /* FirebaseCore */; };
 		838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650192CF5F22400C9981D /* SceneDelegate.swift */; };
+		AC389C452D133BC60021656F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC389C442D133BC60021656F /* ProfileViewController.swift */; };
 		D03089742CFF43FF0025BF69 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089732CFF43FF0025BF69 /* User.storyboard */; };
 		D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089752CFF440F0025BF69 /* Admin.storyboard */; };
 		D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089782CFF44330025BF69 /* Organizer.storyboard */; };
@@ -84,6 +85,7 @@
 		66E90E3D2D1190A200EE230A /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		66E90E3E2D1190A200EE230A /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC389C442D133BC60021656F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		D03089782CFF44330025BF69 /* Organizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Organizer.storyboard; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				D590B1172D0B5E6F00825983 /* LoginViewController.swift */,
 				D590B1182D0B5E6F00825983 /* Profile.storyboard */,
 				D590B1162D0B5E6F00825983 /* SignupViewController.swift */,
+				AC389C442D133BC60021656F /* ProfileViewController.swift */,
 			);
 			path = Fida;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
 				D18AFB612D0E09E1006BAE92 /* HomeViewController.swift in Sources */,
 				E67AE4102D118D4E00FE6288 /* UserTableViewCell.swift in Sources */,
+				AC389C452D133BC60021656F /* ProfileViewController.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE40C2D118D4E00FE6288 /* CreateOrganizerViewController.swift in Sources */,
 				66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */,
