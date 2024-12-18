@@ -62,7 +62,6 @@
 		E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4282D1210D900FE6288 /* InterestsTableViewCell.swift */; };
 		E67AE4352D1210D900FE6288 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4292D1210D900FE6288 /* SearchTableViewCell.swift */; };
 		E67AE4362D1210D900FE6288 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE42A2D1210D900FE6288 /* HomeViewController.swift */; };
-		E67AE4372D1210D900FE6288 /* Filters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67AE42B2D1210D900FE6288 /* Filters.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +132,6 @@
 		E67AE4282D1210D900FE6288 /* InterestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsTableViewCell.swift; sourceTree = "<group>"; };
 		E67AE4292D1210D900FE6288 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E67AE42A2D1210D900FE6288 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E67AE42B2D1210D900FE6288 /* Filters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Filters.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				E67AE4262D1210D900FE6288 /* CategoriesViewController.swift */,
-				E67AE42B2D1210D900FE6288 /* Filters.storyboard */,
 				E67AE4202D1210D900FE6288 /* FiltersViewController.swift */,
 				E67AE4272D1210D900FE6288 /* Home.storyboard */,
 				E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */,
@@ -480,7 +477,6 @@
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
 				66E90E442D1190A200EE230A /* Favorite.storyboard in Resources */,
 				E67AE4312D1210D900FE6288 /* Search.storyboard in Resources */,
-				E67AE4372D1210D900FE6288 /* Filters.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
