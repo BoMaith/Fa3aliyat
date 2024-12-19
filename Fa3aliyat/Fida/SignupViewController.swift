@@ -66,7 +66,7 @@ class SignupViewController: UIViewController {
                 "UserName": userName,
                 "Email": email,
                 "Password" : password,
-                "isnew": true
+
             ]
             
             //making an entry in the database
@@ -76,15 +76,14 @@ class SignupViewController: UIViewController {
                     return
                 }
                 
-                self.showAlert(title: "Success", message: "Account created successfully!")
-                
-                //navigate to the interests page
-                self.performSegue(withIdentifier: "goToInterests", sender: sender)
+                let alert = UIAlertController(title: "Success", message: "Account created successfully!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.performSegue(withIdentifier: "goToInterests", sender: sender) }))
+                self.present(alert, animated: true)
             }
         })
     }
     
-    // Helper Functions for Validation
+    // Helper Functions for Validation of email which ensures that the email has the following things
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)

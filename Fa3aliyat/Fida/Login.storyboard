@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIr-Kx-SVR">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,7 +90,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="capsule"/>
                                 <connections>
-                                    <action selector="LoginButtonTapped:" destination="jIr-Kx-SVR" eventType="touchUpInside" id="E2Z-il-AGl"/>
+                                    <action selector="loginButtonTapped:" destination="jIr-Kx-SVR" eventType="touchUpInside" id="bRY-Jc-ONC"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-iU-N80">
@@ -145,7 +145,7 @@
                         <segue destination="G7W-fH-Afc" kind="presentation" identifier="goToUserHome" modalPresentationStyle="fullScreen" id="iWw-TS-Ck5"/>
                         <segue destination="qGY-Lp-4Q0" kind="presentation" identifier="goToAdminHome" modalPresentationStyle="fullScreen" id="ciZ-Nq-QMs"/>
                         <segue destination="IAw-EC-Afs" kind="presentation" identifier="goToOrgHome" modalPresentationStyle="fullScreen" id="Qcg-36-vXn"/>
-                        <segue destination="wyS-Ts-ahh" kind="show" identifier="goToInterests" id="EmA-cK-GuB"/>
+                        <segue destination="wyS-Ts-ahh" kind="presentation" identifier="goToInterests" modalPresentationStyle="fullScreen" id="EmA-cK-GuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPP-Q7-QPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -236,7 +236,7 @@
                         <outlet property="fullNameTextField" destination="8UW-MB-Xee" id="TJ1-MI-Dib"/>
                         <outlet property="passwordTextField" destination="oq0-r3-8sT" id="IhJ-fX-QXb"/>
                         <outlet property="userNameTextField" destination="PSE-FH-xh6" id="EPj-J6-loi"/>
-                        <segue destination="wyS-Ts-ahh" kind="show" identifier="goToInterests" id="jhq-aE-LOn"/>
+                        <segue destination="wyS-Ts-ahh" kind="presentation" identifier="goToInterests" modalPresentationStyle="fullScreen" id="jhq-aE-LOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2B8-i1-d5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -245,7 +245,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jhq-aE-LOn"/>
+        <segue reference="EmA-cK-GuB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="fa3aliyat-logo 2" width="389" height="329"/>
