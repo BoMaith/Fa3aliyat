@@ -42,12 +42,16 @@
 		D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD142CFF477B00C9A706 /* History.storyboard */; };
 		D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0ABBD162CFF479700C9A706 /* Add Event.storyboard */; };
 		D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D584CB1C2D05CD6000C01431 /* EventPage.storyboard */; };
-		E50E84C12D11885A00B42A44 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E84BB2D11885A00B42A44 /* UserProfileViewController.swift */; };
-		E50E84C22D11885A00B42A44 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50E84BC2D11885A00B42A44 /* Users.storyboard */; };
-		E50E84C32D11885A00B42A44 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E84BD2D11885A00B42A44 /* CreateOrganizerViewController.swift */; };
-		E50E84C42D11885A00B42A44 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E84BE2D11885A00B42A44 /* UserTableViewCell.swift */; };
-		E50E84C52D11885A00B42A44 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E84BF2D11885A00B42A44 /* OrganizerProfileViewController.swift */; };
-		E50E84C62D11885A00B42A44 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50E84C02D11885A00B42A44 /* UsersPageViewController.swift */; };
+		E5DC73E32D14906000174A95 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73D92D14906000174A95 /* OrganizerProfileViewController.swift */; };
+		E5DC73E42D14906000174A95 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73DA2D14906000174A95 /* CreateOrganizerViewController.swift */; };
+		E5DC73E52D14906000174A95 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73DB2D14906000174A95 /* UserTableViewCell.swift */; };
+		E5DC73E62D14906000174A95 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73DC2D14906000174A95 /* UserProfileViewController.swift */; };
+		E5DC73E72D14906000174A95 /* AdminEventDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DC73DD2D14906000174A95 /* AdminEventDetails.storyboard */; };
+		E5DC73E82D14906000174A95 /* AdminEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73DE2D14906000174A95 /* AdminEventViewController.swift */; };
+		E5DC73E92D14906000174A95 /* organizerprofileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73DF2D14906000174A95 /* organizerprofileTableViewCell.swift */; };
+		E5DC73EA2D14906000174A95 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73E02D14906000174A95 /* EventTableViewCell.swift */; };
+		E5DC73EB2D14906000174A95 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DC73E12D14906000174A95 /* Users.storyboard */; };
+		E5DC73EC2D14906000174A95 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DC73E22D14906000174A95 /* UsersPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,12 +102,16 @@
 		D0ABBD142CFF477B00C9A706 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		D0ABBD162CFF479700C9A706 /* Add Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
 		D584CB1C2D05CD6000C01431 /* EventPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
-		E50E84BB2D11885A00B42A44 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		E50E84BC2D11885A00B42A44 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
-		E50E84BD2D11885A00B42A44 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
-		E50E84BE2D11885A00B42A44 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		E50E84BF2D11885A00B42A44 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
-		E50E84C02D11885A00B42A44 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
+		E5DC73D92D14906000174A95 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
+		E5DC73DA2D14906000174A95 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
+		E5DC73DB2D14906000174A95 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		E5DC73DC2D14906000174A95 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		E5DC73DD2D14906000174A95 /* AdminEventDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminEventDetails.storyboard; sourceTree = "<group>"; };
+		E5DC73DE2D14906000174A95 /* AdminEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminEventViewController.swift; sourceTree = "<group>"; };
+		E5DC73DF2D14906000174A95 /* organizerprofileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organizerprofileTableViewCell.swift; sourceTree = "<group>"; };
+		E5DC73E02D14906000174A95 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		E5DC73E12D14906000174A95 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		E5DC73E22D14906000174A95 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,12 +163,16 @@
 		D03089672CFF39BB0025BF69 /* Ridha */ = {
 			isa = PBXGroup;
 			children = (
-				E50E84BD2D11885A00B42A44 /* CreateOrganizerViewController.swift */,
-				E50E84BF2D11885A00B42A44 /* OrganizerProfileViewController.swift */,
-				E50E84BB2D11885A00B42A44 /* UserProfileViewController.swift */,
-				E50E84BC2D11885A00B42A44 /* Users.storyboard */,
-				E50E84C02D11885A00B42A44 /* UsersPageViewController.swift */,
-				E50E84BE2D11885A00B42A44 /* UserTableViewCell.swift */,
+				E5DC73DD2D14906000174A95 /* AdminEventDetails.storyboard */,
+				E5DC73DE2D14906000174A95 /* AdminEventViewController.swift */,
+				E5DC73DA2D14906000174A95 /* CreateOrganizerViewController.swift */,
+				E5DC73E02D14906000174A95 /* EventTableViewCell.swift */,
+				E5DC73DF2D14906000174A95 /* organizerprofileTableViewCell.swift */,
+				E5DC73D92D14906000174A95 /* OrganizerProfileViewController.swift */,
+				E5DC73DC2D14906000174A95 /* UserProfileViewController.swift */,
+				E5DC73E12D14906000174A95 /* Users.storyboard */,
+				E5DC73E22D14906000174A95 /* UsersPageViewController.swift */,
+				E5DC73DB2D14906000174A95 /* UserTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -421,17 +433,18 @@
 				D08650242CF5F22500C9981D /* LaunchScreen.storyboard in Resources */,
 				D04A484D2D08969800F99379 /* Interests.storyboard in Resources */,
 				D030897F2CFF458D0025BF69 /* Profile.storyboard in Resources */,
+				E5DC73EB2D14906000174A95 /* Users.storyboard in Resources */,
 				D03089762CFF440F0025BF69 /* Admin.storyboard in Resources */,
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
 				D0ABBD172CFF479700C9A706 /* Add Event.storyboard in Resources */,
 				D0ABBD132CFF476500C9A706 /* Favorite.storyboard in Resources */,
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
-				E50E84C22D11885A00B42A44 /* Users.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				D584CB1D2D05CD6000C01431 /* EventPage.storyboard in Resources */,
 				D0ABBD152CFF477B00C9A706 /* History.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
 				D04A484E2D08969800F99379 /* Home .storyboard in Resources */,
+				E5DC73E72D14906000174A95 /* AdminEventDetails.storyboard in Resources */,
 				D030896E2CFF3AFF0025BF69 /* Login.storyboard in Resources */,
 				D04A484C2D08969800F99379 /* Search.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
@@ -462,17 +475,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D04A48452D08965700F99379 /* InterestsViewController.swift in Sources */,
+				E5DC73E82D14906000174A95 /* AdminEventViewController.swift in Sources */,
+				E5DC73E62D14906000174A95 /* UserProfileViewController.swift in Sources */,
+				E5DC73EA2D14906000174A95 /* EventTableViewCell.swift in Sources */,
+				E5DC73E32D14906000174A95 /* OrganizerProfileViewController.swift in Sources */,
+				E5DC73E52D14906000174A95 /* UserTableViewCell.swift in Sources */,
+				E5DC73EC2D14906000174A95 /* UsersPageViewController.swift in Sources */,
+				E5DC73E92D14906000174A95 /* organizerprofileTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
-				E50E84C42D11885A00B42A44 /* UserTableViewCell.swift in Sources */,
-				E50E84C62D11885A00B42A44 /* UsersPageViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
-				E50E84C52D11885A00B42A44 /* OrganizerProfileViewController.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 				D04A48462D08965700F99379 /* HomeViewController.swift in Sources */,
 				D04A48482D08965700F99379 /* InterestsTableViewCell.swift in Sources */,
 				D04A48472D08965700F99379 /* HomeTableViewCell.swift in Sources */,
-				E50E84C12D11885A00B42A44 /* UserProfileViewController.swift in Sources */,
-				E50E84C32D11885A00B42A44 /* CreateOrganizerViewController.swift in Sources */,
+				E5DC73E42D14906000174A95 /* CreateOrganizerViewController.swift in Sources */,
 				D086501A2CF5F22400C9981D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
