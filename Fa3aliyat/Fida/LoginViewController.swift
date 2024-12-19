@@ -1,68 +1,80 @@
-//
-//  LoginViewController.swift
-//  Fa3aliyat
-//
-//  Created by Guest User on 10/12/2024.
-//
 
+//*******************************CO PILOT TESTING***************************
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    //admin : admin@gmail.com, password : 
     
-    @IBAction func LoginButtonTapped(_ sender: Any) {
-        
-        guard let email = emailTextField.text ,let password = passwordTextField.text ,
-              !email.isEmpty && !password.isEmpty
-        else{
+    //function for when the login button is tapped
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        if validateFields() {
+            guard let email = emailTextField.text, let password = passwordTextField.text else { return }
             
-            let alert = UIAlertController(title: "Missing input", message: "Email and password fields can not be empty", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Try again", style: .cancel))
-            self.present(alert, animated: true)
-            return
-            
-        }
-        
-        //Firebase Authentication Part
-        Auth.auth().signIn(withEmail: email, password: password , completion:{(result, error) in
-            guard error == nil else {
-                
-                let alert = UIAlertController(title: "Login Failed", message: "Wrong Email or Password", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "Try again", style: .cancel))
-                self.present(alert, animated: true)
-                return
-                
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    self.showAlert(title: "Login Failed", message: error.localizedDescription)
+                    return
+                }
+                self.handleUserRedirection()
             }
-            
-            //using if else statement to check the user type and then taking them to their respective pages
-            if email.contains("admin"){
-                self.performSegue(withIdentifier: "goToAdminHome", sender: sender)
-            } else if email.contains("organizer"){
-                self.performSegue(withIdentifier: "goToOrgHome", sender: sender)
-            }else {
-                self.performSegue(withIdentifier: "goToUserHome", sender: sender)
-            }
-            
-
         }
+    }
+    
+    //functino for handling user redirection
+    
+    func handleUserRedirection() {
+        guard let user = Auth.auth().currentUser, let email = user.email else { return }
         
+        if email.contains("@fa3aliyat.admin.bh") {
+            self.performSegue(withIdentifier: "goToAdminHome", sender: self)
+        } else if email.contains("@fa3aliyat.admin.bh") {
+            self.performSegue(withIdentifier: "goToOrgHome", sender: self)
+        } else {
+            if user.metadata.creationDate == user.metadata.lastSignInDate {
+                self.performSegue(withIdentifier: "goToInterests", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "goToUserHome", sender: self)
+            }
+        }
+    }
     
+    //a function for input validation
+    func validateFields() -> Bool {
+        guard let email = emailTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            showAlert(title: "Validation Error", message: "Email and Password cannot be empty.")
+            return false
+        }
+        if !isValidEmail(email) {
+            showAlert(title: "Invalid Email", message: "Please enter a valid email address.")
+            return false
+        }
+        if !isValidPassword(password) {
+            showAlert(title: "Invalid Password", message: "Password must be at least 6 characters long.")
+            return false
+        }
+        return true
+    }
     
-//    private func showAlert(title: String, message: String){
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-//        }
-   )}
+    //functions for having valid email and password
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    //making a function to make sure thet the password lenght is 6 or biggeer than 6
+    func isValidPassword(_ password: String) -> Bool {
+        return password.count >= 6
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
