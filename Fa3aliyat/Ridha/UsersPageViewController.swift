@@ -95,10 +95,10 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
 
         if isOrganizersSelected {
             let organizer = organizers[indexPath.row]
-            cell.textLabel?.text = organizer["name"] as? String ?? "Unknown"
+            cell.textLabel?.text = "\(organizer["name"] as? String ?? "Unknown")"
         } else {
             let user = users[indexPath.row]
-            cell.textLabel?.text = user["FullName"] as? String ?? "Unknown"
+            cell.textLabel?.text = "\(user["FullName"] as? String ?? "Unknown")"
         }
 
         return cell
@@ -119,7 +119,7 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
             let selectedUser = users[indexPath.row]
             // Navigate to User Profile screen
             if let storyboard = self.storyboard {
-                if let userProfileVC = storyboard.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController {
+                if let userProfileVC = storyboard.instantiateViewController(withIdentifier: "OrganizerProfileViewController") as? OrganizerProfileViewController {
                     userProfileVC.userData = selectedUser // Pass the user data to the profile view controller
                     navigationController?.pushViewController(userProfileVC, animated: true)
                 }
@@ -136,86 +136,5 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
         updateAddButtonVisibility()
     }
 
-    // Swipe-to-delete with confirmation alert
-    @available(iOS 11.0, *)
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
-            guard let self = self else { return }
-            
-            let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-                completionHandler(false)
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-                // Check if there is something to delete
-                if self.isOrganizersSelected {
-                    let organizerToDelete = self.organizers[indexPath.row]
-                    if let uid = organizerToDelete["uid"] as? String {
-                        self.deleteOrganizerFromFirebase(uid: uid) { success in
-                            if success {
-                                self.organizers.remove(at: indexPath.row)
-                                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                            }
-                            completionHandler(success)
-                        }
-                    } else {
-                        completionHandler(false) // No valid UID to delete
-                    }
-                } else {
-                    let userToDelete = self.users[indexPath.row]
-                    if let uid = userToDelete["uid"] as? String {
-                        self.deleteOrganizerFromFirebase(uid: uid) { success in
-                            if success {
-                                self.users.remove(at: indexPath.row)
-                                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                            }
-                            completionHandler(success)
-                        }
-                    } else {
-                        completionHandler(false) // No valid UID to delete
-                    }
-                }
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        deleteAction.backgroundColor = .red
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
-        swipeActions.performsFirstActionWithFullSwipe = false
-        
-        return swipeActions
-    }
-
-    // Function to delete an organizer from Firebase Realtime Database and Firebase Authentication
-    func deleteOrganizerFromFirebase(uid: String, completion: @escaping (Bool) -> Void) {
-        let ref = Database.database().reference()
-        
-        // Delete from Firebase Realtime Database
-        ref.child("organizers").child(uid).removeValue { error, _ in
-            if let error = error {
-                print("Error deleting organizer from database: \(error.localizedDescription)")
-                completion(false)
-                return
-            }
-            
-            // Delete from Firebase Authentication
-            if let currentUser = FirebaseAuth.Auth.auth().currentUser, currentUser.uid == uid {
-                currentUser.delete { error in
-                    if let error = error {
-                        print("Error deleting user from authentication: \(error.localizedDescription)")
-                        completion(false)
-                    } else {
-                        print("User deleted from authentication successfully.")
-                        completion(true)
-                    }
-                }
-            } else {
-                // If it's not the current user, just delete from the database
-                completion(true)
-            }
-        }
-    }
+    // Remove the swipe action methods and any delete logic
 }

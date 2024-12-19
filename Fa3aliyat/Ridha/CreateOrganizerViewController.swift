@@ -13,13 +13,17 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailDomainLabel: UILabel!  // Label for the domain part
     
     weak var delegate: CreateOrganizerDelegate?
     
+    // Fixed domain part of the email
+    let emailDomain = "@fa3aliyat.organizer.bh"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.largeTitleDisplayMode = .never
-
+        
         // Set the delegate for the text fields
         nameTextField.delegate = self
         emailTextField.delegate = self
@@ -32,6 +36,10 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
         nameTextField.addTarget(self, action: #selector(updateCreateButtonState), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(updateCreateButtonState), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(updateCreateButtonState), for: .editingChanged)
+        
+        // Initially set the domain label to fixed text
+        emailDomainLabel.text = emailDomain
+        emailDomainLabel.textColor = .gray
     }
     
     // MARK: - Button Actions
@@ -41,14 +49,20 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let email = emailTextField.text, !email.isEmpty else {
-            showAlert(title: "Error", message: "Please enter an email.")
+        // Ensure the name is at least 3 characters long
+        if name.count < 3 {
+            showAlert(title: "Error", message: "Name must be at least 3 characters long.")
             return
         }
         
-        // Validate email format
-        if !isValidEmail(email) {
-            showAlert(title: "Error", message: "Please enter a valid email address.")
+        guard let emailPrefix = emailTextField.text, !emailPrefix.isEmpty else {
+            showAlert(title: "Error", message: "Please enter an email prefix.")
+            return
+        }
+        
+        // Validate that the email prefix does not include the domain part
+        if emailPrefix.contains("@") {
+            showAlert(title: "Error", message: "Please only enter the prefix (before the '@').")
             return
         }
         
@@ -62,8 +76,11 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        // Complete the email by appending the fixed domain
+        let fullEmail = emailPrefix + emailDomain
+        
         // Create a user in Firebase Authentication first
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+        FirebaseAuth.Auth.auth().createUser(withEmail: fullEmail, password: password) { [weak self] result, error in
             guard let self = self else { return }
             
             if let error = error {
@@ -80,9 +97,10 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
                 
                 let organizerData: [String: Any] = [
                     "name": name,
-                    "email": email,
+                    "email": fullEmail,
                     "password": password,  // Storing password directly is not recommended in production
-                    "uid": uid
+                    "uid": uid,
+                    "Events": Dictionary<String, Any>()  // New key added with empty value
                 ]
                 
                 // Save organizer data to Firebase Realtime Database
@@ -125,9 +143,9 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
     
     @objc func updateCreateButtonState() {
         let nameFilled = !(nameTextField.text?.isEmpty ?? true)
-        let emailFilled = !(emailTextField.text?.isEmpty ?? true)
+        let emailPrefixFilled = !(emailTextField.text?.isEmpty ?? true)
         let passwordFilled = !(passwordTextField.text?.isEmpty ?? true)
         
-        createButton.isEnabled = nameFilled && emailFilled && passwordFilled
+        createButton.isEnabled = nameFilled && emailPrefixFilled && passwordFilled
     }
 }

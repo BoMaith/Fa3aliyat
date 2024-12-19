@@ -12,8 +12,16 @@ class AdminEventViewController: UIViewController {
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var participantsView: UIView!
     @IBOutlet weak var reviewsView: UIView!
+    //details view outlets
 
+    @IBOutlet weak var participantsTableView: UITableView!
+    
+    //participants view outlet
     @IBOutlet weak var participantsTitle: UILabel!
+    
+    
+    //reviews view outlet
+    @IBOutlet weak var reviewsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
