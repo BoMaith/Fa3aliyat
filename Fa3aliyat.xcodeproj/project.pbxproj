@@ -51,7 +51,6 @@
 		E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7E2D120F5D0073A3FC /* AdminEventViewController.swift */; };
 		E58ABA882D120F5D0073A3FC /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */; };
 		E58ABA892D120F5D0073A3FC /* organizerprofileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA802D120F5D0073A3FC /* organizerprofileTableViewCell.swift */; };
-		E67AE42C2D1210D900FE6288 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4202D1210D900FE6288 /* FiltersViewController.swift */; };
 		E67AE42D2D1210D900FE6288 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67AE4212D1210D900FE6288 /* Interests.storyboard */; };
 		E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */; };
 		E67AE42F2D1210D900FE6288 /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4232D1210D900FE6288 /* InterestsViewController.swift */; };
@@ -62,6 +61,8 @@
 		E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4282D1210D900FE6288 /* InterestsTableViewCell.swift */; };
 		E67AE4352D1210D900FE6288 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4292D1210D900FE6288 /* SearchTableViewCell.swift */; };
 		E67AE4362D1210D900FE6288 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE42A2D1210D900FE6288 /* HomeViewController.swift */; };
+		E6871A602D140F1200FBFE1E /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */; };
+		E6871A622D142B5800FBFE1E /* FiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6871A612D142B5800FBFE1E /* FiltersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,7 +122,6 @@
 		E58ABA7E2D120F5D0073A3FC /* AdminEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminEventViewController.swift; sourceTree = "<group>"; };
 		E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
 		E58ABA802D120F5D0073A3FC /* organizerprofileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organizerprofileTableViewCell.swift; sourceTree = "<group>"; };
-		E67AE4202D1210D900FE6288 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		E67AE4212D1210D900FE6288 /* Interests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		E67AE4232D1210D900FE6288 /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 		E67AE4282D1210D900FE6288 /* InterestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsTableViewCell.swift; sourceTree = "<group>"; };
 		E67AE4292D1210D900FE6288 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E67AE42A2D1210D900FE6288 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		E6871A612D142B5800FBFE1E /* FiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +171,6 @@
 		D03089662CFF39A70025BF69 /* Elyas */ = {
 			isa = PBXGroup;
 			children = (
-				E67AE4262D1210D900FE6288 /* CategoriesViewController.swift */,
-				E67AE4202D1210D900FE6288 /* FiltersViewController.swift */,
 				E67AE4272D1210D900FE6288 /* Home.storyboard */,
 				E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */,
 				E67AE42A2D1210D900FE6288 /* HomeViewController.swift */,
@@ -178,8 +178,11 @@
 				E67AE4282D1210D900FE6288 /* InterestsTableViewCell.swift */,
 				E67AE4232D1210D900FE6288 /* InterestsViewController.swift */,
 				E67AE4252D1210D900FE6288 /* Search.storyboard */,
+				E6871A612D142B5800FBFE1E /* FiltersTableViewController.swift */,
 				E67AE4292D1210D900FE6288 /* SearchTableViewCell.swift */,
 				E67AE4242D1210D900FE6288 /* SearchViewController.swift */,
+				E67AE4262D1210D900FE6288 /* CategoriesViewController.swift */,
+				E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */,
 			);
 			path = Elyas;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,
 				66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */,
 				E58ABA892D120F5D0073A3FC /* organizerprofileTableViewCell.swift in Sources */,
+				E6871A602D140F1200FBFE1E /* CategoriesTableViewCell.swift in Sources */,
 				E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */,
 				E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */,
 				E67AE4322D1210D900FE6288 /* CategoriesViewController.swift in Sources */,
@@ -527,7 +531,7 @@
 				E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */,
 				E58ABA882D120F5D0073A3FC /* UsersPageViewController.swift in Sources */,
 				E67AE4352D1210D900FE6288 /* SearchTableViewCell.swift in Sources */,
-				E67AE42C2D1210D900FE6288 /* FiltersViewController.swift in Sources */,
+				E6871A622D142B5800FBFE1E /* FiltersTableViewController.swift in Sources */,
 				D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

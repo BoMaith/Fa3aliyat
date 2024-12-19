@@ -1,29 +1,33 @@
 import UIKit
+import FirebaseDatabase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var events: [(String, String, String)] = [
-        ("Car Show", "Nov 11 - Nov 13", "Cars"),
-        ("Quran Tajweed", "Nov 10 - Nov 11", "Cars"),
-        ("Football Tournament", "Dec 1 - Dec 2", "Cars"),
-        ("Food Truck Event", "Nov 3", "Cars"),
-        ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
-        ("Tennis Tournament", "Nov 14 - Nov 19", "Cars"),
-        ("Food Truck Event", "Nov 3", "Cars"),
-        ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
-        ("Tennis Tournament", "Nov 14 - Nov 19", "Cars")
-    ]
+    var events: [Event] = []
+    var filteredEvents: [Event] = []
     
-    var filteredEvents: [(String, String, String)] = []
-    var favoriteStates = [Bool](repeating: false, count: 9) // Count should match number of events
-
+    
+    
+    struct Event {
+        let title: String
+        let date: String
+        var isFavorite: Bool
+    }
+    
+    var favoriteStates = [Bool]()
+    
+    // Firebase Realtime Database reference
+    let ref = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchEvents()  // Fetch events from Realtime Database
         
-        filteredEvents = events // Initially show all events
+        // Initially show all events
+        filteredEvents = events
         
         // Set up search bar delegate
         searchBar.delegate = self
@@ -33,64 +37,131 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.rowHeight = 80 // Adjust based on your design
     }
+    
+    // Fetch events from Firebase Realtime Database
+    func fetchEvents() {
+        ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
+            // Check if snapshot has data
+            if let eventsData = snapshot.value as? [String: [String: Any]] {
+                self.events = eventsData.compactMap { (key, data) in
+                    guard
+                        let title = data["title"] as? String,
+                        let date = data["date"] as? String,
+                        let isFavorite = data["isFavorite"] as? Bool
+                    else { return nil }
 
-    // MARK: - TableView DataSource Methods
+                    return Event(title: title, date: date, isFavorite: isFavorite)
+                }
+                
+                print("Fetched Events: \(self.events)") // Log events to check if they're fetched properly
+                
+                self.filteredEvents = self.events
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }) { error in
+            print("Error fetching events: \(error.localizedDescription)")
+        }
+    }
+    
+    // TableView DataSource and Delegate Methods remain the same
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredEvents.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! HomeTableViewCell
+        let event = filteredEvents[indexPath.row]
         
-        let (eventName, eventDate, eventIcon) = filteredEvents[indexPath.row]
-        cell.setupCell(photoName: eventIcon, name: eventName, date: eventDate, isFavorite: favoriteStates[indexPath.row])
+        cell.setupCell(name: event.title, date: event.date, isFavorite: event.isFavorite)
         
-        // Configure the favorite button
-        cell.starBtn.isSelected = favoriteStates[indexPath.row]
+        // Set the button's selected state based on the event's isFavorite value
+        cell.starBtn.isSelected = event.isFavorite
         cell.starBtn.tag = indexPath.row
-        cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
+        // Change the color based on isFavorite value
+        if event.isFavorite {
+            cell.starBtn.tintColor = .blue // Set color when favorite
+        } else {
+            cell.starBtn.tintColor = .gray // Set color when not favorite
+        }
         
+        // Add target for button tap action
+        cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
+         
         return cell
     }
 
-    // MARK: - TableView Delegate Methods
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        // Handle event selection
-    }
-
-    // MARK: - Favorite Button Tapped
+    // Favorite Button Tapped Method (update Firebase when favorite is toggled)
     @objc func favoriteButtonTapped(_ sender: UIButton) {
         let row = sender.tag
-        favoriteStates[row].toggle() // Update favorite state
-        sender.isSelected = favoriteStates[row] // Update button state
         
-        // Reorder rows: move starred events to the top
-        reorderRows()
+        // Access the event object from filteredEvents
+        var event = filteredEvents[row]
+        
+        // Toggle the favorite state
+        event.isFavorite.toggle()
+
+        // Update the button's selected state
+        sender.isSelected = event.isFavorite
+        
+        // Change the button's color based on the favorite state
+        if event.isFavorite {
+            sender.tintColor = .blue // Button color when selected (favorite)
+        } else {
+            sender.tintColor = .gray // Button color when not selected (not favorite)
+        }
+        
+        // Update the event in the filteredEvents array
+        filteredEvents[row] = event
+        
+        // Update Firebase with the new favorite state
+        updateFavoriteStateInFirebase(for: event, isFavorite: event.isFavorite)
+        
+        // Reload the row to reflect the changes
+        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
     }
+
+
+
+
+
 
     private func reorderRows() {
-        let combined = zip(filteredEvents, favoriteStates).sorted { $0.1 && !$1.1 }
-        filteredEvents = combined.map { $0.0 }
-        favoriteStates = combined.map { $0.1 }
+        // Sort filteredEvents to put favorites at the top (or bottom depending on your preference)
+        filteredEvents.sort { $0.isFavorite && !$1.isFavorite }
         
+        // Reload the table view to reflect the changes
         tableView.reloadData()
     }
-
-    // MARK: - Search Bar Delegate Methods
+    
+    // Update favorite state in Firebase Realtime Database
+    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
+        let eventRef = ref.child("events").child(event.title)  // Use the event title as the key
+        eventRef.updateChildValues(["isFavorite": isFavorite]) { error, _ in
+            if let error = error {
+                print("Error updating favorite state: \(error)")
+            } else {
+                print("Favorite state updated successfully!")
+            }
+        }
+    }
+    
+    // Search Bar Delegate Methods for filtering
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterEvents(for: searchText)
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
+    
     private func filterEvents(for searchText: String) {
         if searchText.isEmpty {
-            filteredEvents = events // Show all events if no search text
+            filteredEvents = events  // Show all events if no search text
         } else {
-            filteredEvents = events.filter { $0.0.lowercased().contains(searchText.lowercased()) }
+            filteredEvents = events.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         }
         
         tableView.reloadData()

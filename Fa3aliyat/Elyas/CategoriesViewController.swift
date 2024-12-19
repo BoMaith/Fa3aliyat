@@ -36,11 +36,8 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             ("Shopping & Markets", "Shopping")
         ]
 
-        // Track the state of switches
-        var switchStates = [Bool](repeating: false, count: 12)
-
-        // MARK: - Update Skip Button Title
-
+    // Track selected rows
+        var selectedIndexPaths: Set<IndexPath> = []
 
         // MARK: - TableView DataSource Methods
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,29 +45,31 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell", for: indexPath) as! InterestsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoriesTableViewCell
 
             let (name, icon) = interests[indexPath.row]
             cell.setupCell(photoName: icon, name: name)
             
-            // Add target action for the switch
+            // Show or hide the tick based on selection
+            if selectedIndexPaths.contains(indexPath) {
+                cell.imgTickIcon.image = UIImage(systemName: "checkmark") // Use system image
+                cell.imgTickIcon.tintColor = .blue
+            } else {
+                cell.imgTickIcon.image = nil // No tick for unselected rows
+            }
+            
             return cell
         }
 
         // MARK: - TableView Delegate Methods
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
+            if selectedIndexPaths.contains(indexPath) {
+                selectedIndexPaths.remove(indexPath) // Deselect if already selected
+            } else {
+                selectedIndexPaths.insert(indexPath) // Select row
+            }
+            tableView.reloadRows(at: [indexPath], with: .automatic) // Reload only the affected row
         }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
-}
+
