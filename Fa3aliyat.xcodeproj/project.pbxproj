@@ -11,7 +11,6 @@
 		66E90E412D1190A200EE230A /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3B2D1190A200EE230A /* EventPage.storyboard */; };
 		66E90E422D1190A200EE230A /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E3C2D1190A200EE230A /* EventViewController.swift */; };
 		66E90E432D1190A200EE230A /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3D2D1190A200EE230A /* History.storyboard */; };
-		66E90E442D1190A200EE230A /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3E2D1190A200EE230A /* Favorite.storyboard */; };
 		837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		837048192D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		8370481A2D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
@@ -50,6 +49,8 @@
 		D590B11C2D0B5E6F00825983 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1182D0B5E6F00825983 /* Profile.storyboard */; };
 		D590B11D2D0B5E6F00825983 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1192D0B5E6F00825983 /* Login.storyboard */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
+		E65706BA2D1438BD00926E1D /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E65706B92D1438BD00926E1D /* Favorite.storyboard */; };
+		E65706BC2D14558100926E1D /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65706BB2D14558100926E1D /* PayViewController.swift */; };
 		E67AE40C2D118D4E00FE6288 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */; };
 		E67AE40D2D118D4E00FE6288 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */; };
 		E67AE40E2D118D4E00FE6288 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */; };
@@ -80,7 +81,6 @@
 		66E90E3B2D1190A200EE230A /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
 		66E90E3C2D1190A200EE230A /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		66E90E3D2D1190A200EE230A /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
-		66E90E3E2D1190A200EE230A /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -114,6 +114,8 @@
 		D590B1182D0B5E6F00825983 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D590B1192D0B5E6F00825983 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
+		E65706B92D1438BD00926E1D /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		E65706BB2D14558100926E1D /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
 		E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
 		E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
@@ -199,8 +201,9 @@
 				66E90E3B2D1190A200EE230A /* EventPage.storyboard */,
 				669C35742D11C60000D2683F /* CardViewController.swift */,
 				66E90E3C2D1190A200EE230A /* EventViewController.swift */,
-				66E90E3E2D1190A200EE230A /* Favorite.storyboard */,
 				66E90E3D2D1190A200EE230A /* History.storyboard */,
+				E65706B92D1438BD00926E1D /* Favorite.storyboard */,
+				E65706BB2D14558100926E1D /* PayViewController.swift */,
 			);
 			path = Yousif;
 			sourceTree = "<group>";
@@ -457,7 +460,7 @@
 				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
 				D18AFB632D0E09E1006BAE92 /* Interests.storyboard in Resources */,
 				D08650212CF5F22500C9981D /* Assets.xcassets in Resources */,
-				66E90E442D1190A200EE230A /* Favorite.storyboard in Resources */,
+				E65706BA2D1438BD00926E1D /* Favorite.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D590B11B2D0B5E6F00825983 /* LoginViewController.swift in Sources */,
+				E65706BC2D14558100926E1D /* PayViewController.swift in Sources */,
 				E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */,
 				66E90E422D1190A200EE230A /* EventViewController.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,

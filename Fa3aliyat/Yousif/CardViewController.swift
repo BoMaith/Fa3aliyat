@@ -16,6 +16,7 @@ class CardViewController: UIViewController {
     @IBOutlet weak var PayBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Card Details"
         // Initially, disable the Pay button
 //                PayBtn.isEnabled = false
 //                PayBtn.alpha = 0.5
