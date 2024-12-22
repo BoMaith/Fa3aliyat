@@ -77,7 +77,9 @@ class SignupViewController: UIViewController {
                 }
                 
                 let alert = UIAlertController(title: "Success", message: "Account created successfully!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.performSegue(withIdentifier: "goToInterests", sender: sender) }))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in 
+                    UserDefaults.standard.set(Auth.auth().currentUser!.uid, forKey: "user_uid_key")
+                    self.performSegue(withIdentifier: "goToInterests", sender: sender) }))
                 self.present(alert, animated: true)
             }
         })
@@ -107,17 +109,4 @@ class SignupViewController: UIViewController {
         present(alert, animated: true)
     }
 }
-//
-//
-//
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    */
-//
-//
 

@@ -1,5 +1,3 @@
-
-//*******************************CO PILOT TESTING***************************
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
