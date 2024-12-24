@@ -50,7 +50,6 @@
 		D590B11C2D0B5E6F00825983 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1182D0B5E6F00825983 /* Profile.storyboard */; };
 		D590B11D2D0B5E6F00825983 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D590B1192D0B5E6F00825983 /* Login.storyboard */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
-		E094D67A2D11E6F200C2C6D1 /* AETableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6792D11E6F100C2C6D1 /* AETableViewCell.swift */; };
 		E67AE40C2D118D4E00FE6288 /* CreateOrganizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */; };
 		E67AE40D2D118D4E00FE6288 /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */; };
 		E67AE40E2D118D4E00FE6288 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */; };
@@ -115,7 +114,6 @@
 		D590B1182D0B5E6F00825983 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D590B1192D0B5E6F00825983 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
-		E094D6792D11E6F100C2C6D1 /* AETableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AETableViewCell.swift; sourceTree = "<group>"; };
 		E67AE4062D118D4E00FE6288 /* CreateOrganizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrganizerViewController.swift; sourceTree = "<group>"; };
 		E67AE4072D118D4E00FE6288 /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
 		E67AE4082D118D4E00FE6288 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 			children = (
 				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
-				E094D6792D11E6F100C2C6D1 /* AETableViewCell.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -505,7 +502,6 @@
 				66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */,
 				E67AE40D2D118D4E00FE6288 /* UsersPageViewController.swift in Sources */,
 				E67AE4112D118D4E00FE6288 /* UserProfileViewController.swift in Sources */,
-				E094D67A2D11E6F200C2C6D1 /* AETableViewCell.swift in Sources */,
 				D18AFB682D0E09E1006BAE92 /* InterestsTableViewCell.swift in Sources */,
 				D18AFB662D0E09E1006BAE92 /* HomeTableViewCell.swift in Sources */,
 				E67AE40E2D118D4E00FE6288 /* OrganizerProfileViewController.swift in Sources */,

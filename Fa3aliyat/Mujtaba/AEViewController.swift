@@ -38,7 +38,7 @@ class AEViewController:  UIViewController, UITableViewDelegate, UITableViewDataS
         }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
+            return 8
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
