@@ -1,27 +1,24 @@
-//
-//  AdminEventViewController.swift
-//  Fa3aliyat
-//
-//  Created by BP-36-224-12 on 17/12/2024.
-//
-
 import UIKit
+import FirebaseDatabase
 
-class AdminEventViewController: UIViewController {
+class AdminEventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var participantsView: UIView!
     @IBOutlet weak var reviewsView: UIView!
-    //details view outlets
-
-    @IBOutlet weak var participantsTableView: UITableView!
     
-    //participants view outlet
+    // Participants view outlets
     @IBOutlet weak var participantsTitle: UILabel!
+    @IBOutlet weak var participantsTableView: UITableView!
+    @IBOutlet weak var participantsTabelCell: UITableViewCell!
     
-    
-    //reviews view outlet
+    // Reviews view outlet
     @IBOutlet weak var reviewsTableView: UITableView!
+    
+    var participantsList: [Participant] = []  // Array to hold participants data
+    var eventID: String?  // Assume eventID is provided when selecting an event
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +29,9 @@ class AdminEventViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.title = "Event Details"
 
+        // Setup participants table view
+        participantsTableView.delegate = self
+        participantsTableView.dataSource = self
     }
 
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -48,7 +48,8 @@ class AdminEventViewController: UIViewController {
         case 1:
             self.title = "Participants"
             participantsView.isHidden = false
-            participantsTitle.text = "Participant NO."
+            participantsTitle.text = "Loading participants..."
+            fetchParticipants()  // Fetch participants when "Participants" is selected
         case 2:
             self.title = "Reviews"
             reviewsView.isHidden = false
@@ -57,15 +58,62 @@ class AdminEventViewController: UIViewController {
         }
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Fetch participants from Firebase
+    private func fetchParticipants() {
+        guard let eventID = eventID else {
+            print("Event ID is missing.")
+            return
+        }
+        
+        let ref = Database.database().reference()
+        
+        // Fetch participants for this event from Firebase
+        ref.child("events").child(eventID).child("participants").observeSingleEvent(of: .value) { snapshot in
+            guard let participantsDict = snapshot.value as? [String: Any] else {
+                print("No participants found for this event.")
+                return
+            }
+            
+            // Map the participant data to a Participant model
+            self.participantsList = participantsDict.map { (key, value) -> Participant in
+                let participantData = value as? [String: Any] ?? [:]
+                let participant = Participant(id: key,
+                                              name: participantData["name"] as? String ?? "Unknown",
+                                              email: participantData["email"] as? String ?? "No email")
+                return participant
+            }
+            
+            // Update the participant count in the title
+            self.participantsTitle.text = "Participants: \(self.participantsList.count)"
+            
+            // Reload the participants table view
+            self.participantsTableView.reloadData()
+        }
     }
-    */
 
+    // MARK: - UITableView DataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return participantsList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue the cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "participantCell", for: indexPath)
+        
+        // Get the participant for this row
+        let participant = participantsList[indexPath.row]
+        
+        // Set up the cell with participant details
+        cell.textLabel?.text = participant.name
+        cell.detailTextLabel?.text = participant.email
+        
+        return cell
+    }
+    
+    // MARK: - Participant Model
+    struct Participant {
+        var id: String
+        var name: String
+        var email: String
+    }
 }

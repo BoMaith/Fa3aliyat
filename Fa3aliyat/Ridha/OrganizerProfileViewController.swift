@@ -13,12 +13,18 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var organizerEventsList: UITableView!
+
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var orgtitlelbl: UILabel!
     @IBOutlet weak var eventstitle: UILabel!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+            profileImage.clipsToBounds = true
+            
         // Configure the UI based on whether it's a user or an organizer
         setupUI()
         
@@ -45,29 +51,30 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
 
     // MARK: - Setup UI
     private func setupUI() {
-        // Dynamically set the name, email, and title based on the data passed
-        if let organizer = organizerData {
-            nameLabel.text = organizer["name"] as? String ?? "Unknown"
-            isUser = false
-            self.title = "Organizer Details"
-            eventstitle.text = "Organizer Events"
-        } else if let user = userData {
-            let userFullName = user["FullName"] as? String ?? "Unknown"
-            let userEmail = user["Email"] as? String ?? "No email"
-            let userUsername = user["UserName"] as? String ?? "No username available"
-            eventstitle.text = ""
-            nameLabel.text = userFullName
-            print("User Full Name: \(userFullName)")
-            print("User Email: \(userEmail)")
-            print("User Username: \(userUsername)")
+         // Dynamically set the name, email, and title based on the data passed
+         if let organizer = organizerData {
+             nameLabel?.text = organizer["name"] as? String ?? "Unknown"
+             isUser = false
+             self.title = "Organizer Details"
+             eventstitle?.text = "Organizer Events"
+         } else if let user = userData {
+             let userFullName = user["FullName"] as? String ?? "Unknown"
+             let userEmail = user["Email"] as? String ?? "No email"
+             let userUsername = user["UserName"] as? String ?? "No username available"
+             eventstitle?.text = ""
+             nameLabel?.text = userFullName
+             print("User Full Name: \(userFullName)")
+             print("User Email: \(userEmail)")
+             print("User Username: \(userUsername)")
+             orgtitlelbl.text = ""
+             isUser = true
+             self.title = "User Details"
+         } else {
+             nameLabel?.text = "No Data Available"
+             self.title = "Details"
+         }
+     }
 
-            isUser = true
-            self.title = "User Details"
-        } else {
-            nameLabel.text = "No Data Available"
-            self.title = "Details"
-        }
-    }
 
     // MARK: - Fetch Events from Firebase (for Organizer)
     private func fetchEvents() {

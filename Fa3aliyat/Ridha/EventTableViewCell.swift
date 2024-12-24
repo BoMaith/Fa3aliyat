@@ -8,12 +8,18 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventDateLabel: UILabel!
-    
-    func configureCell(eventName: String, eventDate: String) {
-        eventTitleLabel.text = eventName
-        eventDateLabel.text = eventDate
-    }
+    @IBOutlet weak var eventImageView: UIImageView!  // This will hold the image for the event
+
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            // Initialization code
+            eventImageView.layer.cornerRadius = eventImageView.frame.size.width / 2  // Optional: Make image rounded
+            eventImageView.clipsToBounds = true
+        }
+
+        // Configure the cell to accept and display an image
+        func configureCell(image: UIImage?) {
+            eventImageView.image = image  // Set the image for the event
+        }
 }
 

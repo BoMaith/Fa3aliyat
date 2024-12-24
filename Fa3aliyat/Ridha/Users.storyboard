@@ -142,7 +142,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddLogo" id="Djm-Se-i0G">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image" id="Djm-Se-i0G">
                                 <rect key="frame" x="136" y="144" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -239,26 +239,39 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jZ3-w0-qpS">
-                                                    <rect key="frame" x="20" y="14" width="34" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf8-LT-COc">
-                                                    <rect key="frame" x="62" y="12" width="180" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-tQ-mBJ">
+                                                    <rect key="frame" x="75" y="21" width="135" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auth_vc_light.png" translatesAutoresizingMaskIntoConstraints="NO" id="jZ3-w0-qpS">
+                                                    <rect key="frame" x="33" y="13" width="34" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="8yY-O9-V8J"/>
+                                                        <constraint firstAttribute="width" constant="34" id="UMh-RA-Mg5"/>
+                                                        <constraint firstAttribute="width" secondItem="jZ3-w0-qpS" secondAttribute="height" multiplier="1:1" id="gID-Ca-oNM"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jZ3-w0-qpS" secondAttribute="bottom" constant="1" id="CRw-Cf-zMY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="L8N-tQ-mBJ" secondAttribute="bottom" constant="6" id="Hc0-lu-eWg"/>
+                                                <constraint firstItem="L8N-tQ-mBJ" firstAttribute="leading" secondItem="jZ3-w0-qpS" secondAttribute="trailing" constant="8" symbolic="YES" id="Ir4-m8-k5W"/>
+                                                <constraint firstItem="jZ3-w0-qpS" firstAttribute="top" secondItem="68g-Wb-Nox" secondAttribute="topMargin" constant="1" id="K3U-Xu-YOs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="L8N-tQ-mBJ" secondAttribute="trailing" constant="163" id="S4F-PX-oJJ"/>
+                                                <constraint firstItem="L8N-tQ-mBJ" firstAttribute="leading" secondItem="jZ3-w0-qpS" secondAttribute="trailing" constant="8" id="alo-Uc-Cry"/>
+                                                <constraint firstItem="L8N-tQ-mBJ" firstAttribute="top" secondItem="68g-Wb-Nox" secondAttribute="topMargin" constant="9" id="bpO-cs-sJc"/>
+                                                <constraint firstItem="jZ3-w0-qpS" firstAttribute="leading" secondItem="68g-Wb-Nox" secondAttribute="leadingMargin" constant="13" id="h7K-JC-ZUC"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="eventTitleLabel" destination="bf8-LT-COc" id="Ih2-ih-3Ac"/>
+                                            <outlet property="eventImageView" destination="jZ3-w0-qpS" id="KwN-BV-sTf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddLogo" translatesAutoresizingMaskIntoConstraints="NO" id="3Kg-sC-Lxg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add Image" translatesAutoresizingMaskIntoConstraints="NO" id="3Kg-sC-Lxg">
                                 <rect key="frame" x="136" y="114" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -270,9 +283,9 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="uba-C3-lLq"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="eventstitle" destination="OHA-Xf-ZEq" id="EHp-X0-NNu"/>
                         <outlet property="nameLabel" destination="G0g-Xh-k35" id="vAR-Jx-vH4"/>
                         <outlet property="organizerEventsList" destination="wgf-sZ-Tt9" id="2iO-0q-obN"/>
+                        <outlet property="profileImage" destination="3Kg-sC-Lxg" id="bCQ-B5-K0J"/>
                         <outlet property="tableView" destination="Gb4-Jb-5tQ" id="bui-0d-ySK"/>
                     </connections>
                 </viewController>
@@ -282,7 +295,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddLogo" width="272" height="266"/>
+        <image name="Add Image" width="500" height="500"/>
+        <image name="auth_vc_light.png" width="828" height="1792"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
