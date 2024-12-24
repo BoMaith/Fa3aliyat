@@ -2,7 +2,7 @@
 //  HistoryTableViewCell.swift
 //  Fa3aliyat
 //
-//  Created by BP-36-224-15 on 19/12/2024.
+//  Created by BP-36-224-15 on 24/12/2024.
 //
 
 import UIKit
