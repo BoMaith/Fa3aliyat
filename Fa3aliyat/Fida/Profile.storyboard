@@ -8,6 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="8zD-Fa-Bec">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LoginViewController" storyboardName="Login" id="8C8-sd-cOq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="e2D-eT-nR0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="77j-DG-I07" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-372" y="427"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -94,6 +104,7 @@
                         <segue destination="Oww-cr-FsP" kind="show" identifier="showChangeInterests" id="J1j-vO-eb1"/>
                         <segue destination="ZBX-jU-bHl" kind="show" identifier="showTickets" id="JJ8-Q5-mjK"/>
                         <segue destination="Ea7-oN-u4U" kind="show" identifier="showChangePassword" id="izO-40-g6E"/>
+                        <segue destination="8C8-sd-cOq" kind="show" identifier="goToLogin" id="l3L-ea-Yg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -103,7 +114,7 @@
         <!--Change Email-->
         <scene sceneID="P0u-Zw-B3c">
             <objects>
-                <viewController id="2wQ-u7-UTa" sceneMemberID="viewController">
+                <viewController id="2wQ-u7-UTa" customClass="ChangeEmailViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c2n-SD-RBw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,9 +164,12 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kn-Qa-Ttl">
-                                <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
+                                <rect key="frame" x="39" y="684" width="315" height="38.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="2wQ-u7-UTa" eventType="touchUpInside" id="AC3-5N-VMm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KBl-ht-iEO"/>
@@ -174,6 +188,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Change Email" largeTitleDisplayMode="never" id="oWd-rI-y2L"/>
+                    <connections>
+                        <outlet property="confirmNewEmailTextField" destination="9AH-DS-5E8" id="tjr-b2-ERp"/>
+                        <outlet property="currentPasswordTextField" destination="vVZ-gA-mqU" id="avR-hK-X0t"/>
+                        <outlet property="newEmailTextField" destination="9HB-Xu-K2F" id="utV-QB-UUG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbd-C3-pYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -198,7 +217,6 @@
         <!--Change Interests-->
         <scene sceneID="tEg-ql-VSO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OIe-jQ-KWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Oww-cr-FsP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kXZ-bD-JsT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
@@ -208,13 +226,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Change Interests" largeTitleDisplayMode="never" id="KZI-Yj-s8O"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OIe-jQ-KWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1218" y="478"/>
         </scene>
         <!--Change Email-->
         <scene sceneID="qD8-TM-2Ab">
             <objects>
-                <viewController id="Ea7-oN-u4U" sceneMemberID="viewController">
+                <viewController id="Ea7-oN-u4U" customClass="ChangePasswordViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ami-7y-MjS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +283,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63Q-bE-1Fd">
-                                <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
+                                <rect key="frame" x="39" y="684" width="315" height="38.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
                             </button>
@@ -285,6 +304,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Change Email" largeTitleDisplayMode="never" id="ZfO-dW-9Gs"/>
+                    <connections>
+                        <outlet property="confIrmNewPassTextField" destination="GUH-30-emC" id="jDi-fn-KOC"/>
+                        <outlet property="currentPassTextField" destination="zW9-5h-SMt" id="sCJ-Dp-oxe"/>
+                        <outlet property="newPassTextField" destination="nLY-vL-fah" id="U6A-h1-yO5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7V-ZG-Bwm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

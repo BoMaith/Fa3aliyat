@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
         if validateFields() {
             guard let email = emailTextField.text, let password = passwordTextField.text else { return }
             
+            //
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     self.showAlert(title: "Login Failed", message: error.localizedDescription)
@@ -23,7 +24,6 @@ class LoginViewController: UIViewController {
     }
     
     //functino for handling user redirection
-    
     func handleUserRedirection() {
         guard let user = Auth.auth().currentUser, let email = user.email else { return }
         
@@ -32,11 +32,7 @@ class LoginViewController: UIViewController {
         } else if email.contains("@fa3aliyat.admin.bh") {
             self.performSegue(withIdentifier: "goToOrgHome", sender: self)
         } else {
-            if user.metadata.creationDate == user.metadata.lastSignInDate {
-                self.performSegue(withIdentifier: "goToInterests", sender: self)
-            } else {
-                self.performSegue(withIdentifier: "goToUserHome", sender: self)
-            }
+            self.performSegue(withIdentifier: "goToUserHome", sender: self)
         }
     }
     
@@ -70,6 +66,7 @@ class LoginViewController: UIViewController {
         return password.count >= 6
     }
     
+    //helper function for the alert to make my life easier
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

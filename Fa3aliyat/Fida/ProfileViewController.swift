@@ -18,36 +18,39 @@ class ProfileViewController: UIViewController {
     
     func fetchUserData() {
         // Get the current user ID
-        guard let userID = Auth.auth().currentUser?.uid
-        else {
+        guard let userID = Auth.auth().currentUser?.uid else {
             print("No user is logged in")
-            return }
-        print("User ID: \(userID)")
-        // Debugging: Verify user ID
+            return
+        }
+        print("User ID: \(userID)") // Debugging: Verify user ID
+        
         // Get a reference to the database
         let ref = Database.database().reference()
+        
         // Fetch user data from the database
-        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { snapshot in print("Snapshot: \(snapshot)")
-            // Debugging:
-//            Print snapshot data
-            guard let value = snapshot.value as? [String: Any]
-            else {
+        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { snapshot in
+            print("Snapshot: \(snapshot)") // Debugging: Print snapshot data
+            
+            guard let value = snapshot.value as? [String: Any] else {
                 print("No value found in snapshot")
                 return
             }
-            // Update labels with user data
-            let username = value["UserName"] as? String ?? "No name"
-            let email = value["Email"] as? String ?? "No email"
-            print("Username: \(username), Email: \(email)")
-            // Debugging: Verify fetched data
-            DispatchQueue.main.async {
-                self.usernameLabel.text = username
-                self.emailLabel.text = email
+            
+            // Update labels with user data using struct
+            if let userName = value["UserName"] as? String,
+               let email = value["Email"] as? String {
+                let user = User(userName: userName, email: email)
+                print("Username: \(user.userName), Email: \(user.email)") // Debugging: Verify fetched data
+                
+                DispatchQueue.main.async {
+                    self.usernameLabel.text = user.userName
+                    self.emailLabel.text = user.email
+                }
+            } else {
+                print("Username or Email not found in snapshot")
             }
-        }
-        ) {
-            error in print("Error fetching user data: \(error.localizedDescription)")
-            // Debugging: Print any errors
+        }) { error in
+            print("Error fetching user data: \(error.localizedDescription)") // Debugging: Print any errors
         }
     }
 }
@@ -69,8 +72,29 @@ extension ProfileViewController: UITableViewDelegate {
         case 4:
             performSegue(withIdentifier: "showTickets", sender: self)
         case 5:
-            // Handle logout here
-            break
+            do {
+                //signing out the users from the application
+                // Show logout confirmation alert
+                let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+                    do {
+                        //signing out the user from the application
+                        try Auth.auth().signOut()
+                        // Redirect to login screen after sign out
+                        if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
+                            self.view.window?.rootViewController = loginViewController
+                            self.view.window?.makeKeyAndVisible()
+                        }
+                    }
+                    catch {
+                        print("Error signing out: \(error.localizedDescription)")
+                    }
+                }))
+                self.present(alert, animated: true, completion: nil);
+                break
+            }
+            
         default:
             break
         }

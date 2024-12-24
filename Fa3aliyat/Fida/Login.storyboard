@@ -52,7 +52,7 @@
         <!--Login View Controller-->
         <scene sceneID="gDa-XQ-fZ0">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="jIr-Kx-SVR" customClass="LoginViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="jIr-Kx-SVR" customClass="LoginViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vNg-lv-yyx" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,7 +114,7 @@
                                             <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="k51-Ji-dJj" kind="show" id="QsG-pt-0tk"/>
+                                            <segue destination="k51-Ji-dJj" kind="show" id="058-OU-ZzA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -161,7 +161,7 @@
         <!--Signup View Controller-->
         <scene sceneID="C0G-xT-Fn6">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="k51-Ji-dJj" customClass="SignupViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" modalPresentationStyle="fullScreen" id="k51-Ji-dJj" customClass="SignupViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N1R-v2-U6i" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

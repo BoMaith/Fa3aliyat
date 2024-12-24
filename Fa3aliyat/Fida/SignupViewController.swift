@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class SignupViewController: UIViewController {
     
-    //declaring variables (outlets for each text fields)
+    // Declaring variables (outlets for each text fields)
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,28 +20,35 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Additional setup after loading the view
     }
     
-    //function for when the register button is clicked
+    // Function for when the register button is clicked
     @IBAction func registerButtonClicked(_ sender: Any) {
-        //using guard let to validate input
+        // Using guard let to validate input
         guard let fullName = fullNameTextField.text,
               let userName = userNameTextField.text,
               let email = emailTextField.text,
               let password = passwordTextField.text,
-              !fullName.isEmpty && !userName.isEmpty &&
-                !email.isEmpty && !password.isEmpty
-        else {
-            //showing alerts if the input data is not empty
-            let alert = UIAlertController(title: "Missing input", message: "Fields can not be empty", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Try again", style: .cancel))
-            self.present(alert, animated: true)
+              !fullName.isEmpty, !userName.isEmpty,
+              !email.isEmpty, !password.isEmpty else {
+            showAlert(title: "Missing Input", message: "Fields cannot be empty")
             return
-        }//else ended
+        }
+        
+        // Validate email and password
+        guard isValidEmail(email) else {
+            showAlert(title: "Invalid Email", message: "Please enter a valid email address")
+            return
+        }
+        
+        guard isValidPassword(password) else {
+            showAlert(title: "Invalid Password", message: "Password must be at least 6 characters long")
+            return
+        }
         
         // Firebase Authentication
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] Result, error in
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             guard let self = self else { return }
             
             if let error = error {
@@ -50,26 +57,24 @@ class SignupViewController: UIViewController {
             }
             
             // Save user details to Firebase Realtime Database
-            guard let user = Result?.user else {
+            guard let user = result?.user else {
                 self.showAlert(title: "Error", message: "User creation failed.")
                 return
             }
             
-            //making a unique id for each user (copy pasted from the document)
+            // Making a unique ID for each user
             let uid = user.uid
-            //getting the database reference
+            // Getting the database reference
             let ref = Database.database().reference()
             
-            //an array list of string with all the attributes and their types
+            // An array list of string with all the attributes and their types
             let userInfo: [String: Any] = [
                 "FullName": fullName,
                 "UserName": userName,
-                "Email": email,
-                "Password" : password,
-
+                "Email": email
             ]
             
-            //making an entry in the database
+            // Making an entry in the database
             ref.child("users").child(uid).setValue(userInfo) { error, _ in
                 if let error = error {
                     self.showAlert(title: "Error", message: "Failed to save user data: \(error.localizedDescription)")
@@ -77,12 +82,13 @@ class SignupViewController: UIViewController {
                 }
                 
                 let alert = UIAlertController(title: "Success", message: "Account created successfully!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in 
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                     UserDefaults.standard.set(Auth.auth().currentUser!.uid, forKey: "user_uid_key")
-                    self.performSegue(withIdentifier: "goToInterests", sender: sender) }))
+                    self.performSegue(withIdentifier: "goToInterests", sender: nil)
+                })
                 self.present(alert, animated: true)
             }
-        })
+        }
     }
     
     // Helper Functions for Validation of email which ensures that the email has the following things
@@ -91,22 +97,17 @@ class SignupViewController: UIViewController {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
     
-    //a function to ensure that the password lenght is 6 or more than 6
+    // A function to ensure that the password length is 6 or more than 6
     private func isValidPassword(_ password: String) -> Bool {
         return password.count >= 6
     }
     
-    //checking if the phone number is valid
-    private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        let phoneRegex = "^[0-9]{8}$"
-        return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phoneNumber)
-    }
-    
-    //a helper fuction for the alerts
+    // A helper function for the alerts
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
 }
+
 
