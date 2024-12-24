@@ -1,75 +1,113 @@
-//
-//  CategoriesViewController.swift
-//  Testing
-//
-//  Created by BP-36-224-10 on 17/12/2024.
-//
-
 import UIKit
 
 class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
+    // Sample data for the categories
+    let interests = [
+        ("Arts & Entertainment", "Arts"),
+        ("Sports & Fitness", "Sport"),
+        ("Food & Drink", "Food"),
+        ("Technology & Innovation", "Tech"),
+        ("Social & Networking", "Social"),
+        ("Health & Wellness", "Health"),
+        ("Education & Personal Growth", "Edu"),
+        ("Family & Kids", "Family"),
+        ("Islamic Religion", "Islam"),
+        ("Gaming & E-sports", "Gaming"),
+        ("Science & Discovery", "Science"),
+        ("Shopping & Markets", "Shopping")
+    ]
+    
+    var selectedIndexPaths: Set<IndexPath> = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        // Set up table view
+        // Set up table view delegate and data source
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Add "Clear" button to the navigation bar (right-hand side)
+        setupClearButton()
     }
 
-        // Data for the table view
-        let interests = [
-            ("Arts & Entertainment", "Arts"),
-            ("Sports & Fitness", "Sport"),
-            ("Food & Drink", "Food"),
-            ("Technology & Innovation", "Tech"),
-            ("Social & Networking", "Social"),
-            ("Health & Wellness", "Health"),
-            ("Education & Personal Growth", "Edu"),
-            ("Family & Kids", "Family"),
-            ("Islamic Religion", "Islam"),
-            ("Gaming & E-sports", "Gaming"),
-            ("Science & Discovery", "Science"),
-            ("Shopping & Markets", "Shopping")
-        ]
-
-    // Track selected rows
-        var selectedIndexPaths: Set<IndexPath> = []
-
-        // MARK: - TableView DataSource Methods
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return interests.count
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoriesTableViewCell
-
-            let (name, icon) = interests[indexPath.row]
-            cell.setupCell(photoName: icon, name: name)
-            
-            // Show or hide the tick based on selection
-            if selectedIndexPaths.contains(indexPath) {
-                cell.imgTickIcon.image = UIImage(systemName: "checkmark") // Use system image
-                cell.imgTickIcon.tintColor = .blue
-            } else {
-                cell.imgTickIcon.image = nil // No tick for unselected rows
-            }
-            
-            return cell
-        }
-
-        // MARK: - TableView Delegate Methods
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if selectedIndexPaths.contains(indexPath) {
-                selectedIndexPaths.remove(indexPath) // Deselect if already selected
-            } else {
-                selectedIndexPaths.insert(indexPath) // Select row
-            }
-            tableView.reloadRows(at: [indexPath], with: .automatic) // Reload only the affected row
-        }
+    // MARK: - Set up the Clear button in Categories page
+    func setupClearButton() {
+        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearCategorySelection))
+        navigationItem.rightBarButtonItem = clearButton
     }
 
+    // MARK: - Clear selected category and navigate back to Filters page
+    @objc func clearCategorySelection() {
+        // Reset selected category in the FiltersPage
+        if let navigationController = self.navigationController,
+           let filtersVC = navigationController.viewControllers.first(where: { $0 is FiltersTableViewController }) as? FiltersTableViewController {
+            filtersVC.selectedButtonLabel = nil
+            filtersVC.categoryButton.setTitle("Select Category", for: .normal)
+        }
 
+        // Reset the UserDefaults to remove the saved filter
+        UserDefaults.standard.removeObject(forKey: "selectedCategory")
+
+        // Optionally, reset the table selection (uncheck all)
+        selectedIndexPaths.removeAll()
+        tableView.reloadData()
+
+        // Navigate back to the Filters page
+        navigationController?.popViewController(animated: true)
+    }
+
+    // MARK: - TableView DataSource Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return interests.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoriesTableViewCell
+        
+        // Initially, no checkmark
+        cell.accessoryType = .none
+        
+        let (name, icon) = interests[indexPath.row]
+        cell.setupCell(photoName: icon, name: name)
+
+        // Set the checkmark based on whether the row is selected
+        if selectedIndexPaths.contains(indexPath) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
+        return cell
+    }
+
+    // MARK: - TableView Delegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Store the selected label
+        let selectedCategoryName = interests[indexPath.row].0 // Store the name of the selected category
+        
+        // Toggle the checkmark
+        if selectedIndexPaths.contains(indexPath) {
+            selectedIndexPaths.remove(indexPath) // Deselect and remove the checkmark
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            selectedIndexPaths.insert(indexPath) // Select and add the checkmark
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+
+        // Optionally, deselect the row
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        // Pass the selected category name back to FiltersPage
+        if let navigationController = self.navigationController,
+           let filtersVC = navigationController.viewControllers.first(where: { $0 is FiltersTableViewController }) as? FiltersTableViewController {
+            filtersVC.selectedButtonLabel = selectedCategoryName
+            filtersVC.categoryButton.setTitle(selectedCategoryName, for: .normal)
+        }
+
+        // Now pop back to Filters
+        navigationController?.popViewController(animated: true)
+    }
+}
