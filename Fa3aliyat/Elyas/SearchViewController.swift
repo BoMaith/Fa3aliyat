@@ -21,9 +21,56 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var filteredEvents: [(String, String, String)] = []
     var filteredFavoriteStates: [Bool] = []
 
+    
+    
+    
+    
+    
+    // This property will hold the filters array passed from FiltersTableViewController
+       var filtersArray: [Any?] = [nil, nil, nil, nil, nil]  // Default value
+
+    // Example method to apply filters to your search logic
+        func applyFilters() {
+            // Example method to apply filters to your search logic
+                   print("Applying filters...")
+            // Logic to filter results based on the selected filters in filtersArray
+            // For example:
+            if let category = filtersArray[0] as? String {
+                print("Applying category filter: \(category)")
+            }
+            if let dateAndTime = filtersArray[1] as? String {
+                print("Applying date filter: \(dateAndTime)")
+            }
+            if let price = filtersArray[2] as? String {
+                print("Applying price filter: \(price)")
+            }
+            if let location = filtersArray[3] as? String {
+                print("Applying location filter: \(location)")
+            }
+            if let age = filtersArray[4] as? String {
+                print("Applying age filter: \(age)")
+            }
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Example: Handle the received filters if needed
+        print("Received filters: \(filtersArray)")
+        
+        // You can now use the filtersArray to filter the search results
+        applyFilters()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         filteredEvents = events
         filteredFavoriteStates = favoriteStates
         

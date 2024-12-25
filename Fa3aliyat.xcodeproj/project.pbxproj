@@ -185,7 +185,6 @@
 		D03089662CFF39A70025BF69 /* Elyas */ = {
 			isa = PBXGroup;
 			children = (
-				E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */,
 				E67AE4272D1210D900FE6288 /* Home.storyboard */,
 				E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */,
 				E67AE42A2D1210D900FE6288 /* HomeViewController.swift */,
@@ -198,6 +197,7 @@
 				E67AE4242D1210D900FE6288 /* SearchViewController.swift */,
 				E67AE4262D1210D900FE6288 /* CategoriesViewController.swift */,
 				E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */,
+				E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */,
 			);
 			path = Elyas;
 			sourceTree = "<group>";
