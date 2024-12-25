@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     struct Event {
+        let id: String  // Unique ID for each event
         let title: String
         let date: String
         var isFavorite: Bool
@@ -39,18 +40,44 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // Fetch events from Firebase Realtime Database
+//    func fetchEvents() {
+//        ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
+//            // Check if snapshot has data
+//            if let eventsData = snapshot.value as? [String: [String: Any]] {
+//                self.events = eventsData.compactMap { (key, data) in
+//                    guard
+//                        let title = data["title"] as? String,
+//                        let date = data["date"] as? String,
+//                        let isFavorite = data["isFavorite"] as? Bool
+//                    else { return nil }
+//
+//                    return Event(title: title, date: date, isFavorite: isFavorite)
+//                }
+//                
+//                print("Fetched Events: \(self.events)") // Log events to check if they're fetched properly
+//                
+//                self.filteredEvents = self.events
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }) { error in
+//            print("Error fetching events: \(error.localizedDescription)")
+//        }
+//    }
+    
     func fetchEvents() {
         ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
             // Check if snapshot has data
             if let eventsData = snapshot.value as? [String: [String: Any]] {
-                self.events = eventsData.compactMap { (key, data) in
+                self.events = eventsData.compactMap { (id, data) in
                     guard
                         let title = data["title"] as? String,
                         let date = data["date"] as? String,
                         let isFavorite = data["isFavorite"] as? Bool
                     else { return nil }
-
-                    return Event(title: title, date: date, isFavorite: isFavorite)
+                    
+                    return Event(id: id, title: title, date: date, isFavorite: isFavorite)
                 }
                 
                 print("Fetched Events: \(self.events)") // Log events to check if they're fetched properly
@@ -64,6 +91,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print("Error fetching events: \(error.localizedDescription)")
         }
     }
+
+    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
+        let eventRef = ref.child("events").child(event.id)  // Use the event ID as the key
+        eventRef.updateChildValues(["isFavorite": isFavorite]) { error, _ in
+            if let error = error {
+                print("Error updating favorite state: \(error)")
+            } else {
+                print("Favorite state updated successfully!")
+            }
+        }
+    }
+
     
     // TableView DataSource and Delegate Methods remain the same
     
@@ -94,6 +133,36 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     // Favorite Button Tapped Method (update Firebase when favorite is toggled)
+//    @objc func favoriteButtonTapped(_ sender: UIButton) {
+//        let row = sender.tag
+//        
+//        // Access the event object from filteredEvents
+//        var event = filteredEvents[row]
+//        
+//        // Toggle the favorite state
+//        event.isFavorite.toggle()
+//
+//        // Update the button's selected state
+//        sender.isSelected = event.isFavorite
+//        
+//        // Change the button's color based on the favorite state
+//        if event.isFavorite {
+//            sender.tintColor = .blue // Button color when selected (favorite)
+//        } else {
+//            sender.tintColor = .gray // Button color when not selected (not favorite)
+//        }
+//        
+//        // Update the event in the filteredEvents array
+//        filteredEvents[row] = event
+//        
+//        // Update Firebase with the new favorite state
+//        updateFavoriteStateInFirebase(for: event, isFavorite: event.isFavorite)
+//        
+//        // Reload the row to reflect the changes
+//        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+//    }
+
+
     @objc func favoriteButtonTapped(_ sender: UIButton) {
         let row = sender.tag
         
@@ -126,8 +195,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
 
-
-
     private func reorderRows() {
         // Sort filteredEvents to put favorites at the top (or bottom depending on your preference)
         filteredEvents.sort { $0.isFavorite && !$1.isFavorite }
@@ -137,16 +204,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // Update favorite state in Firebase Realtime Database
-    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
-        let eventRef = ref.child("events").child(event.title)  // Use the event title as the key
-        eventRef.updateChildValues(["isFavorite": isFavorite]) { error, _ in
-            if let error = error {
-                print("Error updating favorite state: \(error)")
-            } else {
-                print("Favorite state updated successfully!")
-            }
-        }
-    }
+//    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
+//        let eventRef = ref.child("events").child(event.title)  // Use the event title as the key
+//        eventRef.updateChildValues(["isFavorite": isFavorite]) { error, _ in
+//            if let error = error {
+//                print("Error updating favorite state: \(error)")
+//            } else {
+//                print("Favorite state updated successfully!")
+//            }
+//        }
+//    }
     
     // Search Bar Delegate Methods for filtering
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

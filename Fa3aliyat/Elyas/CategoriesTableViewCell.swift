@@ -11,7 +11,6 @@ class CategoriesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgCategoryIcon: UIImageView!
     @IBOutlet weak var lblCategory: UILabel!
-    @IBOutlet weak var imgTickIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
