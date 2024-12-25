@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66741C102D1B0949001C71DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66741C0F2D1B0949001C71DC /* Assets.xcassets */; };
 		66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66741C112D1B12C8001C71DC /* EventTableViewCell.swift */; };
+		66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */; };
 		66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */; };
 		66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E3A2D1190A200EE230A /* PaymentViewController.swift */; };
 		66E90E412D1190A200EE230A /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3B2D1190A200EE230A /* EventPage.storyboard */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		66741C0F2D1B0949001C71DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66741C112D1B12C8001C71DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
 		66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		66E90E3A2D1190A200EE230A /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		66E90E3B2D1190A200EE230A /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				E58ABA7B2D120F5D0073A3FC /* Users.storyboard */,
 				E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */,
 				E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */,
+				66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */,
 				66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */,
 				E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */,
 				E67AE4362D1210D900FE6288 /* HomeViewController.swift in Sources */,

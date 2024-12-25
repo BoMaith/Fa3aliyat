@@ -11,7 +11,7 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
     // Participants view outlets
     @IBOutlet weak var participantsTitle: UILabel!
     @IBOutlet weak var participantsTableView: UITableView!
-    @IBOutlet weak var participantsTabelCell: UITableViewCell!
+    @IBOutlet weak var participantsTabelCell: UITableViewCell!  // Keeps the outlet intact
     
     // Reviews view outlet
     @IBOutlet weak var reviewsTableView: UITableView!
@@ -21,7 +21,10 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Ensure the eventID is set before proceeding
+        
+        
         // Initial state: show only the Details view
         detailsView.isHidden = false
         participantsView.isHidden = true
@@ -32,6 +35,9 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
         // Setup participants table view
         participantsTableView.delegate = self
         participantsTableView.dataSource = self
+        
+        // Fetch participants for the event once the view loads
+        fetchParticipants()
     }
 
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -77,9 +83,12 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
             // Map the participant data to a Participant model
             self.participantsList = participantsDict.map { (key, value) -> Participant in
                 let participantData = value as? [String: Any] ?? [:]
-                let participant = Participant(id: key,
-                                              name: participantData["name"] as? String ?? "Unknown",
-                                              email: participantData["email"] as? String ?? "No email")
+                let participant = Participant(
+                    id: key,
+                    name: participantData["name"] as? String ?? "Unknown",
+                    email: participantData["email"] as? String ?? "No email",
+                    price: participantData["price"] as? Double ?? 0.0
+                )
                 return participant
             }
             
@@ -91,29 +100,38 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
-    // MARK: - UITableView DataSource
+    // MARK: - TableView Methods for Participants
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return participantsList.count
+        return participantsList.count  // Return the number of participants
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Dequeue the cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "participantCell", for: indexPath)
-        
-        // Get the participant for this row
         let participant = participantsList[indexPath.row]
         
-        // Set up the cell with participant details
-        cell.textLabel?.text = participant.name
-        cell.detailTextLabel?.text = participant.email
+        // Dequeue the cell and cast it to ParticipantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath) as! ParticipantTableViewCell
+        
+        // Set up the cell with participant's name
+        cell.setupCell(name: participant.name)
         
         return cell
     }
-    
+
     // MARK: - Participant Model
     struct Participant {
         var id: String
         var name: String
         var email: String
+        var price: Double
+    }
+
+    // Prepare for Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AdminEventViewController" {
+            // Pass the selected eventID to the destination view controller
+            if let adminEventVC = segue.destination as? AdminEventViewController {
+                adminEventVC.eventID = self.eventID  // Set eventID
+            }
+        }
     }
 }

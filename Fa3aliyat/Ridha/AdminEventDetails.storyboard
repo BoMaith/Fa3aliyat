@@ -11,7 +11,7 @@
         <!--Admin Event View Controller-->
         <scene sceneID="Hzr-Zg-jx2">
             <objects>
-                <viewController id="tbY-OS-wPA" customClass="AdminEventViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdminEventViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tbY-OS-wPA" customClass="AdminEventViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hkg-Ti-uVK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +113,7 @@
                                         <rect key="frame" x="0.0" y="34" width="393" height="694"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bgP-18-SMy">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParticipantCell" id="bgP-18-SMy" customClass="ParticipantTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bgP-18-SMy" id="S1J-xe-Ght">
@@ -133,6 +133,9 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="nameLabel" destination="bqL-S6-z4V" id="yvA-T4-m6G"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>

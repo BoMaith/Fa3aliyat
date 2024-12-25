@@ -1,7 +1,7 @@
 import UIKit
 import FirebaseDatabase
 
-class OrganizerProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OrganizerProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Properties
     var organizerData: [String: Any]?  // Organizer data fetched from Firebase
@@ -13,7 +13,6 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var organizerEventsList: UITableView!
-
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var orgtitlelbl: UILabel!
     @IBOutlet weak var eventstitle: UILabel!
@@ -23,8 +22,13 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
         super.viewDidLoad()
         
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
-            profileImage.clipsToBounds = true
-            
+        profileImage.clipsToBounds = true
+
+        // Add a tap gesture recognizer to the profile image to trigger the image picker
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(tapGestureRecognizer)
+        
         // Configure the UI based on whether it's a user or an organizer
         setupUI()
         
@@ -74,7 +78,6 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
              self.title = "Details"
          }
      }
-
 
     // MARK: - Fetch Events from Firebase (for Organizer)
     private func fetchEvents() {
@@ -147,5 +150,32 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
 
             return cell
         }
+    }
+
+    // MARK: - Image Picker Functionality
+    @objc func profileImageTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary // Or .camera if you want to allow taking a new photo
+
+        // Present the image picker
+        present(imagePickerController, animated: true, completion: nil)
+    }
+
+    // UIImagePickerControllerDelegate methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            // Set the selected image to the profileImage
+            profileImage.image = selectedImage
+        }
+
+        // Dismiss the image picker
+        dismiss(animated: true, completion: nil)
+    }
+
+    // This method is called when the user cancels the image picker
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Simply dismiss the picker if the user cancels
+        dismiss(animated: true, completion: nil)
     }
 }
