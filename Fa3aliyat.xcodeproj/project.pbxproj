@@ -43,6 +43,9 @@
 		E020EA052D1490AE00874177 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E020EA002D1490AE00874177 /* Login.storyboard */; };
 		E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020EA012D1490AE00874177 /* SignupViewController.swift */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
+		E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */; };
+		E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */; };
+		E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392FB2D1C45FC00731D08 /* UserStruct.swift */; };
 		E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */; };
 		E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */; };
 		E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7A2D120F5D0073A3FC /* UserProfileViewController.swift */; };
@@ -115,6 +118,9 @@
 		E020EA002D1490AE00874177 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E020EA012D1490AE00874177 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
+		E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		E0D392FB2D1C45FC00731D08 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
 		E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
 		E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E58ABA7A2D120F5D0073A3FC /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -233,9 +239,12 @@
 			children = (
 				E020EA002D1490AE00874177 /* Login.storyboard */,
 				E020E9FF2D1490AE00874177 /* LoginViewController.swift */,
+				E020EA012D1490AE00874177 /* SignupViewController.swift */,
 				E020E9FD2D1490AE00874177 /* Profile.storyboard */,
 				E020E9FE2D1490AE00874177 /* ProfileViewController.swift */,
-				E020EA012D1490AE00874177 /* SignupViewController.swift */,
+				E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */,
+				E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */,
+				E0D392FB2D1C45FC00731D08 /* UserStruct.swift */,
 			);
 			path = Fida;
 			sourceTree = "<group>";
@@ -519,12 +528,15 @@
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,
+				E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */,
 				66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */,
 				E58ABA892D120F5D0073A3FC /* organizerprofileTableViewCell.swift in Sources */,
 				E6871A602D140F1200FBFE1E /* CategoriesTableViewCell.swift in Sources */,
+				E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */,
 				E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */,
 				E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */,
 				E67AE4322D1210D900FE6288 /* CategoriesViewController.swift in Sources */,
+				E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */,
 				66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */,
