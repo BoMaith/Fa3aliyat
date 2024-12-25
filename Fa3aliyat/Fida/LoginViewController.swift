@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         
         if email.contains("@fa3aliyat.admin.bh") {
             self.performSegue(withIdentifier: "goToAdminHome", sender: self)
-        } else if email.contains("@fa3aliyat.admin.bh") {
+        } else if email.contains("@fa3aliyat.organizer.bh") {
             self.performSegue(withIdentifier: "goToOrgHome", sender: self)
         } else {
             self.performSegue(withIdentifier: "goToUserHome", sender: self)
