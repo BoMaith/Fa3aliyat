@@ -32,7 +32,6 @@
 		D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03089782CFF44330025BF69 /* Organizer.storyboard */; };
 		D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D034BCAD2CFC69D500B09578 /* Main.storyboard */; };
 		D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03EECFB2D116438001CC5BB /* Add Event.storyboard */; };
-		D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */; };
 		D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08650172CF5F22400C9981D /* AppDelegate.swift */; };
 		D086501C2CF5F22400C9981D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086501B2CF5F22400C9981D /* ViewController.swift */; };
 		D08650242CF5F22500C9981D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08650222CF5F22500C9981D /* LaunchScreen.storyboard */; };
@@ -104,7 +103,6 @@
 		D03089782CFF44330025BF69 /* Organizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Organizer.storyboard; sourceTree = "<group>"; };
 		D034BCAE2CFC69D500B09578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D03EECFB2D116438001CC5BB /* Add Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Add Event.storyboard"; sourceTree = "<group>"; };
-		D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddEvent-TableViewCell.swift"; sourceTree = "<group>"; };
 		D08650142CF5F22400C9981D /* Fa3aliyat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fa3aliyat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08650172CF5F22400C9981D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08650192CF5F22400C9981D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
-				D03EECFC2D116438001CC5BB /* AddEvent-TableViewCell.swift */,
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
 			);
 			path = Mujtaba;
@@ -548,6 +545,7 @@
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */,
 				66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */,
+
 				E67AE4302D1210D900FE6288 /* SearchViewController.swift in Sources */,
 				E58ABA852D120F5D0073A3FC /* CreateOrganizerViewController.swift in Sources */,
 				E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */,
