@@ -10,12 +10,6 @@
 		66741C102D1B0949001C71DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66741C0F2D1B0949001C71DC /* Assets.xcassets */; };
 		66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66741C112D1B12C8001C71DC /* EventTableViewCell.swift */; };
 		66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */; };
-		66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */; };
-		66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E3A2D1190A200EE230A /* PaymentViewController.swift */; };
-		66E90E412D1190A200EE230A /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3B2D1190A200EE230A /* EventPage.storyboard */; };
-		66E90E422D1190A200EE230A /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E90E3C2D1190A200EE230A /* EventViewController.swift */; };
-		66E90E432D1190A200EE230A /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3D2D1190A200EE230A /* History.storyboard */; };
-		66E90E442D1190A200EE230A /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E90E3E2D1190A200EE230A /* Favorite.storyboard */; };
 		837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		837048192D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
 		8370481A2D08719D00F28AF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837048172D08719C00F28AF8 /* GoogleService-Info.plist */; };
@@ -68,6 +62,14 @@
 		E67AE4362D1210D900FE6288 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE42A2D1210D900FE6288 /* HomeViewController.swift */; };
 		E6871A602D140F1200FBFE1E /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */; };
 		E6871A622D142B5800FBFE1E /* FiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6871A612D142B5800FBFE1E /* FiltersTableViewController.swift */; };
+		E6F91FC42D1C5BBC00D9C63F /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FB82D1C5BBC00D9C63F /* CardViewController.swift */; };
+		E6F91FC52D1C5BBC00D9C63F /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F91FB92D1C5BBC00D9C63F /* EventPage.storyboard */; };
+		E6F91FC62D1C5BBC00D9C63F /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBA2D1C5BBC00D9C63F /* EventViewController.swift */; };
+		E6F91FC72D1C5BBC00D9C63F /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */; };
+		E6F91FC92D1C5BBC00D9C63F /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F91FBD2D1C5BBC00D9C63F /* History.storyboard */; };
+		E6F91FCA2D1C5BBC00D9C63F /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBE2D1C5BBC00D9C63F /* HistoryTableViewCell.swift */; };
+		E6F91FCB2D1C5BBC00D9C63F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */; };
+		E6F91FCE2D1C5BBC00D9C63F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,12 +93,6 @@
 		66741C0F2D1B0949001C71DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66741C112D1B12C8001C71DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
-		66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
-		66E90E3A2D1190A200EE230A /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		66E90E3B2D1190A200EE230A /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
-		66E90E3C2D1190A200EE230A /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
-		66E90E3D2D1190A200EE230A /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
-		66E90E3E2D1190A200EE230A /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		837048172D08719C00F28AF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D03089732CFF43FF0025BF69 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		D03089752CFF440F0025BF69 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -144,6 +140,14 @@
 		E67AE42A2D1210D900FE6288 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		E6871A612D142B5800FBFE1E /* FiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersTableViewController.swift; sourceTree = "<group>"; };
+		E6F91FB82D1C5BBC00D9C63F /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		E6F91FB92D1C5BBC00D9C63F /* EventPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
+		E6F91FBA2D1C5BBC00D9C63F /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		E6F91FBD2D1C5BBC00D9C63F /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		E6F91FBE2D1C5BBC00D9C63F /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,7 @@
 		D03089662CFF39A70025BF69 /* Elyas */ = {
 			isa = PBXGroup;
 			children = (
+				E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */,
 				E67AE4272D1210D900FE6288 /* Home.storyboard */,
 				E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */,
 				E67AE42A2D1210D900FE6288 /* HomeViewController.swift */,
@@ -222,19 +227,6 @@
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
 			);
 			path = Mujtaba;
-			sourceTree = "<group>";
-		};
-		D030896A2CFF39F40025BF69 /* Yousif */ = {
-			isa = PBXGroup;
-			children = (
-				66E90E3B2D1190A200EE230A /* EventPage.storyboard */,
-				66E90E3C2D1190A200EE230A /* EventViewController.swift */,
-				66E90E3E2D1190A200EE230A /* Favorite.storyboard */,
-				66E90E3D2D1190A200EE230A /* History.storyboard */,
-				66E90E392D1190A200EE230A /* PaymentTableViewCell.swift */,
-				66E90E3A2D1190A200EE230A /* PaymentViewController.swift */,
-			);
-			path = Yousif;
 			sourceTree = "<group>";
 		};
 		D030896B2CFF3A060025BF69 /* Fida */ = {
@@ -328,8 +320,8 @@
 				837048172D08719C00F28AF8 /* GoogleService-Info.plist */,
 				D03089722CFF43CB0025BF69 /* Users */,
 				D030896C2CFF3A250025BF69 /* Main */,
+				E6F91FC32D1C5BBC00D9C63F /* Yousif */,
 				D030896B2CFF3A060025BF69 /* Fida */,
-				D030896A2CFF39F40025BF69 /* Yousif */,
 				D03089692CFF39E40025BF69 /* Mujtaba */,
 				D03089672CFF39BB0025BF69 /* Ridha */,
 				D03089662CFF39A70025BF69 /* Elyas */,
@@ -359,6 +351,21 @@
 			);
 			path = Fa3aliyatUITests;
 			sourceTree = "<group>";
+		};
+		E6F91FC32D1C5BBC00D9C63F /* Yousif */ = {
+			isa = PBXGroup;
+			children = (
+				E6F91FB82D1C5BBC00D9C63F /* CardViewController.swift */,
+				E6F91FB92D1C5BBC00D9C63F /* EventPage.storyboard */,
+				E6F91FBA2D1C5BBC00D9C63F /* EventViewController.swift */,
+				E6F91FBD2D1C5BBC00D9C63F /* History.storyboard */,
+				E6F91FBE2D1C5BBC00D9C63F /* HistoryTableViewCell.swift */,
+				E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */,
+				E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */,
+			);
+			name = Yousif;
+			path = Fa3aliyat/Yousif;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -484,17 +491,17 @@
 				D034BCAF2CFC69D500B09578 /* Main.storyboard in Resources */,
 				E67AE4332D1210D900FE6288 /* Home.storyboard in Resources */,
 				837048182D08719D00F28AF8 /* GoogleService-Info.plist in Resources */,
-				66E90E412D1190A200EE230A /* EventPage.storyboard in Resources */,
 				E58ABA842D120F5D0073A3FC /* Users.storyboard in Resources */,
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				E020EA052D1490AE00874177 /* Login.storyboard in Resources */,
+				E6F91FC92D1C5BBC00D9C63F /* History.storyboard in Resources */,
 				E58ABA862D120F5D0073A3FC /* AdminEventDetails.storyboard in Resources */,
-				66E90E432D1190A200EE230A /* History.storyboard in Resources */,
+				E6F91FC52D1C5BBC00D9C63F /* EventPage.storyboard in Resources */,
 				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
 				E67AE42D2D1210D900FE6288 /* Interests.storyboard in Resources */,
 				E020EA022D1490AE00874177 /* Profile.storyboard in Resources */,
-				66E90E442D1190A200EE230A /* Favorite.storyboard in Resources */,
 				E67AE4312D1210D900FE6288 /* Search.storyboard in Resources */,
+				E6F91FC72D1C5BBC00D9C63F /* Favorite.storyboard in Resources */,
 				D03089742CFF43FF0025BF69 /* User.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,20 +530,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */,
+				E6F91FCE2D1C5BBC00D9C63F /* PayViewController.swift in Sources */,
 				66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */,
 				E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */,
 				E67AE4362D1210D900FE6288 /* HomeViewController.swift in Sources */,
 				E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */,
+				E6F91FC62D1C5BBC00D9C63F /* EventViewController.swift in Sources */,
 				E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */,
-				66E90E422D1190A200EE230A /* EventViewController.swift in Sources */,
+				E6F91FCB2D1C5BBC00D9C63F /* HistoryViewController.swift in Sources */,
 				E67AE42F2D1210D900FE6288 /* InterestsViewController.swift in Sources */,
+				E6F91FCA2D1C5BBC00D9C63F /* HistoryTableViewCell.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,
 				E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */,
-				66E90E402D1190A200EE230A /* PaymentViewController.swift in Sources */,
 				E58ABA892D120F5D0073A3FC /* organizerprofileTableViewCell.swift in Sources */,
 				E6871A602D140F1200FBFE1E /* CategoriesTableViewCell.swift in Sources */,
+				E6F91FC42D1C5BBC00D9C63F /* CardViewController.swift in Sources */,
 				E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */,
 				E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */,
 				E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */,
@@ -544,8 +554,6 @@
 				E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */,
-				66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */,
-
 				E67AE4302D1210D900FE6288 /* SearchViewController.swift in Sources */,
 				E58ABA852D120F5D0073A3FC /* CreateOrganizerViewController.swift in Sources */,
 				E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */,
@@ -554,7 +562,6 @@
 				E020EA032D1490AE00874177 /* ProfileViewController.swift in Sources */,
 				E6871A622D142B5800FBFE1E /* FiltersTableViewController.swift in Sources */,
 				E020EA042D1490AE00874177 /* LoginViewController.swift in Sources */,
-				D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

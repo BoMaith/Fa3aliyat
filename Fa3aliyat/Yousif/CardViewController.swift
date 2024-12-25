@@ -1,0 +1,149 @@
+import UIKit
+import FirebaseDatabase
+
+class CardViewController: UIViewController {
+
+    @IBOutlet weak var CNameF: UITextField!
+    @IBOutlet weak var CNumF: UITextField!
+    @IBOutlet weak var CDateF: UIDatePicker!
+    @IBOutlet weak var CVVF: UITextField!
+    @IBOutlet weak var PayBtn: UIButton!
+    
+    var eventID: String?
+    var eventName: String?
+    let userID: String = "ivb3nvgo3jYi3WJdA83KKjmWeJf2" // Replace with the actual user's ID
+    let userName: String = "John Doe" // Replace with the actual user's name
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Card Details"
+    }
+
+    @IBAction func payButtonTapped(_ sender: UIButton) {
+        // Validate Card Name
+        guard let cardName = CNameF.text, isValidCardName(cardName) else {
+            showAlert(message: "Please enter a valid card name.")
+            return
+        }
+
+        // Validate Card Number (Visa, MasterCard, etc. - 13 to 19 digits)
+        guard let cardNumber = CNumF.text, isValidCardNumber(cardNumber) else {
+            showAlert(message: "Please enter a valid card number.")
+            return
+        }
+
+        // Validate Expiry Date (Must be a future date)
+        let currentDate = Date()
+        if CDateF.date < currentDate {
+            showAlert(message: "Please select a valid expiry date.")
+            return
+        }
+
+        // Validate CVV (3 digits for most cards)
+        guard let cvv = CVVF.text, isValidCVV(cvv) else {
+            showAlert(message: "Please enter a valid CVV.")
+            return
+        }
+
+        // All validations passed, proceed with payment
+        proceedWithPayment()
+    }
+
+    // Helper Functions
+    func isValidCardName(_ name: String) -> Bool {
+        let cardNameRegex = "^[A-Za-z ]+$"  // Only letters and spaces
+        let predicate = NSPredicate(format: "SELF MATCHES %@", cardNameRegex)
+        return predicate.evaluate(with: name)
+    }
+    
+    func isValidCardNumber(_ number: String) -> Bool {
+        let cleanedNumber = number.replacingOccurrences(of: " ", with: "")
+        let cardNumberRegex = "^[0-9]{13,19}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", cardNumberRegex)
+        return predicate.evaluate(with: cleanedNumber)
+    }
+
+    func isValidCVV(_ cvv: String) -> Bool {
+        let cvvRegex = "^[0-9]{3,4}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", cvvRegex)
+        return predicate.evaluate(with: cvv)
+    }
+
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func proceedWithPayment() {
+        // Create a confirmation alert
+        let alert = UIAlertController(title: "Confirm Payment",
+                                      message: "Are you sure you want to proceed with the payment?",
+                                      preferredStyle: .alert)
+        
+        // Add a "Cancel" action to dismiss the alert without proceeding
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // Add a "Proceed" action to confirm the payment
+        alert.addAction(UIAlertAction(title: "Proceed", style: .default, handler: { _ in
+            // Implement payment logic here (e.g., process payment using a payment gateway)
+            print("Payment successful!")
+            
+            // Now, update Firebase
+            self.updateUserEventInFirebase()
+        }))
+        
+        // Present the confirmation alert
+        present(alert, animated: true, completion: nil)
+    }
+
+    func updateUserEventInFirebase() {
+        guard let eventID = eventID, let eventName = eventName else {
+            print("Error: Missing eventID or eventName.")
+            return
+        }
+
+        let ref = Database.database().reference()
+        let userEventsRef = ref.child("users").child(userID).child("JoinedEvents")
+        let newEvent = ["id": eventID, "name": eventName, "timestamp": Date().timeIntervalSince1970] as [String: Any]
+
+        userEventsRef.observeSingleEvent(of: .value) { snapshot in
+            var eventsList = snapshot.value as? [[String: Any]] ?? []
+            eventsList.append(newEvent)
+            userEventsRef.setValue(eventsList) { error, _ in
+                if let error = error {
+                    print("Error updating user events: \(error.localizedDescription)")
+                } else {
+                    print("User events updated successfully!")
+                    self.updateEventParticipantsInFirebase()
+                }
+            }
+        }
+    }
+
+    func updateEventParticipantsInFirebase() {
+        guard let eventID = eventID else {
+            print("Error: Missing eventID.")
+            return
+        }
+
+        let eventRef = Database.database().reference().child("events").child(eventID)
+        eventRef.observeSingleEvent(of: .value) { snapshot in
+            if var eventData = snapshot.value as? [String: Any] {
+                var participants = eventData["participants"] as? [[String: Any]] ?? []
+                participants.append(["id": self.userID, "name": self.userName])
+                eventData["participants"] = participants
+                eventRef.setValue(eventData) { error, _ in
+                    if let error = error {
+                        print("Error updating event participants: \(error.localizedDescription)")
+                    } else {
+                        print("Event participants updated successfully!")
+                    }
+                }
+            } else {
+                print("Error: Event data not found.")
+            }
+        }
+    
+    }
+}
