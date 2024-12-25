@@ -1,29 +1,21 @@
-//
-//  UserProfileViewController.swift
-//  working
-//
-//  Created by Ridha on 12/12/2024.
-//
-
 import UIKit
 
 class UserProfileViewController: UIViewController {
 
+    // Outlets for user profile information
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+
+    // This property will hold the user data passed from the previous screen
+    var userData: [String: Any]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Display user data if available
+        if let user = userData {
+            nameLabel.text = user["FullName"] as? String ?? "Unknown"
+            emailLabel.text = user["email"] as? String ?? "Unknown"
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

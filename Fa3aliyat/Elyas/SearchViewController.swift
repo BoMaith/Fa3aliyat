@@ -1,8 +1,9 @@
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var events: [(String, String, String)] = [
         ("Car Show", "Nov 11 - Nov 13", "Cars"),
@@ -15,18 +16,24 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
         ("Tennis Tournament", "Nov 14 - Nov 19", "Cars")
     ]
-
-    var favoriteStates = [Bool](repeating: false, count: 6)
+    
+    var favoriteStates = [Bool](repeating: false, count: 9)
+    var filteredEvents: [(String, String, String)] = []
+    var filteredFavoriteStates: [Bool] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        favoriteStates = [Bool](repeating: false, count: events.count)
-
+        filteredEvents = events
+        filteredFavoriteStates = favoriteStates
+        
         // Set up table view
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 80 // Adjust based on your design
+        
+        // Set the search bar delegate
+        searchBar.delegate = self
     }
 
     // MARK: - TableView DataSource Methods
@@ -38,7 +45,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         if section == 0 {
             return 1 // Only 1 row for "Filters"
         } else {
-            return events.count // All events for the second section
+            return filteredEvents.count // All filtered events for the second section
         }
     }
 
@@ -57,17 +64,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             let filter = ("Filters_img", "Filters")
             cell.setupCellFilter(photoName: filter.0, name: filter.1)
             return cell
-            
         } else {
             // "Events" Rows
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! SearchTableViewCell
 
             // Event details
-            let (eventName, eventDate, eventIcon) = events[indexPath.row]
-            cell.setupCell(photoName: eventIcon, name: eventName, date: eventDate, isFavorite: favoriteStates[indexPath.row])
+            let (eventName, eventDate, eventIcon) = filteredEvents[indexPath.row]
+            cell.setupCell(photoName: eventIcon, name: eventName, date: eventDate, isFavorite: filteredFavoriteStates[indexPath.row])
 
             // Configure the favorite button
-            cell.starBtn.isSelected = favoriteStates[indexPath.row]
+            cell.starBtn.isSelected = filteredFavoriteStates[indexPath.row]
             cell.starBtn.tag = indexPath.row
             cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
 
@@ -80,14 +86,53 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
 
         // Handle event selection (navigate to details, for example)
-        // print("Selected event: \(events[indexPath.row].0)")
+        // print("Selected event: \(filteredEvents[indexPath.row].0)")
+    }
+
+    // MARK: - Search Bar Delegate Methods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterEvents(for: searchText) // Call the filter function every time the search text changes
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() // Dismiss keyboard when search button is clicked
+    }
+
+    // MARK: - Filter Events based on Search Text
+    private func filterEvents(for searchText: String) {
+        if searchText.isEmpty {
+            // If no search text, show all events
+            filteredEvents = events
+            filteredFavoriteStates = favoriteStates
+            
+            // Reorder the events so that the favorites are on top
+            reorderRows()
+        } else {
+            // Filter events based on the event name
+            filteredEvents = events.filter { $0.0.lowercased().contains(searchText.lowercased()) }
+            
+            // Map the favorite states to the filtered events using the event name as a key
+            filteredFavoriteStates = filteredEvents.map { event in
+                if let index = events.firstIndex(where: { $0.0 == event.0 }) {
+                    return favoriteStates[index] // Ensure the original favorite state is preserved
+                }
+                return false // Default to false if event not found
+            }
+        }
+        tableView.reloadData() // Reload the table view with filtered events
     }
 
     // MARK: - Favorite Button Tapped
     @objc func favoriteButtonTapped(_ sender: UIButton) {
         let row = sender.tag
-        favoriteStates[row].toggle() // Update favorite state
-        sender.isSelected = favoriteStates[row] // Update button state
+        filteredFavoriteStates[row].toggle() // Update favorite state for filtered events
+        sender.isSelected = filteredFavoriteStates[row] // Update button state
+
+        // Save the new favorite state back to the original `favoriteStates` array
+        let originalIndex = events.firstIndex(where: { $0.0 == filteredEvents[row].0 })
+        if let index = originalIndex {
+            favoriteStates[index] = filteredFavoriteStates[row] // Update the original favorite state
+        }
 
         // Reorder rows: move starred events to the top
         reorderRows()
@@ -95,9 +140,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
     private func reorderRows() {
         // Sort events based on favoriteStates
-        let combined = zip(events, favoriteStates).sorted { $0.1 && !$1.1 }
-        events = combined.map { $0.0 }
-        favoriteStates = combined.map { $0.1 }
+        let combined = zip(filteredEvents, filteredFavoriteStates).sorted { $0.1 && !$1.1 }
+        filteredEvents = combined.map { $0.0 }
+        filteredFavoriteStates = combined.map { $0.1 }
 
         // Reload the table view to reflect the new order
         tableView.reloadData()

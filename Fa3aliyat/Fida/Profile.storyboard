@@ -1,32 +1,326 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login-->
+        <scene sceneID="8zD-Fa-Bec">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LoginViewController" storyboardName="Login" id="8C8-sd-cOq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="e2D-eT-nR0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="77j-DG-I07" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-372" y="427"/>
+        </scene>
+        <!--Profile View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="ProfileViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4fh-0i-sQ7">
+                                <rect key="frame" x="0.0" y="270" width="393" height="548"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="548" id="imC-0K-VVr"/>
+                                </constraints>
+                                <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="ZmO-W1-Re4" detailTextLabel="2H4-EG-bfu" style="IBUITableViewCellStyleSubtitle" id="Wcj-3W-cv7">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="57.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wcj-3W-cv7" id="lGd-gY-dcX">
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="57.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmO-W1-Re4">
+                                                    <rect key="frame" x="19.999999999999996" y="10.666666666666666" width="34.666666666666664" height="21.666666666666668"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2H4-EG-bfu">
+                                                    <rect key="frame" x="19.999999999999996" y="32.666666666666671" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="CustomBackground"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Du-6A-6hw">
+                                <rect key="frame" x="0.0" y="59" width="393" height="207"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vOl-x1-E2S">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="102"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzw-lu-4VZ">
+                                        <rect key="frame" x="157.33333333333334" y="112" width="78.333333333333343" height="64.666666666666686"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-V1-9Gf">
+                                        <rect key="frame" x="176.33333333333334" y="186.66666666666666" width="40.666666666666657" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1Du-6A-6hw" secondAttribute="trailing" id="3Kh-Jd-9Gn"/>
+                            <constraint firstItem="4fh-0i-sQ7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="PAL-NX-aOL"/>
+                            <constraint firstItem="4fh-0i-sQ7" firstAttribute="top" secondItem="1Du-6A-6hw" secondAttribute="bottom" constant="4" id="Tjf-Vu-G4X"/>
+                            <constraint firstItem="1Du-6A-6hw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fyJ-l4-Y0d"/>
+                            <constraint firstItem="4fh-0i-sQ7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kOS-lq-eFM"/>
+                            <constraint firstItem="1Du-6A-6hw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lbL-yA-Bdh"/>
+                            <constraint firstItem="4fh-0i-sQ7" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="n3Y-jV-5A0"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="ghg-V1-9Gf" id="Mti-IN-x9O"/>
+                        <outlet property="tableview" destination="4fh-0i-sQ7" id="Sv5-VM-Him"/>
+                        <outlet property="usernameLabel" destination="Uzw-lu-4VZ" id="pR2-bU-Fse"/>
+                        <segue destination="2wQ-u7-UTa" kind="show" identifier="showChangeEmail" id="J7c-Xz-BlF"/>
+                        <segue destination="Oww-cr-FsP" kind="show" identifier="showChangeInterests" id="J1j-vO-eb1"/>
+                        <segue destination="ZBX-jU-bHl" kind="show" identifier="showTickets" id="JJ8-Q5-mjK"/>
+                        <segue destination="Ea7-oN-u4U" kind="show" identifier="showChangePassword" id="izO-40-g6E"/>
+                        <segue destination="8C8-sd-cOq" kind="show" identifier="goToLogin" id="l3L-ea-Yg7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="-2"/>
+            <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
+        </scene>
+        <!--Change Email-->
+        <scene sceneID="P0u-Zw-B3c">
+            <objects>
+                <viewController id="2wQ-u7-UTa" customClass="ChangeEmailViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c2n-SD-RBw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fJW-ZF-TPZ">
+                                <rect key="frame" x="40" y="360" width="313" height="122"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9HB-Xu-K2F">
+                                        <rect key="frame" x="0.0" y="0.0" width="313" height="34"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm new Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9AH-DS-5E8">
+                                        <rect key="frame" x="0.0" y="44" width="313" height="34"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vVZ-gA-mqU">
+                                        <rect key="frame" x="0.0" y="88" width="313" height="34"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="84w-Pq-2MP">
+                                <rect key="frame" x="40" y="90" width="250" height="77"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a new Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gea-qp-rjX">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="38.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Your new email should be different from your currently used email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qeo-6F-NWW">
+                                        <rect key="frame" x="0.0" y="48.333333333333343" width="250" height="28.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kn-Qa-Ttl">
+                                <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="2wQ-u7-UTa" eventType="touchUpInside" id="AC3-5N-VMm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KBl-ht-iEO"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
+                        <constraints>
+                            <constraint firstItem="9kn-Qa-Ttl" firstAttribute="leading" secondItem="KBl-ht-iEO" secondAttribute="leading" constant="39" id="616-kM-N5b"/>
+                            <constraint firstItem="fJW-ZF-TPZ" firstAttribute="centerX" secondItem="c2n-SD-RBw" secondAttribute="centerX" id="8NG-Mk-mPM"/>
+                            <constraint firstItem="84w-Pq-2MP" firstAttribute="top" secondItem="KBl-ht-iEO" secondAttribute="top" constant="90" id="Kyd-pw-kaQ"/>
+                            <constraint firstItem="KBl-ht-iEO" firstAttribute="bottom" secondItem="9kn-Qa-Ttl" secondAttribute="bottom" constant="119.67" id="Oac-rn-fD2"/>
+                            <constraint firstItem="KBl-ht-iEO" firstAttribute="trailing" secondItem="fJW-ZF-TPZ" secondAttribute="trailing" constant="40" id="QZQ-rJ-pLx"/>
+                            <constraint firstAttribute="trailing" secondItem="84w-Pq-2MP" secondAttribute="trailing" constant="103" id="RIK-C6-glG"/>
+                            <constraint firstItem="KBl-ht-iEO" firstAttribute="trailing" secondItem="9kn-Qa-Ttl" secondAttribute="trailing" constant="39" id="UOh-BU-i8h"/>
+                            <constraint firstItem="fJW-ZF-TPZ" firstAttribute="centerY" secondItem="c2n-SD-RBw" secondAttribute="centerY" id="UR0-Jx-Pq6"/>
+                            <constraint firstItem="fJW-ZF-TPZ" firstAttribute="leading" secondItem="KBl-ht-iEO" secondAttribute="leading" constant="40" id="juw-NN-mgq"/>
+                            <constraint firstItem="84w-Pq-2MP" firstAttribute="leading" secondItem="KBl-ht-iEO" secondAttribute="leading" constant="40" id="u4H-tL-gJS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change Email" largeTitleDisplayMode="never" id="oWd-rI-y2L"/>
+                    <connections>
+                        <outlet property="confirmNewEmailTextField" destination="9AH-DS-5E8" id="gVQ-dN-Xhh"/>
+                        <outlet property="currentPassTextField" destination="vVZ-gA-mqU" id="QkY-ae-hXk"/>
+                        <outlet property="newEmailTextField" destination="9HB-Xu-K2F" id="E8A-FX-n62"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xbd-C3-pYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218" y="-932"/>
+        </scene>
+        <!--Tickets-->
+        <scene sceneID="Q3W-6W-5Pa">
+            <objects>
+                <viewController id="ZBX-jU-bHl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="14C-Rw-O9u">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qta-C8-eEk"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tickets" largeTitleDisplayMode="never" id="oty-SL-9Bg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p93-pB-nSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="810"/>
+        </scene>
+        <!--Change Interests-->
+        <scene sceneID="tEg-ql-VSO">
+            <objects>
+                <viewController id="Oww-cr-FsP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kXZ-bD-JsT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lU7-ab-akI"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change Interests" largeTitleDisplayMode="never" id="KZI-Yj-s8O"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OIe-jQ-KWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218" y="478"/>
+        </scene>
+        <!--Change Email-->
+        <scene sceneID="qD8-TM-2Ab">
+            <objects>
+                <viewController id="Ea7-oN-u4U" customClass="ChangePasswordViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ami-7y-MjS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zW9-5h-SMt">
+                                <rect key="frame" x="40" y="360" width="313" height="122"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8d-7J-TbH">
+                                        <rect key="frame" x="0.0" y="0.0" width="313" height="34"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nLY-vL-fah">
+                                        <rect key="frame" x="0.0" y="44" width="313" height="34"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm new Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-30-emC">
+                                        <rect key="frame" x="0.0" y="88" width="313" height="34"/>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LDO-Zu-rHY">
+                                <rect key="frame" x="40" y="90" width="253" height="115.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lB-c8-QN4">
+                                        <rect key="frame" x="0.0" y="0.0" width="253" height="76.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                        <color key="textColor" name="CustomTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Your new password should be different from previous used passwords" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-oL-Ryf">
+                                        <rect key="frame" x="0.0" y="86.666666666666657" width="253" height="28.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63Q-bE-1Fd">
+                                <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hjc-Mo-cZk"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
+                        <constraints>
+                            <constraint firstItem="zW9-5h-SMt" firstAttribute="centerY" secondItem="ami-7y-MjS" secondAttribute="centerY" id="0bg-kW-iVF"/>
+                            <constraint firstItem="zW9-5h-SMt" firstAttribute="centerX" secondItem="ami-7y-MjS" secondAttribute="centerX" id="56x-p8-n1k"/>
+                            <constraint firstItem="LDO-Zu-rHY" firstAttribute="top" secondItem="Hjc-Mo-cZk" secondAttribute="top" constant="90" id="5T0-OD-4gJ"/>
+                            <constraint firstItem="Hjc-Mo-cZk" firstAttribute="trailing" secondItem="zW9-5h-SMt" secondAttribute="trailing" constant="40" id="BZa-e1-OqC"/>
+                            <constraint firstItem="Hjc-Mo-cZk" firstAttribute="bottom" secondItem="63Q-bE-1Fd" secondAttribute="bottom" constant="119.67" id="Ie2-7N-hYw"/>
+                            <constraint firstItem="zW9-5h-SMt" firstAttribute="leading" secondItem="Hjc-Mo-cZk" secondAttribute="leading" constant="40" id="X4p-wB-Mnm"/>
+                            <constraint firstItem="LDO-Zu-rHY" firstAttribute="leading" secondItem="Hjc-Mo-cZk" secondAttribute="leading" constant="40" id="XJL-Ef-W7N"/>
+                            <constraint firstItem="63Q-bE-1Fd" firstAttribute="leading" secondItem="Hjc-Mo-cZk" secondAttribute="leading" constant="39" id="qc1-8r-N4Z"/>
+                            <constraint firstAttribute="trailing" secondItem="LDO-Zu-rHY" secondAttribute="trailing" constant="100" id="rDL-x1-TTl"/>
+                            <constraint firstItem="Hjc-Mo-cZk" firstAttribute="trailing" secondItem="63Q-bE-1Fd" secondAttribute="trailing" constant="39" id="yCL-fn-39I"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change Email" largeTitleDisplayMode="never" id="ZfO-dW-9Gs"/>
+                    <connections>
+                        <outlet property="confIrmNewPassTextField" destination="GUH-30-emC" id="jDi-fn-KOC"/>
+                        <outlet property="currentPassTextField" destination="zW9-5h-SMt" id="sCJ-Dp-oxe"/>
+                        <outlet property="newPassTextField" destination="nLY-vL-fah" id="U6A-h1-yO5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7V-ZG-Bwm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218" y="-211"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="CustomBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CustomTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
