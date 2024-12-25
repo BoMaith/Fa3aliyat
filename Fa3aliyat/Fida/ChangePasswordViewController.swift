@@ -8,6 +8,11 @@
 import UIKit
 
 class ChangePasswordViewController: UIViewController {
+    
+    //adding all the outlets
+    
+    @IBOutlet weak var currentPasswordTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

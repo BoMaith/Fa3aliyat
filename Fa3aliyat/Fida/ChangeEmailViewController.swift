@@ -36,8 +36,8 @@
 
 //***************************************************TESTING TESTING TESTING***********************************************************
 import UIKit
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseAuth
 
 class ChangeEmailViewController: UIViewController {
     
@@ -48,7 +48,6 @@ class ChangeEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Additional setup after loading the view
     }
     
@@ -75,52 +74,34 @@ class ChangeEmailViewController: UIViewController {
             return false
         }
         
-        // Validate password length
-        guard isValidPassword(currentPass) else {
-            showAlert(title: "Invalid Password", message: "Password must be at least 6 characters long.")
-            return false
-        }
-        
         return true
     }
     
     // Function to change email
-    @IBAction func changeEmailButtonTapped(_ sender: UIButton) {
+    @IBAction func submitButtonTapped(_ sender: UIButton) {
         guard validateInput() else { return }
         
-        guard let currentPass = currentPassTextField.text,
-              let newEmail = newEmailTextField.text else { return }
+        guard let newEmail = newEmailTextField.text else { return }
         
-        // Reauthenticate user
-        let user = Auth.auth().currentUser
-        let credential = EmailAuthProvider.credential(withEmail: user?.email ?? "", password: currentPass)
-        
-        user?.reauthenticate(with: credential) { [weak self] authResult, error in
-            guard let self = self else { return }
-            
-            if let error = error {
-                self.showAlert(title: "Error", message: "Re-authentication failed: \(error.localizedDescription)")
-                return
-            }
-            
-            // Update email in Firebase Authentication
-            user?.updateEmail(to: newEmail) { error in
-                if let error = error {
-                    self.showAlert(title: "Error", message: "Email update failed: \(error.localizedDescription)")
-                    return
-                }
-                
-                // Update email in Firebase Realtime Database
+        // Show confirmation alert
+        let alert = UIAlertController(title: "Confirm Email Change", message: "Are you sure you want to change your email?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+            // Update email in Firebase Realtime Database
+            if let userID = Auth.auth().currentUser?.uid {
                 let ref = Database.database().reference()
-                ref.child("users").child(user?.uid ?? "").updateChildValues(["Email": newEmail]) { error, _ in
+                ref.child("users").child(userID).updateChildValues(["Email": newEmail]) { error, _ in
                     if let error = error {
                         self.showAlert(title: "Error", message: "Failed to update email in database: \(error.localizedDescription)")
                     } else {
                         self.showAlert(title: "Success", message: "Email updated successfully!")
                     }
                 }
+            } else {
+                self.showAlert(title: "Error", message: "No user is logged in.")
             }
-        }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Helper Functions for Validation
@@ -128,10 +109,6 @@ class ChangeEmailViewController: UIViewController {
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
-    }
-    
-    private func isValidPassword(_ password: String) -> Bool {
-        return password.count >= 6
     }
     
     // Helper function for alerts
