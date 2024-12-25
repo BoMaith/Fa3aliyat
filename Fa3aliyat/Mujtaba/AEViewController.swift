@@ -25,8 +25,21 @@ class AEViewController:  UIViewController{
         super.viewDidLoad()
     }
     
-    @IBAction func doneBtnTapped(_ sender: UIButton) {
+    @IBAction func doneBtnTapped() {
+        guard validateInputs() else{
+            showValidationError()
+            return
+        }
         saveEvent()
+    }
+     
+    func validateInputs() -> Bool{
+        //check if any field is left empty
+        if titleTextFeild.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || descritionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || locationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || priceTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || ageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true {
+            return false
+        } else {
+            return true
+        }
     }
     
     
@@ -35,19 +48,34 @@ class AEViewController:  UIViewController{
         let ref = Database.database().reference()
         
         // this is to format the date and time values
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-         
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        
+        // formats for single dates
+        let sDateFormatter = DateFormatter()
+        sDateFormatter.dateFormat = "MMM d"
+        
+        //setting ranges for dates for event displays
+        let startDateString = sDateFormatter.string(from: startDatePicker.date)
+        let endDateString = sDateFormatter.string(from: endDatePicker.date)
+        let dateRangeString = "\(startDateString) - \(endDateString)"
+        
+        // formatter for full dates just for storing data from start and end dates
+        let fullDateFormatter = DateFormatter()
+        fullDateFormatter.dateFormat = "dd-MM-yyyy"
+        
         //Collect data from text fields and pickers
         let eventData: [String: Any] = [
             "title": titleTextFeild.text ?? "",
             "description": descritionTextField.text ?? "",
-            "time": formatter.string(from: timePicker.date),
+            "time": timeFormatter.string(from: timePicker.date),
             "Location": locationTextField.text ?? "",
-            "startDate": formatter.string(from: startDatePicker.date),
-            "endDate": formatter.string(from: endDatePicker.date),
+            "startDate": fullDateFormatter.string(from: startDatePicker.date),
+            "endDate": fullDateFormatter.string(from: endDatePicker.date),
+            "date": dateRangeString,
             "price": priceTextField.text ?? "",
-            "Age": ageTextField.text ?? ""
+            "Age": ageTextField.text ?? "",
+            "isFavorite": false
         ]
         // saving the event with an ID
         ref.child("events").childByAutoId().setValue(eventData){ error, _ in
@@ -65,6 +93,11 @@ class AEViewController:  UIViewController{
         let alert = UIAlertController(title:"Success", message: "Event Created.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    func showValidationError() {
+        let alert = UIAlertController (title:"Missing info.", message: "PLease input all the information to create the Event", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
     }
     
     
