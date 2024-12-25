@@ -80,7 +80,9 @@ class AEViewController:  UIViewController{
             "date": dateRangeString,
             "price": priceTextField.text ?? "",
             "Age": ageTextField.text ?? "",
-            "isFavorite": false
+            "isFavorite": false,
+            "participants": []
+            //"ratings":
         ]
         // saving the event with an ID
         ref.child("events").childByAutoId().setValue(eventData){ error, _ in
