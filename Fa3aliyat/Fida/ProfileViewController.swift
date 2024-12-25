@@ -39,12 +39,12 @@ class ProfileViewController: UIViewController {
             // Update labels with user data using struct
             if let userName = value["UserName"] as? String,
                let email = value["Email"] as? String {
-                let user = User(userName: userName, email: email)
-                print("Username: \(user.userName), Email: \(user.email)") // Debugging: Verify fetched data
+                let user = User(userName: userName, userEmail: email)
+                print("Username: \(user.userName), Email: \(user.userEmail)") // Debugging: Verify fetched data
                 
                 DispatchQueue.main.async {
                     self.usernameLabel.text = user.userName
-                    self.emailLabel.text = user.email
+                    self.emailLabel.text = user.userEmail
                 }
             } else {
                 print("Username or Email not found in snapshot")

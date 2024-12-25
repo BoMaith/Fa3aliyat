@@ -164,7 +164,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kn-Qa-Ttl">
-                                <rect key="frame" x="39" y="684" width="315" height="38.333333333333371"/>
+                                <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
                                 <connections>
@@ -189,9 +189,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Change Email" largeTitleDisplayMode="never" id="oWd-rI-y2L"/>
                     <connections>
-                        <outlet property="confirmNewEmailTextField" destination="9AH-DS-5E8" id="tjr-b2-ERp"/>
-                        <outlet property="currentPasswordTextField" destination="vVZ-gA-mqU" id="avR-hK-X0t"/>
-                        <outlet property="newEmailTextField" destination="9HB-Xu-K2F" id="utV-QB-UUG"/>
+                        <outlet property="confirmNewEmailTextField" destination="9AH-DS-5E8" id="gVQ-dN-Xhh"/>
+                        <outlet property="currentPassTextField" destination="vVZ-gA-mqU" id="QkY-ae-hXk"/>
+                        <outlet property="newEmailTextField" destination="9HB-Xu-K2F" id="E8A-FX-n62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbd-C3-pYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -283,7 +283,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63Q-bE-1Fd">
-                                <rect key="frame" x="39" y="684" width="315" height="38.333333333333371"/>
+                                <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
                             </button>
