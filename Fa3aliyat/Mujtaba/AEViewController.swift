@@ -24,22 +24,27 @@ class AEViewController:  UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func doneBtnTapped() {
+    func showValidationError() {
+        let alert = UIAlertController(title:"Failed", message: "Please Fill ALL Fields.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+
+    @IBAction func doneBtnTapped(_ sender: Any) {
         guard validateInputs() else{
             showValidationError()
             return
         }
         saveEvent()
     }
-     
+    
     func validateInputs() -> Bool{
         //check if any field is left empty
         if titleTextFeild.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || descritionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || locationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || priceTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || ageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true {
             return false
-        } else {
-            return true
         }
+        return true
     }
     
     
@@ -93,11 +98,6 @@ class AEViewController:  UIViewController{
         let alert = UIAlertController(title:"Success", message: "Event Created.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    func showValidationError() {
-        let alert = UIAlertController (title:"Missing info.", message: "PLease input all the information to create the Event", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
     }
     
     
