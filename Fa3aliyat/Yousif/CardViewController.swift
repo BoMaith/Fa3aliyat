@@ -1,11 +1,5 @@
-//
-//  CardViewController.swift
-//  Fa3aliyat
-//
-//  Created by BP-36-224-11 on 17/12/2024.
-//
-
 import UIKit
+import FirebaseDatabase
 
 class CardViewController: UIViewController {
 
@@ -14,18 +8,20 @@ class CardViewController: UIViewController {
     @IBOutlet weak var CDateF: UIDatePicker!
     @IBOutlet weak var CVVF: UITextField!
     @IBOutlet weak var PayBtn: UIButton!
+    
+    var eventID: String?
+    var eventName: String?
+    let userID: String = "ivb3nvgo3jYi3WJdA83KKjmWeJf2" // Replace with the actual user's ID
+    let userName: String = "John Doe" // Replace with the actual user's name
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Card Details"
-        // Initially, disable the Pay button
-//                PayBtn.isEnabled = false
-//                PayBtn.alpha = 0.5
-        // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func payButtonTapped(_ sender: UIButton) {
         // Validate Card Name
-        guard let cardName = CNameF.text, isValidCardName(cardName)     else {
+        guard let cardName = CNameF.text, isValidCardName(cardName) else {
             showAlert(message: "Please enter a valid card name.")
             return
         }
@@ -81,38 +77,73 @@ class CardViewController: UIViewController {
 
     func proceedWithPayment() {
         // Create a confirmation alert
-            let alert = UIAlertController(title: "Confirm Payment",
-                                          message: "Are you sure you want to proceed with the payment?",
-                                          preferredStyle: .alert)
+        let alert = UIAlertController(title: "Confirm Payment",
+                                      message: "Are you sure you want to proceed with the payment?",
+                                      preferredStyle: .alert)
+        
+        // Add a "Cancel" action to dismiss the alert without proceeding
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // Add a "Proceed" action to confirm the payment
+        alert.addAction(UIAlertAction(title: "Proceed", style: .default, handler: { _ in
+            // Implement payment logic here (e.g., process payment using a payment gateway)
+            print("Payment successful!")
             
-            // Add a "Cancel" action to dismiss the alert without proceeding
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
-            // Add a "Proceed" action to confirm the payment
-            alert.addAction(UIAlertAction(title: "Proceed", style: .default, handler: { _ in
-                // Implement payment logic here
-                print("Payment successful!")
-
-                // Show success message after payment confirmation
-                let successAlert = UIAlertController(title: "Payment Successful",
-                                                     message: "Your payment has been processed successfully.",
-                                                     preferredStyle: .alert)
-                successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(successAlert, animated: true, completion: nil)
-            }))
-            
-            // Present the confirmation alert
-            present(alert, animated: true, completion: nil)
+            // Now, update Firebase
+            self.updateUserEventInFirebase()
+        }))
+        
+        // Present the confirmation alert
+        present(alert, animated: true, completion: nil)
     }
+
+    func updateUserEventInFirebase() {
+        guard let eventID = eventID, let eventName = eventName else {
+            print("Error: Missing eventID or eventName.")
+            return
+        }
+
+        let ref = Database.database().reference()
+        let userEventsRef = ref.child("users").child(userID).child("JoinedEvents")
+        let newEvent = ["id": eventID, "name": eventName, "timestamp": Date().timeIntervalSince1970] as [String: Any]
+
+        userEventsRef.observeSingleEvent(of: .value) { snapshot in
+            var eventsList = snapshot.value as? [[String: Any]] ?? []
+            eventsList.append(newEvent)
+            userEventsRef.setValue(eventsList) { error, _ in
+                if let error = error {
+                    print("Error updating user events: \(error.localizedDescription)")
+                } else {
+                    print("User events updated successfully!")
+                    self.updateEventParticipantsInFirebase()
+                }
+            }
+        }
+    }
+
+    func updateEventParticipantsInFirebase() {
+        guard let eventID = eventID else {
+            print("Error: Missing eventID.")
+            return
+        }
+
+        let eventRef = Database.database().reference().child("events").child(eventID)
+        eventRef.observeSingleEvent(of: .value) { snapshot in
+            if var eventData = snapshot.value as? [String: Any] {
+                var participants = eventData["participants"] as? [[String: Any]] ?? []
+                participants.append(["id": self.userID, "name": self.userName])
+                eventData["participants"] = participants
+                eventRef.setValue(eventData) { error, _ in
+                    if let error = error {
+                        print("Error updating event participants: \(error.localizedDescription)")
+                    } else {
+                        print("Event participants updated successfully!")
+                    }
+                }
+            } else {
+                print("Error: Event data not found.")
+            }
+        }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }
