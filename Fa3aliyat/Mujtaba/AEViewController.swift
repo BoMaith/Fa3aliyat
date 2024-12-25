@@ -7,61 +7,66 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 
-class AEViewController:  UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var tableView: UITableView!
-    var ref: DatabaseReference!
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            tableView.reloadData()
-
-            // Setting up table view delegate and data source
-            tableView.delegate = self
-            tableView.dataSource = self
-
-            // Registering the custom table view cell class (if not using a prototype cell in storyboard)
-           tableView.register(AETableViewCell.self, forCellReuseIdentifier: "AETableViewCell")
-            // Or, if you're using a nib file, register it like this:
-            //let nib = UINib(nibName: "AETableViewCell", bundle: nil)
-            //tableView.register(nib, forCellReuseIdentifier: "AETableViewCell")
-
-            // Firebase reference setup
-            ref = Database.database().reference()
-        }
-
-        // MARK: - TableView Delegate and DataSource Methods
-
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
-
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 8
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            // Dequeuing the cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AETableViewCell", for: indexPath) as! AETableViewCell
-            return cell
-        }
-
-        // MARK: - Saving Event Data to Firebase
-
-        @IBAction func saveEventData(_ sender: Any) {
-            // Accessing the cell to get the data and save to Firebase
-            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AETableViewCell {
-                let eventData = cell.getEventData()
-
-                // Saving event data to Firebase Realtime Database
-                ref.child("events").childByAutoId().setValue(eventData) { error, ref in
-                    if let error = error {
-                        print("Error saving event data: \(error.localizedDescription)")
-                    } else {
-                        print("Event data saved successfully!")
-                    }
-                }
+class AEViewController:  UIViewController{
+    
+    // Outlets
+    @IBOutlet weak var titleTextFeild: UITextField!
+    @IBOutlet weak var descritionTextField: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var doneBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func doneBtnTapped(_ sender: UIButton) {
+        saveEvent()
+    }
+    
+    
+    func saveEvent(){
+        //refrence for the firbase
+        let ref = Database.database().reference()
+        
+        // this is to format the date and time values
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+         
+        //Collect data from text fields and pickers
+        let eventData: [String: Any] = [
+            "title": titleTextFeild.text ?? "",
+            "description": descritionTextField.text ?? "",
+            "time": formatter.string(from: timePicker.date),
+            "Location": locationTextField.text ?? "",
+            "startDate": formatter.string(from: startDatePicker.date),
+            "endDate": formatter.string(from: endDatePicker.date),
+            "price": priceTextField.text ?? "",
+            "Age": ageTextField.text ?? ""
+        ]
+        // saving the event with an ID
+        ref.child("events").childByAutoId().setValue(eventData){ error, _ in
+            if let error = error {
+                print("Error saving event to Firebase: \(error.localizedDescription)")
+            } else {
+                print("Event Created.")
+                self.showConfirmAlert()
             }
+            
         }
+    }
+    
+    func showConfirmAlert() {
+        let alert = UIAlertController(title:"Success", message: "Event Created.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
+
