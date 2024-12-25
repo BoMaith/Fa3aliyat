@@ -1,18 +1,20 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import clo
 
 protocol CreateOrganizerDelegate: AnyObject {
     func didCreateOrganizer(_ organizerData: [String: Any])
 }
 
-class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
+class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var createButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var emailDomainLabel: UILabel!  // Label for the domain part
     
     weak var delegate: CreateOrganizerDelegate?
@@ -22,7 +24,16 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let config = CLDConfiguration(cloudName: "your-cloud-name", apiKey: "your-api-key", apiSecret: "your-api-secret")
+        cloudinary = CLDCloudinary(configuration: config)
         self.navigationItem.largeTitleDisplayMode = .never
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+        profileImage.clipsToBounds = true
+        
+        // Add a tap gesture recognizer to the profile image to trigger the image picker
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(tapGestureRecognizer)
         
         // Set the delegate for the text fields
         nameTextField.delegate = self
@@ -96,7 +107,7 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
                 let newOrganizerRef = ref.child("organizers").child(uid)
                 
                 let organizerData: [String: Any] = [
-                    "name": name,
+                    "FullName": name,
                     "email": fullEmail,
                     "password": password,  // Storing password directly is not recommended in production
                     "uid": uid,
@@ -147,5 +158,31 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate {
         let passwordFilled = !(passwordTextField.text?.isEmpty ?? true)
         
         createButton.isEnabled = nameFilled && emailPrefixFilled && passwordFilled
+    }
+
+    @objc func profileImageTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary // Or .camera if you want to allow taking a new photo
+
+        // Present the image picker
+        present(imagePickerController, animated: true, completion: nil)
+    }
+
+    // UIImagePickerControllerDelegate methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            // Set the selected image to the profileImage
+            profileImage.image = selectedImage
+        }
+
+        // Dismiss the image picker
+        dismiss(animated: true, completion: nil)
+    }
+
+    // This method is called when the user cancels the image picker
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Simply dismiss the picker if the user cancels
+        dismiss(animated: true, completion: nil)
     }
 }

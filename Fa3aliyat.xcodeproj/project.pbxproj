@@ -461,6 +461,7 @@
 			mainGroup = D086500B2CF5F22400C9981D;
 			packageReferences = (
 				8370481E2D0875C400F28AF8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				66A44CF52D1C97C6000C3DB7 /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
 			);
 			productRefGroup = D08650152CF5F22400C9981D /* Products */;
 			projectDirPath = "";
@@ -545,7 +546,6 @@
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */,
 				66E90E3F2D1190A200EE230A /* PaymentTableViewCell.swift in Sources */,
-
 				E67AE4302D1210D900FE6288 /* SearchViewController.swift in Sources */,
 				E58ABA852D120F5D0073A3FC /* CreateOrganizerViewController.swift in Sources */,
 				E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */,
@@ -554,7 +554,6 @@
 				E020EA032D1490AE00874177 /* ProfileViewController.swift in Sources */,
 				E6871A622D142B5800FBFE1E /* FiltersTableViewController.swift in Sources */,
 				E020EA042D1490AE00874177 /* LoginViewController.swift in Sources */,
-				D03EECFE2D116438001CC5BB /* AddEvent-TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +896,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		66A44CF52D1C97C6000C3DB7 /* XCRemoteSwiftPackageReference "cloudinary_ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudinary/cloudinary_ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		8370481E2D0875C400F28AF8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";

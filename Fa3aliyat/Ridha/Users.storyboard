@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +18,7 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-xd-hNG">
                                 <rect key="frame" x="0.0" y="59" width="393" height="32"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
                                 <segments>
                                     <segment title="Organizer"/>
                                     <segment title="User"/>
@@ -28,7 +29,10 @@
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y0s-7W-bSE">
                                 <rect key="frame" x="0.0" y="90" width="393" height="728"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <color key="separatorColor" name="CustomBackground"/>
+                                <color key="sectionIndexColor" name="CustomTextColor"/>
+                                <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrganizerCellIdentifier" rowHeight="60" id="zUE-a8-tfH" customClass="UserTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="60"/>
@@ -40,16 +44,20 @@
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZU-ub-qBc">
                                                     <rect key="frame" x="20" y="12" width="34" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" name="CustomBackground"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ne-I1-ehJ">
                                                     <rect key="frame" x="62" y="19" width="168" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" name="CustomBackground"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="CustomBackground"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CustomBackground"/>
                                         <connections>
                                             <outlet property="customImageView" destination="BZU-ub-qBc" id="GD0-nG-C1g"/>
                                             <outlet property="nameLabel" destination="2ne-I1-ehJ" id="aUn-lI-uI6"/>
@@ -60,7 +68,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
                         <constraints>
                             <constraint firstItem="PhO-xd-hNG" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Ewh-Qf-rKS"/>
                             <constraint firstItem="y0s-7W-bSE" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="FG0-cJ-xbI"/>
@@ -99,6 +107,8 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Prefix" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PUV-40-c9g">
                                 <rect key="frame" x="99" y="337" width="103" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -106,12 +116,13 @@
                                 <rect key="frame" x="15" y="344" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bahrain Polytechnic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dzr-HL-uMZ">
                                 <rect key="frame" x="99" y="373" width="279" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
@@ -125,6 +136,8 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSU-HW-dRC">
                                 <rect key="frame" x="99" y="409" width="278" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -132,14 +145,15 @@
                                 <rect key="frame" x="15" y="416" width="74" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@fa3aliyat.organizer.bh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-0a-b4q">
                                 <rect key="frame" x="210" y="344" width="161" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image" id="Djm-Se-i0G">
@@ -148,7 +162,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ozk-Cn-off"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Organizer Account" id="nnV-9a-1H8">
                         <barButtonItem key="rightBarButtonItem" title="Create" id="V9Y-9w-liN">
@@ -163,6 +177,7 @@
                         <outlet property="emailTextField" destination="PUV-40-c9g" id="54G-Vu-Uv3"/>
                         <outlet property="nameTextField" destination="Dzr-HL-uMZ" id="OWY-Zm-EWF"/>
                         <outlet property="passwordTextField" destination="hSU-HW-dRC" id="Ygu-Ur-Zfx"/>
+                        <outlet property="profileImage" destination="Djm-Se-i0G" id="oKV-nb-8wd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtQ-qu-PUX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -180,7 +195,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-Jb-5tQ">
                                 <rect key="frame" x="0.0" y="286" width="393" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <color key="sectionIndexColor" name="CustomTextColor"/>
+                                <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="organizerprofileTableViewCell" rowHeight="60" id="dFw-Na-tve" customClass="organizerprofileTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="60"/>
@@ -192,19 +209,23 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcl-3W-7vy">
                                                     <rect key="frame" x="20" y="4" width="114" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" name="CustomBackground"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRX-BW-hPz">
                                                     <rect key="frame" x="32" y="27" width="208" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" name="CustomBackground"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="CustomBackground"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CustomBackground"/>
                                         <connections>
                                             <outlet property="subtitleLabel" destination="xRX-BW-hPz" id="Ut4-SO-Bhj"/>
                                             <outlet property="titleLabel" destination="lcl-3W-7vy" id="8dr-Or-X67"/>
@@ -216,21 +237,25 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0g-Xh-k35">
                                 <rect key="frame" x="46" y="242" width="301" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organizer Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Xf-ZEq">
                                 <rect key="frame" x="78" y="441" width="236" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wgf-sZ-Tt9">
                                 <rect key="frame" x="0.0" y="482" width="393" height="296"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <color key="sectionIndexColor" name="CustomTextColor"/>
+                                <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="60" id="5hW-OG-1zn" customClass="EventTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="60"/>
@@ -241,12 +266,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-tQ-mBJ">
                                                     <rect key="frame" x="75" y="21" width="135" height="21"/>
+                                                    <color key="backgroundColor" name="CustomBackground"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auth_vc_light.png" translatesAutoresizingMaskIntoConstraints="NO" id="jZ3-w0-qpS">
                                                     <rect key="frame" x="33" y="13" width="34" height="34"/>
+                                                    <color key="backgroundColor" name="CustomBackground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="8yY-O9-V8J"/>
                                                         <constraint firstAttribute="width" constant="34" id="UMh-RA-Mg5"/>
@@ -254,6 +281,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" name="CustomBackground"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="jZ3-w0-qpS" secondAttribute="bottom" constant="1" id="CRw-Cf-zMY"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="L8N-tQ-mBJ" secondAttribute="bottom" constant="6" id="Hc0-lu-eWg"/>
@@ -265,6 +293,7 @@
                                                 <constraint firstItem="jZ3-w0-qpS" firstAttribute="leading" secondItem="68g-Wb-Nox" secondAttribute="leadingMargin" constant="13" id="h7K-JC-ZUC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CustomBackground"/>
                                         <connections>
                                             <outlet property="eventImageView" destination="jZ3-w0-qpS" id="KwN-BV-sTf"/>
                                         </connections>
@@ -274,10 +303,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add Image" translatesAutoresizingMaskIntoConstraints="NO" id="3Kg-sC-Lxg">
                                 <rect key="frame" x="136" y="114" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a1C-Vn-7HX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
                     </view>
                     <navigationItem key="navigationItem" id="RNd-mM-yQR">
                         <barButtonItem key="backBarButtonItem" title="Back" id="uba-C3-lLq"/>
@@ -285,21 +315,25 @@
                     <connections>
                         <outlet property="nameLabel" destination="G0g-Xh-k35" id="vAR-Jx-vH4"/>
                         <outlet property="organizerEventsList" destination="wgf-sZ-Tt9" id="2iO-0q-obN"/>
+                        <outlet property="orgtitlelbl" destination="OHA-Xf-ZEq" id="BaV-hN-8Uz"/>
                         <outlet property="profileImage" destination="3Kg-sC-Lxg" id="bCQ-B5-K0J"/>
                         <outlet property="tableView" destination="Gb4-Jb-5tQ" id="bui-0d-ySK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5j-KR-1gl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600.7633587786258" y="-650"/>
+            <point key="canvasLocation" x="1601" y="-644"/>
         </scene>
     </scenes>
     <resources>
         <image name="Add Image" width="500" height="500"/>
         <image name="auth_vc_light.png" width="828" height="1792"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="CustomBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CustomTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
