@@ -16,8 +16,8 @@ class PayViewController: UIViewController {
     var pricePerTicket: Double = 2.5
     var eventID: String?
     var eventName: String? // To hold the fetched event name
-    let userID: String = "ivb3nvgo3jYi3WJdA83KKjmWeJf2" // Replace with the actual user's ID
-    let userName: String = "John Doe" // Replace with the actual user's name
+    var userID: String = "ivb3nvgo3jYi3WJdA83KKjmWeJf2" // Replace with the actual user's ID
+    var userName: String = "John Doe" // Replace with the actual user's name
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +99,16 @@ class PayViewController: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CardPaymentVC",
+           let destinationVC = segue.destination as? CardViewController {
+            destinationVC.eventID = eventID
+            destinationVC.eventName = eventName
+            destinationVC.userID = userID // Ensure `userID` is `var` in `CardViewController`
+            destinationVC.userName = userName // Ensure `userName` is `var` in `CardViewController`
+        }
+    }
+
     func checkIfUserCanJoinEvent() {
         guard let eventID = eventID else {
             print("Error: Missing eventID.")
@@ -117,7 +127,7 @@ class PayViewController: UIViewController {
                         let currentTimestamp = Date().timeIntervalSince1970
                         let timeDifference = currentTimestamp - timestamp
                         
-                        if timeDifference < 0 * 0 * 5 { // Less than 24 hours
+                        if timeDifference < 24 * 60 * 60 { // Less than 24 hours
                             // User joined the event within the last 24 hours
                             let alert = UIAlertController(title: "Error", message: "You can only join this event once every 24 hours.", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -134,20 +144,16 @@ class PayViewController: UIViewController {
     }
 
     func showApprovalMessage() {
-        // Create the approval message
         let alert = UIAlertController(title: "Registration Approval",
                                       message: "Your registration has been approved!",
                                       preferredStyle: .alert)
         
-        // Add OK button to dismiss the popup and update Firebase
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.updateUserEventInFirebase()
-            // Disable the Proceed button after approval
             self.ProceedBtn.isEnabled = false
             self.ProceedBtn.alpha = 0.5
         }))
         
-        // Present the alert
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -157,13 +163,8 @@ class PayViewController: UIViewController {
             return
         }
         
-        // Reference to Firebase
         let ref = Database.database().reference()
-        
-        // Get the current timestamp
         let timestamp = Date().timeIntervalSince1970
-        
-        // Add the new event to the user's event list along with the timestamp
         let userEventsRef = ref.child("users").child(userID).child("JoinedEvents")
         let newEvent = ["id": eventID, "name": eventName, "timestamp": timestamp] as [String : Any]
         
@@ -171,13 +172,11 @@ class PayViewController: UIViewController {
             var eventsList = snapshot.value as? [[String: Any]] ?? []
             eventsList.append(newEvent)
             
-            // Update Firebase with the new list
             userEventsRef.setValue(eventsList) { error, _ in
                 if let error = error {
                     print("Error updating user events: \(error.localizedDescription)")
                 } else {
                     print("User events updated successfully!")
-                    // Now, update the event's participants list
                     self.updateEventParticipantsInFirebase()
                 }
             }
@@ -190,22 +189,15 @@ class PayViewController: UIViewController {
             return
         }
         
-        // Reference to Firebase for the event's participants
         let eventRef = Database.database().reference().child("events").child(eventID)
         
-        // Add user information to the participants list
         eventRef.observeSingleEvent(of: .value) { snapshot in
             if var eventData = snapshot.value as? [String: Any] {
                 var participants = eventData["participants"] as? [[String: Any]] ?? []
-                
-                // Add the user to the participants list
                 let user = ["id": self.userID, "name": self.userName]
                 participants.append(user)
-                
-                // Update the event's participants list
                 eventData["participants"] = participants
                 
-                // Update the event data in Firebase
                 eventRef.setValue(eventData) { error, _ in
                     if let error = error {
                         print("Error updating event participants: \(error.localizedDescription)")

@@ -465,7 +465,7 @@ Why should you join the event?:
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Pay" cornerStyle="capsule"/>
                                 <connections>
-                                    <action selector="payButtonTapped:" destination="vti-jD-92i" eventType="touchUpInside" id="wsB-f7-JF5"/>
+                                    <action selector="payButtonTapped:" destination="vti-jD-92i" eventType="touchUpInside" id="nnF-EE-9bf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -493,11 +493,11 @@ Why should you join the event?:
                     </view>
                     <navigationItem key="navigationItem" id="UED-0F-0ge"/>
                     <connections>
-                        <outlet property="CDateF" destination="kJt-gY-s9b" id="bBO-Xo-HcF"/>
-                        <outlet property="CNameF" destination="6jZ-HR-WyY" id="1le-e3-Hwj"/>
-                        <outlet property="CNumF" destination="Onw-B8-Tsg" id="FN1-Y1-F29"/>
-                        <outlet property="CVVF" destination="5Dj-t2-Pi3" id="8BA-GZ-Ld2"/>
-                        <outlet property="PayBtn" destination="UI1-di-BS4" id="Hjd-Kj-Qu3"/>
+                        <outlet property="CDateF" destination="kJt-gY-s9b" id="KOW-2q-iFu"/>
+                        <outlet property="CNameF" destination="6jZ-HR-WyY" id="NBi-2q-09w"/>
+                        <outlet property="CNumF" destination="Onw-B8-Tsg" id="V1C-Gz-CfV"/>
+                        <outlet property="CVVF" destination="5Dj-t2-Pi3" id="va3-EK-FYf"/>
+                        <outlet property="PayBtn" destination="UI1-di-BS4" id="eaZ-qM-qQr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oc8-Xs-GrQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -506,9 +506,9 @@ Why should you join the event?:
         </scene>
     </scenes>
     <resources>
-        <image name="Card" width="59" height="59"/>
+        <image name="Card" width="58" height="58"/>
         <image name="Cars" width="208" height="208"/>
-        <image name="Cash" width="59" height="59"/>
+        <image name="Cash" width="58" height="58"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
