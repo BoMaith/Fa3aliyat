@@ -288,6 +288,9 @@
                                 <rect key="frame" x="39" y="688" width="315" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit" cornerStyle="capsule"/>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="Ea7-oN-u4U" eventType="touchUpInside" id="8YN-6g-fc4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hjc-Mo-cZk"/>
@@ -307,10 +310,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Change Email" largeTitleDisplayMode="never" id="ZfO-dW-9Gs"/>
                     <connections>
-                        <outlet property="confIrmNewPassTextField" destination="GUH-30-emC" id="jDi-fn-KOC"/>
-                        <outlet property="currentPassTextField" destination="zW9-5h-SMt" id="sCJ-Dp-oxe"/>
+                        <outlet property="confirmNewPassTextField" destination="GUH-30-emC" id="4ma-Ap-hv5"/>
                         <outlet property="currentPasswordTextField" destination="M8d-7J-TbH" id="cSq-2y-jR6"/>
-                        <outlet property="newPassTextField" destination="nLY-vL-fah" id="U6A-h1-yO5"/>
+                        <outlet property="newPassTextField" destination="nLY-vL-fah" id="xno-fq-dEG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7V-ZG-Bwm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

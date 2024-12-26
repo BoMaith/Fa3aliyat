@@ -27,11 +27,23 @@ class LoginViewController: UIViewController {
     func handleUserRedirection() {
         guard let user = Auth.auth().currentUser, let email = user.email else { return }
         
+        //        if email.contains("@fa3aliyat.admin.bh") {
+        //            self.performSegue(withIdentifier: "goToAdminHome", sender: self)
+        //        } else if email.contains("@fa3aliyat.organizer.bh") {
+        //            self.performSegue(withIdentifier: "goToOrgHome", sender: self)
+        //        } else {
+        //            self.performSegue(withIdentifier: "goToUserHome", sender: self)
+        //        }
+        
+        //uaing if else statement to filter out the users based on their emails
         if email.contains("@fa3aliyat.admin.bh") {
+            UserDefaults.standard.set("goToAdminHome", forKey: "last_visited_page")
             self.performSegue(withIdentifier: "goToAdminHome", sender: self)
         } else if email.contains("@fa3aliyat.organizer.bh") {
+            UserDefaults.standard.set("goToOrgHome", forKey: "last_visited_page")
             self.performSegue(withIdentifier: "goToOrgHome", sender: self)
         } else {
+            UserDefaults.standard.set("goToUserHome", forKey: "last_visited_page")
             self.performSegue(withIdentifier: "goToUserHome", sender: self)
         }
     }

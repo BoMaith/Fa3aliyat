@@ -1,40 +1,3 @@
-////
-////  ChangeEmailViewController.swift
-////  Fa3aliyat
-////
-////  Created by BP on 25/12/2024.
-////
-//
-//import UIKit
-//
-//class ChangeEmailViewController: UIViewController {
-//    
-//    //adding all the input fields outlets
-//    @IBOutlet weak var newEmailTextField: UITextField!
-//    @IBOutlet weak var confirmNewEmailTextField: UITextField!
-//    @IBOutlet weak var currentPassTextField: UITextField!
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
-//    
-//    //a fucntion to validate input
-//    func vlaidateinput() {
-//        //checking if the input fields are empty
-//        guard let newEmail = newEmailTextField.text, let confirmNewEmail = confirmNewEmailTextField.text, let currentPass = currentPassTextField.text, !newEmail.isEmpty && !confirmNewEmail.isEmpty && !currentPass.isEmpty 
-//        else
-//        {
-//            //creating an alert for when the input fields are empty
-//            let alert = UIAlertController(title: "", message: <#T##String?#>, preferredStyle: <#T##UIAlertController.Style#>)
-//        }
-//    }
-//
-//}
-
-
-//***************************************************TESTING TESTING TESTING***********************************************************
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
@@ -90,7 +53,9 @@ class ChangeEmailViewController: UIViewController {
             // Update email in Firebase Realtime Database
             if let userID = Auth.auth().currentUser?.uid {
                 let ref = Database.database().reference()
+                //updating the email value inside the real time database
                 ref.child("users").child(userID).updateChildValues(["Email": newEmail]) { error, _ in
+                    
                     if let error = error {
                         self.showAlert(title: "Error", message: "Failed to update email in database: \(error.localizedDescription)")
                     } else {
