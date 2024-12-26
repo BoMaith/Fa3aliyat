@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.overrideUserInterfaceStyle = .dark // Force Dark Mode
             window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
             window?.makeKeyAndVisible()
+        
+
         }
 
     func sceneDidDisconnect(_ scene: UIScene) {
