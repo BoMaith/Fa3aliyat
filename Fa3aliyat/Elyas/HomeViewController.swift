@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -9,6 +10,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var events: [Event] = []
     var filteredEvents: [Event] = []
     
+    
+    var userRole: UserRole = .regular  // Default role
+    var currentUserEmail: String? // The email fetched from Firebase Auth
     
     
     struct Event {
@@ -25,6 +29,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        determineUserRole()
+        
         fetchEvents()  // Fetch events from Realtime Database
         
         // Initially show all events
@@ -39,33 +45,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.rowHeight = 80 // Adjust based on your design
     }
     
-    // Fetch events from Firebase Realtime Database
-//    func fetchEvents() {
-//        ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
-//            // Check if snapshot has data
-//            if let eventsData = snapshot.value as? [String: [String: Any]] {
-//                self.events = eventsData.compactMap { (key, data) in
-//                    guard
-//                        let title = data["title"] as? String,
-//                        let date = data["date"] as? String,
-//                        let isFavorite = data["isFavorite"] as? Bool
-//                    else { return nil }
-//
-//                    return Event(title: title, date: date, isFavorite: isFavorite)
-//                }
-//                
-//                print("Fetched Events: \(self.events)") // Log events to check if they're fetched properly
-//                
-//                self.filteredEvents = self.events
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }) { error in
-//            print("Error fetching events: \(error.localizedDescription)")
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.events.removeAll()
+        self.filteredEvents.removeAll()
+        
+        // Fetch events again when the page appears
+        fetchEvents()
+    }
     
+
     func fetchEvents() {
         ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
             // Check if snapshot has data
@@ -121,7 +111,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.starBtn.tag = indexPath.row
         // Change the color based on isFavorite value
         if event.isFavorite {
-            cell.starBtn.tintColor = .blue // Set color when favorite
+            cell.starBtn.tintColor = .systemBlue // Set color when favorite
         } else {
             cell.starBtn.tintColor = .gray // Set color when not favorite
         }
@@ -177,7 +167,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Change the button's color based on the favorite state
         if event.isFavorite {
-            sender.tintColor = .blue // Button color when selected (favorite)
+            sender.tintColor = .systemBlue // Button color when selected (favorite)
         } else {
             sender.tintColor = .gray // Button color when not selected (not favorite)
         }
@@ -233,4 +223,42 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.reloadData()
     }
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let eventID = sender as? String {
+                if segue.identifier == "toAdminDetails", let destinationVC = segue.destination as? AdminEventViewController {
+                    destinationVC.eventID = eventID
+                }
+            }
+        }
+
+        func determineUserRole() {
+            guard let user = Auth.auth().currentUser, let email = user.email else { return }
+            print(email)
+            if email.contains("@fa3aliyat.organizer.bh") {
+                userRole = .organizer
+            } else if email.contains("@fa3aliyat.admin.bh") {
+                userRole = .admin
+            } else {
+                userRole = .regular
+            }
+        }
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let selectedEvent = events[indexPath.row]
+            let eventID = selectedEvent.id  // Get the event ID
+
+            if (userRole == .admin){
+                performSegue(withIdentifier: "toAdminDetails", sender: eventID)
+            }
+        }
+        enum UserRole {
+            case regular
+            case organizer
+            case admin
+        }
 }
