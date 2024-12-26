@@ -40,6 +40,7 @@
 		E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */; };
 		E068D6292D1D8FCF00FF3141 /* OEDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
+		E0C6EF602D1DE3DB00D41733 /* OrganizerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */; };
 		E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */; };
 		E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */; };
 		E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392FB2D1C45FC00731D08 /* UserStruct.swift */; };
@@ -123,6 +124,7 @@
 		E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Organizer ED.storyboard"; sourceTree = "<group>"; };
 		E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEDViewController.swift; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
+		E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerStruct.swift; sourceTree = "<group>"; };
 		E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E0D392FB2D1C45FC00731D08 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */,
 				E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */,
 				E0D392FB2D1C45FC00731D08 /* UserStruct.swift */,
+				E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */,
 			);
 			path = Fida;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,
 				E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */,
 				E58ABA892D120F5D0073A3FC /* organizerprofileTableViewCell.swift in Sources */,
+				E0C6EF602D1DE3DB00D41733 /* OrganizerStruct.swift in Sources */,
 				E6871A602D140F1200FBFE1E /* CategoriesTableViewCell.swift in Sources */,
 				E6F91FC42D1C5BBC00D9C63F /* CardViewController.swift in Sources */,
 				E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */,

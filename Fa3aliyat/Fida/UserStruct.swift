@@ -9,6 +9,6 @@ import Foundation
 
 //making a struct for user
 struct User {
-    var userName : String
+    var fullName : String
     var userEmail : String
 }
