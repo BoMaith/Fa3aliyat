@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class AEViewController:  UIViewController{
     
@@ -49,6 +50,13 @@ class AEViewController:  UIViewController{
     
     
     func saveEvent(){
+        
+        //getting organizer Id
+        guard let organizerId = Auth.auth().currentUser?.uid else {
+            print("organizer Id not found")
+            return
+        }
+        
         //refrence for the firbase
         let ref = Database.database().reference()
         
@@ -69,6 +77,12 @@ class AEViewController:  UIViewController{
         let fullDateFormatter = DateFormatter()
         fullDateFormatter.dateFormat = "dd-MM-yyyy"
         
+        //convert age to int
+        let age = Int(ageTextField.text ?? "0") ?? 0
+        
+        //make price a double value
+        let price = Double(priceTextField.text ?? "0") ?? 0.0
+        
         //Collect data from text fields and pickers
         let eventData: [String: Any] = [
             "title": titleTextFeild.text ?? "",
@@ -78,14 +92,24 @@ class AEViewController:  UIViewController{
             "startDate": fullDateFormatter.string(from: startDatePicker.date),
             "endDate": fullDateFormatter.string(from: endDatePicker.date),
             "date": dateRangeString,
-            "price": priceTextField.text ?? "",
-            "Age": ageTextField.text ?? "",
-            "isFavorite": false,
+            "price": price,
+            "Age": age,
             "participants": []
             //"ratings":
         ]
-        // saving the event with an ID
-        ref.child("events").childByAutoId().setValue(eventData){ error, _ in
+        
+        //gen eventID
+        let eventId = ref.child("events").childByAutoId().key ?? UUID().uuidString
+        
+        //to help saving in events list and organizer lists which helps us in filtering organizers events when needed
+        
+        let update: [String: Any] = [
+            "/events/\(eventId)": eventData,
+            "/organizers/\(organizerId)/Events/\(eventId)" : eventData
+        ]
+        
+        // saving the event in both lists
+        ref.updateChildValues(update){ error, _ in
             if let error = error {
                 print("Error saving event to Firebase: \(error.localizedDescription)")
             } else {
