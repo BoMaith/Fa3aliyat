@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class AEViewController:  UIViewController{
+class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
     
     // Outlets
     @IBOutlet weak var titleTextFeild: UITextField!
@@ -47,7 +47,9 @@ class AEViewController:  UIViewController{
         }
         return true
     }
-    
+     
+    var selectedCategory: String? // To store the chosen category
+    // Add this property to store the selected category
     
     func saveEvent(){
         
@@ -75,7 +77,7 @@ class AEViewController:  UIViewController{
         
         // formatter for full dates just for storing data from start and end dates
         let fullDateFormatter = DateFormatter()
-        fullDateFormatter.dateFormat = "dd-MM-yyyy"
+        fullDateFormatter.dateFormat = "dd/MM/yyyy"
         
         //convert age to int
         let age = Int(ageTextField.text ?? "0") ?? 0
@@ -88,15 +90,16 @@ class AEViewController:  UIViewController{
             "title": titleTextFeild.text ?? "",
             "description": descritionTextField.text ?? "",
             "time": timeFormatter.string(from: timePicker.date),
-            "Location": locationTextField.text ?? "",
+            "location": locationTextField.text ?? "",
             "startDate": fullDateFormatter.string(from: startDatePicker.date),
             "endDate": fullDateFormatter.string(from: endDatePicker.date),
             "date": dateRangeString,
             "price": price,
-            "Age": age,
-            "participants": []
-            //"ratings":
+            "age": age,
+            "participants": [],
+            "category": selectedCategory ?? "Uncategorized" // Correctly use selectedCategory
         ]
+
         
         //gen eventID
         let eventId = ref.child("events").childByAutoId().key ?? UUID().uuidString
@@ -126,6 +129,16 @@ class AEViewController:  UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCategoriesForEvent", let destinationVC = segue.destination as? CategoriesViewController {
+            destinationVC.mode = .choose // Set mode for choosing a category
+            destinationVC.delegate = self // Set the delegate
+        }
+    }
+
+    func didSelectCategory(_ category: String) {
+        selectedCategory = category
+        print("Selected category for the event: \(category)") // Debug log
+    }
 }
 
