@@ -16,7 +16,7 @@ class PayViewController: UIViewController {
     var pricePerTicket: Double = 2.5
     var eventID: String?
     var eventName: String? // To hold the fetched event name
-    var userID: String = "ivb3nvgo3jYi3WJdA83KKjmWeJf2" // Replace with the actual user's ID
+    var userID: String = "11X1KZw9AmXdJhsWg5Z8VvXXWwt2" // Replace with the actual user's ID
     var userName: String = "John Doe" // Replace with the actual user's name
 
     override func viewDidLoad() {
@@ -64,11 +64,11 @@ class PayViewController: UIViewController {
         
         ref.observeSingleEvent(of: .value) { snapshot in
             if let eventData = snapshot.value as? [String: Any],
-               let name = eventData["name"] as? String {
-                self.eventName = name
-                print("Fetched Event Name: \(name)")
+               let title = eventData["title"] as? String {
+                self.eventName = title
+                print("Fetched Event Title: \(title)")
             } else {
-                print("Error: Unable to fetch event name for ID \(eventID).")
+                print("Error: Unable to fetch event title for ID \(eventID).")
             }
         }
     }

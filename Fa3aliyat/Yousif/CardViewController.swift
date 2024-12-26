@@ -117,7 +117,6 @@ class CardViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-
     func updateUserEventInFirebase() {
         guard let eventID = eventID, let eventName = eventName else {
             print("Error: Missing eventID or eventName.")
@@ -201,5 +200,4 @@ class CardViewController: UIViewController {
         let currentTimestamp = Date().timeIntervalSince1970
         UserDefaults.standard.set(currentTimestamp, forKey: "lastPaymentTimestamp")
     }
-
 }
