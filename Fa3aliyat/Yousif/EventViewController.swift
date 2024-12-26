@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import FirebaseDatabaseInternal
+import FirebaseDatabase
 
 class EventViewController: UIViewController {
-    
     
     @IBOutlet weak var orgImage: UIImageView!
     @IBOutlet weak var orgName: UILabel!
@@ -21,7 +20,7 @@ class EventViewController: UIViewController {
     @IBOutlet weak var Joinbtn: UIButton!
     
     // Event ID for fetching data (hardcoded for testing)
-    let eventID = "7Z3DkLm2QwFjSx8Ny5VrHqPb9Nz1"
+    let eventID = "-OF3962vsncLEOoF3YPJ"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +36,21 @@ class EventViewController: UIViewController {
     func fetchEventDetails(eventID: String) {
         let ref = Database.database().reference()
         ref.child("events").child(eventID).observeSingleEvent(of: .value) { snapshot in
+            print("Received snapshot: \(snapshot)") // Debugging output
+
             guard let eventData = snapshot.value as? [String: Any] else {
                 print("Error: Unable to parse event data.")
                 return
             }
             
-            // Extract data and populate UI
+            print("Event data: \(eventData)") // Debugging output
+            
+            // Extract only the relevant data and populate UI
             let date = eventData["date"] as? String ?? "N/A"
             let description = eventData["description"] as? String ?? "N/A"
             let title = eventData["title"] as? String ?? "N/A"
             let price = eventData["price"] as? Double ?? 0.0
             let orgImageURL = eventData["org-image"] as? String ?? ""
-            let organizerName = eventData["name"] as? String ?? "N/A"
             let location = eventData["location"] as? String ?? "N/A"
             
             DispatchQueue.main.async {
@@ -56,7 +58,7 @@ class EventViewController: UIViewController {
                 self.Etitle.text = title
                 self.Edescription.text = description
                 self.Eprice.text = "Price: \(price)BD" // Format the price
-                self.orgName.text = organizerName
+                self.orgName.text = title
                 self.Elocation.text = "Location: \(location)"
                 
                 // Load organizer image
@@ -85,17 +87,15 @@ class EventViewController: UIViewController {
     }
     
     @IBAction func navigateToPayment(_ sender: Any) {
-        
         //performSegue(withIdentifier: "toPayViewController", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPayViewController" {
-              if let payVC = segue.destination as? PayViewController {
-                  payVC.eventID = self.eventID
-              }
-          }
+            if let payVC = segue.destination as? PayViewController {
+                payVC.eventID = self.eventID
+            }
+        }
     }
-    
 }
-   
 

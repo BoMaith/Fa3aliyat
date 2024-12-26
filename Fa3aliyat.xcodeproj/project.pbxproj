@@ -37,11 +37,14 @@
 		E020EA042D1490AE00874177 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020E9FF2D1490AE00874177 /* LoginViewController.swift */; };
 		E020EA052D1490AE00874177 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E020EA002D1490AE00874177 /* Login.storyboard */; };
 		E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020EA012D1490AE00874177 /* SignupViewController.swift */; };
+		E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */; };
+		E068D6292D1D8FCF00FF3141 /* OEDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
 		E0C6EF602D1DE3DB00D41733 /* OrganizerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */; };
 		E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */; };
 		E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */; };
 		E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392FB2D1C45FC00731D08 /* UserStruct.swift */; };
+		E57E8C882D1DE7DA00C3C262 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */; };
 		E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */; };
 		E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */; };
 		E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7A2D120F5D0073A3FC /* UserProfileViewController.swift */; };
@@ -51,6 +54,8 @@
 		E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7E2D120F5D0073A3FC /* AdminEventViewController.swift */; };
 		E58ABA882D120F5D0073A3FC /* UsersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */; };
 		E58ABA892D120F5D0073A3FC /* organizerprofileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA802D120F5D0073A3FC /* organizerprofileTableViewCell.swift */; };
+		E61304242D1D635F00A22118 /* EHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61304232D1D635F00A22118 /* EHistoryTableViewCell.swift */; };
+		E61304262D1D63AD00A22118 /* EHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61304252D1D63AD00A22118 /* EHistoryViewController.swift */; };
 		E67AE42D2D1210D900FE6288 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67AE4212D1210D900FE6288 /* Interests.storyboard */; };
 		E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */; };
 		E67AE42F2D1210D900FE6288 /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AE4232D1210D900FE6288 /* InterestsViewController.swift */; };
@@ -68,7 +73,7 @@
 		E6F91FC62D1C5BBC00D9C63F /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBA2D1C5BBC00D9C63F /* EventViewController.swift */; };
 		E6F91FC72D1C5BBC00D9C63F /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */; };
 		E6F91FC92D1C5BBC00D9C63F /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F91FBD2D1C5BBC00D9C63F /* History.storyboard */; };
-		E6F91FCA2D1C5BBC00D9C63F /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBE2D1C5BBC00D9C63F /* HistoryTableViewCell.swift */; };
+		E6F91FCA2D1C5BBC00D9C63F /* HPendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBE2D1C5BBC00D9C63F /* HPendingTableViewCell.swift */; };
 		E6F91FCB2D1C5BBC00D9C63F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */; };
 		E6F91FCE2D1C5BBC00D9C63F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */; };
 /* End PBXBuildFile section */
@@ -116,11 +121,14 @@
 		E020E9FF2D1490AE00874177 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E020EA002D1490AE00874177 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E020EA012D1490AE00874177 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Organizer ED.storyboard"; sourceTree = "<group>"; };
+		E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEDViewController.swift; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
 		E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerStruct.swift; sourceTree = "<group>"; };
 		E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E0D392FB2D1C45FC00731D08 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
 		E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E58ABA7A2D120F5D0073A3FC /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +138,8 @@
 		E58ABA7E2D120F5D0073A3FC /* AdminEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminEventViewController.swift; sourceTree = "<group>"; };
 		E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPageViewController.swift; sourceTree = "<group>"; };
 		E58ABA802D120F5D0073A3FC /* organizerprofileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organizerprofileTableViewCell.swift; sourceTree = "<group>"; };
+		E61304232D1D635F00A22118 /* EHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		E61304252D1D63AD00A22118 /* EHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHistoryViewController.swift; sourceTree = "<group>"; };
 		E67AE4212D1210D900FE6288 /* Interests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		E67AE4232D1210D900FE6288 /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +157,7 @@
 		E6F91FBA2D1C5BBC00D9C63F /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		E6F91FBD2D1C5BBC00D9C63F /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
-		E6F91FBE2D1C5BBC00D9C63F /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		E6F91FBE2D1C5BBC00D9C63F /* HPendingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HPendingTableViewCell.swift; sourceTree = "<group>"; };
 		E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,7 +197,6 @@
 		D03089662CFF39A70025BF69 /* Elyas */ = {
 			isa = PBXGroup;
 			children = (
-				E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */,
 				E67AE4272D1210D900FE6288 /* Home.storyboard */,
 				E67AE4222D1210D900FE6288 /* HomeTableViewCell.swift */,
 				E67AE42A2D1210D900FE6288 /* HomeViewController.swift */,
@@ -200,6 +209,7 @@
 				E67AE4242D1210D900FE6288 /* SearchViewController.swift */,
 				E67AE4262D1210D900FE6288 /* CategoriesViewController.swift */,
 				E6871A5F2D140F1200FBFE1E /* CategoriesTableViewCell.swift */,
+				E6F91FBB2D1C5BBC00D9C63F /* Favorite.storyboard */,
 			);
 			path = Elyas;
 			sourceTree = "<group>";
@@ -218,6 +228,7 @@
 				E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */,
 				E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */,
 				66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */,
+				E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -227,6 +238,8 @@
 			children = (
 				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
+				E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */,
+				E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -362,8 +375,10 @@
 				E6F91FB92D1C5BBC00D9C63F /* EventPage.storyboard */,
 				E6F91FBA2D1C5BBC00D9C63F /* EventViewController.swift */,
 				E6F91FBD2D1C5BBC00D9C63F /* History.storyboard */,
-				E6F91FBE2D1C5BBC00D9C63F /* HistoryTableViewCell.swift */,
+				E61304232D1D635F00A22118 /* EHistoryTableViewCell.swift */,
+				E6F91FBE2D1C5BBC00D9C63F /* HPendingTableViewCell.swift */,
 				E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */,
+				E61304252D1D63AD00A22118 /* EHistoryViewController.swift */,
 				E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */,
 			);
 			name = Yousif;
@@ -471,6 +486,7 @@
 			mainGroup = D086500B2CF5F22400C9981D;
 			packageReferences = (
 				8370481E2D0875C400F28AF8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				66A44CF52D1C97C6000C3DB7 /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
 			);
 			productRefGroup = D08650152CF5F22400C9981D /* Products */;
 			projectDirPath = "";
@@ -498,6 +514,7 @@
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				E020EA052D1490AE00874177 /* Login.storyboard in Resources */,
 				E6F91FC92D1C5BBC00D9C63F /* History.storyboard in Resources */,
+				E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */,
 				E58ABA862D120F5D0073A3FC /* AdminEventDetails.storyboard in Resources */,
 				E6F91FC52D1C5BBC00D9C63F /* EventPage.storyboard in Resources */,
 				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
@@ -541,9 +558,11 @@
 				E6F91FC62D1C5BBC00D9C63F /* EventViewController.swift in Sources */,
 				E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */,
 				E6F91FCB2D1C5BBC00D9C63F /* HistoryViewController.swift in Sources */,
+				E068D6292D1D8FCF00FF3141 /* OEDViewController.swift in Sources */,
 				E67AE42F2D1210D900FE6288 /* InterestsViewController.swift in Sources */,
-				E6F91FCA2D1C5BBC00D9C63F /* HistoryTableViewCell.swift in Sources */,
+				E6F91FCA2D1C5BBC00D9C63F /* HPendingTableViewCell.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
+				E57E8C882D1DE7DA00C3C262 /* ReviewTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,
 				E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */,
@@ -558,12 +577,15 @@
 				E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */,
+
 				E67AE4302D1210D900FE6288 /* SearchViewController.swift in Sources */,
+				E61304242D1D635F00A22118 /* EHistoryTableViewCell.swift in Sources */,
 				E58ABA852D120F5D0073A3FC /* CreateOrganizerViewController.swift in Sources */,
 				E58ABA872D120F5D0073A3FC /* AdminEventViewController.swift in Sources */,
 				E58ABA882D120F5D0073A3FC /* UsersPageViewController.swift in Sources */,
 				E67AE4352D1210D900FE6288 /* SearchTableViewCell.swift in Sources */,
 				E020EA032D1490AE00874177 /* ProfileViewController.swift in Sources */,
+				E61304262D1D63AD00A22118 /* EHistoryViewController.swift in Sources */,
 				E6871A622D142B5800FBFE1E /* FiltersTableViewController.swift in Sources */,
 				E020EA042D1490AE00874177 /* LoginViewController.swift in Sources */,
 			);
@@ -908,6 +930,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		66A44CF52D1C97C6000C3DB7 /* XCRemoteSwiftPackageReference "cloudinary_ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudinary/cloudinary_ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		8370481E2D0875C400F28AF8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";

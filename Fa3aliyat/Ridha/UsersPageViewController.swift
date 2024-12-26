@@ -92,10 +92,10 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCellIdentifier", for: indexPath)
-
+        cell.backgroundColor = .customBackground
         if isOrganizersSelected {
             let organizer = organizers[indexPath.row]
-            cell.textLabel?.text = "\(organizer["name"] as? String ?? "Unknown")"
+            cell.textLabel?.text = "\(organizer["FullName"] as? String ?? "Unknown")"
         } else {
             let user = users[indexPath.row]
             cell.textLabel?.text = "\(user["FullName"] as? String ?? "Unknown")"

@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
             self.performSegue(withIdentifier: "goToAdminHome", sender: self)
         } else if email.contains("@fa3aliyat.organizer.bh") {
             UserDefaults.standard.set("goToOrgHome", forKey: "last_visited_page")
+
             self.performSegue(withIdentifier: "goToOrgHome", sender: self)
         } else {
             UserDefaults.standard.set("goToUserHome", forKey: "last_visited_page")
