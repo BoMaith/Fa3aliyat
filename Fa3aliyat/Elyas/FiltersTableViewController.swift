@@ -1,10 +1,12 @@
 import UIKit
 
 class FiltersTableViewController: UITableViewController {
+    weak var delegate: FilterDelegate?
 
     @IBOutlet weak var categoryButton: UIButton!
-    @IBOutlet weak var dateTimePicker: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     var selectedPriceRow: IndexPath? // Tracks the selected row for "Filter by Price"
     var selectedAgeRow: IndexPath?   // Tracks the selected row for "Filter by Age"
@@ -141,6 +143,8 @@ class FiltersTableViewController: UITableViewController {
             searchVC.filtersArray = selectedFilters
         }
         
+        // Pass the selected filters back to the delegate
+        delegate?.didApplyFilters(selectedFilters)
         navigationController?.popViewController(animated: true) // Pop to the previous screen (SearchPage)
     }
 
@@ -337,4 +341,7 @@ extension FiltersTableViewController: UITextFieldDelegate {
         textField.resignFirstResponder() // Dismiss the keyboard
         return true
     }
+}
+protocol FilterDelegate: AnyObject {
+    func didApplyFilters(_ filters: [Any?])
 }

@@ -1,56 +1,155 @@
 import UIKit
+import FirebaseDatabase
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var events: [(String, String, String)] = [
-        ("Car Show", "Nov 11 - Nov 13", "Cars"),
-        ("Quran Tajweed", "Nov 10 - Nov 11", "Cars"),
-        ("Football Tournament", "Dec 1 - Dec 2", "Cars"),
-        ("Food Truck Event", "Nov 3", "Cars"),
-        ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
-        ("Tennis Tournament", "Nov 14 - Nov 19", "Cars"),
-        ("Food Truck Event", "Nov 3", "Cars"),
-        ("Traditional Food Event", "Nov 3 - Nov 5", "Cars"),
-        ("Tennis Tournament", "Nov 14 - Nov 19", "Cars")
-    ]
-    
+    // Firebase Realtime Database reference
+    var ref: DatabaseReference!
+
+    // Events array populated from Firebase
+    var events: [Event] = []
+    var filteredEvents: [Event] = []
     var favoriteStates = [Bool](repeating: false, count: 9)
-    var filteredEvents: [(String, String, String)] = []
     var filteredFavoriteStates: [Bool] = []
 
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let filterVC = segue.destination as? FiltersTableViewController {
+            filterVC.delegate = self
+        }
+    }
     
     
     // This property will hold the filters array passed from FiltersTableViewController
        var filtersArray: [Any?] = [nil, nil, nil, nil, nil]  // Default value
 
+    func didApplyFilters(_ filters: [Any?]) {
+            filtersArray = filters
+            print("Received filters: \(filtersArray)")
+            applyFilters() // Call this to update the displayed events
+        }
+    
     // Example method to apply filters to your search logic
-        func applyFilters() {
-            // Example method to apply filters to your search logic
-                   print("Applying filters...")
-            // Logic to filter results based on the selected filters in filtersArray
-            // For example:
-            if let category = filtersArray[0] as? String {
-                print("Applying category filter: \(category)")
-            }
-            if let dateAndTime = filtersArray[1] as? String {
-                print("Applying date filter: \(dateAndTime)")
-            }
-            if let price = filtersArray[2] as? String {
-                print("Applying price filter: \(price)")
-            }
-            if let location = filtersArray[3] as? String {
-                print("Applying location filter: \(location)")
-            }
-            if let age = filtersArray[4] as? String {
-                print("Applying age filter: \(age)")
+    func applyFilters() {
+        // Start with all events
+        filteredEvents = events
+        print("Initial events count: \(filteredEvents.count)") // Add this line for debugging
+        
+        // Filter by category
+        if let categoryFilter = filtersArray[0] as? String, !categoryFilter.isEmpty {
+            print("Filtering by category: \(categoryFilter)")
+            filteredEvents = filteredEvents.filter { event in
+                event.category?.lowercased() == categoryFilter.lowercased()
             }
         }
+
+        print("After category filter: \(filteredEvents.count)") // Check count after filter
+
+        // Filter by date
+        if let dateFilter = filtersArray[1] as? String, !dateFilter.isEmpty {
+            print("Filtering by date: \(dateFilter)")
+            
+            // DateFormatter to ensure the comparison is in "dd/MM/yyyy" format
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"  // Target format for both dateFilter and event.date
+            
+            filteredEvents = filteredEvents.filter { event in
+                // Ensure the event date is in a comparable format
+                let eventDateString = event.date  // Direct access if event.date is non-optional
+                if let eventDate = dateFormatter.date(from: eventDateString) {
+                    // Format the event date to "dd/MM/yyyy" to exclude time
+                    let formattedEventDate = dateFormatter.string(from: eventDate)
+                    return formattedEventDate == dateFilter
+                } else {
+                    print("Invalid date format for event: \(event.title), Date: \(event.date)")
+                    return false
+                }
+            }
+        }
+
+
+        print("After date filter: \(filteredEvents.count)") // Check count after filter
+
+        // Filter by price
+        if let priceFilter = filtersArray[2] as? String, !priceFilter.isEmpty {
+            print("Filtering by price: \(priceFilter)")
+            filteredEvents = filteredEvents.filter { event in
+                guard let priceString = event.price else { return false }
+                
+                if priceString.lowercased() == "free" {
+                    return priceFilter.lowercased() == "free"
+                } else if let priceValue = Double(priceString) {
+                    switch priceFilter {
+                    case "0.1 - 4.9 BD":
+                        return priceValue >= 0.1 && priceValue <= 4.9
+                    case "5 - 9.9 BD":
+                        return priceValue >= 5 && priceValue <= 9.9
+                    case "10 - 19.9 BD":
+                        return priceValue >= 10 && priceValue <= 19.9
+                    case "20+ BD":
+                        return priceValue >= 20
+                    default:
+                        return false
+                    }
+                }
+                return false
+            }
+        }
+
+        print("After price filter: \(filteredEvents.count)") // Check count after filter
+
+        // Filter by location
+        if let locationFilter = filtersArray[3] as? String, !locationFilter.isEmpty {
+            print("Filtering by location: \(locationFilter)")
+            filteredEvents = filteredEvents.filter { event in
+                event.location?.lowercased() == locationFilter.lowercased()
+            }
+        }
+
+        print("After location filter: \(filteredEvents.count)") // Check count after filter
+
+        // Filter by age
+        
+        if let ageFilter = filtersArray[4] as? String, !ageFilter.isEmpty {
+            print("Filtering by age: \(ageFilter)")
+            
+            filteredEvents = filteredEvents.filter { event in
+                // Debugging the event details
+                print("Event: \(event.title), Age: \(event.age ?? -1), Category: \(event.category ?? "N/A")")
+                
+                guard let ageValue = event.age else {
+                    print("No valid age found for event: \(event.title)")
+                    return false
+                }
+
+                print("Event title: \(event.title), Event age: \(ageValue), Applying filter: \(ageFilter)")
+
+                if ageFilter == "Family-Friendly" {
+                    return ageValue < 12
+                }
+
+                if ageFilter == "12 - 18 years" {
+                    return ageValue > 11 && ageValue < 19
+                }
+
+                if ageFilter == "18+ years" {
+                    return ageValue > 18
+                }
+
+                return false
+            }
+        }
+
+        print("After age filter: \(filteredEvents.count) events remaining")
+        tableView.reloadData()
+    }
+
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,16 +161,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         applyFilters()
         
         
+        // Initialize Firebase database reference
+        ref = Database.database().reference()
+                
+        // Fetch events from Firebase Realtime Database
+        fetchEvents()
         
-        
-        
-        
-        
-        
-        
-        
-        
-        filteredEvents = events
+        //filteredEvents = events
         filteredFavoriteStates = favoriteStates
         
         // Set up table view
@@ -82,6 +178,62 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // Set the search bar delegate
         searchBar.delegate = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.events.removeAll()
+        self.filteredEvents.removeAll()
+        
+        // Fetch events again when the page appears
+        fetchEvents()
+    }
+    
+    // Fetch events from Firebase using the same approach as in the Home page
+    func fetchEvents() {
+        
+        ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
+            if let eventsData = snapshot.value as? [String: [String: Any]] {
+                self.events = eventsData.compactMap { (id, data) -> Event? in
+                    guard
+                        let title = data["title"] as? String,
+                        let date = data["date"] as? String,
+                        let isFavorite = data["isFavorite"] as? Bool
+                    else {
+                        return nil
+                    }
+                    
+                    // Ensure age is parsed correctly
+                       let age = data["age"] as? Int ?? -1  // Default to -1 if not found or cannot be casted
+                    
+                    // Return event object
+                    return Event(
+                        id: id,
+                        title: title,
+                        date: date,
+                        isFavorite: isFavorite,
+                        price: data["price"] as? String,
+                        location: data["location"] as? String,
+                        age: data["age"] as? Int,
+                        category: data["category"] as? String
+                    )
+                }
+                
+                // Initially set filteredEvents to all fetched events
+                self.filteredEvents = self.events
+                
+                DispatchQueue.main.async {
+                    // Apply filters if any are set
+                    self.applyFilters()
+                    // Reload table view
+                    self.tableView.reloadData()
+                }
+            }
+        }) { error in
+            print("Error fetching events: \(error.localizedDescription)")
+        }
+    }
+
 
     // MARK: - TableView DataSource Methods
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -112,19 +264,62 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             cell.setupCellFilter(photoName: filter.0, name: filter.1)
             return cell
         } else {
-            // "Events" Rows
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! SearchTableViewCell
-
-            // Event details
-            let (eventName, eventDate, eventIcon) = filteredEvents[indexPath.row]
-            cell.setupCell(photoName: eventIcon, name: eventName, date: eventDate, isFavorite: filteredFavoriteStates[indexPath.row])
-
-            // Configure the favorite button
-            cell.starBtn.isSelected = filteredFavoriteStates[indexPath.row]
+            let event = filteredEvents[indexPath.row]
+            
+            cell.setupCell(name: event.title, date: event.date, isFavorite: event.isFavorite)
+            cell.starBtn.isSelected = event.isFavorite
             cell.starBtn.tag = indexPath.row
+            // Change the color based on isFavorite value
+            if event.isFavorite {
+                cell.starBtn.tintColor = .systemBlue // Set color when favorite
+            } else {
+                cell.starBtn.tintColor = .gray // Set color when not favorite
+            }
+            // Add target for button tap action
             cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
 
             return cell
+        }
+    }
+    
+    @objc func favoriteButtonTapped(_ sender: UIButton) {
+        let row = sender.tag
+        
+        // Access the event object from filteredEvents
+        var event = filteredEvents[row]
+        
+        // Toggle the favorite state
+        event.isFavorite.toggle()
+
+        // Update the button's selected state
+        sender.isSelected = event.isFavorite
+        
+        // Change the button's color based on the favorite state
+        if event.isFavorite {
+            sender.tintColor = .systemBlue // Button color when selected (favorite)
+        } else {
+            sender.tintColor = .gray // Button color when not selected (not favorite)
+        }
+        
+        // Update the event in the filteredEvents array
+        filteredEvents[row] = event
+        
+        // Update Firebase with the new favorite state
+        updateFavoriteStateInFirebase(for: event, isFavorite: event.isFavorite)
+        
+        // Reload the row to reflect the changes
+        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+    }
+    
+    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
+        let eventRef = ref.child("events").child(event.id)  // Use the event ID as the key
+        eventRef.updateChildValues(["isFavorite": isFavorite]) { error, _ in
+            if let error = error {
+                print("Error updating favorite state: \(error)")
+            } else {
+                print("Favorite state updated successfully!")
+            }
         }
     }
 
@@ -136,7 +331,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // print("Selected event: \(filteredEvents[indexPath.row].0)")
     }
 
-    // MARK: - Search Bar Delegate Methods
+ //    MARK: - Search Bar Delegate Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterEvents(for: searchText) // Call the filter function every time the search text changes
     }
@@ -148,41 +343,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Filter Events based on Search Text
     private func filterEvents(for searchText: String) {
         if searchText.isEmpty {
-            // If no search text, show all events
-            filteredEvents = events
-            filteredFavoriteStates = favoriteStates
-            
-            // Reorder the events so that the favorites are on top
-            reorderRows()
+            filteredEvents = events  // Show all events if no search text
         } else {
-            // Filter events based on the event name
-            filteredEvents = events.filter { $0.0.lowercased().contains(searchText.lowercased()) }
-            
-            // Map the favorite states to the filtered events using the event name as a key
-            filteredFavoriteStates = filteredEvents.map { event in
-                if let index = events.firstIndex(where: { $0.0 == event.0 }) {
-                    return favoriteStates[index] // Ensure the original favorite state is preserved
-                }
-                return false // Default to false if event not found
-            }
+            filteredEvents = events.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         }
-        tableView.reloadData() // Reload the table view with filtered events
-    }
-
-    // MARK: - Favorite Button Tapped
-    @objc func favoriteButtonTapped(_ sender: UIButton) {
-        let row = sender.tag
-        filteredFavoriteStates[row].toggle() // Update favorite state for filtered events
-        sender.isSelected = filteredFavoriteStates[row] // Update button state
-
-        // Save the new favorite state back to the original `favoriteStates` array
-        let originalIndex = events.firstIndex(where: { $0.0 == filteredEvents[row].0 })
-        if let index = originalIndex {
-            favoriteStates[index] = filteredFavoriteStates[row] // Update the original favorite state
-        }
-
-        // Reorder rows: move starred events to the top
-        reorderRows()
+        
+        tableView.reloadData()
     }
 
     private func reorderRows() {
@@ -194,4 +360,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // Reload the table view to reflect the new order
         tableView.reloadData()
     }
+    
+    // MARK: - Event Model
+    struct Event {
+        let id: String  // Unique ID for each event
+        let title: String
+        let date: String
+        var isFavorite: Bool
+        let price: String?  // Optional to handle cases where price might be missing
+        let location: String?
+        let age: Int?    // Optional to handle cases where age might be missing
+        let category: String? // Add the category property
+        }
 }
+    
+

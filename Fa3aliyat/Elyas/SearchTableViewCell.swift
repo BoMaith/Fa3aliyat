@@ -31,6 +31,24 @@ class SearchTableViewCell: UITableViewCell {
            starBtn.setImage(UIImage(systemName: isFavorite ? "star.fill" : "star"), for: .normal)
            starBtn.tintColor = isFavorite ? UIColor.systemBlue : UIColor.systemGray
        }
+    func setupCell(name: String, date: String, isFavorite: Bool) {
+        // Set event details
+        eventNameLbl.text = name
+        eventDateLbl.text = date
+        
+        // Set the favorite button's state
+        starBtn.isSelected = isFavorite
+        
+        // Set the image for the button based on the selected state
+        if isFavorite {
+            starBtn.setImage(UIImage(named: "star_filled"), for: .selected)  // Image for selected state
+            starBtn.setImage(UIImage(named: "star_empty"), for: .normal)     // Image for normal state
+        } else {
+            starBtn.setImage(UIImage(named: "star_empty"), for: .normal)     // Image for normal state
+            starBtn.setImage(UIImage(named: "star_filled"), for: .selected)  // Image for selected state
+        }
+    }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
