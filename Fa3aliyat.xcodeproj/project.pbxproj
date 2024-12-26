@@ -37,6 +37,8 @@
 		E020EA042D1490AE00874177 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020E9FF2D1490AE00874177 /* LoginViewController.swift */; };
 		E020EA052D1490AE00874177 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E020EA002D1490AE00874177 /* Login.storyboard */; };
 		E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020EA012D1490AE00874177 /* SignupViewController.swift */; };
+		E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */; };
+		E068D6292D1D8FCF00FF3141 /* OEDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
 		E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */; };
 		E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */; };
@@ -115,6 +117,8 @@
 		E020E9FF2D1490AE00874177 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E020EA002D1490AE00874177 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E020EA012D1490AE00874177 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Organizer ED.storyboard"; sourceTree = "<group>"; };
+		E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEDViewController.swift; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
 		E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 			children = (
 				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
+				E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */,
+				E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -495,6 +501,7 @@
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				E020EA052D1490AE00874177 /* Login.storyboard in Resources */,
 				E6F91FC92D1C5BBC00D9C63F /* History.storyboard in Resources */,
+				E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */,
 				E58ABA862D120F5D0073A3FC /* AdminEventDetails.storyboard in Resources */,
 				E6F91FC52D1C5BBC00D9C63F /* EventPage.storyboard in Resources */,
 				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
@@ -538,6 +545,7 @@
 				E6F91FC62D1C5BBC00D9C63F /* EventViewController.swift in Sources */,
 				E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */,
 				E6F91FCB2D1C5BBC00D9C63F /* HistoryViewController.swift in Sources */,
+				E068D6292D1D8FCF00FF3141 /* OEDViewController.swift in Sources */,
 				E67AE42F2D1210D900FE6288 /* InterestsViewController.swift in Sources */,
 				E6F91FCA2D1C5BBC00D9C63F /* HistoryTableViewCell.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,

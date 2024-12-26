@@ -80,7 +80,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Oro-cm-Cfj">
                                 <rect key="frame" x="31" y="456" width="334" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-Ed-bff">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-Ed-bff">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -136,6 +136,9 @@
                                         <rect key="frame" x="284.66666666666669" y="0.0" width="49.333333333333314" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system"/>
+                                        <connections>
+                                            <segue destination="fb4-WX-V6I" kind="show" identifier="ShowCategoriesForEvent" id="0ub-0H-7zk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -224,9 +227,87 @@
             </objects>
             <point key="canvasLocation" x="17.557251908396946" y="34.507042253521128"/>
         </scene>
+        <!--Categories-->
+        <scene sceneID="Spj-q6-KcP">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="fb4-WX-V6I" customClass="CategoriesViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hEJ-KL-Ens">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tid-RC-C5C">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" name="CustomBackground"/>
+                                <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" rowHeight="60" id="771-cN-hWe" customClass="CategoriesTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="771-cN-hWe" id="ALU-FM-Eg9">
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pizza" translatesAutoresizingMaskIntoConstraints="NO" id="syS-vV-qjB">
+                                                    <rect key="frame" x="20" y="8.6666666666666643" width="43" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="43" id="BbQ-Y4-cSy"/>
+                                                        <constraint firstAttribute="height" constant="43" id="biG-4e-Gha"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmZ-qV-ern">
+                                                    <rect key="frame" x="71" y="19.666666666666668" width="250" height="21.000000000000004"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="Ks6-ts-mI6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="CustomTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="CustomBackground"/>
+                                            <constraints>
+                                                <constraint firstItem="UmZ-qV-ern" firstAttribute="centerY" secondItem="ALU-FM-Eg9" secondAttribute="centerY" id="Tut-v6-Zeg"/>
+                                                <constraint firstItem="syS-vV-qjB" firstAttribute="leading" secondItem="ALU-FM-Eg9" secondAttribute="leading" constant="20" id="ZiD-Tu-1CA"/>
+                                                <constraint firstItem="UmZ-qV-ern" firstAttribute="leading" secondItem="syS-vV-qjB" secondAttribute="trailing" constant="8" id="exe-uu-x1r"/>
+                                                <constraint firstItem="syS-vV-qjB" firstAttribute="centerY" secondItem="ALU-FM-Eg9" secondAttribute="centerY" id="kPV-GW-MhX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CustomBackground"/>
+                                        <connections>
+                                            <outlet property="imgCategoryIcon" destination="syS-vV-qjB" id="0Lb-0M-3Ea"/>
+                                            <outlet property="lblCategory" destination="UmZ-qV-ern" id="oQ7-wA-e6K"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jfu-S1-Sev"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
+                        <constraints>
+                            <constraint firstItem="jfu-S1-Sev" firstAttribute="trailing" secondItem="Tid-RC-C5C" secondAttribute="trailing" id="2TS-MM-OgW"/>
+                            <constraint firstItem="jfu-S1-Sev" firstAttribute="bottom" secondItem="Tid-RC-C5C" secondAttribute="bottom" id="DRk-cI-dn8"/>
+                            <constraint firstItem="Tid-RC-C5C" firstAttribute="leading" secondItem="jfu-S1-Sev" secondAttribute="leading" id="NM8-YX-snm"/>
+                            <constraint firstItem="Tid-RC-C5C" firstAttribute="top" secondItem="jfu-S1-Sev" secondAttribute="top" id="wKk-VI-ril"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Categories" largeTitleDisplayMode="never" id="dcq-7y-Eg5"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="Tid-RC-C5C" id="cM4-9w-o0i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KnD-yl-cn5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="35"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
+        <image name="pizza" width="374" height="370"/>
+        <namedColor name="CustomBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="CustomTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
