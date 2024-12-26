@@ -7,8 +7,9 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
-class AEViewController:  UIViewController{
+class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
     
     // Outlets
     @IBOutlet weak var titleTextFeild: UITextField!
@@ -46,9 +47,18 @@ class AEViewController:  UIViewController{
         }
         return true
     }
-    
+     
+    var selectedCategory: String? // To store the chosen category
+    // Add this property to store the selected category
     
     func saveEvent(){
+        
+        //getting organizer Id
+        guard let organizerId = Auth.auth().currentUser?.uid else {
+            print("organizer Id not found")
+            return
+        }
+        
         //refrence for the firbase
         let ref = Database.database().reference()
         
@@ -67,23 +77,42 @@ class AEViewController:  UIViewController{
         
         // formatter for full dates just for storing data from start and end dates
         let fullDateFormatter = DateFormatter()
-        fullDateFormatter.dateFormat = "dd-MM-yyyy"
+        fullDateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        //convert age to int
+        let age = Int(ageTextField.text ?? "0") ?? 0
+        
+        //make price a double value
+        let price = Double(priceTextField.text ?? "0") ?? 0.0
         
         //Collect data from text fields and pickers
         let eventData: [String: Any] = [
             "title": titleTextFeild.text ?? "",
             "description": descritionTextField.text ?? "",
             "time": timeFormatter.string(from: timePicker.date),
-            "Location": locationTextField.text ?? "",
+            "location": locationTextField.text ?? "",
             "startDate": fullDateFormatter.string(from: startDatePicker.date),
             "endDate": fullDateFormatter.string(from: endDatePicker.date),
             "date": dateRangeString,
-            "price": priceTextField.text ?? "",
-            "Age": ageTextField.text ?? "",
-            "isFavorite": false
+            "price": price,
+            "age": age,
+            "participants": [],
+            "category": selectedCategory ?? "Uncategorized" // Correctly use selectedCategory
         ]
-        // saving the event with an ID
-        ref.child("events").childByAutoId().setValue(eventData){ error, _ in
+
+        
+        //gen eventID
+        let eventId = ref.child("events").childByAutoId().key ?? UUID().uuidString
+        
+        //to help saving in events list and organizer lists which helps us in filtering organizers events when needed
+        
+        let update: [String: Any] = [
+            "/events/\(eventId)": eventData,
+            "/organizers/\(organizerId)/Events/\(eventId)" : eventData
+        ]
+        
+        // saving the event in both lists
+        ref.updateChildValues(update){ error, _ in
             if let error = error {
                 print("Error saving event to Firebase: \(error.localizedDescription)")
             } else {
@@ -100,6 +129,16 @@ class AEViewController:  UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCategoriesForEvent", let destinationVC = segue.destination as? CategoriesViewController {
+            destinationVC.mode = .choose // Set mode for choosing a category
+            destinationVC.delegate = self // Set the delegate
+        }
+    }
+
+    func didSelectCategory(_ category: String) {
+        selectedCategory = category
+        print("Selected category for the event: \(category)") // Debug log
+    }
 }
 
