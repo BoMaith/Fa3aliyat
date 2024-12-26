@@ -85,7 +85,7 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
                 let participantData = value as? [String: Any] ?? [:]
                 let participant = Participant(
                     id: key,
-                    name: participantData["name"] as? String ?? "Unknown",
+                    name: participantData["FullName"] as? String ?? "Unknown",
                     email: participantData["email"] as? String ?? "No email",
                     price: participantData["price"] as? Double ?? 0.0
                 )

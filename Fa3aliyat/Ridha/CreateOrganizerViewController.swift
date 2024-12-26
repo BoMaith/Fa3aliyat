@@ -1,7 +1,6 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-import clo
 
 protocol CreateOrganizerDelegate: AnyObject {
     func didCreateOrganizer(_ organizerData: [String: Any])
@@ -24,8 +23,7 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = CLDConfiguration(cloudName: "your-cloud-name", apiKey: "your-api-key", apiSecret: "your-api-secret")
-        cloudinary = CLDCloudinary(configuration: config)
+        
         self.navigationItem.largeTitleDisplayMode = .never
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
@@ -110,8 +108,7 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
                     "FullName": name,
                     "email": fullEmail,
                     "password": password,  // Storing password directly is not recommended in production
-                    "uid": uid,
-                    "Events": Dictionary<String, Any>()  // New key added with empty value
+                    
                 ]
                 
                 // Save organizer data to Firebase Realtime Database

@@ -131,7 +131,7 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
 
             // Get event details for the specific event
             let event = eventsList[indexPath.row]
-            let eventName = event["name"] as? String ?? "No event name"
+            let eventName = event["title"] as? String ?? "No event name"
 
             // Debug: Check if the event name is correct
             print("Event Name: \(eventName)")
