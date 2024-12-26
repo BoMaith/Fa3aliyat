@@ -47,6 +47,7 @@
 		E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */; };
 		E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */; };
 		E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392FB2D1C45FC00731D08 /* UserStruct.swift */; };
+		E57E8C882D1DE7DA00C3C262 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */; };
 		E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */; };
 		E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */; };
 		E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA7A2D120F5D0073A3FC /* UserProfileViewController.swift */; };
@@ -123,6 +124,7 @@
 		E0D392F72D1C3F5500731D08 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E0D392FB2D1C45FC00731D08 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
 		E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E58ABA7A2D120F5D0073A3FC /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				E58ABA7F2D120F5D0073A3FC /* UsersPageViewController.swift */,
 				E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */,
 				66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */,
+				E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */,
 			);
 			path = Ridha;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				66E90E422D1190A200EE230A /* EventViewController.swift in Sources */,
 				E67AE42F2D1210D900FE6288 /* InterestsViewController.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
+				E57E8C882D1DE7DA00C3C262 /* ReviewTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,
 				E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */,
