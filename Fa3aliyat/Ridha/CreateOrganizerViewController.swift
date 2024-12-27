@@ -107,7 +107,7 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
                 let organizerData: [String: Any] = [
                     "FullName": name,
                     "email": fullEmail,
-                    "password": password,  // Storing password directly is not recommended in production
+                    "Password": password,  // Storing password directly is not recommended in production
                     
                 ]
                 
