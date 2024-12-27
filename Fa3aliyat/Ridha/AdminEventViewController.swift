@@ -174,6 +174,99 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // Create a delete action that only shows confirmation on tap
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completionHandler in
+            // Only show confirmation after the delete button is clicked
+            if tableView == self.participantsTableView {
+                let participant = self.participantsList[indexPath.row]
+                self.showDeleteConfirmation(for: participant, isReview: false)  // Show confirmation for participant
+            } else if tableView == self.reviewsTableView {
+                let review = self.reviewsList[indexPath.row]
+                self.showDeleteConfirmation(for: review, isReview: true)  // Show confirmation for review
+            }
+            completionHandler(true)  // Finish the swipe action
+        }
+        
+        // Set the swipe action configuration
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+
+
+
+
+    // MARK: - Delete Participant from Firebase
+    // MARK: - Delete Participant from Firebase
+    private func deleteParticipant(_ participant: Participant) {
+        guard let eventID = eventID else {
+            print("Event ID is missing.")
+            return
+        }
+        
+        let ref = Database.database().reference()
+        ref.child("events").child(eventID).child("participants").child(participant.id).removeValue { error, _ in
+            if let error = error {
+                print("Error deleting participant: \(error.localizedDescription)")
+            } else {
+                // Remove participant from the list and reload the table
+                self.participantsList.removeAll { $0.id == participant.id }
+                self.participantsTableView.reloadData()
+                
+                // Update the participants count in the title
+                if self.participantsList.isEmpty {
+                    self.participantsTitle.text = "No participants yet"
+                } else {
+                    self.participantsTitle.text = "Participants: \(self.participantsList.count)"
+                }
+            }
+        }
+    }
+    // MARK: - Delete Review from Firebase
+    private func deleteReview(_ review: Review) {
+        guard let eventID = eventID else {
+            print("Event ID is missing.")
+            return
+        }
+        
+        let ref = Database.database().reference()
+        ref.child("events").child(eventID).child("reviews").child(review.id).removeValue { error, _ in
+            if let error = error {
+                print("Error deleting review: \(error.localizedDescription)")
+            } else {
+                // Remove review from the list and reload the table
+                self.reviewsList.removeAll { $0.id == review.id }
+                self.reviewsTableView.reloadData()
+            }
+        }
+    }
+   
+    private func showDeleteConfirmation(for object: Any, isReview: Bool) {
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete this \(isReview ? "review" : "participant")?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            if isReview {
+                if let review = object as? Review {
+                    self.deleteReview(review)  // Proceed to delete review
+                }
+            } else {
+                if let participant = object as? Participant {
+                    self.deleteParticipant(participant)  // Proceed to delete participant
+                }
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+
+
     // MARK: - Participant Model
     struct Participant {
         var id: String
@@ -185,15 +278,5 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
         var id: String
         var fullName: String
         var rating: Int  // Rating as an integer
-    }
-
-    // Prepare for Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AdminEventViewController" {
-            // Pass the selected eventID to the destination view controller
-            if let adminEventVC = segue.destination as? AdminEventViewController {
-                adminEventVC.eventID = self.eventID  // Set eventID
-            }
-        }
     }
 }
