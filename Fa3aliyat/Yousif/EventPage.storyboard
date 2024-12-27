@@ -116,12 +116,38 @@ Why should you join the event?:
                                 <viewLayoutGuide key="contentLayoutGuide" id="VWC-Gf-HQP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="7Qn-DR-sl8"/>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price: 2.5BD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBH-C7-bRA">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xsD-f6-HHH">
                                 <rect key="frame" x="31" y="473.33333333333331" width="331" height="28.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price: 2.5BD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBH-C7-bRA">
+                                        <rect key="frame" x="0.0" y="0.0" width="277" height="28.666666666666668"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="277" id="3m5-oW-pT3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="d1C-x1-EIO">
+                                        <rect key="frame" x="277" y="4.3333333333333712" width="54" height="20.333333333333332"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JiQ-83-GS0">
+                                                <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="19.999999999999996"/>
+                                                <color key="tintColor" red="1" green="0.77647058823529413" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEG-9P-QrJ">
+                                                <rect key="frame" x="30" y="0.0" width="24" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="d1C-x1-EIO" firstAttribute="centerY" secondItem="kBH-C7-bRA" secondAttribute="centerY" id="dba-W5-g9B"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZsA-tw-NAT"/>
                         <color key="backgroundColor" name="CustomBackground"/>
@@ -129,30 +155,31 @@ Why should you join the event?:
                             <constraint firstItem="ZsA-tw-NAT" firstAttribute="trailing" secondItem="VYs-Yg-288" secondAttribute="trailing" constant="31" id="04p-GU-1dC"/>
                             <constraint firstItem="IgR-Mi-P85" firstAttribute="trailing" secondItem="2z6-BX-Q1c" secondAttribute="trailing" id="0uV-k3-aPk"/>
                             <constraint firstItem="2z6-BX-Q1c" firstAttribute="leading" secondItem="Pqb-Kz-zBj" secondAttribute="leading" id="57Q-2U-MDa"/>
-                            <constraint firstItem="Eak-Ln-0ib" firstAttribute="trailing" secondItem="kBH-C7-bRA" secondAttribute="trailing" id="7b8-Mv-DfK"/>
+                            <constraint firstItem="xsD-f6-HHH" firstAttribute="trailing" secondItem="zYU-cb-MVA" secondAttribute="trailing" id="7E5-ty-RsN"/>
                             <constraint firstItem="VYs-Yg-288" firstAttribute="leading" secondItem="ZsA-tw-NAT" secondAttribute="leading" constant="31" id="AGK-SJ-kWY"/>
                             <constraint firstItem="VYs-Yg-288" firstAttribute="top" secondItem="Eak-Ln-0ib" secondAttribute="bottom" constant="32.666666666666515" id="BQj-S3-LaU"/>
                             <constraint firstItem="zYU-cb-MVA" firstAttribute="top" secondItem="IgR-Mi-P85" secondAttribute="bottom" constant="20" id="C6F-x2-Mfc"/>
+                            <constraint firstItem="Eak-Ln-0ib" firstAttribute="top" secondItem="xsD-f6-HHH" secondAttribute="bottom" constant="20.000000000000057" id="Fcn-yD-wS4"/>
                             <constraint firstItem="zYU-cb-MVA" firstAttribute="leading" secondItem="IgR-Mi-P85" secondAttribute="leading" id="HoO-wB-K8F"/>
-                            <constraint firstItem="kBH-C7-bRA" firstAttribute="top" secondItem="zYU-cb-MVA" secondAttribute="bottom" constant="20" id="IvP-11-atp"/>
                             <constraint firstItem="IgR-Mi-P85" firstAttribute="top" secondItem="2z6-BX-Q1c" secondAttribute="bottom" constant="20" id="LBr-Y6-12P"/>
+                            <constraint firstItem="xsD-f6-HHH" firstAttribute="top" secondItem="zYU-cb-MVA" secondAttribute="bottom" constant="20" id="LGw-ki-1ce"/>
                             <constraint firstItem="Pqb-Kz-zBj" firstAttribute="top" secondItem="ZsA-tw-NAT" secondAttribute="top" constant="10" id="M8X-H4-wT3"/>
                             <constraint firstItem="2z6-BX-Q1c" firstAttribute="trailing" secondItem="Pqb-Kz-zBj" secondAttribute="trailing" id="OFQ-DF-2j6"/>
                             <constraint firstItem="IgR-Mi-P85" firstAttribute="leading" secondItem="2z6-BX-Q1c" secondAttribute="leading" id="QoK-eP-NbB">
                                 <string key="userLabel">Join us for an event featuring classic, luxury, and high-performance cars, live demos, test drives, and family-friendly activities. Don’t miss this celebration of automotive excellence.  .leading = Car show organizer.leading</string>
                             </constraint>
-                            <constraint firstItem="Eak-Ln-0ib" firstAttribute="top" secondItem="kBH-C7-bRA" secondAttribute="bottom" constant="20" id="W8X-tR-2zP"/>
-                            <constraint firstItem="Eak-Ln-0ib" firstAttribute="leading" secondItem="kBH-C7-bRA" secondAttribute="leading" id="cgH-Te-Cr8"/>
+                            <constraint firstItem="xsD-f6-HHH" firstAttribute="leading" secondItem="zYU-cb-MVA" secondAttribute="leading" id="ePn-Ni-K4X"/>
                             <constraint firstItem="ZsA-tw-NAT" firstAttribute="bottom" secondItem="VYs-Yg-288" secondAttribute="bottom" constant="45" id="fnQ-sK-3Hb"/>
-                            <constraint firstItem="kBH-C7-bRA" firstAttribute="trailing" secondItem="zYU-cb-MVA" secondAttribute="trailing" id="h7a-az-z4Y"/>
                             <constraint firstItem="ZsA-tw-NAT" firstAttribute="trailing" secondItem="Pqb-Kz-zBj" secondAttribute="trailing" constant="31" id="i1W-Fj-OfK"/>
                             <constraint firstItem="zYU-cb-MVA" firstAttribute="trailing" secondItem="IgR-Mi-P85" secondAttribute="trailing" id="ltk-3i-uNQ"/>
-                            <constraint firstItem="kBH-C7-bRA" firstAttribute="leading" secondItem="zYU-cb-MVA" secondAttribute="leading" id="v29-3O-f6c"/>
+                            <constraint firstItem="Eak-Ln-0ib" firstAttribute="leading" secondItem="xsD-f6-HHH" secondAttribute="leading" id="t3I-um-JEM"/>
                             <constraint firstItem="2z6-BX-Q1c" firstAttribute="top" secondItem="Pqb-Kz-zBj" secondAttribute="bottom" constant="20" id="v6A-EE-czn"/>
+                            <constraint firstItem="Eak-Ln-0ib" firstAttribute="trailing" secondItem="xsD-f6-HHH" secondAttribute="trailing" id="z3A-ho-8jq"/>
                             <constraint firstItem="Pqb-Kz-zBj" firstAttribute="leading" secondItem="ZsA-tw-NAT" secondAttribute="leading" constant="31" id="zP4-Tg-dLO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AvgRate" destination="XEG-9P-QrJ" id="8ZM-cb-yBa"/>
                         <outlet property="Date" destination="MBd-rz-e16" id="rS5-jY-5vC"/>
                         <outlet property="Edescription" destination="IgR-Mi-P85" id="OLT-PU-Uo5"/>
                         <outlet property="Elocation" destination="zYU-cb-MVA" id="pVk-Eh-Tn8"/>
@@ -510,6 +537,7 @@ Why should you join the event?:
         <image name="Cars" width="208" height="208"/>
         <image name="Cash" width="58" height="58"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

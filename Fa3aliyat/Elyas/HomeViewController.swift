@@ -13,16 +13,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var userRole: UserRole = .regular  // Default role
     var currentUserEmail: String? // The email fetched from Firebase Auth
-    
+    var favoriteStates = [String: Bool]()
+
     
     struct Event {
         let id: String  // Unique ID for each event
         let title: String
         let date: String
-        var isFavorite: Bool
     }
-    
-    var favoriteStates = [Bool]()
+
     
     // Firebase Realtime Database reference
     let ref = Database.database().reference()
@@ -31,7 +30,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         determineUserRole()
         
-        fetchEvents()  // Fetch events from Realtime Database
+        fetchEventsAndFavorites()  // Fetch events from Realtime Database
         
         // Initially show all events
         filteredEvents = events
@@ -52,35 +51,44 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.filteredEvents.removeAll()
         
         // Fetch events again when the page appears
-        fetchEvents()
+        fetchEventsAndFavorites()
     }
     
 
-    func fetchEvents() {
+    func fetchEventsAndFavorites() {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        // Fetch events
         ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
-            // Check if snapshot has data
             if let eventsData = snapshot.value as? [String: [String: Any]] {
                 self.events = eventsData.compactMap { (id, data) in
                     guard
                         let title = data["title"] as? String,
-                        let date = data["date"] as? String,
-                        let isFavorite = data["isFavorite"] as? Bool
+                        let date = data["date"] as? String
                     else { return nil }
                     
-                    return Event(id: id, title: title, date: date, isFavorite: isFavorite)
+                    return Event(id: id, title: title, date: date)
                 }
                 
-                print("Fetched Events: \(self.events)") // Log events to check if they're fetched properly
-                
-                self.filteredEvents = self.events
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                // Fetch user's favorites
+                self.ref.child("users").child(userID).child("favorites").observeSingleEvent(of: .value, with: { snapshot in
+                    if let favoriteIDs = snapshot.value as? [String: Bool] {
+                        self.favoriteStates = favoriteIDs // Update the favoriteStates dictionary
+                    }
+                    
+                    // Reload the table view on the main thread
+                    DispatchQueue.main.async {
+                        self.filteredEvents = self.events
+                        self.tableView.reloadData()
+                    }
+                })
             }
         }) { error in
-            print("Error fetching events: \(error.localizedDescription)")
+            print("Error fetching events or favorites: \(error.localizedDescription)")
         }
     }
+
+
 
     func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
         let eventRef = ref.child("events").child(event.id)  // Use the event ID as the key
@@ -104,25 +112,55 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! HomeTableViewCell
         let event = filteredEvents[indexPath.row]
         
-        cell.setupCell(name: event.title, date: event.date, isFavorite: event.isFavorite)
+        cell.setupCell(name: event.title, date: event.date)
         
-        // Set the button's selected state based on the event's isFavorite value
-        cell.starBtn.isSelected = event.isFavorite
+        // Set the button state based on favoriteStates
+        let isFavorite = favoriteStates[event.id] ?? false
+        cell.starBtn.isSelected = isFavorite
+        cell.starBtn.tintColor = isFavorite ? .systemBlue : .gray
         cell.starBtn.tag = indexPath.row
-        // Change the color based on isFavorite value
-        if event.isFavorite {
-            cell.starBtn.tintColor = .systemBlue // Set color when favorite
-        } else {
-            cell.starBtn.tintColor = .gray // Set color when not favorite
-        }
         
         // Add target for button tap action
         cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
-         
+        
         return cell
     }
 
-    // Favorite Button Tapped Method (update Firebase when favorite is toggled)
+
+     //Favorite Button Tapped Method (update Firebase when favorite is toggled)
+    @objc func favoriteButtonTapped(_ sender: UIButton) {
+        let row = sender.tag
+        let event = filteredEvents[row] // Get the selected event
+
+        // Determine the new favorite state (toggle)
+        let isFavorite = !(favoriteStates[event.id] ?? false) // Default to `false` if no value exists
+        favoriteStates[event.id] = isFavorite
+
+        // Update the button's selected state and color
+        sender.isSelected = isFavorite
+        sender.tintColor = isFavorite ? .systemBlue : .gray
+
+        // Update the user's favorites in Firebase
+        updateFavoriteEvents(for: event.id, isFavorite: isFavorite)
+    }
+
+
+
+    func updateFavoriteEvents(for eventID: String, isFavorite: Bool) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+
+        let userFavoritesRef = ref.child("users").child(userID).child("favorites")
+        
+        if isFavorite {
+            userFavoritesRef.updateChildValues([eventID: true]) // Add to favorites
+        } else {
+            userFavoritesRef.child(eventID).removeValue() // Remove from favorites
+        }
+    }
+
+
+
+
 //    @objc func favoriteButtonTapped(_ sender: UIButton) {
 //        let row = sender.tag
 //        
@@ -137,7 +175,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        
 //        // Change the button's color based on the favorite state
 //        if event.isFavorite {
-//            sender.tintColor = .blue // Button color when selected (favorite)
+//            sender.tintColor = .systemBlue // Button color when selected (favorite)
 //        } else {
 //            sender.tintColor = .gray // Button color when not selected (not favorite)
 //        }
@@ -153,45 +191,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //    }
 
 
-    @objc func favoriteButtonTapped(_ sender: UIButton) {
-        let row = sender.tag
-        
-        // Access the event object from filteredEvents
-        var event = filteredEvents[row]
-        
-        // Toggle the favorite state
-        event.isFavorite.toggle()
-
-        // Update the button's selected state
-        sender.isSelected = event.isFavorite
-        
-        // Change the button's color based on the favorite state
-        if event.isFavorite {
-            sender.tintColor = .systemBlue // Button color when selected (favorite)
-        } else {
-            sender.tintColor = .gray // Button color when not selected (not favorite)
-        }
-        
-        // Update the event in the filteredEvents array
-        filteredEvents[row] = event
-        
-        // Update Firebase with the new favorite state
-        updateFavoriteStateInFirebase(for: event, isFavorite: event.isFavorite)
-        
-        // Reload the row to reflect the changes
-        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
-    }
 
 
-
-
-    private func reorderRows() {
-        // Sort filteredEvents to put favorites at the top (or bottom depending on your preference)
-        filteredEvents.sort { $0.isFavorite && !$1.isFavorite }
-        
-        // Reload the table view to reflect the changes
-        tableView.reloadData()
-    }
+//    private func reorderRows() {
+//        // Sort filteredEvents to put favorites at the top (or bottom depending on your preference)
+//        filteredEvents.sort { $0.isFavorite && !$1.isFavorite }
+//        
+//        // Reload the table view to reflect the changes
+//        tableView.reloadData()
+//    }
     
     // Update favorite state in Firebase Realtime Database
 //    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
@@ -254,6 +262,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             if (userRole == .admin){
                 performSegue(withIdentifier: "toAdminDetails", sender: eventID)
+            } else if (userRole == .organizer){
+                performSegue(withIdentifier: "toOEDetails", sender: eventID)
+            } else if (userRole == .regular){
+                performSegue(withIdentifier: "toEventPage", sender: eventID)
+
             }
         }
         enum UserRole {

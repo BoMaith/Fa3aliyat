@@ -172,6 +172,7 @@ extension ProfileViewController: UITableViewDataSource {
             case 1:
                 cell.textLabel?.text = "Change Password"
                 cell.detailTextLabel?.text = "Update your password"
+
             case 2:
                 cell.textLabel?.text = "Log Out"
                 cell.detailTextLabel?.text = "Log out of your account"
@@ -192,13 +193,17 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.textLabel?.text = "Change Interests"
                 cell.detailTextLabel?.text = "Update your interests"
             case 3:
+
                 cell.textLabel?.text = "Log Out"
                 cell.detailTextLabel?.text = "Log out of your account"
             default:
                 break
+
             }
+            
+            
         }
-        
         return cell
     }
+    
 }

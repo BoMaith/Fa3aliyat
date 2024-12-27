@@ -25,13 +25,57 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     // This property will hold the filters array passed from FiltersTableViewController
-       var filtersArray: [Any?] = [nil, nil, nil, nil, nil]  // Default value
+    var filtersArray: [Any?] = [nil, nil, nil, nil, nil, nil]  // Default value
 
     func didApplyFilters(_ filters: [Any?]) {
             filtersArray = filters
             print("Received filters: \(filtersArray)")
             applyFilters() // Call this to update the displayed events
         }
+    
+    
+    
+    
+    func normalizeFilterTimeTo12HourFormat(_ timeString: String) -> String? {
+        let timeFormatter12Hour = DateFormatter()
+        timeFormatter12Hour.dateFormat = "h:mm a" // 12-hour format with AM/PM
+
+        let timeFormatter24Hour = DateFormatter()
+        timeFormatter24Hour.dateFormat = "HH:mm" // 24-hour format
+
+        if let timeDate = timeFormatter24Hour.date(from: timeString) {
+            // Convert from 24-hour format to 12-hour format
+            return timeFormatter12Hour.string(from: timeDate)
+        }
+
+        if let timeDate = timeFormatter12Hour.date(from: timeString) {
+            return timeFormatter12Hour.string(from: timeDate)
+        }
+
+        return nil
+    }
+    func normalizeEventTimeTo12HourFormat(_ eventTime: String) -> String? {
+        let timeFormatter12Hour = DateFormatter()
+        timeFormatter12Hour.dateFormat = "h:mm a" // 12-hour format with AM/PM
+        
+        let timeFormatter24Hour = DateFormatter()
+        timeFormatter24Hour.dateFormat = "HH:mm" // 24-hour format
+
+        if let eventDate = timeFormatter24Hour.date(from: eventTime) {
+            // Convert 24-hour format to 12-hour format
+            return timeFormatter12Hour.string(from: eventDate)
+        }
+        
+        // If already in 12-hour format, return the time as is
+        if let eventDate = timeFormatter12Hour.date(from: eventTime) {
+            return timeFormatter12Hour.string(from: eventDate)
+        }
+        
+        return nil // Return nil if format is unrecognized
+    }
+
+
+    
     
     // Example method to apply filters to your search logic
     func applyFilters() {
@@ -52,37 +96,68 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // Filter by date
         if let dateFilter = filtersArray[1] as? String, !dateFilter.isEmpty {
             print("Filtering by date: \(dateFilter)")
-            
+
             // DateFormatter to ensure the comparison is in "dd/MM/yyyy" format
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"  // Target format for both dateFilter and event.date
-            
+            dateFormatter.dateFormat = "dd/MM/yyyy"  // Target format for both dateFilter, startDate, and endDate
+
             filteredEvents = filteredEvents.filter { event in
-                // Ensure the event date is in a comparable format
-                let eventDateString = event.date  // Direct access if event.date is non-optional
-                if let eventDate = dateFormatter.date(from: eventDateString) {
-                    // Format the event date to "dd/MM/yyyy" to exclude time
-                    let formattedEventDate = dateFormatter.string(from: eventDate)
-                    return formattedEventDate == dateFilter
-                } else {
-                    print("Invalid date format for event: \(event.title), Date: \(event.date)")
-                    return false
+                // Only check if startDate and endDate are present
+                if let startDate = event.startDate, let endDate = event.endDate {
+                    if let filterDate = dateFormatter.date(from: dateFilter),
+                       let startDateDate = dateFormatter.date(from: startDate),
+                       let endDateDate = dateFormatter.date(from: endDate) {
+                        // Check if the filter date is within the range of startDate and endDate
+                        return (filterDate >= startDateDate) && (filterDate <= endDateDate)
+                    }
                 }
+                
+                // If event doesn't meet date criteria, return false
+                return false
             }
         }
+
+
+
+
+        // Filter by time
+        if let timeFilter = filtersArray[2] as? String, !timeFilter.isEmpty {
+               print("Filtering by time: \(timeFilter)")
+
+               // Normalize the filter time to 12-hour format
+               if let normalizedTimeFilter = normalizeFilterTimeTo12HourFormat(timeFilter) {
+                   // Filter events based on the normalized time
+                   filteredEvents = filteredEvents.filter { event in
+                       if let eventTime = event.time, !eventTime.isEmpty {
+                           if let normalizedEventTime = normalizeEventTimeTo12HourFormat(eventTime) {
+                               return normalizedEventTime == normalizedTimeFilter
+                           } else {
+                               print("Invalid time format for event: \(event.title), Time: \(event.time ?? "N/A")")
+                               return false
+                           }
+                       } else {
+                           print("Event has no time specified: \(event.title)")
+                           return false
+                       }
+                   }
+               }
+           }
+
 
 
         print("After date filter: \(filteredEvents.count)") // Check count after filter
 
         // Filter by price
-        if let priceFilter = filtersArray[2] as? String, !priceFilter.isEmpty {
+        if let priceFilter = filtersArray[3] as? String, !priceFilter.isEmpty {
             print("Filtering by price: \(priceFilter)")
             filteredEvents = filteredEvents.filter { event in
-                guard let priceString = event.price else { return false }
-                
-                if priceString.lowercased() == "free" {
+                guard let priceValue = event.price else { return false }
+
+                // Check if the price is 0 (treated as free)
+                if priceValue == 0 {
                     return priceFilter.lowercased() == "free"
-                } else if let priceValue = Double(priceString) {
+                } else {
+                    // Handle price ranges for non-free events
                     switch priceFilter {
                     case "0.1 - 4.9 BD":
                         return priceValue >= 0.1 && priceValue <= 4.9
@@ -96,17 +171,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                         return false
                     }
                 }
-                return false
             }
         }
+
 
         print("After price filter: \(filteredEvents.count)") // Check count after filter
 
         // Filter by location
-        if let locationFilter = filtersArray[3] as? String, !locationFilter.isEmpty {
+        if let locationFilter = filtersArray[4] as? String, !locationFilter.isEmpty {
             print("Filtering by location: \(locationFilter)")
+            let trimmedLocationFilter = locationFilter.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             filteredEvents = filteredEvents.filter { event in
-                event.location?.lowercased() == locationFilter.lowercased()
+                // Compare location (if exists) and ignore case differences
+                if let eventLocation = event.location {
+                    return eventLocation.lowercased() == trimmedLocationFilter.lowercased()
+                }
+                return false  // Return false if the event has no location
             }
         }
 
@@ -114,7 +195,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
         // Filter by age
         
-        if let ageFilter = filtersArray[4] as? String, !ageFilter.isEmpty {
+        if let ageFilter = filtersArray[5] as? String, !ageFilter.isEmpty {
             print("Filtering by age: \(ageFilter)")
             
             filteredEvents = filteredEvents.filter { event in
@@ -189,30 +270,35 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         fetchEvents()
     }
     
-    // Fetch events from Firebase using the same approach as in the Home page
+    // Fetch events from Firebase
     func fetchEvents() {
-        
         ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
             if let eventsData = snapshot.value as? [String: [String: Any]] {
                 self.events = eventsData.compactMap { (id, data) -> Event? in
-                    guard
-                        let title = data["title"] as? String,
-                        let date = data["date"] as? String,
-                        let isFavorite = data["isFavorite"] as? Bool
-                    else {
+                    // Guard for mandatory fields, including date
+                    guard let title = data["title"] as? String,
+                          let date = data["date"] as? String,  // Ensure date is available
+                          let isFavorite = data["isFavorite"] as? Bool else {
                         return nil
                     }
                     
-                    // Ensure age is parsed correctly
-                       let age = data["age"] as? Int ?? -1  // Default to -1 if not found or cannot be casted
+                    // Assign startDate and endDate as optional
+                    let startDate = data["startDate"] as? String
+                    let endDate = data["endDate"] as? String
+                    let time = data["time"] as? String  // Optional time
+                    let price = data["price"] as? Double  // Price is optional
+
                     
-                    // Return event object
+                    // Return event object with date, startDate, and endDate
                     return Event(
                         id: id,
                         title: title,
-                        date: date,
+                        date: date,            // Non-optional date
+                        startDate: startDate,  // Optional startDate
+                        endDate: endDate,    // Optional endDate
+                        time: time,
                         isFavorite: isFavorite,
-                        price: data["price"] as? String,
+                        price: price,
                         location: data["location"] as? String,
                         age: data["age"] as? Int,
                         category: data["category"] as? String
@@ -233,6 +319,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             print("Error fetching events: \(error.localizedDescription)")
         }
     }
+
+
 
 
     // MARK: - TableView DataSource Methods
@@ -366,8 +454,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let id: String  // Unique ID for each event
         let title: String
         let date: String
+        let startDate: String? // Optional: The start date of the event (can be nil)
+        let endDate: String?
+        let time: String?
         var isFavorite: Bool
-        let price: String?  // Optional to handle cases where price might be missing
+        let price: Double?  // Optional to handle cases where price might be missing
         let location: String?
         let age: Int?    // Optional to handle cases where age might be missing
         let category: String? // Add the category property
