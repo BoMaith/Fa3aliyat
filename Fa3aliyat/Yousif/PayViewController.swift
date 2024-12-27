@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 
 class PayViewController: UIViewController {
@@ -16,12 +17,15 @@ class PayViewController: UIViewController {
     var pricePerTicket: Double = 2.5
     var eventID: String?
     var eventName: String? // To hold the fetched event name
-    var userID: String = "31QdzcuplceQvCN40rNdlOUJQGS2" // Replace with the actual user's ID
-    var userName: String = "John Doe" // Replace with the actual user's name
+    var userID: String = ""
+    var userName: String = "Anonymous" // Default fallback name
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Payment"
+        
+        // Fetch the user ID and name dynamically
+        fetchCurrentUserDetails()
         
         if let eventID = eventID {
             print("Received Event ID: \(eventID)")
@@ -52,16 +56,14 @@ class PayViewController: UIViewController {
         TTLabel.text = "1"
         updateTotalAmount()
     }
-    
+
     func updateTotalAmount() {
         let totalAmount = Double(ticketCount) * pricePerTicket
         TALabel.text = "BD " + String(format: "%.1f", totalAmount)
     }
-    
+
     func fetchEventName(eventID: String) {
-        // Reference to Firebase
         let ref = Database.database().reference().child("events").child(eventID)
-        
         ref.observeSingleEvent(of: .value) { snapshot in
             if let eventData = snapshot.value as? [String: Any],
                let title = eventData["title"] as? String {
@@ -72,7 +74,20 @@ class PayViewController: UIViewController {
             }
         }
     }
-    
+
+    /// Fetch the current user's ID and name from Firebase Authentication
+    func fetchCurrentUserDetails() {
+        guard let user = Auth.auth().currentUser else {
+            print("Error: No authenticated user found.")
+            return
+        }
+        
+        // Set userID and userName
+        userID = user.uid
+        userName = user.displayName ?? "Anonymous"
+        print("Fetched User ID: \(userID), User Name: \(userName)")
+    }
+
     @IBAction func PaymentTapped(_ sender: UIButton) {
         if sender == CardBtn {
             // Select Card, Deselect Cash
@@ -88,7 +103,7 @@ class PayViewController: UIViewController {
         ProceedBtn.isEnabled = true
         ProceedBtn.alpha = 1.0
     }
-    
+
     @IBAction func proceedButtonTapped(_ sender: Any) {
         if CardBtn.isSelected {
             checkIfUserIsAlreadyEnrolled { alreadyEnrolled in
@@ -120,8 +135,8 @@ class PayViewController: UIViewController {
            let destinationVC = segue.destination as? CardViewController {
             destinationVC.eventID = eventID
             destinationVC.eventName = eventName
-            destinationVC.userID = userID // Ensure `userID` is `var` in `CardViewController`
-            destinationVC.userName = userName // Ensure `userName` is `var` in `CardViewController`
+            destinationVC.userID = userID
+            destinationVC.userName = userName
         }
     }
 

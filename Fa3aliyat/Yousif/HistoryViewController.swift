@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -14,17 +15,28 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let id: String
         let title: String
         let startDate: String
+        let endDate: String
     }
 
-    var userID: String = "31QdzcuplceQvCN40rNdlOUJQGS2" // Hardcoded User ID for testing
-    var userName: String = "John Doe" // Replace with actual user name
+    // Get userID from the logged-in user
+    var userID: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
+    var userName: String? {
+        return Auth.auth().currentUser?.displayName
+    }
 
     // Firebase Realtime Database reference
     let ref = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUserJoinedEvents() // Fetch the user's joined events
+        if let userID = userID {
+            fetchUserJoinedEvents(userID: userID) // Fetch the user's joined events
+        } else {
+            print("Error: No user is logged in.")
+        }
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,10 +47,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     // Fetch user's joined events
-    func fetchUserJoinedEvents() {
+    func fetchUserJoinedEvents(userID: String) {
         ref.child("users").child(userID).child("JoinedEvents").observeSingleEvent(of: .value) { snapshot in
             if let joinedEvents = snapshot.value as? [[String: Any]] {
                 let joinedEventIDs = joinedEvents.compactMap { $0["id"] as? String }
+                print("Joined Event IDs: \(joinedEventIDs)")
                 self.fetchEvents(eventIDs: joinedEventIDs)
             } else {
                 print("No joined events found.")
@@ -52,9 +65,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func fetchEvents(eventIDs: [String]) {
         ref.child("events").observeSingleEvent(of: .value) { snapshot in
             if let eventsData = snapshot.value as? [String: [String: Any]] {
-                self.events = eventsData.compactMap { (key, data) in
-                    guard eventIDs.contains(key), let title = data["title"] as? String, let startDate = data["startDate"] as? String else { return nil }
-                    return Event(id: key, title: title, startDate: startDate)
+                self.events = eventsData.compactMap { (key, data) -> Event? in
+                    guard eventIDs.contains(key),
+                          let title = data["title"] as? String,
+                          let startDate = data["startDate"] as? String,
+                          let endDate = data["endDate"] as? String else {
+                              return nil
+                          }
+                    return Event(id: key, title: title, startDate: startDate, endDate: endDate)
                 }
                 // Print events for debugging
                 self.events.forEach { event in
@@ -70,8 +88,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.pastEventsTableView.reloadData()
                 }
             }
-        } withCancel: { error in
-            print("Error fetching events: \(error.localizedDescription)")
         }
     }
 
@@ -84,9 +100,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             return false
         }
         let currentDate = Date()
-        let isPending = eventDate >= currentDate
-        print("Event startDate: \(eventDate), Is pending: \(isPending)")
-        return isPending
+        return eventDate >= currentDate
     }
 
     // TableView DataSource Methods
@@ -114,7 +128,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.RateBtn.addTarget(self, action: #selector(rateButtonTapped(_:)), for: .touchUpInside)
 
             // Fetch the rating if it exists
-            ref.child("events").child(event.id).child("reviews").queryOrdered(byChild: "userID").queryEqual(toValue: userID).observeSingleEvent(of: .value) { snapshot in
+            ref.child("events").child(event.id).child("reviews").queryOrdered(byChild: "userID").queryEqual(toValue: userID!).observeSingleEvent(of: .value) { snapshot in
                 if snapshot.exists() {
                     DispatchQueue.main.async {
                         cell.setRating(isRated: true)
@@ -128,93 +142,124 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 
             return cell
         }
+    }
+
+    // TableView Delegate Method
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.tableView {
+            let selectedEvent = filteredEvents[indexPath.row]
+            performSegue(withIdentifier: "toEventPage", sender: selectedEvent)
+        }
+    }
+
     
-}
+    
+    
+    
+    
+    
+    
+    
 
-
-
-    // Rate Button Action
-    @objc func rateButtonTapped(_ sender: UIButton) {
-        let row = sender.tag
-        let event = pastEvents[row]
-
-        // Check if the user has already rated this event
-        ref.child("events").child(event.id).child("reviews").queryOrdered(byChild: "userID").queryEqual(toValue: userID).observeSingleEvent(of: .value) { snapshot in
-            if snapshot.exists() {
-                let alert = UIAlertController(title: "Already Rated", message: "You have already rated this event.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                // Show rating popup
-                let alert = UIAlertController(title: "Rate the Event", message: nil, preferredStyle: .alert)
-                for i in 1...5 {
-                    let action = UIAlertAction(title: "\(i) Stars", style: .default) { _ in
-                        print("Rated \(i) stars for event: \(event.title)")
-                        // Store rating in Firebase
-                        self.storeRating(eventID: event.id, rating: i)
-                    }
-                    alert.addAction(action)
-                }
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+    // Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEventPage",
+           let eventPageVC = segue.destination as? EventViewController,
+           let selectedEvent = sender as? Event {
+            eventPageVC.eventID = selectedEvent.id
         }
     }
 
-    func storeRating(eventID: String, rating: Int) {
-        let revID = UUID().uuidString // Generate a unique ID for the review
-        let reviewData: [String: Any] = [
-            "FullName": userName,
-            "userID": userID,
-            "rating": rating
-        ]
-
-        ref.child("events").child(eventID).child("reviews").child(revID).setValue(reviewData) { error, _ in
-            if let error = error {
-                print("Error storing rating: \(error.localizedDescription)")
-            } else {
-                print("Rating stored successfully!")
-            }
-        }
-    }
-
-    // Delete Button Action
+    // Handle the delete button tap
     @objc func deleteButtonTapped(_ sender: UIButton) {
         let row = sender.tag
         let event = filteredEvents[row]
 
         // Show confirmation alert
-        let alert = UIAlertController(title: "Remove Event", message: "Are you sure you want to quit from this event? this event may not be refundable", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Remove Event", message: "Are you sure you want to quit from this event? This event may not be refundable.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Quit", style: .destructive) { _ in
+            guard let userID = self.userID else {
+                print("Error: No user is logged in.")
+                return
+            }
+
             // Remove the event from the user's JoinedEvents list
-            self.ref.child("users").child(self.userID).child("JoinedEvents").observeSingleEvent(of: .value) { snapshot in
+            self.ref.child("users").child(userID).child("JoinedEvents").observeSingleEvent(of: .value) { snapshot in
                 if var joinedEvents = snapshot.value as? [[String: Any]] {
                     joinedEvents.removeAll { joinedEvent in
                         guard let id = joinedEvent["id"] as? String else { return false }
                         return id == event.id
                     }
-                    self.ref.child("users").child(self.userID).child("JoinedEvents").setValue(joinedEvents)
+                    self.ref.child("users").child(userID).child("JoinedEvents").setValue(joinedEvents)
                 }
             }
+
             // Remove the user from the event's participants
             self.ref.child("events").child(event.id).child("participants").observeSingleEvent(of: .value) { snapshot in
-                if var participants = snapshot.value as? [[String: Any]] {
-                    participants.removeAll { participant in
-                        guard let id = participant["id"] as? String else { return false }
-                        return id == self.userID
-                    }
+                if var participants = snapshot.value as? [String: Any] {
+                    participants.removeValue(forKey: userID)
                     self.ref.child("events").child(event.id).child("participants").setValue(participants)
                 }
             }
+
             // Remove the event from the local array
             self.filteredEvents.remove(at: row)
             self.events.removeAll { $0.id == event.id }
+
             // Delete the row from the table view
             self.tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
         })
         present(alert, animated: true, completion: nil)
     }
+    
+    @objc func rateButtonTapped(_ sender: UIButton) {
+        let row = sender.tag
+        let event = pastEvents[row]
+
+        // Show the rating interface or handle the rating action
+        let alert = UIAlertController(title: "Rate Event", message: "Provide your rating for the event.", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "Enter your rating (1-5)"
+            textField.keyboardType = .numberPad
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Submit", style: .default) { _ in
+            if let ratingText = alert.textFields?.first?.text, let rating = Int(ratingText), rating >= 1 && rating <= 5 {
+                self.submitRating(for: event, rating: rating)
+            } else {
+                // Show an error message if the rating is invalid
+                let errorAlert = UIAlertController(title: "Invalid Rating", message: "Please enter a valid rating between 1 and 5.", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+        })
+        present(alert, animated: true, completion: nil)
+    }
+
+    func submitRating(for event: Event, rating: Int) {
+        guard let userID = userID else {
+            print("Error: No user is logged in.")
+            return
+        }
+
+        let ref = Database.database().reference()
+        let reviewRef = ref.child("events").child(event.id).child("reviews").childByAutoId()
+        let reviewData: [String: Any] = [
+            "userID": userID,
+            "rating": rating
+        ]
+        reviewRef.setValue(reviewData) { error, _ in
+            if let error = error {
+                print("Error submitting rating: \(error.localizedDescription)")
+            } else {
+                print("Rating submitted successfully.")
+            }
+        }
+    }
+
+
+
 
     // Search Bar Delegate Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -9,21 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="dU4-6n-Bmo">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jMA-nd-XwQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p1g-4b-sCV">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yeO-5Z-Dcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-7" y="17"/>
-        </scene>
         <!--Event View Controller-->
         <scene sceneID="QYK-Xq-49K">
             <objects>
@@ -73,7 +58,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Join" cornerStyle="capsule"/>
                                 <connections>
                                     <action selector="navigateToPayment:" destination="5MW-r7-L40" eventType="touchUpInside" id="BbA-ox-yIy"/>
-                                    <segue destination="sU9-6T-vvg" kind="show" identifier="toPayViewController" id="l1f-HB-Ka2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgR-Mi-P85">
@@ -119,7 +103,7 @@ Why should you join the event?:
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xsD-f6-HHH">
                                 <rect key="frame" x="31" y="473.33333333333331" width="331" height="28.666666666666686"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price: 2.5BD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBH-C7-bRA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price: 0.0BD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBH-C7-bRA">
                                         <rect key="frame" x="0.0" y="0.0" width="277" height="28.666666666666668"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="277" id="3m5-oW-pT3"/>
@@ -135,7 +119,7 @@ Why should you join the event?:
                                                 <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="19.999999999999996"/>
                                                 <color key="tintColor" red="1" green="0.77647058823529413" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEG-9P-QrJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEG-9P-QrJ">
                                                 <rect key="frame" x="30" y="0.0" width="24" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -188,6 +172,7 @@ Why should you join the event?:
                         <outlet property="Joinbtn" destination="VYs-Yg-288" id="hy9-Hb-2DI"/>
                         <outlet property="orgImage" destination="rAe-HP-8Yp" id="BYr-if-8AB"/>
                         <outlet property="orgName" destination="O3w-ug-bGa" id="DPj-L6-sJ3"/>
+                        <segue destination="sU9-6T-vvg" kind="show" identifier="toPayViewController" id="wmI-nW-thS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMk-zH-6sR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -388,7 +373,7 @@ Why should you join the event?:
                         <outlet property="ProceedBtn" destination="Evt-qq-e8z" id="XH0-x1-Q8l"/>
                         <outlet property="TALabel" destination="kk3-7F-ua8" id="DBl-gE-bzx"/>
                         <outlet property="TTLabel" destination="p7s-C2-cye" id="22d-2C-8HB"/>
-                        <segue destination="vti-jD-92i" kind="show" identifier="CardPaymentVC" id="jfw-Sd-eXB"/>
+                        <segue destination="vti-jD-92i" kind="show" identifier="CardPaymentVC" id="XuF-p4-2Ww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk4-Ci-S2T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
