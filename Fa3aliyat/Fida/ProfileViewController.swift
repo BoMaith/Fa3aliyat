@@ -371,53 +371,55 @@ extension ProfileViewController: UITableViewDataSource {
             default:
                 break
             } // Show the right text and subtitle for each row
-        if isOrganizer {
-            switch indexPath.row {
-            case 0:
-                // The dark mode cell does not have a right arrow
-                cell.accessoryType = .none
-                cell.textLabel?.text = "Dark/Light Mode"
-                cell.detailTextLabel?.text = "Enable/Disable dark mode"
-            case 1:
-                cell.textLabel?.text = "Change Email"
-                cell.detailTextLabel?.text = "Update your email address"
-            case 2:
-                cell.textLabel?.text = "Change Password"
-                cell.detailTextLabel?.text = "Update your password"
-            case 3:
-                cell.textLabel?.text = "Log Out"
-                cell.detailTextLabel?.text = "Log out of your account"
-            default:
-                break
+            if isOrganizer {
+                switch indexPath.row {
+                case 0:
+                    // The dark mode cell does not have a right arrow
+                    cell.accessoryType = .none
+                    cell.textLabel?.text = "Dark/Light Mode"
+                    cell.detailTextLabel?.text = "Enable/Disable dark mode"
+                case 1:
+                    cell.textLabel?.text = "Change Email"
+                    cell.detailTextLabel?.text = "Update your email address"
+                case 2:
+                    cell.textLabel?.text = "Change Password"
+                    cell.detailTextLabel?.text = "Update your password"
+                case 3:
+                    cell.textLabel?.text = "Log Out"
+                    cell.detailTextLabel?.text = "Log out of your account"
+                default:
+                    break
+                }
+            } else {
+                switch indexPath.row {
+                case 0:
+                    // The dark mode cell does not have a right arrow
+                    cell.accessoryType = .none
+                    cell.textLabel?.text = "Dark/Light Mode"
+                    cell.detailTextLabel?.text = "Enable/Disable dark mode"
+                case 1:
+                    cell.textLabel?.text = "Change Email"
+                    cell.detailTextLabel?.text = "Update your email address"
+                case 2:
+                    cell.textLabel?.text = "Change Password"
+                    cell.detailTextLabel?.text = "Update your password"
+                case 3:
+                    cell.textLabel?.text = "Change Interests"
+                    cell.detailTextLabel?.text = "Update your interests"
+                case 4:
+                    cell.textLabel?.text = "Tickets"
+                    cell.detailTextLabel?.text = "View your tickets"
+                case 5:
+                    cell.textLabel?.text = "Log Out"
+                    cell.detailTextLabel?.text = "Log out of your account"
+                default:
+                    break
+                }
             }
-        } else {
-            switch indexPath.row {
-            case 0:
-                // The dark mode cell does not have a right arrow
-                cell.accessoryType = .none
-                cell.textLabel?.text = "Dark/Light Mode"
-                cell.detailTextLabel?.text = "Enable/Disable dark mode"
-            case 1:
-                cell.textLabel?.text = "Change Email"
-                cell.detailTextLabel?.text = "Update your email address"
-            case 2:
-                cell.textLabel?.text = "Change Password"
-                cell.detailTextLabel?.text = "Update your password"
-            case 3:
-                cell.textLabel?.text = "Change Interests"
-                cell.detailTextLabel?.text = "Update your interests"
-            case 4:
-                cell.textLabel?.text = "Tickets"
-                cell.detailTextLabel?.text = "View your tickets"
-            case 5:
-                cell.textLabel?.text = "Log Out"
-                cell.detailTextLabel?.text = "Log out of your account"
-            default:
-                break
-            }
+            
+            
         }
-        
         return cell
     }
+    
 }
-
