@@ -52,7 +52,7 @@
         <!--Login View Controller-->
         <scene sceneID="gDa-XQ-fZ0">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="jIr-Kx-SVR" customClass="LoginViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="jIr-Kx-SVR" customClass="LoginViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vNg-lv-yyx" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +121,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="05K-Xc-2sC"/>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
                         <constraints>
                             <constraint firstItem="gTo-wi-12h" firstAttribute="leading" secondItem="05K-Xc-2sC" secondAttribute="leading" constant="30" id="26j-my-C6b"/>
                             <constraint firstItem="OPQ-yi-aav" firstAttribute="centerX" secondItem="vNg-lv-yyx" secondAttribute="centerX" constant="-27.5" id="3IN-xR-Bai"/>
@@ -227,7 +227,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pwd-OT-5Rd"/>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="CustomBackground"/>
                         <constraints>
                             <constraint firstItem="EQ4-YJ-OhT" firstAttribute="leading" secondItem="u3v-TG-x2q" secondAttribute="leading" id="0TF-Xz-o6L"/>
                             <constraint firstItem="wtQ-G1-zIU" firstAttribute="centerX" secondItem="N1R-v2-U6i" secondAttribute="centerX" id="5py-v5-Rdb"/>
@@ -271,7 +271,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
