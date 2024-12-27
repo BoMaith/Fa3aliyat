@@ -73,6 +73,8 @@ class ChangePasswordViewController: UIViewController {
                     let userRole: String
                     if userEmail.contains("@fa3aliyat.organizer.bh") {
                         userRole = "organizers"
+                    } else if userEmail.contains("@fa3aliyat.admin.bh") {
+                        userRole = "admin"
                     } else {
                         userRole = "users"
                     }
@@ -93,7 +95,6 @@ class ChangePasswordViewController: UIViewController {
     }
     
     // Helper Functions for Validation
-
     private func isValidPassword(_ password: String) -> Bool {
         return password.count >= 6
     }
@@ -101,8 +102,7 @@ class ChangePasswordViewController: UIViewController {
     // Helper function for alerts
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Try again", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
 }
-

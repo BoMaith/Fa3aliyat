@@ -1,10 +1,3 @@
-////
-////  SignupViewController.swift
-////  Fa3aliyat
-////
-////  Created by BP-36-201-09 on 12/12/2024.
-////
-//
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
@@ -95,6 +88,10 @@ class SignupViewController: UIViewController {
     // Helper Functions for Validation of email which ensures that the email has the following things
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
+        if email.contains("@fa3aliyat.organizer.bh") || email.contains("@fa3aliyat.admin.bh") {
+            showAlert(title: "Sign up failed", message: "An admin can only create an organizer or admin account.")
+            return false
+        }
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
     
@@ -110,5 +107,3 @@ class SignupViewController: UIViewController {
         present(alert, animated: true)
     }
 }
-
-

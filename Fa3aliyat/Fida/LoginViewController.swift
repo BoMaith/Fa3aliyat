@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
             guard let email = emailTextField.text, let password = passwordTextField.text else { return }
             
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {
+                if error != nil {
                     self.showAlert(title: "Login Failed", message: "The email or password is incorrect.")
                     return
                 }

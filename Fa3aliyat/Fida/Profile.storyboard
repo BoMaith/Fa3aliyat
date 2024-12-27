@@ -71,8 +71,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="102"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzw-lu-4VZ">
-                                        <rect key="frame" x="157.33333333333334" y="112" width="78.333333333333343" height="64.666666666666686"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <rect key="frame" x="155.66666666666666" y="112" width="81.666666666666657" height="64.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -102,47 +102,14 @@
                         <outlet property="emailLabel" destination="ghg-V1-9Gf" id="Mti-IN-x9O"/>
                         <outlet property="fullNameLabel" destination="Uzw-lu-4VZ" id="6RH-W1-NOa"/>
                         <outlet property="tableview" destination="4fh-0i-sQ7" id="Sv5-VM-Him"/>
-                        <segue destination="Oww-cr-FsP" kind="show" identifier="showChangeInterests" id="J1j-vO-eb1"/>
-                        <segue destination="ZBX-jU-bHl" kind="show" identifier="showTickets" id="JJ8-Q5-mjK"/>
                         <segue destination="8C8-sd-cOq" kind="presentation" identifier="goToLogin" modalPresentationStyle="fullScreen" id="l3L-ea-Yg7"/>
                         <segue destination="Ea7-oN-u4U" kind="show" identifier="showChangePassword" id="3Ok-jI-v9J"/>
+                        <segue destination="Dfk-UG-rea" kind="show" identifier="showChangeInterests" id="TVB-hN-TO6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
-        </scene>
-        <!--Tickets-->
-        <scene sceneID="Q3W-6W-5Pa">
-            <objects>
-                <viewController id="ZBX-jU-bHl" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="14C-Rw-O9u">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="qta-C8-eEk"/>
-                        <color key="backgroundColor" name="CustomBackground"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Tickets" largeTitleDisplayMode="never" id="oty-SL-9Bg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p93-pB-nSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="138" y="810"/>
-        </scene>
-        <!--Change Interests-->
-        <scene sceneID="tEg-ql-VSO">
-            <objects>
-                <viewController id="Oww-cr-FsP" customClass="ChangeInterestsViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kXZ-bD-JsT">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lU7-ab-akI"/>
-                        <color key="backgroundColor" name="CustomBackground"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Change Interests" largeTitleDisplayMode="never" id="KZI-Yj-s8O"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OIe-jQ-KWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1218" y="478"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="qD8-TM-2Ab">
@@ -231,8 +198,87 @@
             </objects>
             <point key="canvasLocation" x="1218" y="-211"/>
         </scene>
+        <!--Choose Your Interests-->
+        <scene sceneID="QjI-Bg-XLX">
+            <objects>
+                <viewController id="Dfk-UG-rea" customClass="ChangeInterestsViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LYo-zJ-ADC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TzP-wn-227">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexColor" name="CustomTextColor"/>
+                                <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InterestCell" rowHeight="60" id="nBN-d2-L6n" customClass="ChangeInterestsTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nBN-d2-L6n" id="Jnl-NC-lM7">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pizza" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-6m-BiU">
+                                                    <rect key="frame" x="20" y="8.6666666666666643" width="43" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="R5C-YZ-cag"/>
+                                                        <constraint firstAttribute="width" constant="43" id="dcA-Kr-4yO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eS5-bO-Lg2">
+                                                    <rect key="frame" x="324" y="14.666666666666664" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-CX-ViH">
+                                                    <rect key="frame" x="71" y="19.666666666666668" width="41.333333333333343" height="21.000000000000004"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.1372549236" green="0.1372549236" blue="0.1372549236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="eS5-bO-Lg2" firstAttribute="trailing" secondItem="Jnl-NC-lM7" secondAttribute="trailingMargin" id="3k2-Ya-8hq"/>
+                                                <constraint firstItem="6TD-CX-ViH" firstAttribute="leading" secondItem="1tA-6m-BiU" secondAttribute="trailing" constant="8" id="6JW-TW-sHw"/>
+                                                <constraint firstItem="eS5-bO-Lg2" firstAttribute="centerY" secondItem="Jnl-NC-lM7" secondAttribute="centerY" id="Dbq-rk-8ih"/>
+                                                <constraint firstItem="1tA-6m-BiU" firstAttribute="leading" secondItem="Jnl-NC-lM7" secondAttribute="leading" constant="20" id="Roq-eT-QBO"/>
+                                                <constraint firstItem="6TD-CX-ViH" firstAttribute="centerY" secondItem="Jnl-NC-lM7" secondAttribute="centerY" id="fUT-5M-8HP"/>
+                                                <constraint firstItem="1tA-6m-BiU" firstAttribute="centerY" secondItem="Jnl-NC-lM7" secondAttribute="centerY" id="t5A-YO-6rH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1372549236" green="0.1372549236" blue="0.1372549236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="imgInterestIcon" destination="1tA-6m-BiU" id="hwl-lg-fqn"/>
+                                            <outlet property="lblInterest" destination="6TD-CX-ViH" id="bEo-J6-AdI"/>
+                                            <outlet property="switchInterest" destination="eS5-bO-Lg2" id="gPd-TM-PWo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EwK-ON-BMz"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="TzP-wn-227" firstAttribute="leading" secondItem="EwK-ON-BMz" secondAttribute="leading" id="A6x-2z-CpE"/>
+                            <constraint firstItem="TzP-wn-227" firstAttribute="bottom" secondItem="EwK-ON-BMz" secondAttribute="bottom" id="Vfo-E5-r1f"/>
+                            <constraint firstItem="TzP-wn-227" firstAttribute="trailing" secondItem="EwK-ON-BMz" secondAttribute="trailing" id="dYb-D9-495"/>
+                            <constraint firstItem="TzP-wn-227" firstAttribute="top" secondItem="EwK-ON-BMz" secondAttribute="top" id="eb9-E0-ZF3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Choose Your Interests" largeTitleDisplayMode="always" id="LBw-o2-Dnm">
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="10c-yH-6Pr"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="TzP-wn-227" id="P9Y-ev-j9T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfh-pU-ASH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218" y="483"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="pizza" width="374" height="370"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
