@@ -21,6 +21,7 @@
                         <segue destination="etI-XG-Iv8" kind="relationship" relationship="viewControllers" id="ZJc-ku-aJ4"/>
                         <segue destination="hlm-9m-NXc" kind="relationship" relationship="viewControllers" id="fdn-Sa-eSk"/>
                         <segue destination="AEc-VV-hkb" kind="relationship" relationship="viewControllers" id="B3d-tP-B7e"/>
+                        <segue destination="Lon-C8-Unc" kind="relationship" relationship="viewControllers" id="MWd-Hj-GP9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0q-az-nz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -124,6 +125,33 @@
             </objects>
             <point key="canvasLocation" x="324" y="239"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="G8b-7z-eNr">
+            <objects>
+                <navigationController id="Lon-C8-Unc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="Bor-zE-MIC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7XS-fI-8XS">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6Ie-jl-J0d" kind="relationship" relationship="rootViewController" id="Koa-RL-9Ux"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eK6-cE-Hz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="581" y="-486"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="PBl-zq-rcM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="6Ie-jl-J0d" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7AW-eJ-P0a"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LOl-ur-xib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1465" y="-83"/>
+        </scene>
         <!--Favorite-->
         <scene sceneID="jm2-Ah-XoA">
             <objects>
@@ -147,6 +175,7 @@
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.2" catalog="system" width="128" height="87"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="CustomBackground">

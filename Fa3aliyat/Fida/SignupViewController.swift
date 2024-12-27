@@ -71,7 +71,8 @@ class SignupViewController: UIViewController {
             let userInfo: [String: Any] = [
                 "FullName": fullName,
                 "UserName": userName,
-                "Email": email
+                "Email": email,
+                "Password": password
             ]
             
             // Making an entry in the database
