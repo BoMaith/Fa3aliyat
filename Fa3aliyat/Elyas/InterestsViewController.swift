@@ -1,6 +1,11 @@
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class InterestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var ref: DatabaseReference!
+    var selectedInterests = [String]()
 
     // Outlets
     @IBOutlet weak var skipBarBtn: UIBarButtonItem!
@@ -27,7 +32,8 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference() // Firebase reference
+        
         // Set up table view
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,6 +45,28 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
     private func updateSkipButtonTitle() {
         let isAnySwitchOn = switchStates.contains(true)
         skipBarBtn.title = isAnySwitchOn ? "Done" : "Skip"
+        
+        // Save to Firebase if the user has selected any interests
+        if isAnySwitchOn {
+            saveInterestsToFirebase()
+        }
+    }
+
+    private func saveInterestsToFirebase() {
+        // Assuming you have a user ID (for example, from Firebase Authentication)
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
+        }
+        
+        // Save the selected interests array to Firebase under the user's profile
+        ref.child("users").child(userID).child("interests").setValue(selectedInterests) { error, _ in
+            if let error = error {
+                print("Error saving interests: \(error.localizedDescription)")
+            } else {
+                print("Interests saved successfully!")
+            }
+        }
     }
 
     // MARK: - TableView DataSource Methods
@@ -71,6 +99,19 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc func switchValueChanged(_ sender: UISwitch) {
         // Update the state of the corresponding switch
         switchStates[sender.tag] = sender.isOn
+        
+        // If the switch is turned on, add the interest to the array
+        let interest = interests[sender.tag].1
+        if sender.isOn {
+            if !selectedInterests.contains(interest) {
+                selectedInterests.append(interest)
+            }
+        } else {
+            // If the switch is turned off, remove the interest from the array
+            if let index = selectedInterests.firstIndex(of: interest) {
+                selectedInterests.remove(at: index)
+            }
+        }
         
         // Update the skip button title
         updateSkipButtonTitle()

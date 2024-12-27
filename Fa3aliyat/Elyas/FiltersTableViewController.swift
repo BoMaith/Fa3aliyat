@@ -16,7 +16,7 @@ class FiltersTableViewController: UITableViewController {
     var selectedTime: Date?  // Stores selected Time (from a TimePicker), initially nil
     var selectedLocation: String?  // Stores selected location (text input)
     
-    var selectedFilters: [Any?] = [nil, nil, nil, nil, nil] // [category, dateAndTime, price, location, age]
+    var selectedFilters: [Any?] = [nil, nil, nil, nil, nil, nil] // [category, date, time, price, location, age]
 
     
     override func loadView() {
@@ -56,6 +56,9 @@ class FiltersTableViewController: UITableViewController {
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveFilters))
         navigationItem.rightBarButtonItem = saveButton
+        
+//        let locale = Locale(identifier: "en_GB")  // Locale that uses 24-hour format
+//        timePicker.locale = locale
     }
 
     @objc func dismissKeyboard(sender: UITapGestureRecognizer) {
@@ -75,37 +78,46 @@ class FiltersTableViewController: UITableViewController {
             print("Category not selected or still default.")
         }
 
-        // Save Date and Time as a combined string
-        if let dateAndTime = selectedFilters[1] as? String {
-            UserDefaults.standard.set(dateAndTime, forKey: "selectedDateAndTime") // Save combined date and time
+        // Save Date
+        if let date = selectedDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            selectedFilters[1] = dateFormatter.string(from: date)
+        }
+
+        // Save Time
+        if let time = selectedTime {
+            let timeFormatter = DateFormatter()
+            timeFormatter.timeStyle = .short
+            selectedFilters[2] = timeFormatter.string(from: time)
         }
 
         // Save Price using a switch statement into the selectedFilters array at index 2
         if let priceIndex = selectedPriceRow?.row {  // Check if any price row is selected
             switch priceIndex {
             case 0:
-                selectedFilters[2] = "Free" // Save to selectedFilters array
+                selectedFilters[3] = "Free" // Save to selectedFilters array
                 print("Saved selected price: Free")
             case 1:
-                selectedFilters[2] = "1 - 4.9 BD" // Save to selectedFilters array
+                selectedFilters[3] = "1 - 4.9 BD" // Save to selectedFilters array
                 print("Saved selected price: 1 - 4.9 BD")
             case 2:
-                selectedFilters[2] = "5 - 9.9 BD" // Save to selectedFilters array
+                selectedFilters[3] = "5 - 9.9 BD" // Save to selectedFilters array
                 print("Saved selected price: 5 - 9.9 BD")
             case 3:
-                selectedFilters[2] = "10 - 19.9 BD" // Save to selectedFilters array
+                selectedFilters[3] = "10 - 19.9 BD" // Save to selectedFilters array
                 print("Saved selected price: 10 - 19.9 BD")
             case 4:
-                selectedFilters[2] = "20+ BD" // Save to selectedFilters array
+                selectedFilters[3] = "20+ BD" // Save to selectedFilters array
                 print("Saved selected price: 20+ BD")
             default:
-                selectedFilters[2] = nil // Clear if no valid row is selected
+                selectedFilters[3] = nil // Clear if no valid row is selected
                 print("No valid price row selected")
             }
         }
 
         // Save Location
-        if let location = selectedFilters[3] as? String {
+        if let location = selectedFilters[4] as? String {
             UserDefaults.standard.set(location, forKey: "selectedLocation")
         }
 
@@ -113,16 +125,16 @@ class FiltersTableViewController: UITableViewController {
         if let ageIndex = selectedAgeRow?.row {  // Check if any age row is selected
             switch ageIndex {
             case 0:
-                selectedFilters[4] = "Family-Friendly" // Save to selectedFilters array
+                selectedFilters[5] = "Family-Friendly" // Save to selectedFilters array
                 print("Saved selected age: Family-Friendly")
             case 1:
-                selectedFilters[4] = "12 - 18 years" // Save to selectedFilters array
+                selectedFilters[5] = "12 - 18 years" // Save to selectedFilters array
                 print("Saved selected age: 12 - 18 years")
             case 2:
-                selectedFilters[4] = "18+ years" // Save to selectedFilters array
+                selectedFilters[5] = "18+ years" // Save to selectedFilters array
                 print("Saved selected age: 18+ years")
             default:
-                selectedFilters[4] = nil // Clear if no valid row is selected
+                selectedFilters[5] = nil // Clear if no valid row is selected
                 print("No valid age row selected")
             }
         }
@@ -154,28 +166,33 @@ class FiltersTableViewController: UITableViewController {
 
 
     // Handle Date and Time Selection
-    @IBAction func dateTimeSelected(_ sender: UIDatePicker) {
+    // MARK: - Actions for Date and Time
+    @IBAction func dateSelected(_ sender: UIDatePicker) {
         selectedDate = sender.date
-        selectedTime = sender.date // Since we have one picker for both date and time
-        updateSelectedFilters() // Update filters array when date and time are selected
+        selectedFilters[1] = selectedDate // Update date in the filters array
+    }
+
+    @IBAction func timeSelected(_ sender: UIDatePicker) { // New Action for Time Picker
+        selectedTime = sender.date
+        selectedFilters[2] = selectedTime // Update time in the filters array
     }
 
     @IBAction func locationChanged(_ sender: UITextField) {
         if let text = sender.text {
             selectedLocation = text
-            selectedFilters[3] = selectedLocation // Store location in selectedFilters[3]
+            selectedFilters[4] = selectedLocation // Store location in selectedFilters[5]
         }
     }
 
     // Update filters with current selections
-    private func updateSelectedFilters() {
-        if let date = selectedDate {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .short
-            selectedFilters[1] = dateFormatter.string(from: date)
-        }
-    }
+//    private func updateSelectedFilters() {
+//        if let date = selectedDate {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateStyle = .short
+//            dateFormatter.timeStyle = .short
+//            selectedFilters[1] = dateFormatter.string(from: date)
+//        }
+//    }
 
     // MARK: - Table View Delegate Method for Row Selection (Price and Age)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -203,7 +220,7 @@ class FiltersTableViewController: UITableViewController {
             }
             // Remove the selection from the model (optional, depending on your logic)
             selectedPriceRow = nil
-            selectedFilters[2] = nil
+            selectedFilters[3] = nil
         } else {
             // If a different row is selected, remove the checkmark from the previously selected row
             if let previouslySelectedIndexPath = selectedPriceRow {
@@ -220,7 +237,7 @@ class FiltersTableViewController: UITableViewController {
             
             // Update the filter model with the selected label (if necessary)
             if let newSelectedCell = tableView.cellForRow(at: indexPath) {
-                selectedFilters[2] = newSelectedCell.textLabel?.text
+                selectedFilters[3] = newSelectedCell.textLabel?.text
             }
         }
         
@@ -238,7 +255,7 @@ class FiltersTableViewController: UITableViewController {
             }
             // Remove the selection from the model (optional, depending on your logic)
             selectedAgeRow = nil
-            selectedFilters[4] = nil
+            selectedFilters[5] = nil
         } else {
             // If a different row is selected, remove the checkmark from the previously selected row
             if let previouslySelectedIndexPath = selectedAgeRow {
@@ -255,7 +272,7 @@ class FiltersTableViewController: UITableViewController {
             
             // Update the filter model with the selected label (if necessary)
             if let newSelectedCell = tableView.cellForRow(at: indexPath) {
-                selectedFilters[4] = newSelectedCell.textLabel?.text
+                selectedFilters[5] = newSelectedCell.textLabel?.text
             }
         }
         

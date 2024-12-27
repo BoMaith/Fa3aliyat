@@ -24,6 +24,12 @@ class HomeTableViewCell: UITableViewCell {
         starBtn.tintColor = isFavorite ? UIColor.systemBlue : UIColor.systemGray
     }
     
+    func setupCell(name: String, date: String) {
+        //imgEvent.image = UIImage(named: photoName)
+        eventNameLbl.text = name
+        eventDateLbl.text = date
+    }
+    
 
     func setupCell(name: String, date: String, isFavorite: Bool) {
         // Set event details
