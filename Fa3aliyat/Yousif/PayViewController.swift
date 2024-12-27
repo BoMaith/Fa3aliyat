@@ -16,7 +16,7 @@ class PayViewController: UIViewController {
     var pricePerTicket: Double = 2.5
     var eventID: String?
     var eventName: String? // To hold the fetched event name
-    var userID: String = "11X1KZw9AmXdJhsWg5Z8VvXXWwt2" // Replace with the actual user's ID
+    var userID: String = "31QdzcuplceQvCN40rNdlOUJQGS2" // Replace with the actual user's ID
     var userName: String = "John Doe" // Replace with the actual user's name
 
     override func viewDidLoad() {
@@ -91,11 +91,27 @@ class PayViewController: UIViewController {
     
     @IBAction func proceedButtonTapped(_ sender: Any) {
         if CardBtn.isSelected {
-            // Navigate to Card Payment Page
-            self.performSegue(withIdentifier: "CardPaymentVC", sender: sender)
+            checkIfUserIsAlreadyEnrolled { alreadyEnrolled in
+                if !alreadyEnrolled {
+                    self.performSegue(withIdentifier: "CardPaymentVC", sender: sender)
+                } else {
+                    // User is already enrolled
+                    let alert = UIAlertController(title: "Already Enrolled", message: "You are already enrolled in this event.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         } else if CashBtn.isSelected {
-            // Check if the user can join the event based on the last joined timestamp
-            checkIfUserCanJoinEvent()
+            checkIfUserIsAlreadyEnrolled { alreadyEnrolled in
+                if !alreadyEnrolled {
+                    self.showApprovalMessage()
+                } else {
+                    // User is already enrolled
+                    let alert = UIAlertController(title: "Already Enrolled", message: "You are already enrolled in this event.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
     }
 
@@ -109,37 +125,25 @@ class PayViewController: UIViewController {
         }
     }
 
-    func checkIfUserCanJoinEvent() {
+    func checkIfUserIsAlreadyEnrolled(completion: @escaping (Bool) -> Void) {
         guard let eventID = eventID else {
             print("Error: Missing eventID.")
+            completion(false)
             return
         }
         
-        // Reference to Firebase for user's events
-        let userEventsRef = Database.database().reference().child("users").child(userID).child("JoinedEvents")
+        let eventRef = Database.database().reference().child("events").child(eventID)
         
-        userEventsRef.observeSingleEvent(of: .value) { snapshot in
-            if let events = snapshot.value as? [[String: Any]] {
-                for event in events {
-                    if let joinedEventID = event["id"] as? String, joinedEventID == eventID,
-                       let timestamp = event["timestamp"] as? Double {
-                        // Check if 24 hours have passed since the last join
-                        let currentTimestamp = Date().timeIntervalSince1970
-                        let timeDifference = currentTimestamp - timestamp
-                        
-                        if timeDifference < 24 * 60 * 60 { // Less than 24 hours
-                            // User joined the event within the last 24 hours
-                            let alert = UIAlertController(title: "Error", message: "You can only join this event once every 24 hours.", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                            return
-                        }
-                    }
-                }
+        eventRef.observeSingleEvent(of: .value) { snapshot in
+            if let eventData = snapshot.value as? [String: Any],
+               let participants = eventData["participants"] as? [String: Any],
+               participants[self.userID] != nil {
+                // User is already enrolled
+                completion(true)
+            } else {
+                // User is not enrolled
+                completion(false)
             }
-            
-            // If no event or more than 24 hours have passed, show the approval message
-            self.showApprovalMessage()
         }
     }
 
@@ -170,14 +174,17 @@ class PayViewController: UIViewController {
         
         userEventsRef.observeSingleEvent(of: .value) { snapshot in
             var eventsList = snapshot.value as? [[String: Any]] ?? []
-            eventsList.append(newEvent)
             
-            userEventsRef.setValue(eventsList) { error, _ in
-                if let error = error {
-                    print("Error updating user events: \(error.localizedDescription)")
-                } else {
-                    print("User events updated successfully!")
-                    self.updateEventParticipantsInFirebase()
+            if !eventsList.contains(where: { $0["id"] as? String == eventID }) {
+                eventsList.append(newEvent)
+                
+                userEventsRef.setValue(eventsList) { error, _ in
+                    if let error = error {
+                        print("Error updating user events: \(error.localizedDescription)")
+                    } else {
+                        print("User events updated successfully!")
+                        self.updateEventParticipantsInFirebase()
+                    }
                 }
             }
         }
@@ -193,9 +200,8 @@ class PayViewController: UIViewController {
         
         eventRef.observeSingleEvent(of: .value) { snapshot in
             if var eventData = snapshot.value as? [String: Any] {
-                var participants = eventData["participants"] as? [[String: Any]] ?? []
-                let user = ["id": self.userID, "name": self.userName]
-                participants.append(user)
+                var participants = eventData["participants"] as? [String: Any] ?? [:]
+                participants[self.userID] = ["FullName": self.userName]
                 eventData["participants"] = participants
                 
                 eventRef.setValue(eventData) { error, _ in
