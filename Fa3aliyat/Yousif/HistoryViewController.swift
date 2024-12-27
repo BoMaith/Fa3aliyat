@@ -13,7 +13,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     struct Event {
         let id: String
         let title: String
-        let date: String
+        let startDate: String
     }
 
     var userID: String = "31QdzcuplceQvCN40rNdlOUJQGS2" // Hardcoded User ID for testing
@@ -53,11 +53,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         ref.child("events").observeSingleEvent(of: .value) { snapshot in
             if let eventsData = snapshot.value as? [String: [String: Any]] {
                 self.events = eventsData.compactMap { (key, data) in
-                    guard eventIDs.contains(key), let title = data["title"] as? String, let date = data["date"] as? String else { return nil }
-                    return Event(id: key, title: title, date: date)
+                    guard eventIDs.contains(key), let title = data["title"] as? String, let startDate = data["startDate"] as? String else { return nil }
+                    return Event(id: key, title: title, startDate: startDate)
                 }
-                self.filteredEvents = self.events.filter { !self.isEventPast(date: $0.date) }
-                self.pastEvents = self.events.filter { self.isEventPast(date: $0.date) }
+                // Print events for debugging
+                self.events.forEach { event in
+                    print("Event: \(event.title), StartDate: \(event.startDate)")
+                }
+                self.filteredEvents = self.events.filter { self.isEventPending(startDate: $0.startDate) }
+                self.pastEvents = self.events.filter { !self.isEventPending(startDate: $0.startDate) }
+                // Print filtered events for debugging
+                print("Pending Events: \(self.filteredEvents.map { $0.title })")
+                print("Past Events: \(self.pastEvents.map { $0.title })")
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.pastEventsTableView.reloadData()
@@ -68,12 +75,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    // Check if the event date is past
-    func isEventPast(date: String) -> Bool {
+    // Check if the event startDate is pending
+    func isEventPending(startDate: String) -> Bool {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd - MMM dd"
-        guard let eventDate = dateFormatter.date(from: date) else { return false }
-        return eventDate < Date()
+        dateFormatter.dateFormat = "dd/MM/yyyy" // Ensure this matches your date format
+        guard let eventDate = dateFormatter.date(from: startDate) else {
+            print("Invalid date format for event startDate: \(startDate)")
+            return false
+        }
+        let currentDate = Date()
+        let isPending = eventDate >= currentDate
+        print("Event startDate: \(eventDate), Is pending: \(isPending)")
+        return isPending
     }
 
     // TableView DataSource Methods
@@ -89,14 +102,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         if tableView == self.tableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! HPendingTableViewCell
             let event = filteredEvents[indexPath.row]
-            cell.setupCell2(name: event.title, date: event.date)
+            cell.setupCell2(name: event.title, date: event.startDate)
             cell.deleteBtn.tag = indexPath.row
             cell.deleteBtn.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
             return cell
         } else {
             let cell = pastEventsTableView.dequeueReusableCell(withIdentifier: "PastEventCell", for: indexPath) as! HDoneTableViewCell
             let event = pastEvents[indexPath.row]
-            cell.setupCell(name: event.title, date: event.date)
+            cell.setupCell(name: event.title, date: event.startDate)
             cell.RateBtn.tag = indexPath.row
             cell.RateBtn.addTarget(self, action: #selector(rateButtonTapped(_:)), for: .touchUpInside)
 
@@ -115,7 +128,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 
             return cell
         }
-    }
+    
+}
+
 
 
     // Rate Button Action
@@ -204,9 +219,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     // Search Bar Delegate Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            filteredEvents = events.filter { !isEventPast(date: $0.date) }
+            filteredEvents = events.filter { isEventPending(startDate: $0.startDate) }
         } else {
-            filteredEvents = events.filter { $0.title.lowercased().contains(searchText.lowercased()) && !isEventPast(date: $0.date) }
+            filteredEvents = events.filter { $0.title.lowercased().contains(searchText.lowercased()) && isEventPending(startDate: $0.startDate) }
         }
         tableView.reloadData()
     }
@@ -214,4 +229,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+
+
+
 }
