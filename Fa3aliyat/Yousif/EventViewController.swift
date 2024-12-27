@@ -18,6 +18,7 @@ class EventViewController: UIViewController {
     @IBOutlet weak var Eprice: UILabel!
     @IBOutlet weak var Elocation: UILabel!
     @IBOutlet weak var Joinbtn: UIButton!
+    @IBOutlet weak var AvgRate: UILabel!
     
     // Event ID for fetching data (hardcoded for testing)
     let eventID = "-OF3962vsncLEOoF3YPJ"
@@ -28,8 +29,9 @@ class EventViewController: UIViewController {
         // Debugging
         print("EventViewController loaded with eventID: \(eventID)")
         
-        // Fetch event details from Firebase
+        // Fetch event details and ratings from Firebase
         fetchEventDetails(eventID: eventID)
+        fetchAverageRating(eventID: eventID)
     }
     
     /// Fetches event details from Firebase for a given event ID
@@ -69,6 +71,29 @@ class EventViewController: UIViewController {
         }
     }
     
+    /// Fetches the average rating for a given event ID from Firebase
+    func fetchAverageRating(eventID: String) {
+        let ref = Database.database().reference()
+        ref.child("events").child(eventID).child("reviews").observeSingleEvent(of: .value) { snapshot in
+            var totalRating = 0
+            var ratingCount = 0
+            
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let reviewData = childSnapshot.value as? [String: Any],
+                   let rating = reviewData["rating"] as? Int {
+                    totalRating += rating
+                    ratingCount += 1
+                }
+            }
+            
+            let averageRating = ratingCount == 0 ? 0.0 : Double(totalRating) / Double(ratingCount)
+            DispatchQueue.main.async {
+                self.AvgRate.text = String(format: "%.1f", averageRating)
+            }
+        }
+    }
+    
     /// Loads an image from a URL and sets it to the UIImageView
     func loadImage(from url: URL) {
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -98,4 +123,3 @@ class EventViewController: UIViewController {
         }
     }
 }
-

@@ -52,7 +52,7 @@
                                                     <rect key="frame" x="324" y="13" width="52" height="34"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="arrow.left" catalog="system">
+                                                    <buttonConfiguration key="configuration" style="plain" image="minus.circle" catalog="system">
                                                         <color key="baseForegroundColor" red="1" green="0.089611757134179015" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </buttonConfiguration>
                                                 </button>
@@ -113,7 +113,7 @@
                                 </constraints>
                                 <color key="separatorColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="60" id="LjZ-b2-gv2" customClass="HPendingTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PastEventCell" rowHeight="60" id="LjZ-b2-gv2" customClass="HDoneTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LjZ-b2-gv2" id="K9A-Ql-Oyp">
@@ -170,10 +170,10 @@
                                         <color key="backgroundColor" name="CustomBackground"/>
                                         <accessibility key="accessibilityConfiguration" identifier="EventCell"/>
                                         <connections>
+                                            <outlet property="RateBtn" destination="Yd7-y9-54K" id="Z9h-ko-O82"/>
                                             <outlet property="eventDateLbl" destination="HgL-1f-YqJ" id="jml-VZ-lH9"/>
                                             <outlet property="eventNameLbl" destination="qc5-tQ-lv4" id="28h-yb-oxN"/>
-                                            <outlet property="imgEvent" destination="DSU-2p-coi" id="0WI-1E-aHf"/>
-                                            <outlet property="starBtn" destination="Yd7-y9-54K" id="eEF-lD-tG6"/>
+                                            <outlet property="imgEvent" destination="DSU-2p-coi" id="b1a-CJ-4kB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -209,6 +209,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="N56-6c-sO6"/>
                     <connections>
+                        <outlet property="pastEventsTableView" destination="ROT-th-nFO" id="7TZ-rc-ONu"/>
                         <outlet property="searchBar" destination="gUn-h4-w4l" id="B3r-i0-JrG"/>
                         <outlet property="tableView" destination="TX1-2x-qip" id="Y1c-6U-4bU"/>
                     </connections>
@@ -382,7 +383,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="95"/>
+        <image name="minus.circle" catalog="system" width="128" height="123"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
