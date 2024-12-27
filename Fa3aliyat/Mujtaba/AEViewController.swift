@@ -12,6 +12,7 @@ import FirebaseAuth
 class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
     
     // Outlets
+    @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var titleTextFeild: UITextField!
     @IBOutlet weak var descritionTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
@@ -64,7 +65,7 @@ class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
         
         // this is to format the date and time values
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
+        timeFormatter.dateFormat = "h:mm a"
         
         // formats for single dates
         let sDateFormatter = DateFormatter()

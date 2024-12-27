@@ -37,7 +37,6 @@
 		E020EA042D1490AE00874177 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020E9FF2D1490AE00874177 /* LoginViewController.swift */; };
 		E020EA052D1490AE00874177 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E020EA002D1490AE00874177 /* Login.storyboard */; };
 		E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020EA012D1490AE00874177 /* SignupViewController.swift */; };
-		E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */; };
 		E068D6292D1D8FCF00FF3141 /* OEDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */; };
 		E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094D6772D11858A00C2C6D1 /* AEViewController.swift */; };
 		E0C6EF602D1DE3DB00D41733 /* OrganizerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */; };
@@ -76,6 +75,9 @@
 		E6F91FCA2D1C5BBC00D9C63F /* HPendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBE2D1C5BBC00D9C63F /* HPendingTableViewCell.swift */; };
 		E6F91FCB2D1C5BBC00D9C63F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */; };
 		E6F91FCE2D1C5BBC00D9C63F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */; };
+		FA0E86B62D1F09C900A3456B /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E86B52D1F09C900A3456B /* Cloudinary */; };
+		FA0E86B82D1F0A4800A3456B /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E86B72D1F0A4800A3456B /* Cloudinary */; };
+		FA937B772D1EE28500873C6A /* Organizer ED.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA937B762D1EE28500873C6A /* Organizer ED.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,7 +123,6 @@
 		E020E9FF2D1490AE00874177 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E020EA002D1490AE00874177 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E020EA012D1490AE00874177 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Organizer ED.storyboard"; sourceTree = "<group>"; };
 		E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEDViewController.swift; sourceTree = "<group>"; };
 		E094D6772D11858A00C2C6D1 /* AEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewController.swift; sourceTree = "<group>"; };
 		E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerStruct.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		E6F91FBE2D1C5BBC00D9C63F /* HPendingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HPendingTableViewCell.swift; sourceTree = "<group>"; };
 		E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		FA937B762D1EE28500873C6A /* Organizer ED.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Organizer ED.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,9 +169,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0E86B62D1F09C900A3456B /* Cloudinary in Frameworks */,
 				837048202D0875C400F28AF8 /* FirebaseAppCheck in Frameworks */,
 				837048242D0875C400F28AF8 /* FirebaseCore in Frameworks */,
 				837048262D0875C400F28AF8 /* FirebaseDatabase in Frameworks */,
+				FA0E86B82D1F0A4800A3456B /* Cloudinary in Frameworks */,
 				837048282D0875C400F28AF8 /* FirebaseFirestore in Frameworks */,
 				837048222D0875C400F28AF8 /* FirebaseAuth in Frameworks */,
 				8370482A2D0875C400F28AF8 /* FirebaseStorage in Frameworks */,
@@ -238,8 +242,8 @@
 			children = (
 				D03EECFB2D116438001CC5BB /* Add Event.storyboard */,
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
-				E068D6242D1D7B8D00FF3141 /* Organizer ED.storyboard */,
 				E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */,
+				FA937B762D1EE28500873C6A /* Organizer ED.storyboard */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -408,6 +412,8 @@
 				837048252D0875C400F28AF8 /* FirebaseDatabase */,
 				837048272D0875C400F28AF8 /* FirebaseFirestore */,
 				837048292D0875C400F28AF8 /* FirebaseStorage */,
+				FA0E86B52D1F09C900A3456B /* Cloudinary */,
+				FA0E86B72D1F0A4800A3456B /* Cloudinary */,
 			);
 			productName = Fa3aliyat;
 			productReference = D08650142CF5F22400C9981D /* Fa3aliyat.app */;
@@ -514,7 +520,7 @@
 				D03089792CFF44330025BF69 /* Organizer.storyboard in Resources */,
 				E020EA052D1490AE00874177 /* Login.storyboard in Resources */,
 				E6F91FC92D1C5BBC00D9C63F /* History.storyboard in Resources */,
-				E068D6252D1D7B8D00FF3141 /* Organizer ED.storyboard in Resources */,
+				FA937B772D1EE28500873C6A /* Organizer ED.storyboard in Resources */,
 				E58ABA862D120F5D0073A3FC /* AdminEventDetails.storyboard in Resources */,
 				E6F91FC52D1C5BBC00D9C63F /* EventPage.storyboard in Resources */,
 				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
@@ -577,7 +583,6 @@
 				E0D392F82D1C3F5500731D08 /* ChangeEmailViewController.swift in Sources */,
 				D08650182CF5F22400C9981D /* AppDelegate.swift in Sources */,
 				E67AE4342D1210D900FE6288 /* InterestsTableViewCell.swift in Sources */,
-
 				E67AE4302D1210D900FE6288 /* SearchViewController.swift in Sources */,
 				E61304242D1D635F00A22118 /* EHistoryTableViewCell.swift in Sources */,
 				E58ABA852D120F5D0073A3FC /* CreateOrganizerViewController.swift in Sources */,
@@ -983,6 +988,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8370481E2D0875C400F28AF8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		FA0E86B52D1F09C900A3456B /* Cloudinary */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Cloudinary;
+		};
+		FA0E86B72D1F0A4800A3456B /* Cloudinary */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Cloudinary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
