@@ -57,16 +57,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func fetchEventsAndFavorites() {
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        
+
         // Fetch events
         ref.child("events").observeSingleEvent(of: .value, with: { snapshot in
             if let eventsData = snapshot.value as? [String: [String: Any]] {
                 self.events = eventsData.compactMap { (id, data) in
-                    guard
-                        let title = data["title"] as? String,
-                        let date = data["date"] as? String
-                    else { return nil }
-                    
+                    guard let title = data["title"] as? String,
+                          let date = data["date"] as? String else { return nil }
                     return Event(id: id, title: title, date: date)
                 }
                 
@@ -75,12 +72,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     if let favoriteIDs = snapshot.value as? [String: Bool] {
                         self.favoriteStates = favoriteIDs // Update the favoriteStates dictionary
                     }
-                    
-                    // Reload the table view on the main thread
-                    DispatchQueue.main.async {
-                        self.filteredEvents = self.events
-                        self.tableView.reloadData()
-                    }
+
+                    // Fetch user's interests
+                    self.ref.child("users").child(userID).child("interests").observeSingleEvent(of: .value, with: { snapshot in
+                        if let interests = snapshot.value as? [String] {
+                            self.reorderEventsBasedOnInterests(interests) // Reorder the events based on interests
+                        }
+                        
+                        // Reload the table view on the main thread
+                        DispatchQueue.main.async {
+                            self.filteredEvents = self.events
+                            self.tableView.reloadData()
+                        }
+                    })
                 })
             }
         }) { error in
@@ -88,6 +92,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+    func reorderEventsBasedOnInterests(_ interests: [String]) {
+        // Reorder events based on whether they are in the user's interests
+        let interestedEvents = self.events.filter { interests.contains($0.id) }
+        let otherEvents = self.events.filter { !interests.contains($0.id) }
+
+        // Combine the two arrays, with the interested events first
+        self.events = interestedEvents + otherEvents
+        
+        // Update the filtered events to reflect the new order
+        self.filteredEvents = self.events
+    }
 
 
     func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
@@ -109,20 +124,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! HomeTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? HomeTableViewCell else {
+            fatalError("Unable to dequeue HomeTableViewCell")
+        }
+        
         let event = filteredEvents[indexPath.row]
-        
-        cell.setupCell(name: event.title, date: event.date)
-        
-        // Set the button state based on favoriteStates
-        let isFavorite = favoriteStates[event.id] ?? false
+        let isFavorite = favoriteStates[event.id] ?? false  // Default to false if not set
+
+        // Determine if the star button should be visible (only visible for regular users)
+        let isStarButtonVisible = userRole == .regular
+        cell.setupCell(name: event.title, date: event.date, isStarButtonVisible: isStarButtonVisible)
+
+        // Update the button state based on favoriteStates
         cell.starBtn.isSelected = isFavorite
         cell.starBtn.tintColor = isFavorite ? .systemBlue : .gray
         cell.starBtn.tag = indexPath.row
-        
-        // Add target for button tap action
-        cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
-        
+
+        // Remove the target if the star button is not visible
+        if isStarButtonVisible {
+            // Add target if the button is visible and the user is a regular user
+            cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
+        } else {
+            // Remove target if the button is not visible (admin/organizer)
+            cell.starBtn.removeTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
+        }
+
         return cell
     }
 

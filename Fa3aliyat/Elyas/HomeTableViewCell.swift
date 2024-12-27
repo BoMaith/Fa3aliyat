@@ -22,12 +22,15 @@ class HomeTableViewCell: UITableViewCell {
         // Update star button appearance
         starBtn.setImage(UIImage(systemName: isFavorite ? "star.fill" : "star"), for: .normal)
         starBtn.tintColor = isFavorite ? UIColor.systemBlue : UIColor.systemGray
+        
     }
     
-    func setupCell(name: String, date: String) {
+    func setupCell(name: String, date: String, isStarButtonVisible: Bool) {
         //imgEvent.image = UIImage(named: photoName)
         eventNameLbl.text = name
         eventDateLbl.text = date
+        
+        starBtn.isHidden = !isStarButtonVisible  // Show or hide based on the role
     }
     
 
