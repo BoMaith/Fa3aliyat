@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--History-->
+        <!--Login-->
         <scene sceneID="bkZ-Cl-aDs">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Fida" storyboardName="History" id="0Dh-o0-2bX" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Fida" storyboardName="Login" id="0Dh-o0-2bX" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Ncg-5S-yVi"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4c-TN-jXt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
