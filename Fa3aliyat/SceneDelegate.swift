@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             guard let windowScene = (scene as? UIWindowScene) else { return }
 
             window = UIWindow(windowScene: windowScene)
-            window?.overrideUserInterfaceStyle = .dark // Force Dark Mode
+            window?.overrideUserInterfaceStyle = .light // Force Dark Mode
             window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
             window?.makeKeyAndVisible()
         

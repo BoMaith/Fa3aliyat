@@ -20,19 +20,21 @@ class EventViewController: UIViewController {
     @IBOutlet weak var Joinbtn: UIButton!
     @IBOutlet weak var AvgRate: UILabel!
     
-    // Event ID for fetching data (hardcoded for testing)
-    let eventID = "-OF3962vsncLEOoF3YPJ"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // Event ID for fetching data
+        var eventID: String?
         
-        // Debugging
-        print("EventViewController loaded with eventID: \(eventID)")
-        
-        // Fetch event details and ratings from Firebase
-        fetchEventDetails(eventID: eventID)
-        fetchAverageRating(eventID: eventID)
-    }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            // Debugging
+                    if let eventID = eventID {
+                        print("EventViewController loaded with eventID: \(eventID)")
+                        
+                        // Fetch event details from Firebase
+                        fetchEventDetails(eventID: eventID)
+                    } else {
+                        print("Error: Event ID is nil.")
+                    }
+        }
     
     /// Fetches event details from Firebase for a given event ID
     func fetchEventDetails(eventID: String) {
@@ -112,14 +114,15 @@ class EventViewController: UIViewController {
     }
     
     @IBAction func navigateToPayment(_ sender: Any) {
-        //performSegue(withIdentifier: "toPayViewController", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPayViewController" {
-            if let payVC = segue.destination as? PayViewController {
-                payVC.eventID = self.eventID
+        // Perform navigation to payment
+                performSegue(withIdentifier: "toPayViewController", sender: self)
             }
-        }
-    }
+            
+            override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                if segue.identifier == "toPayViewController" {
+                    if let payVC = segue.destination as? PayViewController {
+                        payVC.eventID = self.eventID
+                    }
+                }
+            }
 }

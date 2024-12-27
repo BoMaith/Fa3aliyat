@@ -240,6 +240,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let eventID = sender as? String {
                 if segue.identifier == "toAdminDetails", let destinationVC = segue.destination as? AdminEventViewController {
                     destinationVC.eventID = eventID
+                } else if segue.identifier == "toOEDetails", let destinationVC = segue.destination as? OEDViewController {
+                    destinationVC.eventID = eventID
+                } else if segue.identifier == "toEventPage", let destinationVC = segue.destination as? EventViewController {
+                    destinationVC.eventID = eventID
                 }
             }
         }

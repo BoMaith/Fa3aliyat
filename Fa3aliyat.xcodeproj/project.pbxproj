@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6622DB082D1F1A7E0071974A /* Past Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6622DB072D1F1A7E0071974A /* Past Events.storyboard */; };
 		66741C102D1B0949001C71DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66741C0F2D1B0949001C71DC /* Assets.xcassets */; };
 		66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66741C112D1B12C8001C71DC /* EventTableViewCell.swift */; };
 		66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */; };
@@ -97,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6622DB072D1F1A7E0071974A /* Past Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Past Events.storyboard"; sourceTree = "<group>"; };
 		66741C0F2D1B0949001C71DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66741C112D1B12C8001C71DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				E094D6772D11858A00C2C6D1 /* AEViewController.swift */,
 				E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */,
 				FA937B762D1EE28500873C6A /* Organizer ED.storyboard */,
+				6622DB072D1F1A7E0071974A /* Past Events.storyboard */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				E58ABA862D120F5D0073A3FC /* AdminEventDetails.storyboard in Resources */,
 				E6F91FC52D1C5BBC00D9C63F /* EventPage.storyboard in Resources */,
 				D03EECFD2D116438001CC5BB /* Add Event.storyboard in Resources */,
+				6622DB082D1F1A7E0071974A /* Past Events.storyboard in Resources */,
 				E67AE42D2D1210D900FE6288 /* Interests.storyboard in Resources */,
 				E020EA022D1490AE00874177 /* Profile.storyboard in Resources */,
 				E67AE4312D1210D900FE6288 /* Search.storyboard in Resources */,
@@ -773,7 +777,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Fa3aliyat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -800,7 +804,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Fa3aliyat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

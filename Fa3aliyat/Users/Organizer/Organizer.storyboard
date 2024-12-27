@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="-1739" y="644"/>
         </scene>
-        <!--Favorite-->
+        <!--Past Events-->
         <scene sceneID="vXO-PY-uWg">
             <objects>
-                <viewControllerPlaceholder storyboardName="Favorite" id="5WI-td-CL6" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Past Events" id="5WI-td-CL6" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Vvk-Ka-8Zl"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJu-Gh-gga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -135,11 +135,11 @@
             </objects>
             <point key="canvasLocation" x="321" y="218"/>
         </scene>
-        <!--Favorite-->
+        <!--Past Events-->
         <scene sceneID="DqN-FE-6Bt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="esL-Dy-ms1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="MHE-rp-gPg"/>
+                    <tabBarItem key="tabBarItem" title="Past Events" image="clock.arrow.circlepath" catalog="system" id="MHE-rp-gPg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="NuP-Oz-cDj">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
@@ -175,11 +175,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
