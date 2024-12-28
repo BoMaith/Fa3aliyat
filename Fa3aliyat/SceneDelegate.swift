@@ -13,15 +13,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-            guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
 
-            window = UIWindow(windowScene: windowScene)
-            window?.overrideUserInterfaceStyle = .light // Force Dark Mode
-            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-            window?.makeKeyAndVisible()
-        
-
-        }
+        window = UIWindow(windowScene: windowScene)
+        let userPreference = UserDefaults.standard.string(forKey: "userInterfaceStyle") ?? "light"
+        window?.overrideUserInterfaceStyle = userPreference == "light" ? .light : .dark
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -46,6 +46,7 @@
 		E0C6EF602D1DE3DB00D41733 /* OrganizerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */; };
 		E0D392FA2D1C3F9000731D08 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */; };
 		E0D392FC2D1C45FC00731D08 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D392FB2D1C45FC00731D08 /* UserStruct.swift */; };
+		E0F440F12D20228A00AF885C /* DarkModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F440F02D20228A00AF885C /* DarkModeViewController.swift */; };
 		E57E8C882D1DE7DA00C3C262 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */; };
 		E58ABA812D120F5D0073A3FC /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */; };
 		E58ABA822D120F5D0073A3FC /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */; };
@@ -134,6 +135,7 @@
 		E0C6EF5F2D1DE3DB00D41733 /* OrganizerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerStruct.swift; sourceTree = "<group>"; };
 		E0D392F92D1C3F9000731D08 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E0D392FB2D1C45FC00731D08 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		E0F440F02D20228A00AF885C /* DarkModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeViewController.swift; sourceTree = "<group>"; };
 		E57E8C872D1DE7DA00C3C262 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E58ABA782D120F5D0073A3FC /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
 		E58ABA792D120F5D0073A3FC /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				E09E50CF2D1F26EB00ED00E3 /* AdminStruct.swift */,
 				E09E50D12D1F41A600ED00E3 /* ChangeInterestsViewController.swift */,
 				E09E50D32D1F455A00ED00E3 /* ChangeInterestsTableViewCell.swift */,
+				E0F440F02D20228A00AF885C /* DarkModeViewController.swift */,
 			);
 			path = Fida;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */,
 				E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */,
 				E67AE4362D1210D900FE6288 /* HomeViewController.swift in Sources */,
+				E0F440F12D20228A00AF885C /* DarkModeViewController.swift in Sources */,
 				E094D6782D11858A00C2C6D1 /* AEViewController.swift in Sources */,
 				E6F91FC62D1C5BBC00D9C63F /* EventViewController.swift in Sources */,
 				E58ABA832D120F5D0073A3FC /* UserProfileViewController.swift in Sources */,
