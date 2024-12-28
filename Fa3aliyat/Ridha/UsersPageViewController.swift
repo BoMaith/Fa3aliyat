@@ -1,5 +1,4 @@
 import UIKit
-import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 
@@ -9,7 +8,6 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var addButton: UIBarButtonItem!
     
-    @IBOutlet weak var profileImage: UIImageView!
     var organizers: [[String: Any]] = [] // Array to store organizer data
     var users: [[String: Any]] = [] // Array to store user data
     
@@ -52,25 +50,13 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
                        let organizerData = snapshot.value as? [String: Any] {
                         var organizer = organizerData
                         organizer["uid"] = snapshot.key // Add the UID to the dictionary
-                        
-                        // Fetch the profile image
-                        if let profileImageUrlString = organizer["profileImageUrl"] as? String {
-                            let storageRef = Storage.storage().reference(forURL: profileImageUrlString)
-                            storageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
-                                if let error = error {
-                                    print("Error fetching profile image: \(error.localizedDescription)")
-                                } else if let data = data, let image = UIImage(data: data) {
-                                    organizer["profileImage"] = image
-                                }
-                                // Update the organizer list and reload the table view
-                                self.organizers = fetchedOrganizers
-                                self.tableView.reloadData()
-                            }
-                        } else {
-                            fetchedOrganizers.append(organizer)
-                        }
+                        fetchedOrganizers.append(organizer)
                     }
                 }
+                
+                // Update the organizer list and reload the table view
+                self.organizers = fetchedOrganizers
+                self.tableView.reloadData()
             })
         } else {
             // Fetch users from Firebase Realtime Database
@@ -83,25 +69,13 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
                        let userData = snapshot.value as? [String: Any] {
                         var user = userData
                         user["uid"] = snapshot.key // Add the UID to the dictionary
-                        
-                        // Fetch the profile image
-                        if let profileImageUrlString = user["profileImageUrl"] as? String {
-                            let storageRef = Storage.storage().reference(forURL: profileImageUrlString)
-                            storageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
-                                if let error = error {
-                                    print("Error fetching profile image: \(error.localizedDescription)")
-                                } else if let data = data, let image = UIImage(data: data) {
-                                    user["profileImage"] = image
-                                }
-                                // Update the user list and reload the table view
-                                self.users = fetchedUsers
-                                self.tableView.reloadData()
-                            }
-                        } else {
-                            fetchedUsers.append(user)
-                        }
+                        fetchedUsers.append(user)
                     }
                 }
+                
+                // Update the user list and reload the table view
+                self.users = fetchedUsers
+                self.tableView.reloadData()
             })
         }
     }
@@ -117,18 +91,14 @@ class UsersPageViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizerCellIdentifier", for: indexPath)
+        cell.backgroundColor = .customBackground
         if isOrganizersSelected {
             let organizer = organizers[indexPath.row]
-            let name = organizer["FullName"] as? String ?? "Unknown"
-            let image = organizer["profileImage"] as? UIImage
-            cell.setupCell(name: name, image: image)
+            cell.textLabel?.text = "\(organizer["FullName"] as? String ?? "Unknown")"
         } else {
             let user = users[indexPath.row]
-            let name = user["FullName"] as? String ?? "Unknown"
-            let image = user["profileImage"] as? UIImage
-            cell.setupCell(name: name, image: image)
+            cell.textLabel?.text = "\(user["FullName"] as? String ?? "Unknown")"
         }
 
         return cell
