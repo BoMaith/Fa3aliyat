@@ -53,21 +53,38 @@ class InterestsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     private func saveInterestsToFirebase() {
-        // Assuming you have a user ID (for example, from Firebase Authentication)
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("User not authenticated")
-            return
-        }
-        
-        // Save the selected interests array to Firebase under the user's profile
-        ref.child("users").child(userID).child("interests").setValue(selectedInterests) { error, _ in
-            if let error = error {
-                print("Error saving interests: \(error.localizedDescription)")
-            } else {
-                print("Interests saved successfully!")
-            }
-        }
-    }
+          // Assuming you have a user ID (for example, from Firebase Authentication)
+          guard let userID = Auth.auth().currentUser?.uid else {
+              print("User not authenticated")
+              return
+          }
+
+          // Collect only the selected interests (based on the switchStates)
+          selectedInterests = []
+          for (index, isOn) in switchStates.enumerated() {
+              if isOn {
+                  selectedInterests.append(interests[index].0) // Add the full interest name to the array
+              }
+          }
+
+          // Only save if the user has selected any interests
+          if !selectedInterests.isEmpty {
+              var interestsDictionary = [String: Bool]()
+              for interest in selectedInterests {
+                  interestsDictionary[interest] = true
+              }
+              
+              // Save the selected interests to Firebase under the user's profile
+              ref.child("users").child(userID).child("interests").setValue(interestsDictionary) { error, _ in
+                  if let error = error {
+                      print("Error saving interests: \(error.localizedDescription)")
+                  } else {
+                      print("Interests saved successfully!")
+                  }
+              }
+          }
+      }
+
 
     // MARK: - TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

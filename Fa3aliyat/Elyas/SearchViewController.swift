@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterDelegate {
@@ -14,15 +15,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var filteredEvents: [Event] = []
     var favoriteStates = [Bool](repeating: false, count: 9)
     var filteredFavoriteStates: [Bool] = []
+    var userRole: UserRole = .regular  // Default role
 
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let filterVC = segue.destination as? FiltersTableViewController {
-            filterVC.delegate = self
-        }
-    }
-    
     
     // This property will hold the filters array passed from FiltersTableViewController
     var filtersArray: [Any?] = [nil, nil, nil, nil, nil, nil]  // Default value
@@ -32,9 +26,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             print("Received filters: \(filtersArray)")
             applyFilters() // Call this to update the displayed events
         }
-    
-    
-    
     
     func normalizeFilterTimeTo12HourFormat(_ timeString: String) -> String? {
         let timeFormatter12Hour = DateFormatter()
@@ -234,7 +225,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        determineUserRole()
+        customizeSearchBarBackground()
         // Example: Handle the received filters if needed
         print("Received filters: \(filtersArray)")
         
@@ -277,8 +269,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 self.events = eventsData.compactMap { (id, data) -> Event? in
                     // Guard for mandatory fields, including date
                     guard let title = data["title"] as? String,
-                          let date = data["date"] as? String,  // Ensure date is available
-                          let isFavorite = data["isFavorite"] as? Bool else {
+                          let date = data["date"] as? String else {
                         return nil
                     }
                     
@@ -287,7 +278,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                     let endDate = data["endDate"] as? String
                     let time = data["time"] as? String  // Optional time
                     let price = data["price"] as? Double  // Price is optional
-
+                    guard let imageURL = data["imageURL"] as? String else {
+                        return nil  // Return nil if imageURL is missing or invalid
+                    }
                     
                     // Return event object with date, startDate, and endDate
                     return Event(
@@ -297,11 +290,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                         startDate: startDate,  // Optional startDate
                         endDate: endDate,    // Optional endDate
                         time: time,
-                        isFavorite: isFavorite,
+                        //isFavorite: isFavorite,
                         price: price,
                         location: data["location"] as? String,
                         age: data["age"] as? Int,
-                        category: data["category"] as? String
+                        category: data["category"] as? String,
+                        imageURL: imageURL
                     )
                 }
                 
@@ -352,71 +346,24 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             cell.setupCellFilter(photoName: filter.0, name: filter.1)
             return cell
         } else {
+            // Event Row
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! SearchTableViewCell
             let event = filteredEvents[indexPath.row]
             
-            cell.setupCell(name: event.title, date: event.date, isFavorite: event.isFavorite)
-            cell.starBtn.isSelected = event.isFavorite
-            cell.starBtn.tag = indexPath.row
-            // Change the color based on isFavorite value
-            if event.isFavorite {
-                cell.starBtn.tintColor = .systemBlue // Set color when favorite
+            if let url = URL(string: event.imageURL) {
+                // Make the image circular
+                cell.imgEvent.layer.cornerRadius = cell.imgEvent.frame.size.width / 2
+                cell.imgEvent.clipsToBounds = true
+                cell.imgEvent.contentMode = .scaleAspectFill
             } else {
-                cell.starBtn.tintColor = .gray // Set color when not favorite
+                // Handle invalid URL if necessary (e.g., show a placeholder image)
+                cell.imgEvent.image = UIImage(named: "placeholder")  // Replace with your placeholder image
             }
-            // Add target for button tap action
-            cell.starBtn.addTarget(self, action: #selector(favoriteButtonTapped(_:)), for: .touchUpInside)
+            
+            cell.setupCell(name: event.title, date: event.date, imageURL: event.imageURL)
 
             return cell
         }
-    }
-    
-    @objc func favoriteButtonTapped(_ sender: UIButton) {
-        let row = sender.tag
-        
-        // Access the event object from filteredEvents
-        var event = filteredEvents[row]
-        
-        // Toggle the favorite state
-        event.isFavorite.toggle()
-
-        // Update the button's selected state
-        sender.isSelected = event.isFavorite
-        
-        // Change the button's color based on the favorite state
-        if event.isFavorite {
-            sender.tintColor = .systemBlue // Button color when selected (favorite)
-        } else {
-            sender.tintColor = .gray // Button color when not selected (not favorite)
-        }
-        
-        // Update the event in the filteredEvents array
-        filteredEvents[row] = event
-        
-        // Update Firebase with the new favorite state
-        updateFavoriteStateInFirebase(for: event, isFavorite: event.isFavorite)
-        
-        // Reload the row to reflect the changes
-        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
-    }
-    
-    func updateFavoriteStateInFirebase(for event: Event, isFavorite: Bool) {
-        let eventRef = ref.child("events").child(event.id)  // Use the event ID as the key
-        eventRef.updateChildValues(["isFavorite": isFavorite]) { error, _ in
-            if let error = error {
-                print("Error updating favorite state: \(error)")
-            } else {
-                print("Favorite state updated successfully!")
-            }
-        }
-    }
-
-    // MARK: - TableView Delegate Methods
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        // Handle event selection (navigate to details, for example)
-        // print("Selected event: \(filteredEvents[indexPath.row].0)")
     }
 
  //    MARK: - Search Bar Delegate Methods
@@ -439,16 +386,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.reloadData()
     }
 
-    private func reorderRows() {
-        // Sort events based on favoriteStates
-        let combined = zip(filteredEvents, filteredFavoriteStates).sorted { $0.1 && !$1.1 }
-        filteredEvents = combined.map { $0.0 }
-        filteredFavoriteStates = combined.map { $0.1 }
-
-        // Reload the table view to reflect the new order
-        tableView.reloadData()
-    }
-    
     // MARK: - Event Model
     struct Event {
         let id: String  // Unique ID for each event
@@ -457,12 +394,78 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let startDate: String? // Optional: The start date of the event (can be nil)
         let endDate: String?
         let time: String?
-        var isFavorite: Bool
+        //var isFavorite: Bool
         let price: Double?  // Optional to handle cases where price might be missing
         let location: String?
         let age: Int?    // Optional to handle cases where age might be missing
         let category: String? // Add the category property
+        let imageURL: String // New field for the event's image URL
         }
+    
+    func customizeSearchBarBackground() {
+      
+        // Set search bar's background color
+        searchBar.barTintColor = .customBackground
+        
+        // Modify text field background if needed
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = .customBackground // Set background color for the text field
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let filterVC = segue.destination as? FiltersTableViewController {
+                filterVC.delegate = self
+            }
+            if let eventID = sender as? String {
+                if segue.identifier == "toAdminDetails", let destinationVC = segue.destination as? AdminEventViewController {
+                    destinationVC.eventID = eventID
+                } else if segue.identifier == "toOEDetails", let destinationVC = segue.destination as? OEDViewController {
+                    destinationVC.eventID = eventID
+                } else if segue.identifier == "toEventPage", let destinationVC = segue.destination as? EventViewController {
+                    destinationVC.eventID = eventID
+                }
+            }
+        }
+
+        func determineUserRole() {
+            guard let user = Auth.auth().currentUser, let email = user.email else { return }
+            print(email)
+            if email.contains("@fa3aliyat.organizer.bh") {
+                userRole = .organizer
+            } else if email.contains("@fa3aliyat.admin.bh") {
+                userRole = .admin
+            } else {
+                userRole = .regular
+            }
+        }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Check if the selected row is the filter cell in section 0, row 0
+        if indexPath.section == 0 && indexPath.row == 0 {
+            // Perform segue to the filter page only
+            performSegue(withIdentifier: "toFilterPage", sender: nil)
+        } else {
+            // Proceed with the original behavior for other rows
+            let selectedEvent = events[indexPath.row]
+            let eventID = selectedEvent.id  // Get the event ID
+            
+            if userRole == .admin {
+                performSegue(withIdentifier: "toAdminDetails", sender: eventID)
+            } else if userRole == .organizer {
+                performSegue(withIdentifier: "toOEDetails", sender: eventID)
+            } else if userRole == .regular {
+                performSegue(withIdentifier: "toEventPage", sender: eventID)
+            }
+        }
+    }
+
+    
+    enum UserRole {
+        case regular
+        case organizer
+        case admin
+    }
 }
     
 

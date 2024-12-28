@@ -22,9 +22,23 @@ class HomeTableViewCell: UITableViewCell {
         // Update star button appearance
         starBtn.setImage(UIImage(systemName: isFavorite ? "star.fill" : "star"), for: .normal)
         starBtn.tintColor = isFavorite ? UIColor.systemBlue : UIColor.systemGray
-        
     }
-    
+
+    func setupCell(name: String, date: String,imageURL: String, isStarButtonVisible: Bool) {
+        eventNameLbl.text = name
+        eventDateLbl.text = date
+        starBtn.isHidden = !isStarButtonVisible
+        
+        if let url = URL(string: imageURL) {
+                    DispatchQueue.global().async {
+                        if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.imgEvent.image = image
+                            }
+                        }
+                    }
+                }
+    }
     func setupCell(name: String, date: String, isStarButtonVisible: Bool) {
         //imgEvent.image = UIImage(named: photoName)
         eventNameLbl.text = name
