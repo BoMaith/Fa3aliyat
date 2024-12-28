@@ -45,7 +45,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.rowHeight = 80
         pastEventsTableView.rowHeight = 80
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated) 
+        refreshData()
+    }
+    
+    func refreshData() { guard let userID = userID
+        else { print("Error: No user is logged in.")
+        return }
+        fetchUserJoinedEvents(userID: userID) }
+    
     // Fetch user's joined events
     func fetchUserJoinedEvents(userID: String) {
         ref.child("users").child(userID).child("JoinedEvents").observeSingleEvent(of: .value) { snapshot in
