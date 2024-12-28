@@ -78,10 +78,21 @@ class SignupViewController: UIViewController {
                 let alert = UIAlertController(title: "Success", message: "Account created successfully!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                     UserDefaults.standard.set(Auth.auth().currentUser!.uid, forKey: "user_uid_key")
-                    self.performSegue(withIdentifier: "goToInterests", sender: nil)
+                    
+                    if email.contains("@fa3aliyat.admin.bh") {
+                        UserDefaults.standard.set("AdminHomeViewController", forKey: "last_visited_page")
+                        self.performSegue(withIdentifier: "goToInterests", sender: nil)
+                    } else if email.contains("@fa3aliyat.organizer.bh") {
+                        UserDefaults.standard.set("OrganizerHomeViewController", forKey: "last_visited_page")
+                        self.performSegue(withIdentifier: "goToInterests", sender: nil)
+                    } else {
+                        UserDefaults.standard.set("UserHomeViewController", forKey: "last_visited_page")
+                        self.performSegue(withIdentifier: "goToInterests", sender: nil)
+                    }
                 })
                 self.present(alert, animated: true)
             }
+
         }
     }
     

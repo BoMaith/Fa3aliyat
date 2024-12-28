@@ -7,15 +7,14 @@ class ProfileViewController: UIViewController {
     // Creating outlets
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet var tableview: UITableView!
+    @IBOutlet var tableView: UITableView!
     
-    var isOrganizer = false // Variable to track if the user is an organizer
-    var isAdmin = false // Variable to track if the user is an admin
+    var userRole: String = "users" // Variable to track the user role
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableview.delegate = self
-        tableview.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         fetchUserData()
     }
     
@@ -31,19 +30,12 @@ class ProfileViewController: UIViewController {
         print("User ID: \(userID)") // Debugging: Verify user ID
         
         // Determine the user's role based on the email domain
-        let userRole: String
         if userEmail.contains("@fa3aliyat.organizer.bh") {
             userRole = "organizers"
-            isOrganizer = true
-            isAdmin = false // Mark the user as an organizer
         } else if userEmail.contains("@fa3aliyat.admin.bh") {
-            userRole = "admin"
-            isAdmin = true
-            isOrganizer = false // Mark the user as an admin
+            userRole = "admins" // Corrected to match the correct node
         } else {
             userRole = "users"
-            isOrganizer = false
-            isAdmin = false // Mark the user as a regular user
         }
         
         // Get a reference to the database
@@ -53,7 +45,7 @@ class ProfileViewController: UIViewController {
         ref.child(userRole).child(userID).observeSingleEvent(of: .value, with: { snapshot in
             print("Snapshot: \(snapshot)") // Debugging: Print snapshot data
             
-            //getting snapshot of a single event aka getting a full name and the email
+            // Get snapshot of a single event, aka getting a full name and the email
             guard let value = snapshot.value as? [String: Any] else {
                 print("No value found in snapshot")
                 return
@@ -61,46 +53,44 @@ class ProfileViewController: UIViewController {
             
             // Update labels with user data using struct
             DispatchQueue.main.async {
-                //if the user is an organizer, get their email and full name
-                if self.isOrganizer {
+                if self.userRole == "organizers" {
                     if let fullName = value["FullName"] as? String,
                        let email = value["Email"] as? String {
                         let organizer = Organizer(fullName: fullName, email: email)
                         print("Full Name: \(organizer.fullName), Email: \(organizer.email)") // Debugging: Verify fetched data
                         
-                        //changing the labels to the email and full name
+                        // Change the labels to the email and full name
                         self.fullNameLabel.text = organizer.fullName
                         self.emailLabel.text = organizer.email
                     } else {
                         print("FullName or Email not found in snapshot")
                     }
-                } else if self.isAdmin {
+                } else if self.userRole == "admins" {
                     if let fullName = value["FullName"] as? String,
                        let email = value["Email"] as? String {
                         let admin = Admin(fullName: fullName, userEmail: email)
                         print("Full Name: \(admin.fullName), Email: \(admin.userEmail)") // Debugging: Verify fetched data
                         
-                        //changing the labels to the email and full name
+                        // Change the labels to the email and full name
                         self.fullNameLabel.text = admin.fullName
                         self.emailLabel.text = admin.userEmail
                     } else {
                         print("FullName or Email not found in snapshot")
                     }
                 } else {
-                    //getting user info and changing the label of the users
                     if let fullName = value["FullName"] as? String,
                        let email = value["Email"] as? String {
                         let user = User(fullName: fullName, userEmail: email)
                         print("Full Name: \(user.fullName), Email: \(user.userEmail)") // Debugging: Verify fetched data
                         
-                        //setting the labels of the user email and full name
+                        // Set the labels of the user email and full name
                         self.fullNameLabel.text = user.fullName
                         self.emailLabel.text = user.userEmail
                     } else {
                         print("FullName or Email not found in snapshot")
                     }
                 }
-                self.tableview.reloadData() // Reload table view to reflect changes
+                self.tableView.reloadData() // Reload table view to reflect changes
             }
         }) { error in
             print("Error fetching user data: \(error.localizedDescription)") // Debugging: Print any errors
@@ -111,31 +101,22 @@ class ProfileViewController: UIViewController {
 // This function is for when the user selects (clicks) a row
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //if it's an admin or organizer, the options are different
-        if isOrganizer || isAdmin {
-            switch indexPath.row {
-            case 0:
-                self.performSegue(withIdentifier: "darkMode", sender: self)
-            case 1:
-                self.performSegue(withIdentifier: "showChangePassword", sender: self)
-            case 2:
-                showLogoutAlert()
-            default:
-                break
-            }
-        } else {
-            switch indexPath.row {
-            case 0:
-                self.performSegue(withIdentifier: "darkMode", sender: self)
-            case 1:
-                self.performSegue(withIdentifier: "showChangePassword", sender: self)
-            case 2:
+        // Perform actions based on the selected row
+        switch indexPath.row {
+        case 0:
+            self.performSegue(withIdentifier: "goToDarkMode", sender: self)
+        case 1:
+            self.performSegue(withIdentifier: "showChangePassword", sender: self)
+        case 2:
+            if self.userRole == "users" {
                 self.performSegue(withIdentifier: "showChangeInterests", sender: self)
-            case 3:
+            } else {
                 showLogoutAlert()
-            default:
-                break
             }
+        case 3:
+            showLogoutAlert()
+        default:
+            break
         }
     }
     
@@ -145,7 +126,7 @@ extension ProfileViewController: UITableViewDelegate {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             do {
-                //logging out the user from the application
+                // Logging out the user from the application
                 try Auth.auth().signOut()
                 if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
                     self.view.window?.rootViewController = loginViewController
@@ -168,7 +149,7 @@ extension ProfileViewController: UITableViewDataSource {
     
     // This function returns the number of rows in our table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (isOrganizer || isAdmin) ? 3 : 4 // Adjust the number of rows based on the user role
+        return self.userRole == "users" ? 4 : 3 // Adjust the number of rows based on the user role
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -181,41 +162,28 @@ extension ProfileViewController: UITableViewDataSource {
         cell.backgroundColor = .customBackground
         
         // Show the right text and subtitle for each row
-        if isOrganizer == true || isAdmin == true {
-            switch indexPath.row {
-            case 0:
-                // The dark mode cell does not have a right arrow
-                cell.accessoryType = .none
-                cell.textLabel?.text = "Dark/Light Mode"
-                cell.detailTextLabel?.text = "Enable/Disable dark mode"
-            case 1:
-                cell.textLabel?.text = "Change Password"
-                cell.detailTextLabel?.text = "Update your password"
-            case 2:
-                cell.textLabel?.text = "Log Out"
-                cell.detailTextLabel?.text = "Log out of your account"
-            default:
-                break
-            }
-        } else {
-            switch indexPath.row {
-            case 0:
-                // The dark mode cell does not have a right arrow
-                cell.accessoryType = .none
-                cell.textLabel?.text = "Dark/Light Mode"
-                cell.detailTextLabel?.text = "Enable/Disable dark mode"
-            case 1:
-                cell.textLabel?.text = "Change Password"
-                cell.detailTextLabel?.text = "Update your password"
-            case 2:
+        switch indexPath.row {
+        case 0:
+            // The dark mode cell does not have a right arrow
+            cell.accessoryType = .none
+            cell.textLabel?.text = "Dark/Light Mode"
+            cell.detailTextLabel?.text = "Enable/Disable dark mode"
+        case 1:
+            cell.textLabel?.text = "Change Password"
+            cell.detailTextLabel?.text = "Update your password"
+        case 2:
+            if self.userRole == "users" {
                 cell.textLabel?.text = "Change Interests"
                 cell.detailTextLabel?.text = "Update your interests"
-            case 3:
+            } else {
                 cell.textLabel?.text = "Log Out"
                 cell.detailTextLabel?.text = "Log out of your account"
-            default:
-                break
             }
+        case 3:
+            cell.textLabel?.text = "Log Out"
+            cell.detailTextLabel?.text = "Log out of your account"
+        default:
+            break
         }
         
         return cell

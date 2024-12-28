@@ -27,16 +27,17 @@ class LoginViewController: UIViewController {
         guard let user = Auth.auth().currentUser, let email = user.email else { return }
         
         if email.contains("@fa3aliyat.admin.bh") {
-            UserDefaults.standard.set("goToAdminHome", forKey: "last_visited_page")
+            UserDefaults.standard.set("AdminHomeViewController", forKey: "last_visited_page")
             self.performSegue(withIdentifier: "goToAdminHome", sender: self)
         } else if email.contains("@fa3aliyat.organizer.bh") {
-            UserDefaults.standard.set("goToOrgHome", forKey: "last_visited_page")
+            UserDefaults.standard.set("OrganizerHomeViewController", forKey: "last_visited_page")
             self.performSegue(withIdentifier: "goToOrgHome", sender: self)
         } else {
-            UserDefaults.standard.set("goToUserHome", forKey: "last_visited_page")
+            UserDefaults.standard.set("UserHomeViewController", forKey: "last_visited_page")
             self.performSegue(withIdentifier: "goToUserHome", sender: self)
         }
     }
+
     
     // Function for input validation
     func validateFields() -> Bool {
