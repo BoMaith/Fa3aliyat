@@ -8,6 +8,14 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var participantsView: UIView!
     @IBOutlet weak var reviewsView: UIView!
     
+    @IBOutlet weak var orgImage: UIImageView!
+    @IBOutlet weak var orgName: UILabel!
+    @IBOutlet weak var Date: UILabel!
+    @IBOutlet weak var Etitle: UILabel!
+    @IBOutlet weak var Edescription: UILabel!
+    @IBOutlet weak var Eprice: UILabel!
+    @IBOutlet weak var Elocation: UILabel!
+    @IBOutlet weak var AvgRate: UILabel!
     // Participants view outlets
     @IBOutlet weak var participantsTitle: UILabel!
     @IBOutlet weak var participantsTableView: UITableView!
@@ -46,11 +54,13 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         // Fetch participants for the event once the view loads
         fetchParticipants()
+        
+        fetchEventDetails()
+
     }
 
-    
-    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl){
-    // Hide all views first
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+        // Hide all views first
         detailsView.isHidden = true
         participantsView.isHidden = true
         reviewsView.isHidden = true
@@ -175,6 +185,37 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
 
+    
+
+
+
+
+   
+   /* private func showDeleteConfirmation(for object: Any, isReview: Bool) {
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete this \(isReview ? "review" : "participant")?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            if isReview {
+                if let review = object as? Review {
+                    self.deleteReview(review)  // Proceed to delete review
+                }
+            } else {
+                if let participant = object as? Participant {
+                    self.deleteParticipant(participant)  // Proceed to delete participant
+                }
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }*/
+
+
+
     // MARK: - Participant Model
     struct Participant {
         var id: String
@@ -188,13 +229,101 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
         var rating: Int  // Rating as an integer
     }
 
-    // Prepare for Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "OEDViewController" {
-            // Pass the selected eventID to the destination view controller
-            if let adminEventVC = segue.destination as? AdminEventViewController {
-                adminEventVC.eventID = self.eventID  // Set eventID
+    /// Fetches event details from Firebase for a given event ID
+private func fetchEventDetails() {
+    guard let eventID = eventID else {
+        print("Event ID is missing.")
+        return
+    }
+    
+    let ref = Database.database().reference()
+    
+    // Fetch event details for this event from Firebase
+    ref.child("events").child(eventID).observeSingleEvent(of: .value) { snapshot in
+        print("Received snapshot: \(snapshot)") // Debugging output
+
+        guard let eventData = snapshot.value as? [String: Any] else {
+            print("Error: Unable to parse event data.")
+            return
+        }
+
+        print("Event data: \(eventData)") // Debugging output
+
+        // Extract event data and provide default values if any field is missing
+        let date = eventData["date"] as? String ?? "N/A"
+        let description = eventData["description"] as? String ?? "N/A"
+        let title = eventData["title"] as? String ?? "N/A"
+        let price = eventData["price"] as? Double ?? 0.0
+        let orgImageURL = eventData["org-image"] as? String ?? ""
+        let location = eventData["location"] as? String ?? "N/A"
+
+        // Update the UI on the main thread
+        DispatchQueue.main.async {
+            self.Date.text = date
+            self.Etitle.text = title
+            self.Edescription.text = description
+            self.Eprice.text = "Price: \(price)BD" // Format the price
+            self.orgName.text = title
+            self.Elocation.text = "Location: \(location)"
+
+            // Load organizer image (if any)
+            if let url = URL(string: orgImageURL) {
+                self.loadImage(from: url)
             }
         }
     }
 }
+
+
+    /// Fetches the average rating for a given event ID from Firebase
+    private func fetchAverageRating() {
+        guard let eventID = eventID else {
+            print("Event ID is missing.")
+            return
+        }
+        
+        let ref = Database.database().reference()
+        
+        // Fetch reviews for this event from Firebase
+        ref.child("events").child(eventID).child("reviews").observeSingleEvent(of: .value) { snapshot in
+            var totalRating = 0
+            var ratingCount = 0
+
+            // Iterate over the reviews to sum up the ratings
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let reviewData = childSnapshot.value as? [String: Any],
+                   let rating = reviewData["rating"] as? Int {
+                    totalRating += rating
+                    ratingCount += 1
+                }
+            }
+
+            // Calculate the average rating, default to 0.0 if no ratings exist
+            let averageRating = ratingCount == 0 ? 0.0 : Double(totalRating) / Double(ratingCount)
+            
+            // Update the UI on the main thread
+            DispatchQueue.main.async {
+                self.AvgRate.text = String(format: "%.1f", averageRating)  // Display average rating rounded to 1 decimal place
+            }
+        }
+    }
+
+
+    /// Loads an image from a URL and sets it to the UIImageView
+    func loadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error loading image: \(error.localizedDescription)")
+                return
+            }
+            guard let data = data, let image = UIImage(data: data) else {
+                print("Error: Unable to load image data.")
+                return
+            }
+            DispatchQueue.main.async {
+                self.orgImage.image = image
+            }
+        }.resume()
+    }
+        }

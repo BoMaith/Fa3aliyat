@@ -8,8 +8,9 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
-class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
+class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoriesViewControllerDelegate {
     
     // Outlets
     @IBOutlet weak var eventImageView: UIImageView!
@@ -23,15 +24,103 @@ class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var doneBtn: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    func showValidationError() {
-        let alert = UIAlertController(title:"Failed", message: "Please Fill ALL Fields.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    var selectedCategory: String? // To store the chosen category
+        var imageURL: String? // To store the uploaded image URL
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            // Make the image circular
+            eventImageView.layer.cornerRadius = eventImageView.frame.size.width / 2
+            eventImageView.clipsToBounds = true
+            eventImageView.contentMode = .scaleAspectFill
+            
+            // Enable interaction for the image view
+            eventImageView.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+            eventImageView.addGestureRecognizer(tapGesture)
+        }
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            refreshPage()
+        }
+        
+        func refreshPage() {
+            // Clear all fields and reset UI
+            titleTextFeild.text = ""
+            descritionTextField.text = ""
+            locationTextField.text = ""
+            priceTextField.text = ""
+            ageTextField.text = ""
+            eventImageView.image = nil // Reset the image
+            selectedCategory = nil // Reset selected category
+            startDatePicker.date = Date() // Set to current date
+            endDatePicker.date = Date()
+            timePicker.date = Date() // Set time to current
+            
+        }
+
+        func showValidationError() {
+            let alert = UIAlertController(
+                title: "Failed",
+                message: "Please Fill ALL Fields.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        func showImageSelectionError() {
+            let alert = UIAlertController(
+                title: "Image Missing",
+                message: "Please select an image for the event.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.sourceType = .photoLibrary  // Opens the photo library
+                picker.allowsEditing = true       // Allow users to crop the image
+                present(picker, animated: true, completion: nil)
         
     }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        // Get the selected image
+        if let selectedImage = info[.editedImage] as? UIImage {
+            eventImageView.image = selectedImage // Display the selected image
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        print("Image selection canceled.")
+    }
+
+    func validateInputs() -> Bool {
+        // Check if any field is empty
+        if titleTextFeild.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true ||
+            descritionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true ||
+            locationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true ||
+            priceTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true ||
+            ageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true {
+            return false
+        }
+        
+        // Check if an image is selected
+        if eventImageView.image == nil {
+            showImageSelectionError()
+            return false
+        }
+        
+        return true
+    }
+
 
     @IBAction func doneBtnTapped(_ sender: Any) {
         guard validateInputs() else{
@@ -41,105 +130,109 @@ class AEViewController:  UIViewController, CategoriesViewControllerDelegate{
         saveEvent()
     }
     
-    func validateInputs() -> Bool{
-        //check if any field is left empty
-        if titleTextFeild.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || descritionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || locationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || priceTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true || ageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true {
-            return false
-        }
-        return true
-    }
-     
-    var selectedCategory: String? // To store the chosen category
-    // Add this property to store the selected category
-    
-    func saveEvent(){
-        
-        //getting organizer Id
-        guard let organizerId = Auth.auth().currentUser?.uid else {
-            print("organizer Id not found")
-            return
-        }
-        
-        //refrence for the firbase
-        let ref = Database.database().reference()
-        
-        // this is to format the date and time values
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm a"
-        
-        // formats for single dates
-        let sDateFormatter = DateFormatter()
-        sDateFormatter.dateFormat = "MMM d"
-        
-        //setting ranges for dates for event displays
-        let startDateString = sDateFormatter.string(from: startDatePicker.date)
-        let endDateString = sDateFormatter.string(from: endDatePicker.date)
-        let dateRangeString = "\(startDateString) - \(endDateString)"
-        
-        // formatter for full dates just for storing data from start and end dates
-        let fullDateFormatter = DateFormatter()
-        fullDateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        //convert age to int
-        let age = Int(ageTextField.text ?? "0") ?? 0
-        
-        //make price a double value
-        let price = Double(priceTextField.text ?? "0") ?? 0.0
-        
-        //Collect data from text fields and pickers
-        let eventData: [String: Any] = [
-            "title": titleTextFeild.text ?? "",
-            "description": descritionTextField.text ?? "",
-            "time": timeFormatter.string(from: timePicker.date),
-            "location": locationTextField.text ?? "",
-            "startDate": fullDateFormatter.string(from: startDatePicker.date),
-            "endDate": fullDateFormatter.string(from: endDatePicker.date),
-            "date": dateRangeString,
-            "price": price,
-            "age": age,
-            "participants": [],
-            "category": selectedCategory ?? "Uncategorized" // Correctly use selectedCategory
-        ]
-
-        
-        //gen eventID
-        let eventId = ref.child("events").childByAutoId().key ?? UUID().uuidString
-        
-        //to help saving in events list and organizer lists which helps us in filtering organizers events when needed
-        
-        let update: [String: Any] = [
-            "/events/\(eventId)": eventData,
-            "/organizers/\(organizerId)/Events/\(eventId)" : eventData
-        ]
-        
-        // saving the event in both lists
-        ref.updateChildValues(update){ error, _ in
-            if let error = error {
-                print("Error saving event to Firebase: \(error.localizedDescription)")
-            } else {
-                print("Event Created.")
-                self.showConfirmAlert()
+    func saveEvent() {
+            guard let organizerId = Auth.auth().currentUser?.uid else {
+                print("Organizer ID not found.")
+                return
             }
             
+            let ref = Database.database().reference()
+            
+            // Format the time and dates
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "h:mm a"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d"
+            
+            let fullDateFormatter = DateFormatter()
+            fullDateFormatter.dateFormat = "dd/MM/yyyy"
+            
+            let startDateString = dateFormatter.string(from: startDatePicker.date)
+            let endDateString = dateFormatter.string(from: endDatePicker.date)
+            let dateRangeString = "\(startDateString) - \(endDateString)"
+            
+            let age = Int(ageTextField.text ?? "0") ?? 0
+            let price = Double(priceTextField.text ?? "0") ?? 0.0
+            
+            // Collect core event data
+            var eventData: [String: Any] = [
+                "title": titleTextFeild.text ?? "",
+                "description": descritionTextField.text ?? "",
+                "time": timeFormatter.string(from: timePicker.date),
+                "location": locationTextField.text ?? "",
+                "startDate": fullDateFormatter.string(from: startDatePicker.date),
+                "endDate": fullDateFormatter.string(from: endDatePicker.date),
+                "date": dateRangeString,
+                "price": price,
+                "age": age,
+                "participants": [],
+                "category": selectedCategory ?? "Uncategorized"
+            ]
+            
+            // Generate an event ID
+            let eventId = ref.child("events").childByAutoId().key ?? UUID().uuidString
+            
+            // Check if an image is selected
+            if let selectedImage = eventImageView.image, let imageData = selectedImage.jpegData(compressionQuality: 0.8) {
+                let storageRef = Storage.storage().reference()
+                let imageRef = storageRef.child("events/\(eventId).jpg")
+                
+                imageRef.putData(imageData, metadata: nil) { metadata, error in
+                    if let error = error {
+                        print("Error uploading image: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    // Get the download URL
+                    imageRef.downloadURL { url, error in
+                        if let error = error {
+                            print("Error getting download URL: \(error.localizedDescription)")
+                        } else if let downloadURL = url?.absoluteString {
+                            eventData["imageURL"] = downloadURL
+                            self.saveEventToDatabase(ref: ref, organizerId: organizerId, eventId: eventId, eventData: eventData)
+                        }
+                    }
+                }
+            }
         }
-    }
-    
-    func showConfirmAlert() {
-        let alert = UIAlertController(title:"Success", message: "Event Created.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowCategoriesForEvent", let destinationVC = segue.destination as? CategoriesViewController {
-            destinationVC.mode = .choose // Set mode for choosing a category
-            destinationVC.delegate = self // Set the delegate
-        }
-    }
 
-    func didSelectCategory(_ category: String) {
-        selectedCategory = category
-        print("Selected category for the event: \(category)") // Debug log
+        private func saveEventToDatabase(ref: DatabaseReference, organizerId: String, eventId: String, eventData: [String: Any]) {
+            let updates: [String: Any] = [
+                "/events/\(eventId)": eventData,
+                "/organizers/\(organizerId)/Events/\(eventId)": eventData
+            ]
+            
+            ref.updateChildValues(updates) { error, _ in
+                if let error = error {
+                    print("Error saving event: \(error.localizedDescription)")
+                } else {
+                    print("Event created successfully!")
+                    self.showConfirmAlert()
+                }
+            }
+        }
+
+        func showConfirmAlert() {
+            let alert = UIAlertController(
+                title: "Success",
+                message: "Event Created.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "ShowCategoriesForEvent", let destinationVC = segue.destination as? CategoriesViewController {
+                destinationVC.mode = .choose // Set mode for choosing a category
+                destinationVC.delegate = self // Set the delegate
+            }
+        }
+
+        func didSelectCategory(_ category: String) {
+            selectedCategory = category
+            print("Selected category for the event: \(category)")
+        }
     }
-}
 
