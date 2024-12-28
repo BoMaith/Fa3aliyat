@@ -10,7 +10,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="vHI-wb-ocE">
             <objects>
-                <tabBarController id="RBN-Xy-Cyx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="OrganizerTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RBN-Xy-Cyx" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lab-1F-NRM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,7 +20,6 @@
                         <segue destination="aOV-Pa-EhH" kind="relationship" relationship="viewControllers" id="M04-sS-1gU"/>
                         <segue destination="bOO-aI-Fw2" kind="relationship" relationship="viewControllers" id="hTm-Wl-GxT"/>
                         <segue destination="IxH-NB-55t" kind="relationship" relationship="viewControllers" id="PIg-rt-oJk"/>
-                        <segue destination="esL-Dy-ms1" kind="relationship" relationship="viewControllers" id="noW-oy-4cF"/>
                         <segue destination="2Us-FO-WJ0" kind="relationship" relationship="viewControllers" id="4j5-H0-xye"/>
                     </connections>
                 </tabBarController>
@@ -67,16 +66,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Dk-Je-xP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1739" y="644"/>
-        </scene>
-        <!--Past Events-->
-        <scene sceneID="vXO-PY-uWg">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Past Events" id="5WI-td-CL6" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Vvk-Ka-8Zl"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SJu-Gh-gga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-758" y="644"/>
         </scene>
         <!--Home-->
         <scene sceneID="TDj-mp-k0N">
@@ -135,25 +124,6 @@
             </objects>
             <point key="canvasLocation" x="321" y="218"/>
         </scene>
-        <!--Past Events-->
-        <scene sceneID="DqN-FE-6Bt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="esL-Dy-ms1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Past Events" image="clock.arrow.circlepath" catalog="system" id="MHE-rp-gPg"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="NuP-Oz-cDj">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5WI-td-CL6" kind="relationship" relationship="rootViewController" id="mEU-Tl-jIF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O1P-GQ-ayf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-758" y="218"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="tpy-Zr-dRk">
             <objects>
@@ -175,7 +145,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>

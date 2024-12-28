@@ -1,5 +1,7 @@
 import UIKit
+import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 
 class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -27,6 +29,7 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var reviewsList: [Review] = []  // Array to hold reviews data
 
     var eventID: String?  // Assume eventID is provided when selecting an event
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +61,35 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
         fetchEventDetails()
 
     }
+    
+    
+    @IBAction func editButtonTapped(_ sender: UIButton) {
+        navigateToEditEvent()
+    }
+    
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        showDeleteConfirmation()
+    }
+    func navigateToEditEvent() {
+        guard let eventID = eventID else {
+            print("Event ID is missing.")
+            return
+        }
 
+        // Load the correct storyboard containing AEViewController
+        let storyboard = UIStoryboard(name: "Add Event", bundle: nil) // Replace "AddEvent" with your storyboard name
+        if let addEventVC = storyboard.instantiateViewController(withIdentifier: "AEViewController") as? AEViewController {
+            addEventVC.eventID = eventID  // Pass the event ID
+            addEventVC.isEditingEvent = true  // Set editing mode
+            addEventVC.modalPresentationStyle = .fullScreen // Optional, for full-screen presentation
+            self.present(addEventVC, animated: true, completion: nil)
+        } else {
+            print("AEViewController could not be found in the storyboard.")
+        }
+    }
+
+    
+    
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         // Hide all views first
         detailsView.isHidden = true
@@ -186,34 +217,60 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
 
     
-
-
-
-
-   
-   /* private func showDeleteConfirmation(for object: Any, isReview: Bool) {
-        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete this \(isReview ? "review" : "participant")?", preferredStyle: .alert)
+    func showDeleteConfirmation() {
+        let alert = UIAlertController(title: "Delete Event", message: "Are you sure you want to delete this event?", preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            self.deleteEvent()
+        }))
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-            if isReview {
-                if let review = object as? Review {
-                    self.deleteReview(review)  // Proceed to delete review
-                }
-            } else {
-                if let participant = object as? Participant {
-                    self.deleteParticipant(participant)  // Proceed to delete participant
-                }
-            }
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteEvent() {
+        guard let eventID = eventID else {
+            print("Event ID is missing.")
+            return
         }
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(deleteAction)
+        guard let organizerId = Auth.auth().currentUser?.uid else {
+            print("Organizer ID is missing.")
+            return
+        }
         
-        present(alertController, animated: true, completion: nil)
-    }*/
+        let ref = Database.database().reference()
+        
+        // Delete the event image from Firebase Storage
+        deleteEventImage(eventID: eventID)
+        
+        // Paths to delete
+        let updates: [String: Any?] = [
+            "/events/\(eventID)": nil, // Delete from the global events list
+            "/organizers/\(organizerId)/Events/\(eventID)": nil // Delete from the current organizer's list
+        ]
+        
+        // Perform the deletions in the database
+        ref.updateChildValues(updates as [AnyHashable : Any]) { error, _ in
+            if let error = error {
+                print("Error deleting event: \(error.localizedDescription)")
+            } else {
+                print("Event deleted successfully.")
+                self.navigationController?.popViewController(animated: true) // Navigate back after deletion
+            }
+        }
+    }
 
+    func deleteEventImage(eventID: String) {
+        let storageRef = Storage.storage().reference().child("events/\(eventID).jpg")
+        storageRef.delete { error in
+            if let error = error {
+                print("Error deleting event image: \(error.localizedDescription)")
+            } else {
+                print("Event image deleted successfully.")
+            }
+        }
+    }
 
 
     // MARK: - Participant Model
