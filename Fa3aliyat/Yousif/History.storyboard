@@ -180,7 +180,7 @@
                                 <sections/>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="7SB-vc-Nfo">
-                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="36.666666666666657"/>
                                 <color key="backgroundColor" name="CustomBackground"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -196,12 +196,12 @@
                             <constraint firstItem="TX1-2x-qip" firstAttribute="top" secondItem="OrX-bN-iBX" secondAttribute="bottom" constant="20" id="Eji-fN-k3b"/>
                             <constraint firstItem="wCq-Fb-KkD" firstAttribute="bottom" secondItem="TX1-2x-qip" secondAttribute="bottom" constant="353" id="IwK-tz-31E"/>
                             <constraint firstItem="p6i-fY-noi" firstAttribute="top" secondItem="TX1-2x-qip" secondAttribute="bottom" constant="15" id="JuQ-Ih-pRo"/>
-                            <constraint firstItem="OrX-bN-iBX" firstAttribute="top" secondItem="7SB-vc-Nfo" secondAttribute="bottom" constant="120" id="Sut-5k-AQd"/>
+                            <constraint firstItem="OrX-bN-iBX" firstAttribute="top" secondItem="7SB-vc-Nfo" secondAttribute="bottom" constant="85" id="Sut-5k-AQd"/>
                             <constraint firstItem="OrX-bN-iBX" firstAttribute="leading" secondItem="wCq-Fb-KkD" secondAttribute="leading" constant="27" id="V6a-pu-esM"/>
                             <constraint firstItem="ROT-th-nFO" firstAttribute="leading" secondItem="TX1-2x-qip" secondAttribute="leading" id="Z6o-P2-9cN"/>
                             <constraint firstItem="p6i-fY-noi" firstAttribute="leading" secondItem="OrX-bN-iBX" secondAttribute="leading" constant="4" id="ZXt-rI-9DH"/>
                             <constraint firstItem="ROT-th-nFO" firstAttribute="centerX" secondItem="wCq-Fb-KkD" secondAttribute="centerX" id="aqI-6k-g5r"/>
-                            <constraint firstItem="7SB-vc-Nfo" firstAttribute="top" secondItem="wCq-Fb-KkD" secondAttribute="top" id="fv7-x8-XVP"/>
+                            <constraint firstItem="7SB-vc-Nfo" firstAttribute="top" secondItem="wCq-Fb-KkD" secondAttribute="top" constant="35" id="fv7-x8-XVP"/>
                             <constraint firstItem="7SB-vc-Nfo" firstAttribute="trailing" secondItem="TX1-2x-qip" secondAttribute="trailing" id="ivF-97-fgx"/>
                             <constraint firstItem="7SB-vc-Nfo" firstAttribute="leading" secondItem="TX1-2x-qip" secondAttribute="leading" id="lh2-B6-db1"/>
                             <constraint firstItem="TX1-2x-qip" firstAttribute="centerX" secondItem="wCq-Fb-KkD" secondAttribute="centerX" id="rfS-kN-eyL"/>

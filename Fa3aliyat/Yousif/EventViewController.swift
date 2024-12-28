@@ -13,7 +13,11 @@ class EventViewController: UIViewController {
     @IBOutlet weak var Elocation: UILabel!
     @IBOutlet weak var Joinbtn: UIButton!
     @IBOutlet weak var AvgRate: UILabel!
-
+   
+    @IBOutlet weak var Img1: UIImageView!
+    @IBOutlet weak var Img2: UIImageView!
+    @IBOutlet weak var Img3: UIImageView!
+    
     // Event ID for fetching data
     var eventID: String?
     
@@ -24,9 +28,13 @@ class EventViewController: UIViewController {
     var userID: String? {
         return Auth.auth().currentUser?.uid
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Make the image circular
+        makeImageViewCircular(imageView: orgImage)
+
         if let eventID = eventID {
             print("EventViewController loaded with eventID: \(eventID)")
 
@@ -34,10 +42,73 @@ class EventViewController: UIViewController {
             fetchEventDetails(eventID: eventID)
             // Check if the user has already joined the event
             checkIfUserJoinedEvent(eventID: eventID)
+            // Fetch and set the organizer image
+            fetchOrganizerImage(eventID: eventID)
         } else {
             print("Error: Event ID is nil.")
         }
     }
+
+    /// Makes the given UIImageView circular
+    func makeImageViewCircular(imageView: UIImageView) {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 1.0
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
+    }
+
+    /// Fetches and sets the organizer image from Firebase for a given event ID
+    func fetchOrganizerImage(eventID: String) {
+        ref.child("events").child(eventID).observeSingleEvent(of: .value) { snapshot in
+            guard let eventData = snapshot.value as? [String: Any],
+                  let imageURLString = eventData["imageURL"] as? String,
+                  let imageURL = URL(string: imageURLString) else {
+                print("Error: Unable to fetch image URL")
+                return
+            }
+
+            // Load the image from the URL and set it to the UIImageView
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let error = error {
+                    print("Error loading image: \(error.localizedDescription)")
+                    return
+                }
+                guard let data = data, let image = UIImage(data: data) else {
+                    print("Error: Unable to load image data")
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.orgImage.image = image
+                }
+            }.resume()
+        }
+    }
+
+    // Other existing functions like fetchEventDetails and checkIfUserJoinedEvent...
+
+
+
+    // Other existing functions like fetchEventDetails and checkIfUserJoinedEvent...
+
+
+//    // CollectionView DataSource Methods
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return arrEventPhotos.count // Return the number of photos
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventImgcell", for: indexPath) as! EventCollectionViewCell
+//        cell.imgEventView.image = arrEventPhotos[indexPath.row]
+//        return cell
+//    }
+//    
+//    // Optional: Implement this method to set the size of each cell
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        // Return the size of each cell
+//        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+//    }
+
+
 
     /// Fetches event details from Firebase for a given event ID
     func fetchEventDetails(eventID: String) {
@@ -155,3 +226,4 @@ class EventViewController: UIViewController {
         }
     }
 }
+
