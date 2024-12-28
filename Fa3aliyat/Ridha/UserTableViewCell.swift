@@ -1,25 +1,17 @@
-//
-//  UserTableViewCell.swift
-//  Fa3aliyat
-//
-//  Created by BP-36-201-16N on 05/12/2024.
-//
-
 import UIKit
 
 class UserTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.clipsToBounds = true
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setupCell(name: String, image: UIImage?) {
+        nameLabel.text = name
+        profileImageView.image = image
     }
-
 }
