@@ -63,7 +63,6 @@
                                         <connections>
                                             <outlet property="eventNameLbl" destination="Byo-9t-Cfs" id="76c-u3-qVx"/>
                                             <outlet property="imgEvent" destination="gr8-9B-uvA" id="06x-Ed-Ysb"/>
-                                            <segue destination="81h-mH-ynA" kind="show" identifier="" id="ynm-Ah-iSj"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="60" id="z5Y-cB-hjv" customClass="SearchTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
@@ -89,12 +88,6 @@
                                                     <color key="textColor" name="CustomTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9o-EX-MTm">
-                                                    <rect key="frame" x="293.66666666666669" y="13" width="52" height="34"/>
-                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1T-ln-usL">
                                                     <rect key="frame" x="71" y="29" width="219" height="22"/>
                                                     <constraints>
@@ -106,10 +99,8 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="x9o-EX-MTm" secondAttribute="trailing" constant="17" id="3H8-h2-vrc"/>
                                                 <constraint firstItem="u1T-ln-usL" firstAttribute="centerY" secondItem="mI3-42-U9d" secondAttribute="centerY" constant="10" id="7I0-OH-9XQ"/>
                                                 <constraint firstItem="RDr-Ke-X1b" firstAttribute="top" secondItem="mI3-42-U9d" secondAttribute="top" constant="9" id="G00-lM-wbo"/>
-                                                <constraint firstItem="x9o-EX-MTm" firstAttribute="centerY" secondItem="mI3-42-U9d" secondAttribute="centerY" id="KQi-me-LPH"/>
                                                 <constraint firstItem="css-Dc-lq0" firstAttribute="leading" secondItem="mI3-42-U9d" secondAttribute="leading" constant="20" id="PDM-oR-F3X"/>
                                                 <constraint firstItem="RDr-Ke-X1b" firstAttribute="centerY" secondItem="mI3-42-U9d" secondAttribute="centerY" constant="-10" id="Uxo-Oc-ajH"/>
                                                 <constraint firstItem="u1T-ln-usL" firstAttribute="leading" secondItem="css-Dc-lq0" secondAttribute="trailing" constant="8" id="bdf-5a-dbZ"/>
@@ -123,7 +114,6 @@
                                             <outlet property="eventDateLbl" destination="u1T-ln-usL" id="cTJ-H4-8Gn"/>
                                             <outlet property="eventNameLbl" destination="RDr-Ke-X1b" id="hOj-Nm-QRi"/>
                                             <outlet property="imgEvent" destination="css-Dc-lq0" id="OFP-hK-wZb"/>
-                                            <outlet property="starBtn" destination="x9o-EX-MTm" id="z4w-2V-i1q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -146,11 +136,45 @@
                     <connections>
                         <outlet property="searchBar" destination="Yiq-zv-u1U" id="ls6-hc-QsE"/>
                         <outlet property="tableView" destination="Fe4-uj-ZZY" id="Ytr-wF-PKf"/>
+                        <segue destination="tSI-lq-fCM" kind="show" identifier="toAdminDetails" id="0kp-hD-VvE"/>
+                        <segue destination="oyP-Gz-Jv7" kind="show" identifier="toOEDetails" id="C70-eB-6G2"/>
+                        <segue destination="2wZ-Pu-44m" kind="show" identifier="toEventPage" id="SHZ-nl-B05"/>
+                        <segue destination="81h-mH-ynA" kind="show" identifier="toFilterPage" id="215-xA-kJI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZO-0G-esb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="958"/>
+        </scene>
+        <!--AdminEventDetails-->
+        <scene sceneID="sWz-LJ-vxn">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="toAdminDetails" storyboardName="AdminEventDetails" id="tSI-lq-fCM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HMt-jz-TtO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lxG-zg-NgX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="808"/>
+        </scene>
+        <!--Organizer ED-->
+        <scene sceneID="EwO-DL-KQu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Organizer ED" id="oyP-Gz-Jv7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iTR-6I-Um7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmW-2i-HWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1770" y="897"/>
+        </scene>
+        <!--EventPage-->
+        <scene sceneID="p4d-AX-W3M">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="toEventPage" storyboardName="EventPage" id="2wZ-Pu-44m" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AVv-pc-m5O"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RFz-Qa-URC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709" y="1003"/>
         </scene>
         <!--Filters Page-->
         <scene sceneID="SBD-uF-Omz">
@@ -599,7 +623,6 @@
     </scenes>
     <resources>
         <image name="pizza" width="374" height="370"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
