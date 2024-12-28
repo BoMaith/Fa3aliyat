@@ -18,6 +18,9 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-l8-NCx">
                                 <rect key="frame" x="0.0" y="59" width="393" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="ZBe-ub-dpg"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Details"/>
                                     <segment title="Participants"/>
@@ -28,10 +31,10 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il8-Yy-HKf" userLabel="Participants">
-                                <rect key="frame" x="0.0" y="90" width="393" height="728"/>
+                                <rect key="frame" x="0.0" y="90" width="393" height="679"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YUw-n2-bWn" userLabel="Participants Table View">
-                                        <rect key="frame" x="0.0" y="34" width="393" height="694"/>
+                                        <rect key="frame" x="0.0" y="34" width="393" height="645"/>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                         <color key="sectionIndexColor" name="CustomTextColor"/>
                                         <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
@@ -93,10 +96,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnJ-00-Gp3" userLabel="Reviews">
-                                <rect key="frame" x="0.0" y="90" width="393" height="728"/>
+                                <rect key="frame" x="0.0" y="90" width="393" height="679"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CiB-YF-22j" userLabel="Reviews Table View">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="728"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="679"/>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                         <color key="separatorColor" name="CustomBackground"/>
                                         <prototypes>
@@ -188,13 +191,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doa-2u-aVg" userLabel="Details">
-                                <rect key="frame" x="0.0" y="90" width="393" height="728"/>
+                                <rect key="frame" x="0.0" y="90" width="393" height="679"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="J5K-O7-IuE">
-                                        <rect key="frame" x="31" y="10" width="331" height="52"/>
+                                        <rect key="frame" x="31" y="10.000000000000004" width="331" height="52.333333333333343"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cars" translatesAutoresizingMaskIntoConstraints="NO" id="5br-ap-rgo">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                                                <rect key="frame" x="0.0" y="0.3333333333333286" width="52" height="52"/>
                                                 <color key="backgroundColor" name="CustomBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="9Rz-c3-uGY"/>
@@ -228,6 +231,7 @@
                                         <rect key="frame" x="31" y="82" width="331" height="28.666666666666671"/>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="28.666666666666671" id="HLW-iX-Q1z"/>
                                             <constraint firstAttribute="width" constant="331" id="nrq-wa-sk1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
@@ -235,7 +239,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3V-Ll-1Ex">
-                                        <rect key="frame" x="31" y="130.66666666666666" width="331" height="249.99999999999997"/>
+                                        <rect key="frame" x="31" y="129.66666666666666" width="331" height="249.99999999999997"/>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="yt5-2W-Aek"/>
@@ -252,14 +256,14 @@ Why should you join the event?:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location: Isa Town, Bahrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5v1-mT-Caq">
-                                        <rect key="frame" x="31" y="400.66666666666669" width="331" height="20.333333333333314"/>
+                                        <rect key="frame" x="31" y="399.66666666666669" width="331" height="20.333333333333314"/>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLO-cj-V3O">
-                                        <rect key="frame" x="29.666666666666657" y="441" width="334" height="28.666666666666686"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-50" translatesAutoresizingMaskIntoConstraints="NO" id="OLO-cj-V3O">
+                                        <rect key="frame" x="29.666666666666657" y="440" width="333.66666666666674" height="28.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfS-un-twn">
                                                 <rect key="frame" x="0.0" y="0.0" width="277" height="28.666666666666668"/>
@@ -272,15 +276,15 @@ Why should you join the event?:
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Wek-T7-W7A">
-                                                <rect key="frame" x="277" y="0.0" width="57" height="28.666666666666668"/>
+                                                <rect key="frame" x="227.00000000000003" y="0.0" width="106.66666666666666" height="28.666666666666668"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-jc-voW">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-jc-voW">
                                                         <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="28.333333333333332"/>
                                                         <color key="backgroundColor" name="CustomBackground"/>
                                                         <color key="tintColor" red="1" green="0.77647058820000003" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRB-Su-ubS">
-                                                        <rect key="frame" x="33" y="0.0" width="24" height="28.666666666666668"/>
+                                                        <rect key="frame" x="33.000000000000007" y="0.0" width="73.666666666666686" height="28.666666666666668"/>
                                                         <color key="backgroundColor" name="CustomBackground"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="CustomTextColor"/>
@@ -292,22 +296,70 @@ Why should you join the event?:
                                         </subviews>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-ak-lpY">
+                                        <rect key="frame" x="269" y="82" width="46" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
+                                        <connections>
+                                            <action selector="editButtonTapped:" destination="Wb5-gk-dw9" eventType="touchUpInside" id="NGA-nX-3bq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2h-lW-PgV">
+                                        <rect key="frame" x="323" y="79.333333333333343" width="48" height="34"/>
+                                        <color key="tintColor" name="size_red"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                        <connections>
+                                            <action selector="deleteButtonTapped:" destination="Wb5-gk-dw9" eventType="touchUpInside" id="mUI-2z-B0R"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLQ-Ih-jZz">
+                                        <rect key="frame" x="29.666666666666657" y="515" width="333.66666666666674" height="128"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="localization_branding" translatesAutoresizingMaskIntoConstraints="NO" id="XFb-6F-4lR">
+                                                <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="109.66666666666667" id="bai-u1-aWf"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" translatesAutoresizingMaskIntoConstraints="NO" id="A3T-52-64j">
+                                                <rect key="frame" x="109.66666666666669" y="0.0" width="114.33333333333331" height="128"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smart_cropping" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-ZA-wsW">
+                                                <rect key="frame" x="223.99999999999997" y="0.0" width="109.66666666666666" height="128"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="A3T-52-64j" firstAttribute="centerX" secondItem="SLQ-Ih-jZz" secondAttribute="centerX" id="XOe-s8-JUt"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="CustomBackground"/>
                                 <constraints>
                                     <constraint firstItem="J5K-O7-IuE" firstAttribute="leading" secondItem="doa-2u-aVg" secondAttribute="leading" constant="31" id="3HL-IE-qn7"/>
+                                    <constraint firstAttribute="bottom" secondItem="SLQ-Ih-jZz" secondAttribute="bottom" constant="36" id="3hL-N0-x8v"/>
+                                    <constraint firstItem="KQZ-ak-lpY" firstAttribute="top" secondItem="7TX-ya-Bva" secondAttribute="top" id="6ja-he-gWq"/>
+                                    <constraint firstItem="o2h-lW-PgV" firstAttribute="top" secondItem="J5K-O7-IuE" secondAttribute="bottom" constant="17" id="955-DY-n4f"/>
+                                    <constraint firstItem="o2h-lW-PgV" firstAttribute="leading" secondItem="KQZ-ak-lpY" secondAttribute="trailing" constant="8" id="BB7-xs-Hef"/>
+                                    <constraint firstItem="SLQ-Ih-jZz" firstAttribute="top" secondItem="doa-2u-aVg" secondAttribute="top" constant="515" id="D7b-O8-l03"/>
+                                    <constraint firstItem="SLQ-Ih-jZz" firstAttribute="leading" secondItem="doa-2u-aVg" secondAttribute="leading" constant="29.666666666666657" id="Eub-qB-Pfc"/>
                                     <constraint firstItem="J5K-O7-IuE" firstAttribute="top" secondItem="doa-2u-aVg" secondAttribute="top" constant="10" id="GT8-Fp-TmF"/>
                                     <constraint firstItem="OLO-cj-V3O" firstAttribute="top" secondItem="5v1-mT-Caq" secondAttribute="bottom" constant="20" id="GYM-7c-1SD"/>
                                     <constraint firstAttribute="trailing" secondItem="U3V-Ll-1Ex" secondAttribute="trailing" constant="31" id="KgB-g5-i4A"/>
-                                    <constraint firstItem="U3V-Ll-1Ex" firstAttribute="top" secondItem="7TX-ya-Bva" secondAttribute="bottom" constant="20" id="MLB-I5-qUO"/>
+                                    <constraint firstItem="U3V-Ll-1Ex" firstAttribute="top" secondItem="o2h-lW-PgV" secondAttribute="bottom" constant="16.333333333333371" id="Lj5-1F-VXN"/>
                                     <constraint firstItem="5v1-mT-Caq" firstAttribute="top" secondItem="U3V-Ll-1Ex" secondAttribute="bottom" constant="20" id="WWt-iG-30s"/>
                                     <constraint firstItem="7TX-ya-Bva" firstAttribute="centerX" secondItem="doa-2u-aVg" secondAttribute="centerX" id="Wya-2R-9Kc"/>
                                     <constraint firstItem="U3V-Ll-1Ex" firstAttribute="leading" secondItem="doa-2u-aVg" secondAttribute="leading" constant="31" id="Yol-kM-zaj"/>
                                     <constraint firstAttribute="trailing" secondItem="J5K-O7-IuE" secondAttribute="trailing" constant="31" id="aSy-im-QaB"/>
                                     <constraint firstItem="5v1-mT-Caq" firstAttribute="leading" secondItem="doa-2u-aVg" secondAttribute="leading" constant="31" id="el4-lA-0Ts"/>
                                     <constraint firstAttribute="trailing" secondItem="5v1-mT-Caq" secondAttribute="trailing" constant="31" id="hne-OJ-u02"/>
+                                    <constraint firstItem="U3V-Ll-1Ex" firstAttribute="top" secondItem="7TX-ya-Bva" secondAttribute="bottom" constant="18.999999999999957" id="hzT-KL-oxm"/>
                                     <constraint firstItem="OLO-cj-V3O" firstAttribute="centerX" secondItem="doa-2u-aVg" secondAttribute="centerX" id="iU5-vi-odS"/>
-                                    <constraint firstItem="7TX-ya-Bva" firstAttribute="top" secondItem="J5K-O7-IuE" secondAttribute="bottom" constant="20" id="psO-2I-5fb"/>
+                                    <constraint firstItem="SLQ-Ih-jZz" firstAttribute="leading" secondItem="OLO-cj-V3O" secondAttribute="leading" id="kVF-Fn-lVw"/>
+                                    <constraint firstAttribute="trailing" secondItem="KQZ-ak-lpY" secondAttribute="trailing" constant="78" id="lHp-Ny-h1o"/>
+                                    <constraint firstItem="SLQ-Ih-jZz" firstAttribute="trailing" secondItem="OLO-cj-V3O" secondAttribute="trailing" id="odi-Ha-aqz"/>
+                                    <constraint firstItem="o2h-lW-PgV" firstAttribute="centerY" secondItem="7TX-ya-Bva" secondAttribute="centerY" id="pZG-Iz-6ci"/>
+                                    <constraint firstItem="SLQ-Ih-jZz" firstAttribute="top" secondItem="OLO-cj-V3O" secondAttribute="bottom" constant="46.333333333333314" id="seh-k0-cXf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -338,6 +390,9 @@ Why should you join the event?:
                             <constraint firstItem="xnJ-00-Gp3" firstAttribute="top" secondItem="Il8-Yy-HKf" secondAttribute="top" id="pjL-gs-Xe1"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="cVF-Pr-nmN"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="AvgRate" destination="QRB-Su-ubS" id="KdW-v2-RU2"/>
                         <outlet property="Date" destination="6VE-o9-lC9" id="QTW-rh-aLJ"/>
@@ -358,17 +413,25 @@ Why should you join the event?:
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4a-ti-Jtf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-353.43511450381681" y="16.901408450704228"/>
+            <point key="canvasLocation" x="573.28244274809163" y="16.901408450704228"/>
         </scene>
     </scenes>
     <resources>
         <image name="Cars" width="208" height="208"/>
+        <image name="house" width="718" height="472"/>
+        <image name="localization_branding" width="400" height="224"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="smart_cropping" width="224" height="135"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <namedColor name="CustomBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CustomTextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="size_red">
+            <color red="1" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
