@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class OrganizerProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -42,6 +43,9 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
         if !isUser {
             fetchEvents()
         }
+        
+        // Fetch and display the profile image
+        fetchProfileImage()
     }
 
     // MARK: - Setup UI
@@ -98,6 +102,28 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
         }
     }
 
+    // MARK: - Fetch Profile Image from Firebase Storage
+    private func fetchProfileImage() {
+        guard let profileImageUrlString = organizerData?["profileImageUrl"] as? String else {
+            print("No profile image URL found.")
+            return
+        }
+        
+        let storageRef = Storage.storage().reference(forURL: profileImageUrlString)
+        let localURL = FileManager.default.temporaryDirectory.appendingPathComponent("profile.jpg")
+        
+        storageRef.write(toFile: localURL) { url, error in
+            if let error = error {
+                print("Error fetching profile image: \(error.localizedDescription)")
+                return
+            }
+            
+            if let url = url, let image = UIImage(contentsOfFile: url.path) {
+                self.profileImage.image = image
+            }
+        }
+    }
+
     // MARK: - TableView DataSource for User Details (Main TableView)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.tableView {
@@ -142,6 +168,4 @@ class OrganizerProfileViewController: UIViewController, UITableViewDataSource, U
             return cell
         }
     }
-
-    
 }

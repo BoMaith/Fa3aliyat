@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 protocol CreateOrganizerDelegate: AnyObject {
     func didCreateOrganizer(_ organizerData: [String: Any])
@@ -104,27 +105,51 @@ class CreateOrganizerViewController: UIViewController, UITextFieldDelegate, UIIm
                 // Create a new reference for the organizer in Firebase Realtime Database
                 let newOrganizerRef = ref.child("organizers").child(uid)
                 
-                let organizerData: [String: Any] = [
-                    "FullName": name,
-                    "email": fullEmail,
-                    "Password": password,  // Storing password directly is not recommended in production
-                    
-                ]
-                
-                // Save organizer data to Firebase Realtime Database
-                newOrganizerRef.setValue(organizerData) { error, _ in
-                    if let error = error {
-                        self.showAlert(title: "Error", message: "Failed to save organizer data: \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    // Show success alert and navigate back
-                    self.showAlert(title: "Success", message: "Organizer created successfully!") {
-                        // Optionally notify the delegate if needed
-                        self.delegate?.didCreateOrganizer(organizerData)
+                // Upload the profile image to Firebase Storage
+                if let profileImageData = self.profileImage.image?.jpegData(compressionQuality: 0.8) {
+                    let storageRef = Storage.storage().reference().child("user/\(uid)/profile.jpg")
+                    storageRef.putData(profileImageData, metadata: nil) { metadata, error in
+                        if let error = error {
+                            self.showAlert(title: "Error", message: "Failed to upload profile image: \(error.localizedDescription)")
+                            return
+                        }
                         
-                        // Navigate back to the main page after success
-                        self.navigationController?.popViewController(animated: true)
+                        // Get the download URL of the uploaded image
+                        storageRef.downloadURL { url, error in
+                            if let error = error {
+                                self.showAlert(title: "Error", message: "Failed to get profile image URL: \(error.localizedDescription)")
+                                return
+                            }
+                            
+                            guard let profileImageUrl = url?.absoluteString else {
+                                self.showAlert(title: "Error", message: "Failed to get profile image URL.")
+                                return
+                            }
+                            
+                            let organizerData: [String: Any] = [
+                                "FullName": name,
+                                "email": fullEmail,
+                                "Password": password,  // Storing password directly is not recommended in production
+                                "profileImageUrl": profileImageUrl
+                            ]
+                            
+                            // Save organizer data to Firebase Realtime Database
+                            newOrganizerRef.setValue(organizerData) { error, _ in
+                                if let error = error {
+                                    self.showAlert(title: "Error", message: "Failed to save organizer data: \(error.localizedDescription)")
+                                    return
+                                }
+                                
+                                // Show success alert and navigate back
+                                self.showAlert(title: "Success", message: "Organizer created successfully!") {
+                                    // Optionally notify the delegate if needed
+                                    self.delegate?.didCreateOrganizer(organizerData)
+                                    
+                                    // Navigate back to the main page after success
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                        }
                     }
                 }
             }
