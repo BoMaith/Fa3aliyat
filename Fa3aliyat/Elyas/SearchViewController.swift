@@ -350,15 +350,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! SearchTableViewCell
             let event = filteredEvents[indexPath.row]
             
-            if let url = URL(string: event.imageURL) {
+           // if let url = URL(string: event.imageURL) {
                 // Make the image circular
                 cell.imgEvent.layer.cornerRadius = cell.imgEvent.frame.size.width / 2
                 cell.imgEvent.clipsToBounds = true
                 cell.imgEvent.contentMode = .scaleAspectFill
-            } else {
+            //} else {
                 // Handle invalid URL if necessary (e.g., show a placeholder image)
                 cell.imgEvent.image = UIImage(named: "placeholder")  // Replace with your placeholder image
-            }
+           // }
             
             cell.setupCell(name: event.title, date: event.date, imageURL: event.imageURL)
 

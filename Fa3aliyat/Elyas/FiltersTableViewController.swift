@@ -99,8 +99,8 @@ class FiltersTableViewController: UITableViewController {
                 selectedFilters[3] = "Free" // Save to selectedFilters array
                 print("Saved selected price: Free")
             case 1:
-                selectedFilters[3] = "1 - 4.9 BD" // Save to selectedFilters array
-                print("Saved selected price: 1 - 4.9 BD")
+                selectedFilters[3] = "0.1 - 4.9 BD" // Save to selectedFilters array
+                print("Saved selected price: 0.1 - 4.9 BD")
             case 2:
                 selectedFilters[3] = "5 - 9.9 BD" // Save to selectedFilters array
                 print("Saved selected price: 5 - 9.9 BD")

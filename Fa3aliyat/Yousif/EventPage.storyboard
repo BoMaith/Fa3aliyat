@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5MW-r7-L40">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="iPad13_0rounded" orientation="portrait" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="5MW-r7-L40" customClass="EventViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZqW-QP-F9I">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pqb-Kz-zBj">
-                                <rect key="frame" x="31" y="69" width="331" height="52"/>
+                                <rect key="frame" x="31" y="34" width="970" height="52"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cars" translatesAutoresizingMaskIntoConstraints="NO" id="rAe-HP-8Yp">
                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
@@ -28,16 +28,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="d5l-ZA-ONL">
-                                        <rect key="frame" x="67" y="6.6666666666666714" width="264" height="39"/>
+                                        <rect key="frame" x="67" y="6.5" width="903" height="39.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3w-ug-bGa">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="903" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOV 11 - NOV 14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-rz-e16">
-                                                <rect key="frame" x="0.0" y="23.333333333333329" width="264" height="15.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="23.5" width="903" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -47,13 +47,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Car show organizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2z6-BX-Q1c">
-                                <rect key="frame" x="31" y="141" width="331" height="28.666666666666657"/>
+                                <rect key="frame" x="31" y="106" width="970" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYs-Yg-288">
-                                <rect key="frame" x="31" y="734.66666666666663" width="331" height="38.333333333333371"/>
+                                <rect key="frame" x="31" y="1272.5" width="970" height="38.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Join" cornerStyle="capsule"/>
                                 <connections>
@@ -61,7 +61,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgR-Mi-P85">
-                                <rect key="frame" x="31" y="189.66666666666663" width="331" height="223.33333333333337"/>
+                                <rect key="frame" x="31" y="155" width="970" height="162.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="rvF-jF-kOq"/>
                                 </constraints>
@@ -77,7 +77,7 @@ Why should you join the event?:
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location: Isa Town, Bahrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYU-cb-MVA">
-                                <rect key="frame" x="31" y="433" width="331" height="20.333333333333314"/>
+                                <rect key="frame" x="31" y="337.5" width="970" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.333333333333314" id="5W5-vS-1If"/>
                                 </constraints>
@@ -86,10 +86,10 @@ Why should you join the event?:
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xsD-f6-HHH">
-                                <rect key="frame" x="31" y="473.33333333333331" width="331" height="28.666666666666686"/>
+                                <rect key="frame" x="31" y="378" width="970" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price: 0.0BD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBH-C7-bRA">
-                                        <rect key="frame" x="0.0" y="0.0" width="277" height="28.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="277" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="277" id="3m5-oW-pT3"/>
                                         </constraints>
@@ -98,14 +98,14 @@ Why should you join the event?:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="d1C-x1-EIO">
-                                        <rect key="frame" x="277" y="4.3333333333333712" width="54" height="20.333333333333332"/>
+                                        <rect key="frame" x="277" y="4" width="693" height="20.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JiQ-83-GS0">
-                                                <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="19.999999999999996"/>
+                                                <rect key="frame" x="0.0" y="-0.5" width="22" height="20.5"/>
                                                 <color key="tintColor" red="1" green="0.77647058823529413" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEG-9P-QrJ">
-                                                <rect key="frame" x="30" y="0.0" width="24" height="20.333333333333332"/>
+                                                <rect key="frame" x="669" y="0.0" width="24" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -118,19 +118,19 @@ Why should you join the event?:
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4U-u9-cKS">
-                                <rect key="frame" x="31" y="532" width="331" height="147"/>
+                                <rect key="frame" x="31" y="437" width="970" height="780"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Eimg1" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-SB-y0E">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="147"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="780"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="SKy-nb-0bd"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Eimg2" translatesAutoresizingMaskIntoConstraints="NO" id="jli-w2-lwR">
-                                        <rect key="frame" x="110" y="0.0" width="111" height="147"/>
+                                        <rect key="frame" x="110" y="0.0" width="750" height="780"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Eimg3" translatesAutoresizingMaskIntoConstraints="NO" id="Smq-94-eDc">
-                                        <rect key="frame" x="221" y="0.0" width="110" height="147"/>
+                                        <rect key="frame" x="860" y="0.0" width="110" height="780"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -202,11 +202,11 @@ Why should you join the event?:
             <objects>
                 <viewController id="sU9-6T-vvg" customClass="PayViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JSE-S6-nLo">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Payment Method" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acc-HN-pll">
-                                <rect key="frame" x="31" y="60" width="331" height="86"/>
+                                <rect key="frame" x="186.5" y="60" width="331" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="331" id="3Uj-A9-jvx"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="86" id="PyN-xr-4f0"/>
@@ -218,10 +218,10 @@ Why should you join the event?:
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="eWP-yX-NzE" userLabel="Stack View1">
-                                <rect key="frame" x="30.999999999999986" y="216" width="221.66666666666663" height="58"/>
+                                <rect key="frame" x="186.5" y="216" width="221.5" height="58"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4F-gZ-n01" userLabel="Cash Btn">
-                                        <rect key="frame" x="0.0" y="0.0" width="68.333333333333329" height="58"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="58"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="circle" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
@@ -234,13 +234,13 @@ Why should you join the event?:
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cash" translatesAutoresizingMaskIntoConstraints="NO" id="mfB-fF-IEq">
-                                        <rect key="frame" x="96.333333333333329" y="0.0" width="57.999999999999986" height="58"/>
+                                        <rect key="frame" x="96.5" y="0.0" width="58" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="58" id="k7g-Om-DY8"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-CQ-kCZ" userLabel="Cash">
-                                        <rect key="frame" x="182.33333333333334" y="0.0" width="39.333333333333343" height="58"/>
+                                        <rect key="frame" x="182.5" y="0.0" width="39" height="58"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -252,10 +252,10 @@ Why should you join the event?:
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="xyA-GH-IEe" userLabel="Stack View2">
-                                <rect key="frame" x="31" y="284" width="221" height="50"/>
+                                <rect key="frame" x="186.5" y="284" width="221" height="50"/>
                                 <subviews>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNm-uZ-eZ5" userLabel="Card Btn">
-                                        <rect key="frame" x="0.0" y="0.0" width="68.333333333333329" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system" cornerStyle="capsule"/>
                                         <connections>
@@ -263,13 +263,13 @@ Why should you join the event?:
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card" translatesAutoresizingMaskIntoConstraints="NO" id="ofz-BL-oSn">
-                                        <rect key="frame" x="96.333333333333329" y="0.0" width="59.999999999999986" height="50"/>
+                                        <rect key="frame" x="96.5" y="0.0" width="60" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="vGq-Xu-AjJ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtI-jL-OjT" userLabel="Card">
-                                        <rect key="frame" x="184.33333333333334" y="0.0" width="36.666666666666657" height="50"/>
+                                        <rect key="frame" x="184.5" y="0.0" width="36.5" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -281,22 +281,22 @@ Why should you join the event?:
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHm-i1-ert">
-                                <rect key="frame" x="31" y="379" width="331" height="28.666666666666686"/>
+                                <rect key="frame" x="186.5" y="379" width="331" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="WPO-TM-tSB" userLabel="Stack View3">
-                                <rect key="frame" x="31" y="447.66666666666669" width="331" height="20.333333333333314"/>
+                                <rect key="frame" x="186.5" y="448" width="331" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Total Tickets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKV-ee-FDW">
-                                        <rect key="frame" x="0.0" y="0.0" width="273.33333333333331" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="273.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7s-C2-cye" userLabel="TTLabel">
-                                        <rect key="frame" x="323.33333333333331" y="0.0" width="7.6666666666666856" height="20.333333333333332"/>
+                                        <rect key="frame" x="323.5" y="0.0" width="7.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -304,16 +304,16 @@ Why should you join the event?:
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="lzA-Mb-DBE" userLabel="Stack View4">
-                                <rect key="frame" x="31" y="488" width="331" height="20.333333333333314"/>
+                                <rect key="frame" x="186.5" y="488.5" width="331" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Ticket Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HT-D5-3lc">
-                                        <rect key="frame" x="0.0" y="0.0" width="230" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BD 2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5P-fd-jTg" userLabel="PPTLabel">
-                                        <rect key="frame" x="280" y="0.0" width="51" height="20.333333333333332"/>
+                                        <rect key="frame" x="280" y="0.0" width="51" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -321,16 +321,16 @@ Why should you join the event?:
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="YCb-aU-cx6" userLabel="Stack View5">
-                                <rect key="frame" x="31" y="528.33333333333337" width="331" height="20.333333333333371"/>
+                                <rect key="frame" x="186.5" y="529" width="331" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70Q-RZ-Ver">
-                                        <rect key="frame" x="0.0" y="0.0" width="230" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BD 2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-7F-ua8" userLabel="TALabel">
-                                        <rect key="frame" x="280" y="0.0" width="51" height="20.333333333333332"/>
+                                        <rect key="frame" x="280" y="0.0" width="51" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -338,13 +338,13 @@ Why should you join the event?:
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="The amount paid through the card is refundable within 24 hours only." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5K6-Wq-F1E">
-                                <rect key="frame" x="31" y="570.66666666666663" width="331" height="28.666666666666629"/>
+                                <rect key="frame" x="186.5" y="571.5" width="331" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="CustomTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Evt-qq-e8z">
-                                <rect key="frame" x="31" y="758.66666666666663" width="331" height="38.333333333333371"/>
+                                <rect key="frame" x="186.5" y="912" width="331" height="38.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Proceed" cornerStyle="capsule"/>
                                 <connections>
@@ -404,7 +404,7 @@ Why should you join the event?:
             <objects>
                 <viewController id="vti-jD-92i" customClass="CardViewController" customModule="Fa3aliyat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WOe-Dq-3nO">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6C-cj-aKw">
@@ -414,16 +414,16 @@ Why should you join the event?:
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GZ9-Vp-b4J" userLabel="Stack View1">
-                                <rect key="frame" x="32" y="173" width="329" height="34"/>
+                                <rect key="frame" x="32" y="173" width="640" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardholder's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tV-RV-VKI">
-                                        <rect key="frame" x="0.0" y="0.0" width="164.66666666666666" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jZ-HR-WyY" userLabel="CNameField">
-                                        <rect key="frame" x="164.66666666666663" y="0.0" width="164.33333333333337" height="34"/>
+                                        <rect key="frame" x="320" y="0.0" width="320" height="34"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -432,16 +432,16 @@ Why should you join the event?:
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ibj-VB-tEO" userLabel="Stack View2">
-                                <rect key="frame" x="32" y="227" width="329" height="34"/>
+                                <rect key="frame" x="32" y="227" width="640" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number on Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ago-nN-9ww">
-                                        <rect key="frame" x="0.0" y="0.0" width="164.66666666666666" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-B8-Tsg" userLabel="CNumField">
-                                        <rect key="frame" x="164.66666666666663" y="0.0" width="164.33333333333337" height="34"/>
+                                        <rect key="frame" x="320" y="0.0" width="320" height="34"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -450,7 +450,7 @@ Why should you join the event?:
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xuq-xn-7RG" userLabel="Stack View3">
-                                <rect key="frame" x="32" y="281" width="329" height="50"/>
+                                <rect key="frame" x="32" y="281" width="640" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk4-87-knp">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
@@ -462,7 +462,7 @@ Why should you join the event?:
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="kJt-gY-s9b" userLabel="DatePicker">
-                                        <rect key="frame" x="158" y="0.0" width="171" height="50"/>
+                                        <rect key="frame" x="158" y="0.0" width="482" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KCj-eU-7zw"/>
@@ -474,16 +474,16 @@ Why should you join the event?:
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VP8-Nl-Yet" userLabel="Stack View4">
-                                <rect key="frame" x="32" y="351" width="329" height="34"/>
+                                <rect key="frame" x="32" y="351" width="640" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evp-IB-4IA">
-                                        <rect key="frame" x="0.0" y="0.0" width="164.66666666666666" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="CustomTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Dj-t2-Pi3" userLabel="CVVField">
-                                        <rect key="frame" x="164.66666666666663" y="0.0" width="164.33333333333337" height="34"/>
+                                        <rect key="frame" x="320" y="0.0" width="320" height="34"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -492,7 +492,7 @@ Why should you join the event?:
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UI1-di-BS4">
-                                <rect key="frame" x="31" y="758.66666666666663" width="331" height="38.333333333333371"/>
+                                <rect key="frame" x="31" y="912" width="642" height="38.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Pay" cornerStyle="capsule"/>
                                 <connections>
@@ -538,7 +538,7 @@ Why should you join the event?:
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A7z-9O-TyU"/>
+        <segue reference="Olg-Cm-nHp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Card" width="58" height="58"/>

@@ -124,15 +124,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let isStarButtonVisible = userRole == .regular
         cell.setupCell(name: event.title, date: event.date, imageURL: event.imageURL, isStarButtonVisible: isStarButtonVisible)
         
-        if let url = URL(string: event.imageURL) {
+        //if let url = URL(string: event.imageURL) {
             // Make the image circular
             cell.imgEvent.layer.cornerRadius = cell.imgEvent.frame.size.width / 2
             cell.imgEvent.clipsToBounds = true
             cell.imgEvent.contentMode = .scaleAspectFill
-        } else {
+        //} else {
             // Handle invalid URL if necessary (e.g., show a placeholder image)
             cell.imgEvent.image = UIImage(named: "placeholder")  // Replace with your placeholder image
-        }
+        //}
         // Update the button state based on favoriteStates
         cell.starBtn.isSelected = isFavorite
         cell.starBtn.tintColor = isFavorite ? .systemBlue : .gray
