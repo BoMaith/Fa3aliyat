@@ -96,6 +96,9 @@ class CardViewController: UIViewController {
             
             // Update Firebase data
             self.updateUserEventInFirebase()
+
+            // Navigate back to the HomeViewController
+            self.navigationController?.popToRootViewController(animated: true)
         }
         
         // Add the "Proceed" action to the alert
@@ -104,6 +107,8 @@ class CardViewController: UIViewController {
         // Present the confirmation alert
         present(alert, animated: true, completion: nil)
     }
+
+
 
     func updateUserEventInFirebase() {
         guard let eventID = eventID, let eventName = eventName else {

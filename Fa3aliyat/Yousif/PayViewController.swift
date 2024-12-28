@@ -171,10 +171,14 @@ class PayViewController: UIViewController {
             self.updateUserEventInFirebase()
             self.ProceedBtn.isEnabled = false
             self.ProceedBtn.alpha = 0.5
+
+            // Navigate back to the HomeViewController
+            self.navigationController?.popToRootViewController(animated: true)
         }))
         
         self.present(alert, animated: true, completion: nil)
     }
+
 
     func updateUserEventInFirebase() {
         guard let eventID = eventID, let eventName = eventName else {

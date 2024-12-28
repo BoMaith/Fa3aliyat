@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6622DB082D1F1A7E0071974A /* Past Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6622DB072D1F1A7E0071974A /* Past Events.storyboard */; };
+		6639CB7C2D1FF785007D68AB /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639CB7B2D1FF785007D68AB /* EventCollectionViewCell.swift */; };
 		66741C102D1B0949001C71DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66741C0F2D1B0949001C71DC /* Assets.xcassets */; };
 		66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66741C112D1B12C8001C71DC /* EventTableViewCell.swift */; };
 		66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		6622DB072D1F1A7E0071974A /* Past Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Past Events.storyboard"; sourceTree = "<group>"; };
+		6639CB7B2D1FF785007D68AB /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		66741C0F2D1B0949001C71DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66741C112D1B12C8001C71DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		66A44CF32D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */,
 				E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */,
 				E68B480B2D1E91C100F9C31C /* HDoneTableViewCell.swift */,
+				6639CB7B2D1FF785007D68AB /* EventCollectionViewCell.swift */,
 			);
 			name = Yousif;
 			path = Fa3aliyat/Yousif;
@@ -563,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A44CF42D1C0DB3000C3DB7 /* ParticipantTableViewCell.swift in Sources */,
+				6639CB7C2D1FF785007D68AB /* EventCollectionViewCell.swift in Sources */,
 				E6F91FCE2D1C5BBC00D9C63F /* PayViewController.swift in Sources */,
 				66741C122D1B12C8001C71DC /* EventTableViewCell.swift in Sources */,
 				E020EA062D1490AE00874177 /* SignupViewController.swift in Sources */,
