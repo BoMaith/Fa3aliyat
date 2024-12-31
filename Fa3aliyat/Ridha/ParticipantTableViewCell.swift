@@ -9,8 +9,8 @@ class ParticipantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
-        profileImage.clipsToBounds = true
+//        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+//        profileImage.clipsToBounds = true
     }
 
     // This method sets up the cell with the participant's name and image
