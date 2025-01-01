@@ -207,7 +207,7 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let participant = participantsList[indexPath.row]
             
             // Dequeue the cell and cast it to ParticipantTableViewCell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath) as! ParticipantTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath) as! PTVCTableViewCell
             
             // Set up the cell with participant's name
             //cell.setupCell(name: participant.name, image: <#UIImage?#>)

@@ -82,6 +82,7 @@
 		FA0E86B62D1F09C900A3456B /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E86B52D1F09C900A3456B /* Cloudinary */; };
 		FA0E86B82D1F0A4800A3456B /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = FA0E86B72D1F0A4800A3456B /* Cloudinary */; };
 		FA937B772D1EE28500873C6A /* Organizer ED.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA937B762D1EE28500873C6A /* Organizer ED.storyboard */; };
+		FAD18C662D257EBE00AAF2FE /* PTVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD18C652D257EBE00AAF2FE /* PTVCTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,7 @@
 		E6F91FBF2D1C5BBC00D9C63F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E6F91FC22D1C5BBC00D9C63F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		FA937B762D1EE28500873C6A /* Organizer ED.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Organizer ED.storyboard"; sourceTree = "<group>"; };
+		FAD18C652D257EBE00AAF2FE /* PTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTVCTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				E068D6282D1D8FCF00FF3141 /* OEDViewController.swift */,
 				FA937B762D1EE28500873C6A /* Organizer ED.storyboard */,
 				6622DB072D1F1A7E0071974A /* Past Events.storyboard */,
+				FAD18C652D257EBE00AAF2FE /* PTVCTableViewCell.swift */,
 			);
 			path = Mujtaba;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				E68B480C2D1E91C100F9C31C /* HDoneTableViewCell.swift in Sources */,
 				E6F91FCA2D1C5BBC00D9C63F /* HPendingTableViewCell.swift in Sources */,
 				838D12E92D0B4FEF0022C382 /* SceneDelegate.swift in Sources */,
+				FAD18C662D257EBE00AAF2FE /* PTVCTableViewCell.swift in Sources */,
 				E57E8C882D1DE7DA00C3C262 /* ReviewTableViewCell.swift in Sources */,
 				D086501C2CF5F22400C9981D /* ViewController.swift in Sources */,
 				E67AE42E2D1210D900FE6288 /* HomeTableViewCell.swift in Sources */,

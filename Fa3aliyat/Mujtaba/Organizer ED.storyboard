@@ -39,7 +39,7 @@
                                         <color key="sectionIndexColor" name="CustomTextColor"/>
                                         <color key="sectionIndexBackgroundColor" name="CustomBackground"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParticipantCell" id="JAX-cj-wrV" customClass="ParticipantTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParticipantCell" id="JAX-cj-wrV" customClass="PTVCTableViewCell" customModule="Fa3aliyat" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JAX-cj-wrV" id="n0o-ID-Jgq">
@@ -296,14 +296,6 @@ Why should you join the event?:
                                         </subviews>
                                         <color key="backgroundColor" name="CustomBackground"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-ak-lpY">
-                                        <rect key="frame" x="269" y="82" width="46" height="34.333333333333343"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
-                                        <connections>
-                                            <action selector="editButtonTapped:" destination="Wb5-gk-dw9" eventType="touchUpInside" id="NGA-nX-3bq"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2h-lW-PgV">
                                         <rect key="frame" x="323" y="79.333333333333343" width="48" height="34"/>
                                         <color key="tintColor" name="size_red"/>
@@ -333,6 +325,14 @@ Why should you join the event?:
                                             <constraint firstItem="A3T-52-64j" firstAttribute="centerX" secondItem="SLQ-Ih-jZz" secondAttribute="centerX" id="XOe-s8-JUt"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-ak-lpY">
+                                        <rect key="frame" x="269" y="82" width="46" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
+                                        <connections>
+                                            <action selector="editButtonTapped:" destination="Wb5-gk-dw9" eventType="touchUpInside" id="NGA-nX-3bq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="CustomBackground"/>
                                 <constraints>
