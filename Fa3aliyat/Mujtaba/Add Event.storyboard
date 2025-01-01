@@ -166,7 +166,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="CustomBackground"/>
                             </stackView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image" highlightedImage="Add Image" translatesAutoresizingMaskIntoConstraints="NO" id="Ryb-bc-zPe">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ryb-bc-zPe">
                                 <rect key="frame" x="149" y="89" width="95" height="95"/>
                                 <gestureRecognizers/>
                                 <constraints>

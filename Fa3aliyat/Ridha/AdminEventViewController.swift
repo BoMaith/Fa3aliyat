@@ -176,7 +176,7 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath) as! ParticipantTableViewCell
             
             // Fetch the participant's profile image (if available)
-            if let imageUrlString = participant.profileImageUrl, let imageUrl = URL(string: imageUrlString) {
+            if let imageUrlString = participant.profileImageUrl {
                 let storageRef = Storage.storage().reference(forURL: imageUrlString)
                 storageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
                     if let error = error {
@@ -192,6 +192,7 @@ class AdminEventViewController: UIViewController, UITableViewDataSource, UITable
                 // Set up the cell with participant's name and a placeholder image
                 cell.setupCell(name: participant.name, image: nil)
             }
+
             
             return cell
         }

@@ -246,6 +246,7 @@ class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINa
         if isEditingEvent {
             let formattedDate = dateRangeString
             eventData["date"] = formattedDate
+            
         }
         
         // Handle image upload
@@ -274,7 +275,7 @@ class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINa
         }
     }
 
-       
+       //save data to firebase
     private func saveEventToDatabase(ref: DatabaseReference, organizerId: String, eventId: String, eventData: [String: Any]) {
         let updates: [String: Any] = [
             "/events/\(eventId)": eventData,
@@ -291,7 +292,7 @@ class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINa
             }
         }
     }
-
+//displays a popup for successs and navigates back to home page
        
        func showConfirmAlertAndNavigate() {
            let message = isEditingEvent ? "Event updated successfully!" : "Event created successfully!"
@@ -305,7 +306,7 @@ class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINa
            }))
            self.present(alert, animated: true, completion: nil)
        }
-       
+       // function to take the user to the organizer storyboard its called in te previous func
        func navigateToOrganizer() {
            let storyboard = UIStoryboard(name: "Organizer", bundle: nil)
            guard let organizerViewController = storyboard.instantiateInitialViewController() else {
@@ -315,7 +316,10 @@ class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINa
            organizerViewController.modalPresentationStyle = .fullScreen
            self.present(organizerViewController, animated: true, completion: nil)
        }
-
+    
+    
+// functions for category selection
+    // funcion for the segue to the category page
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if segue.identifier == "ShowCategoriesForEvent", let destinationVC = segue.destination as? CategoriesViewController {
                isNavigatingToCategory = true
@@ -325,7 +329,7 @@ class AEViewController:  UIViewController, UIImagePickerControllerDelegate, UINa
                isNavigatingToCategory = false
            }
        }
-
+        // func to assign selected category to event
        func didSelectCategory(_ category: String) {
            selectedCategory = category
            print("Selected category for the event: \(category)")

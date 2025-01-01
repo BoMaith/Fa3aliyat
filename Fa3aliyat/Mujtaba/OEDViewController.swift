@@ -210,7 +210,7 @@ class OEDViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let cell = tableView.dequeueReusableCell(withIdentifier: "ParticipantCell", for: indexPath) as! PTVCTableViewCell
             
             // Set up the cell with participant's name
-            //cell.setupCell(name: participant.name, image: <#UIImage?#>)
+            cell.setupCell(name: participant.name)
             
             return cell
         }
